@@ -1,0 +1,65 @@
+.menu-wrapper {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-header {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 400;
+    font-style: italic;
+    font-family:'Lucida Sans';
+
+}
+
+.course-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.course-box {
+    border: 2px solid green;
+    width: 90vw;
+    border-radius: 2rem;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+.course-options {
+    font-weight: bold;
+    list-style: none;
+}
+
+.option {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+}
+
+.food-description {
+    font-style: italic;
+}
+
+.food-label {
+    display: flex;
+    font-weight: bold;
+    }
+
+.vegan {
+    color: green;
+    font-weight: lighter;
+    font-style: italic;
+    margin-left: 1rem;
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+}
+
+.switches {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5rem 2rem;
+}
