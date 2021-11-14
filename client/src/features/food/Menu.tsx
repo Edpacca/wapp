@@ -1,6 +1,6 @@
 import { Course } from './Course';
 import './menu.css';
-import { starters, mains, desserts } from '../../resources/menuData';
+import { starters, mains, desserts } from '../../data/menuData';
 import { useState, Dispatch, SetStateAction } from 'react';
 import { Switch } from '@mui/material';
 
