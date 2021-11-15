@@ -1,11 +1,29 @@
-import React from 'react';
-import { Menu } from './features/food/Menu';
+import React, { useState } from 'react';
 import './App.css';
+import { useAppSelector } from './app/hooks';
+import { Menu } from './features/food/Menu';
+import { Home } from './features/home/Home';
+import { NavBar } from './features/nagivation/NavBar';
+import { selectActivePage } from './features/nagivation/NavigationSlice';
 
 function App() {
+
+  const page = useAppSelector(selectActivePage);
+
   return (
     <div className="App">
-      <Menu />
+      <NavBar page={page}/>
+      {
+        page === 'home' &&
+        <div>
+          <Home />
+          
+        </div>
+      },
+      {
+        page === 'meal' &&
+        <Menu />
+      }
     </div>
   );
 }

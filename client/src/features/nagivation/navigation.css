@@ -1,0 +1,16 @@
+.tabLinks {
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: larger;
+    font-weight: lighter;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.tabLink {
+    margin: 0 2rem 0 2rem;
+}
+
+.tabLink :hover {
+    color: wheat;
+}
