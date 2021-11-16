@@ -10,8 +10,6 @@
     font-size: 3rem;
     font-weight: 400;
     font-style: italic;
-    font-family:'Lucida Sans';
-
 }
 
 .course-wrapper {
@@ -21,8 +19,9 @@
 
 .course-box {
     border: 2px solid green;
-    width: 90vw;
+    background-color: rgba(255, 255, 255, 0.205);
     border-radius: 2rem;
+    width: 90%;
     padding: 1rem;
     margin: 0.5rem;
 }

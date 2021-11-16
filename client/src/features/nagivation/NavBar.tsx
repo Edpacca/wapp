@@ -19,10 +19,10 @@ export function NavBar(props: {page: ActivePage}) {
                     onClick={() => dispatch(changePage('home'))} /> 
             }
             { 
-                props.page !== 'itinerary' && 
+                props.page !== 'info' && 
                 <TabLink 
-                    title="Itinerary" 
-                    onClick={() => dispatch(changePage('itinerary'))} /> 
+                    title="Info" 
+                    onClick={() => dispatch(changePage('info'))} /> 
             }
             { 
                 props.page !== 'meal' && 
@@ -35,12 +35,6 @@ export function NavBar(props: {page: ActivePage}) {
                 <TabLink 
                     title="Location" 
                     onClick={() => dispatch(changePage('location'))} /> 
-            }
-            { 
-                props.page !== 'info' && 
-                <TabLink 
-                    title="Info" 
-                    onClick={() => dispatch(changePage('info'))} /> 
             }
         </div>
     )

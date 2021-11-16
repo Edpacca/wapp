@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
 import './App.css';
 import { useAppSelector } from './app/hooks';
 import { Menu } from './features/food/Menu';
 import { Home } from './features/home/Home';
+import { Itinerary } from './features/info/Itinerary';
 import { NavBar } from './features/nagivation/NavBar';
 import { selectActivePage } from './features/nagivation/NavigationSlice';
+import { Map } from './features/map/Map'
 
 function App() {
 
@@ -19,10 +20,18 @@ function App() {
           <Home />
           
         </div>
-      },
+      }
       {
         page === 'meal' &&
         <Menu />
+      }
+      {
+        page === 'info' &&
+        <Itinerary/>
+      }
+      {
+        page === 'location' &&
+        <Map/>
       }
     </div>
   );

@@ -1,1 +1,1 @@
-export type ActivePage = 'home' | 'itinerary' | 'meal' | 'location' | 'info'
+export type ActivePage = 'home' | 'meal' | 'location' | 'info'
