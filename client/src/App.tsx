@@ -6,13 +6,18 @@ import { Itinerary } from './features/info/Itinerary';
 import { NavBar } from './features/nagivation/NavBar';
 import { selectActivePage } from './features/nagivation/NavigationSlice';
 import { Map } from './features/map/Map'
+import { fetchDinner, selectFamily } from './features/user/userSlice';
+import { store } from './app/store';
 
 function App() {
 
+  const family = useAppSelector(selectFamily);
   const page = useAppSelector(selectActivePage);
 
   return (
     <div className="App">
+      <h1>{family ? family : "not connected"}</h1>
+      <button onClick={() => store.dispatch(fetchDinner())}>FETCH</button>
       <NavBar page={page}/>
       {
         page === 'home' &&

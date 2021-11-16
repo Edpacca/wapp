@@ -6,7 +6,8 @@ export function appRouter(app: express.Express): void {
 
     // GET dinner
     app.get("/dinner", (request, result) => {
-        result.status(200).send("pork chops yo");
+        result.status(200);
+        result.json("pork chops yo");
     });
 
     app.post("/user", (request, result) => {

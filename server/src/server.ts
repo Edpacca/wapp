@@ -6,7 +6,7 @@ import { appRouter as routes } from './routes/routes';
 
 
 const app = express();
-const port = 2720;
+const port = 5500;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
