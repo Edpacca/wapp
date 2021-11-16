@@ -1,0 +1,10 @@
+.initials {
+    position: absolute;
+    font-weight: lighter;
+    font-size: calc(30px + 5vmin);
+}
+
+.home-info {
+    font-weight: lighter;
+    font-size: calc(10px + 2vmin);
+}

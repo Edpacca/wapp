@@ -1,0 +1,1 @@
+export type ActivePage = 'home' | 'meal' | 'location' | 'info'
