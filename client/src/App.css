@@ -38,3 +38,38 @@
     transform: translateY(0px);
   }
 }
+
+.button {
+  margin: 1rem;
+  padding: 0.75rem;
+  width: 8rem;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: large;
+  color: white;
+  border-width: 0px;
+  border-style: solid white;
+
+}
+
+.button:hover {
+  background-color: rgba(119, 119, 119, 0.5);
+}
+
+.textbox {
+  background-color: rgba(119, 119, 119, 0.35);
+  padding: 0.75rem;
+  margin: 0.5rem;
+  width: 14rem;
+  border-width: 0px;
+  border-radius: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: large;
+  color: white;
+  text-align: center;
+}
+
+.textbox:focus {
+  background-color: rgba(119, 119, 119, 0.5);
+}

@@ -1,43 +1,25 @@
 import './App.css';
-import { useAppSelector } from './app/hooks';
-import { Menu } from './features/food/Menu';
-import { Home } from './features/home/Home';
-import { Itinerary } from './features/info/Itinerary';
-import { NavBar } from './features/nagivation/NavBar';
-import { selectActivePage } from './features/nagivation/NavigationSlice';
-import { Map } from './features/map/Map'
-import { fetchDinner, selectFamily } from './features/user/userSlice';
-import { store } from './app/store';
+import { useAppDispatch, useAppSelector } from './app/hooks';
+import { Wapp } from './app/Wapp';
+import { Login } from './features/user/Login';
+import { selectLoginState } from './features/user/userSlice'
 
 function App() {
 
-  const family = useAppSelector(selectFamily);
-  const page = useAppSelector(selectActivePage);
+  const isLoggedIn = useAppSelector(selectLoginState);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="App">
-      <h1>{family ? family : "not connected"}</h1>
-      <button onClick={() => store.dispatch(fetchDinner())}>FETCH</button>
-      <NavBar page={page}/>
       {
-        page === 'home' &&
-        <div>
-          <Home />
-          
-        </div>
+        !isLoggedIn &&
+        <Login />
       }
       {
-        page === 'meal' &&
-        <Menu />
+        isLoggedIn &&
+        <Wapp />
       }
-      {
-        page === 'info' &&
-        <Itinerary/>
-      }
-      {
-        page === 'location' &&
-        <Map/>
-      }
+      <button onClick={() => dispatch({type: 'users/logout'})} className="button">Logout</button>
     </div>
   );
 }

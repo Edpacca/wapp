@@ -16,33 +16,29 @@ const initialState: UserState = {
     status: 'idle'
 };
 
-export const fetchDinner = createAsyncThunk(
-    'user/fetchDinner',
-    async() => {
-        const response = await fetch(`${process.env.EXPRESS_SERVER}/dinner`, {
-            method: 'GET',
-            mode: 'cors'
-        }).then(response => response.json())
-        console.log(response);
-        return response;
-    }
-)
+// export const login = createAsyncThunk(
+//     'users/login',
+//     async() => {
+//         return new Promise<boolean>(() => true);
+//     }
+// )
 
 export const userSlice = createSlice({
     name: 'users',
     initialState,
-    reducers: {},
+    reducers: {
+        login: (state) => {
+            state.isLoggedIn = true;
+        },
+        logout: (state) => {
+            state.isLoggedIn = false;
+        }
+    },
     extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
-        builder
-            .addCase(fetchDinner.fulfilled, (state, action) => {
-                state.family = action.payload
-            })
-            .addCase(fetchDinner.rejected, (state) => {
-                state.status = 'failed'
-            })
     }
 });
 
 export const selectFamily = (state: RootState): string => state.users.family as string;
+export const selectLoginState = (state: RootState): boolean => state.users.isLoggedIn;
 
 export default userSlice.reducer;
