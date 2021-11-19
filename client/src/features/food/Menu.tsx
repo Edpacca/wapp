@@ -2,7 +2,7 @@ import { Course } from './Course';
 import './menu.css';
 import { starters, mains, desserts } from '../../data/menuData';
 import { useState, Dispatch, SetStateAction } from 'react';
-import { Switch } from '@mui/material';
+import { Switches } from './Switches';
 
 export function Menu() {
 
@@ -16,29 +16,16 @@ export function Menu() {
     return (
         <div className="menu-wrapper">
             <div className="menu-header">For Dinner</div>
-            <div className="switches">
-                <div className="switch">
-                    <Switch
-                        checked={isVegan}
-                        onChange={() => handleChange(setIsVegan, isVegan)}
-                        inputProps={{ 'aria-label': 'controlled' }}
-                    />
-                    <p className="vegan">Vegan</p>
-                </div>
-                <div className="switch">
-                    <Switch
-                        checked={isPolish}
-                        onChange={() => handleChange(setIsPolish, isPolish)}
-                        inputProps={{ 'aria-label': 'controlled' }}
-                    />
-                    <p>Polski</p>
-                </div>
-            </div>
-
+            <Switches
+                isVegan={isVegan}
+                handleChangeVegan={() => handleChange(setIsVegan, isVegan)}
+                isPolish={isPolish}
+                handleChangePolish={() => handleChange(setIsPolish, isPolish)}
+            />
             <div className="course-wrapper">
-                <Course foodItems={starters} isVegan={isVegan} isPolish={isPolish}/>
-                <Course foodItems={mains} isVegan={isVegan} isPolish={isPolish}/>
-                <Course foodItems={desserts} isVegan={isVegan} isPolish={isPolish}/>
+                <Course course={"Starter"} foodItems={starters} isVegan={isVegan} isPolish={isPolish}/>
+                <Course course={"Main Course"} foodItems={mains} isVegan={isVegan} isPolish={isPolish}/>
+                <Course course={"Dessert"} foodItems={desserts} isVegan={isVegan} isPolish={isPolish}/>
             </div>
         </div>
 

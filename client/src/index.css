@@ -1,13 +1,11 @@
 body {
   margin: 0;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   -webkit-font-smoothing: antialiased;
   color: white;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: rgb(2, 43, 2); */
-  background: url('../src/resources/forest-background3.webp') no-repeat center fixed;
+  background: url('../src/resources/forest-background3.webp') repeat-y center fixed;
 }
 
 code {

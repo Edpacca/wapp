@@ -1,3 +1,7 @@
+:root {
+  --form-control-color: rgba(29, 82, 41, 0.712);
+}
+
 .menu-wrapper {
     display: grid;
     justify-content: center;
@@ -18,9 +22,8 @@
 }
 
 .course-box {
-    border: 2px solid green;
     background-color: rgba(255, 255, 255, 0.205);
-    border-radius: 2rem;
+    border-radius: 4px;
     width: 90%;
     padding: 1rem;
     margin: 0.5rem;
@@ -43,23 +46,168 @@
 
 .food-label {
     display: flex;
+    align-items: center;
     font-weight: bold;
     }
 
 .vegan {
-    color: green;
+    color: rgb(4, 248, 4);
     font-weight: lighter;
     font-style: italic;
     margin-left: 1rem;
 }
 
-.switch {
-    display: flex;
-    align-items: center;
+.polski {
+    font-weight: lighter;
+    font-style: italic;
+    margin-left: 1rem;
 }
 
-.switches {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0.5rem 2rem;
+.vegan-switch {
+    
 }
+
+.polski-switch {
+    justify-content: right;
+}
+
+.inline {
+    display: flex;
+}
+
+.course-table {
+    width: 100%;
+}
+
+.course-row {
+    border: 0px solid rgb(255, 255, 255);
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 16fr 20vw;
+    align-items: center;
+    text-align: left;
+    margin: 0.25rem;
+    border-radius: 3px;
+}
+
+.food-name {
+    display: flex;
+}
+
+.food-img {
+    width: 100%;
+}
+
+.form-control {
+    margin: 1rem;
+}
+
+input[type="radio"] {
+    appearance: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0;
+    font: inherit;
+    width: 1.1em;
+    height: 1.1em;
+    border: 1px solid white;
+    border-radius: 20%;
+  }
+
+  input[type="radio"]:checked {
+     box-shadow: inset 1em 1em var(--form-control-color);
+     border: 2px solid white;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    border-radius: 2px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(204, 204, 204, 0.178);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    border-radius: 2px;
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: var(--form-control-color);
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px var(--form-control-color);
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  .slider-polski {
+    border-radius: 2px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(204, 204, 204, 0.178);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider-polski:before {
+    border-radius: 0px;
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider-polski {
+    background-color: red;
+    
+  }
+  
+  input:focus + .slider-polski {
+    box-shadow: 0 0 1px var(--form-control-color);
+  }
+  
+  input:checked + .slider-polski:before {
+    -webkit-transform: translateY(-17px);
+    -ms-transform: translateY(-17px);
+    transform: translateY(-9px) translateX(13px) scaleX(2.3) scaleY(0.63);
+  }
