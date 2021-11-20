@@ -3,5 +3,5 @@ export interface foodItem {
     description: string[],
     isVegan: boolean,
     img: string,
-    id: string
+    value: number
 }

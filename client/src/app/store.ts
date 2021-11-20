@@ -2,12 +2,14 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import navigationReducer from '../features/nagivation/NavigationSlice';
 import userReducer from '../features/user/userSlice';
+import foodReducer from '../features/food/foodSlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     navigation: navigationReducer,
-    users: userReducer
+    users: userReducer,
+    food: foodReducer
   }
 });
 

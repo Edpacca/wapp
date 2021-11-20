@@ -1,5 +1,6 @@
 :root {
-  --form-control-color: rgba(29, 82, 41, 0.712);
+  --form-control-color: rgba(255, 255, 255, 0.952);
+  --vegan-green: yellowgreen;
 }
 
 .menu-wrapper {
@@ -7,6 +8,8 @@
     justify-content: center;
     align-items: center;
     color: white;
+    width: 80vw;
+    margin: auto
 }
 
 .menu-header {
@@ -14,9 +17,10 @@
     font-size: 3rem;
     font-weight: 400;
     font-style: italic;
+    margin-bottom: 5vh;
 }
 
-.course-wrapper {
+.courses-wrapper {
     display: flex;
     flex-wrap: wrap;
 }
@@ -24,9 +28,8 @@
 .course-box {
     background-color: rgba(255, 255, 255, 0.205);
     border-radius: 4px;
-    width: 90%;
     padding: 1rem;
-    margin: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 .course-options {
@@ -51,7 +54,7 @@
     }
 
 .vegan {
-    color: rgb(4, 248, 4);
+    color: var(--vegan-green);
     font-weight: lighter;
     font-style: italic;
     margin-left: 1rem;
@@ -83,7 +86,7 @@
     border: 0px solid rgb(255, 255, 255);
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr 16fr 20vw;
+    grid-template-columns: 1fr 16fr 2fr;
     align-items: center;
     text-align: left;
     margin: 0.25rem;
@@ -158,11 +161,11 @@ input[type="radio"] {
   }
   
   input:checked + .slider {
-    background-color: var(--form-control-color);
+    background-color: var(--vegan-green);
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px var(--form-control-color);
+    box-shadow: 0 0 1px var(--vegan-green);
   }
   
   input:checked + .slider:before {
@@ -209,5 +212,70 @@ input[type="radio"] {
   input:checked + .slider-polski:before {
     -webkit-transform: translateY(-17px);
     -ms-transform: translateY(-17px);
-    transform: translateY(-9px) translateX(13px) scaleX(2.3) scaleY(0.63);
+    transform: translateY(-9px) translateX(12.41px) scaleX(2.27 ) scaleY(0.63);
+  }
+
+  .switches {
+    display: flex;
+  }
+
+  .right-float {
+    margin-left: auto;
+    order: 2;
+    }
+
+  .choice {
+    margin: 1rem;
+  }
+
+  .choices {
+    font-size: larger;
+    text-align: center;
+  }
+
+  .textarea {
+    background-color: rgba(119, 119, 119, 0.35);
+    padding: 0.75rem;
+    margin: auto;
+    margin-bottom: 2rem;
+    width: 100%;
+    border-width: 0px;
+    border-radius: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large;
+    color: white;
+    text-align: left;
+    height: 2.75rem;
+  }
+
+  .textarea::placeholder {
+    color: var(--vegan-green);
+  }
+  
+  .textarea:focus {
+    background-color: rgba(119, 119, 119, 0.5);
+  }
+
+  .error {
+    color: var(--vegan-green);
+  }
+
+  .smalltext {
+    font-size: initial;
+  }
+
+  .cancel {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: large;
+    color: white;
+    border-width: 0px;
+    border-style: solid white;
+  
+  }
+  
+  .cancel:hover {
+    background-color: rgba(170, 170, 170, 0.5);
   }

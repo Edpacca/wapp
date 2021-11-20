@@ -14,7 +14,7 @@ export const starters: foodItem[] = [
         ],
         isVegan: false,
         img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
-        id: "s1"
+        value: 0
     },
     {
         name: 
@@ -29,7 +29,7 @@ export const starters: foodItem[] = [
         ],
         isVegan: false,
         img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
-        id: "s2"
+        value: 1
     },
     {
         name: 
@@ -44,7 +44,7 @@ export const starters: foodItem[] = [
         ],
         isVegan: true,
         img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
-        id: "s3"
+        value: 2
     },
 ];
 
@@ -62,7 +62,7 @@ export const mains: foodItem[] = [
         ],
         isVegan: false,
         img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
-        id: "m1"
+        value: 0
     },
     {
         name: 
@@ -77,7 +77,7 @@ export const mains: foodItem[] = [
         ],
         isVegan: false,
         img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
-        id: "m2"
+        value: 1
     },
     {
         name: 
@@ -92,7 +92,7 @@ export const mains: foodItem[] = [
         ],
         isVegan: true,
         img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
-        id: "m3"
+        value: 2
     },
 ];
 
@@ -110,7 +110,7 @@ export const desserts: foodItem[] = [
         ],
         isVegan: false,
         img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
-        id: "d1"
+        value: 0
     },
     {
         name: 
@@ -125,6 +125,25 @@ export const desserts: foodItem[] = [
         ],
         isVegan: false,
         img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
-        id: "d2"
+        value: 1
     }
 ]
+
+export const chosenTexts = {
+    starter: [
+        "Kicking things off with ",
+        " to start."
+    ],
+    main: [
+        "You have chosen a main course of ",
+        "."
+    ],
+    dessert: [
+        "Ending on a bang with ",
+        " for dessert."
+    ],
+    diet: [
+        "No dietary requirements.",
+        "Dietary requirements: "
+    ]
+}
