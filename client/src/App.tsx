@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from './app/hooks';
 import { Wapp } from './app/Wapp';
 import { Login } from './features/user/Login';
 import { selectLoginState } from './features/user/userSlice'
+import diamond from "./resources/diamond-white.svg"
 
 function App() {
 
@@ -13,7 +14,13 @@ function App() {
     <div className="App">
       {
         !isLoggedIn &&
-        <Login />
+        <div>
+          <Login />
+          <div className="App-header">
+          <img src={diamond} className="App-logo" alt="diamond"/>
+          <h1 className="initials">A | E</h1>
+          </div>
+        </div>
       }
       {
         isLoggedIn &&
