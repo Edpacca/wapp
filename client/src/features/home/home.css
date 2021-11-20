@@ -8,3 +8,25 @@
     font-weight: lighter;
     font-size: calc(10px + 2vmin);
 }
+
+.menu-choices {
+    padding: 4vh 30vw;
+}
+
+.choices-toggle {
+    width: 64px;
+    height: 6s4px;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.0);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 42px;
+    color: white;
+    border-width: 0px;
+    border-style: solid white;
+    margin-bottom: 2rem;
+  }
+
+  .menu-choice {
+      font-size: large;
+      color: yellowgreen;
+  }
