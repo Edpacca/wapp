@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as express from 'express';
-import { CreateUser, GetUser, GetUsers, GetUsersByFamily, UpdateMealChoices } from './controllers/userController';
+import { CreateUser, GetUser, GetUsers, GetUsersByFamily, LoginUser, UpdateMealChoices } from './controllers/userController';
 
 export function appRouter(app: express.Express): void {
 
@@ -19,6 +19,10 @@ export function appRouter(app: express.Express): void {
 
     app.get("/user", (request, result) => {
         return GetUser(request, result);
+    })
+
+    app.post("/user/login", (request, result) => {
+        return LoginUser(request, result)
     })
 
     app.get("/user/all", (request, result) => {

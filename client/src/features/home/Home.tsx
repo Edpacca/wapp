@@ -1,15 +1,11 @@
 import "./home.css"
 import diamond from "../../resources/diamond-white.svg"
-import { useAppSelector } from "../../app/hooks"
-import { selectChoices } from "../food/foodSlice"
 import { HomeMealChoices } from "./HomeMealChoices"
 import { useState } from "react"
-
 
 export function Home() {
 
     const [isChoices, setIsChoices] = useState(false)
-
 
     return(
         <div>

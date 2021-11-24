@@ -3,20 +3,17 @@ import { v4 as uuid } from 'uuid';
 
 export async function CreateUser(request, result) {
 
-    const user = await User.findOne({family: request.body.family});
-    let familyId;
-    if (user) {
-        familyId = user.familyId
-    } else {
-        familyId = uuid();
-    }
+
+
+    const existingUser = await User.findOne({family: request.body.family});
+    let familyId = existingUser ? existingUser.familyId : uuid();
 
     try {
         const user = new User({
             name: request.body.name,
             family: request.body.family,
             familyId: familyId,
-            passcode: request.body.passcode,
+            hash: request.body.passcode,
             starter: null,
             main: null,
             dessert: null,
@@ -63,7 +60,6 @@ export async function GetUser(request, result) {
 }
 
 export function GetUsers(request, result) {
-
     User.find({}, function(err, users) {
         return result.status(200).json(users)
     })
@@ -95,7 +91,11 @@ export async function UpdateMealChoices(request, result) {
 
     console.log(body);
 
-    User.findByIdAndUpdate({_id: request.query.id}, { "starter": body.starter, "main": body.main, "dessert": body.dessert, "diet": body.diet }, (err, user) => {
+    User.findByIdAndUpdate({_id: request.query.id}, {
+        "starter": body.starter,
+        "main": body.main,
+        "dessert": body.dessert,
+        "diet": body.diet }, (err, user) => {
         
         if (!user) {
             return result.status(404).json({
@@ -118,4 +118,18 @@ export async function UpdateMealChoices(request, result) {
             diet: body.diet
         })
     })
+}
+
+export async function LoginUser(request, result) {
+
+    const body = request.body
+
+    if (!body) {
+        return result.status(400).json({
+            success: false,
+            error: 'no login parameters'
+        })
+    }
+
+    return (GetUsersByFamily(request, result));
 }
