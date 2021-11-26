@@ -2,10 +2,10 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema;
 
-const User = new Schema(
+const Guest = new Schema(
     {
         family: { type: String, required: true },
-        hash: { type: String, required: true },
+        familyId: { type: String, required: true },
         name: { type: String, required: true },
         starter: { type: Number },
         main: { type: Number },
@@ -14,4 +14,4 @@ const User = new Schema(
     }
 )
 
-export = mongoose.model('users', User)
+export = mongoose.model('guests', Guest)

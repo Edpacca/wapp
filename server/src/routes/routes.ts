@@ -1,35 +1,26 @@
 import * as _ from 'lodash';
 import * as express from 'express';
-import { CreateUser, GetUser, GetUsers, GetUsersByFamily, LoginUser, UpdateMealChoices } from './controllers/userController';
+import { CreateGuest, GetGuest, GetGuests, GetGuestsByFamily, UpdateMealChoices } from './controllers/guestController';
 
 export function appRouter(app: express.Express): void {
 
-    // GET dinner
-    app.get("/dinner", (request, result) => {
-        result.status(200).send("pork chops yo");
-    });
+    app.post("/guest", (request, result) => {
+        return CreateGuest(request, result);
+    })
 
-    app.put("/dinner", (request, result) => {
+    app.get("/guest", (request, result) => {
+        return GetGuest(request, result);
+    })
+
+    app.get("/guest/all", (request, result) => {
+        return GetGuests(request, result);
+    })
+
+    app.get("/guest/family", (request, result) => {
+        return GetGuestsByFamily(request, result);
+    })
+
+    app.put("/guest/dinner", (request, result) => {
         return UpdateMealChoices(request, result);
-    })
-
-    app.post("/user", (request, result) => {
-        return CreateUser(request, result);
-    })
-
-    app.get("/user", (request, result) => {
-        return GetUser(request, result);
-    })
-
-    app.post("/user/login", (request, result) => {
-        return LoginUser(request, result)
-    })
-
-    app.get("/user/all", (request, result) => {
-        return GetUsers(request, result);
-    })
-
-    app.get("/user/family", (request, result) => {
-        return GetUsersByFamily(request, result);
     })
 }
