@@ -4,13 +4,11 @@ const Schema = mongoose.Schema;
 
 const User = new Schema(
     {
-        family: { type: String, required: true },
-        hash: { type: String, required: true },
-        name: { type: String, required: true },
-        starter: { type: Number},
-        main: { type: Number},
-        dessert: { type: Number},
-        diet: { type: String},
+        family: { type: String, default: null, unique: true },
+        familyId: {type: String },
+        password: { type: String },
+        token: { type: String },
+        members: { type: [String] }
     }
 )
 

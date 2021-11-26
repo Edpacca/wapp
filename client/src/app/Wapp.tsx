@@ -5,13 +5,17 @@ import { Itinerary } from '../features/info/Itinerary';
 import { NavBar } from '../features/nagivation/NavBar';
 import { selectActivePage } from '../features/nagivation/NavigationSlice';
 import { Location } from '../features/map/Location'
+import { selectMembers } from '../features/user/userSlice';
+import { LoginStatus } from '../features/user/LoginStatus';
 
 export function Wapp() {
 
   const page = useAppSelector(selectActivePage);
+  const members = useAppSelector(selectMembers);
 
   return (
     <div>
+      <LoginStatus members={members}/>
       <NavBar page={page}/>
       {
         page === 'home' &&

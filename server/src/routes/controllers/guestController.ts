@@ -1,50 +1,44 @@
-import User from '../../models/userModel';
+import Guest from '../../models/guestModel';
 import { v4 as uuid } from 'uuid';
 
-export async function CreateUser(request, result) {
+export async function CreateGuest(request, result) {
 
-    const user = await User.findOne({family: request.body.family});
-    let familyId;
-    if (user) {
-        familyId = user.familyId
-    } else {
-        familyId = uuid();
-    }
+    const existingGuest = await Guest.findOne({family: request.body.family});
+    let familyId = existingGuest ? existingGuest.familyId : uuid();
 
     try {
-        const user = new User({
+        const guest = new Guest({
             name: request.body.name,
             family: request.body.family,
             familyId: familyId,
-            passcode: request.body.passcode,
             starter: null,
             main: null,
             dessert: null,
             diet: null
         });
 
-        user
+        guest
         .save()
         .then(() => {
             return result.status(201).json({
                 success: true,
-                id: user._id,
-                message: `Create user ${user.name} of ${user.family} group`
+                id: guest._id,
+                message: `Created guest ${guest.name} of ${guest.family} group`
             });
         });
     } catch (error) {
         return result.status(400).json({
             error,
-            message: 'User not created',
+            message: 'Guest not created',
         })
     }
 }
 
-export async function GetUser(request, result) {
+export async function GetGuest(request, result) {
 
-    User.findById({_id: request.query.id}, (err, user) => {
+    Guest.findById({_id: request.query.id}, (err, guest) => {
         
-        if (!user) {
+        if (!guest) {
             return result.status(404).json({
                 success: false,
                 error: 'User not found',
@@ -52,34 +46,33 @@ export async function GetUser(request, result) {
         }
 
         return result.status(200).json({
-            id: user._id,
-            name: user.name,
-            family: user.family,
-            starter: user.starter,
-            main: user.main,
-            dessert: user.dessert
+            id: guest._id,
+            name: guest.name,
+            family: guest.family,
+            starter: guest.starter,
+            main: guest.main,
+            dessert: guest.dessert
         })
     })
 }
 
-export function GetUsers(request, result) {
-
-    User.find({}, function(err, users) {
-        return result.status(200).json(users)
+export function GetGuests(request, result) {
+    Guest.find({}, function(err, guests) {
+        return result.status(200).json(guests)
     })
 }
 
-export async function GetUsersByFamily(request, result) {
-    const users = await User.find({ 'family' : request.body.family})
+export async function GetGuestsByFamily(request, result) {
+    const guests = await Guest.find({ 'family' : request.body.family})
 
-    if (!users || users.length === 0){
+    if (!guests || guests.length === 0){
         return result.status(400).json({
             success: false,
             error: 'No family found'
         })
     }
 
-    return result.status(200).json(users);
+    return result.status(200).json(guests);
 }
 
 export async function UpdateMealChoices(request, result) {
@@ -95,9 +88,13 @@ export async function UpdateMealChoices(request, result) {
 
     console.log(body);
 
-    User.findByIdAndUpdate({_id: request.query.id}, { "starter": body.starter, "main": body.main, "dessert": body.dessert, "diet": body.diet }, (err, user) => {
+    Guest.findByIdAndUpdate({_id: request.query.id}, {
+        "starter": body.starter,
+        "main": body.main,
+        "dessert": body.dessert,
+        "diet": body.diet }, (err, guest) => {
         
-        if (!user) {
+        if (!guest) {
             return result.status(404).json({
                 success: false,
                 error: 'User not found',
@@ -110,8 +107,8 @@ export async function UpdateMealChoices(request, result) {
 
         return result.status(200).json({
             success: true,
-            id: user._id,
-            message: `meal choices updated for ${user.name}`,
+            id: guest._id,
+            message: `meal choices updated for ${guest.name}`,
             starter: body.starter,
             main: body.main,
             dessert: body.dessert,

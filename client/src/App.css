@@ -73,3 +73,29 @@
 .textbox:focus {
   background-color: rgba(119, 119, 119, 0.5);
 }
+
+.login-status {
+  padding: 0.75rem 20vw;
+  background-color: transparent;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+  font-size: large;
+  border-width: 0px;
+  display: grid;
+  text-align: left;
+}
+
+.members {
+  position: absolute;
+  width: 50vw;
+  padding: 1rem;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.686);
+  border-radius: 10px;
+}
+
+.dropdown-button {
+  background-color: transparent;
+  color: white;
+  border-style: none;
+}

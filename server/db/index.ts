@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
+import 'dotenv/config';
+
+const { MONGO_URI } = process.env;
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/wapp')
+    .connect(MONGO_URI as string)
     .catch(e => {
         console.error('Connection error', e.message)
     });
