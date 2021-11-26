@@ -18,41 +18,16 @@ const initialState: UserState = {
     status: 'idle'
 };
 
-async function getToken() {
-
-    const body = {
-        "client_id":"xGB7EnkA18WID98MhJiRN4cy8pddUfMN",
-        "client_secret":"U0dugyCzifXsC1-g6qLett60-DztvXEmgChXhuDOj0S2fxrX_8DqLp1Eczx0brKJ",
-        "audience":"https://wapp-api",
-        "grant_type":"client_credentials"
-    };
-
-    const response = await fetch('https://dev-31phqkkj.eu.auth0.com/oauth/token', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body),
-    }).then(response => response.json());
-    
-    return response;
-}
-
 export const userLogin = createAsyncThunk(
     'users/userLogin',
     async(request: AuthenticationRequest) => {
 
-
-        const token = getToken().catch(error => console.log(error));
-        console.log("token: " + token);
-        
         const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/user/login`, {
             method: 'POST',
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json',
-                'authorization' : `Bearer ${token}`
+                'Content-Type': 'application/json'
+               //'authorization' : `Bearer ${token}`
             },
             body: JSON.stringify(request)})
             .then(response => response.json());
