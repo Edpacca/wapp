@@ -65,9 +65,6 @@ export const userSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-        // login: (state) => {
-        //     state.isLoggedIn = true;
-        // },
         logout: (state) => {
             state.isLoggedIn = false;
             state.family = undefined;

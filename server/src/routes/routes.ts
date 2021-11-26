@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import * as express from 'express';
 import { CreateGuest, GetGuest, GetGuests, GetGuestsByFamily, UpdateMealChoices } from './controllers/guestController';
+import { RegisterUser, LoginUser } from './controllers/usersController';
 
 export function appRouter(app: express.Express): void {
 
@@ -23,4 +24,12 @@ export function appRouter(app: express.Express): void {
     app.put("/guest/dinner", (request, result) => {
         return UpdateMealChoices(request, result);
     })
+
+    app.post("/register", (request, result) => {
+        return RegisterUser(request, result);
+    });
+
+    app.post("/login", (request, result) => {
+        return LoginUser(request, result);
+    });
 }
