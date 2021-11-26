@@ -4,7 +4,7 @@ import { Home } from '../features/home/Home';
 import { Itinerary } from '../features/info/Itinerary';
 import { NavBar } from '../features/nagivation/NavBar';
 import { selectActivePage } from '../features/nagivation/NavigationSlice';
-import { Map } from '../features/map/Map'
+import { Location } from '../features/map/Location'
 
 export function Wapp() {
 
@@ -30,7 +30,7 @@ export function Wapp() {
       }
       {
         page === 'location' &&
-        <Map/>
+        <Location/>
       }
     </div>
   );
