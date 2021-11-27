@@ -9,8 +9,8 @@ import { selectLoginState } from './features/user/userSlice'
 function App() {
 
   const isLoggedIn = useAppSelector(selectLoginState);
+  const [isAdmin, setIsAdmin] = useState(false);
   const dispatch = useAppDispatch();
-  const [isAdmin, setIsAdmin] = useState(true);
 
   return (
     <div className="App">
@@ -26,8 +26,11 @@ function App() {
         isLoggedIn && !isAdmin &&
         <Wapp />
       }
-      <button onClick={() => dispatch({type: 'users/logout'})} className="button">Logout</button>
-      <button onClick={() => setIsAdmin(!isAdmin)} className="button">Admin</button>
+      <div>
+        <button onClick={() => dispatch({type: 'users/logout'})} className="button">Logout</button>
+        <button onClick={() => {setIsAdmin(!isAdmin); dispatch({type: 'admin/adminLoginQuick', payload: !isAdmin})}} className="button">Admin</button>
+      </div>
+
     </div>
   );
 }

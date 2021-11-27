@@ -45,14 +45,7 @@ export async function GetGuest(request, result) {
             })
         }
 
-        return result.status(200).json({
-            id: guest._id,
-            name: guest.name,
-            family: guest.family,
-            starter: guest.starter,
-            main: guest.main,
-            dessert: guest.dessert
-        })
+        return result.status(200).json({guest})
     })
 }
 

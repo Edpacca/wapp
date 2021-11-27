@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { User } from "../../models/User";
+import { Guest } from "../../models/Guest";
 
-export function LoginStatus(props: {members: User[]}) {
+export function LoginStatus(props: {members: Guest[]}) {
 
     const [isActive, setIsActive] = useState(false);
 

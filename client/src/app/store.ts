@@ -3,13 +3,15 @@ import counterReducer from '../features/counter/counterSlice';
 import navigationReducer from '../features/nagivation/NavigationSlice';
 import userReducer from '../features/user/userSlice';
 import foodReducer from '../features/food/foodSlice';
+import adminReducer from '../features/admin/adminSlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     navigation: navigationReducer,
     users: userReducer,
-    food: foodReducer
+    food: foodReducer,
+    admin: adminReducer,
   }
 });
 

@@ -2,12 +2,12 @@ import { ActionReducerMapBuilder, createAsyncThunk, createSlice } from "@reduxjs
 import { RootState } from "../../app/store";
 import { AuthenticationRequest } from "../../models/AuthenticationRequest";
 import { Status } from "../../models/Status";
-import { User } from '../../models/User';
+import { Guest } from '../../models/Guest';
 
 export interface UserState {
     isLoggedIn: boolean,
     family: string | undefined,
-    members: User[]
+    members: Guest[],
     status: Status
 };
 
@@ -22,7 +22,7 @@ export const userLogin = createAsyncThunk(
     'users/userLogin',
     async(request: AuthenticationRequest) => {
 
-        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/user/login`, {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/login`, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -69,7 +69,7 @@ export const userSlice = createSlice({
 });
 
 export const selectFamily = (state: RootState): string => state.users.family as string;
-export const selectMembers = (state: RootState): User[] => state.users.members;
+export const selectMembers = (state: RootState): Guest[] => state.users.members;
 export const selectLoginState = (state: RootState): boolean => state.users.isLoggedIn;
 
 export default userSlice.reducer;
