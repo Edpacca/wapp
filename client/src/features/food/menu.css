@@ -188,7 +188,7 @@ input[type="radio"] {
   }
   
   .slider-polski:before {
-    border-radius: 0px;
+    border-radius: 2px;
     position: absolute;
     content: "";
     height: 26px;
@@ -202,7 +202,7 @@ input[type="radio"] {
   
   input:checked + .slider-polski {
     background-color: red;
-    
+    border-radius: 0px;
   }
   
   input:focus + .slider-polski {
@@ -210,9 +210,10 @@ input[type="radio"] {
   }
   
   input:checked + .slider-polski:before {
-    -webkit-transform: translateY(-17px);
-    -ms-transform: translateY(-17px);
-    transform: translateY(-9px) translateX(12.41px) scaleX(2.27 ) scaleY(0.63);
+    -webkit-transform: translateY(-9px) translateX(12.44px) scaleX(2.3) scaleY(0.63);
+    -ms-transform: translateY(-9px) translateX(12.44px) scaleX(2.3) scaleY(0.63);
+    transform: translateY(-9px) translateX(13px) scaleX(2.3) scaleY(0.63);
+    border-radius: 0px;
   }
 
   .switches {

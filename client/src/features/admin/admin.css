@@ -42,17 +42,17 @@
 
 }
 
-thead, tbody, tr {
+.guest-table > thead, tbody, tr {
     display: contents;
 }
 
-th, td {
+.guest-table > th, td {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     padding: 5px;
 }
 
-td {
+.guest-table > td {
     border: 1px solid white;
 }

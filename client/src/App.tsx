@@ -19,11 +19,11 @@ function App() {
         <AdminHome/>
       }
       {
-        !isLoggedIn && !isAdmin &&
-        <Login />
+        // !isLoggedIn && !isAdmin &&
+        // <Login />
       }
       {
-        isLoggedIn && !isAdmin &&
+        !isLoggedIn && !isAdmin &&
         <Wapp />
       }
       <div>
