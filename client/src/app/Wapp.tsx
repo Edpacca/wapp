@@ -4,7 +4,7 @@ import { Home } from '../features/home/Home';
 import { Itinerary } from '../features/info/Itinerary';
 import { NavBar } from '../features/nagivation/NavBar';
 import { selectActivePage } from '../features/nagivation/NavigationSlice';
-import { Location } from '../features/map/Location'
+import { WappMap } from '../features/map/WappMap'
 import { selectMembers } from '../features/user/userSlice';
 import { LoginStatus } from '../features/user/LoginStatus';
 
@@ -34,7 +34,7 @@ export function Wapp() {
       }
       {
         page === 'location' &&
-        <Location/>
+        <WappMap/>
       }
     </div>
   );
