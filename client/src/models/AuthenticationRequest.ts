@@ -1,3 +1,4 @@
 export interface AuthenticationRequest {
-    family: string
+    family: string,
+    password: string
 }

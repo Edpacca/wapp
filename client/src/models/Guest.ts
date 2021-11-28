@@ -1,9 +1,10 @@
-export interface User {
+export interface Guest {
+    id: string,
     family: string,
-    passcode: string,
+    familyId: string,
     name: string,
     starter: number,
     main: number,
     dessert: number,
-    diet: string
+    diet: string,
 }

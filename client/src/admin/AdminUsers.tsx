@@ -1,6 +1,6 @@
-import { User } from '../models/User'
+import { Guest } from '../models/Guest'
 
-export function AdminUsers(props: {users: User[]}) {
+export function AdminUsers(props: {users: Guest[]}) {
     return(
         <div>
             
