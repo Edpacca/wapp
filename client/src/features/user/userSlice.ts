@@ -8,14 +8,16 @@ export interface UserState {
     isLoggedIn: boolean,
     family: string | undefined,
     members: Guest[],
-    status: Status
+    status: Status,
+    token: string | undefined,
 };
 
 const initialState: UserState = {
     isLoggedIn: false,
     family: undefined,
     members: [],
-    status: 'idle'
+    status: 'idle',
+    token: undefined
 };
 
 export const userLogin = createAsyncThunk(
@@ -26,8 +28,7 @@ export const userLogin = createAsyncThunk(
             method: 'POST',
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'
-               //'authorization' : `Bearer ${token}`
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(request)})
             .then(response => response.json());
@@ -57,10 +58,11 @@ export const userSlice = createSlice({
         })
         .addCase(userLogin.fulfilled, (state, action) => {
             if (action.payload.length > 0) {
-                state.family = action.payload[0].family;
-                state.members = action.payload;
+                state.family = action.payload.family;
+                state.members = action.payload.members;
                 state.isLoggedIn = true;
                 state.status = 'idle'
+                state.token = action.payload.token;
             } else {
                 state = initialState;
             }

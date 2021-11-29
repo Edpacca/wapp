@@ -16,9 +16,7 @@ export function GuestManager(props: { guests: Guest[] }) {
                     </tr>
                 </thead>
                 {
-                    <tbody>
-                        {renderGuestData(props.guests)}
-                    </tbody>
+                    <tbody>{renderGuestData(props.guests)}</tbody>
                 }
             </table>
         </div>
@@ -30,10 +28,10 @@ function renderGuestData(guests: Guest[]) {
     return (
         guests.map(guest => {
             return(
-                <tr>
+                <tr className="adminTable">
                     <td>{guest.family}</td>
                     <td>{guest.name}</td>
-                    <td><a href="" onClick={(e) => {e.preventDefault(); copyId(guest.id);}} className="App-link">{guest.id}</a></td>
+                    <td><p className="link" onClick={(e) => {e.preventDefault(); copyId(guest.id);}}>{guest.id}</p></td>
                     <td>{guest.starter}</td>
                     <td>{guest.main}</td>
                     <td>{guest.dessert}</td>

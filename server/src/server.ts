@@ -1,6 +1,7 @@
 import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 import * as _ from 'lodash';
 import cors from 'cors';
 import db from '../db'

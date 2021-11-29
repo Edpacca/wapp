@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { Wapp } from './app/Wapp';
+import { AdminHome } from './features/admin/AdminHome';
 import { Login } from './features/user/Login';
 import { selectLoginState } from './features/user/userSlice'
 
@@ -14,12 +15,16 @@ function App() {
   return (
     <div className="App">
       {
-        //!isLoggedIn && !isAdmin &&
-        //<Login />
+        !isLoggedIn && !isAdmin &&
+        <Login />
       }
       {
-        !isLoggedIn && !isAdmin &&
+        isLoggedIn && !isAdmin &&
         <Wapp />
+      }
+      {
+        isAdmin &&
+        <AdminHome />
       }
       <div>
         <button onClick={() => dispatch({type: 'users/logout'})} className="button">Logout</button>
