@@ -5,19 +5,15 @@ import { Status } from "../../models/Status";
 import { Guest } from '../../models/Guest';
 
 export interface UserState {
-    isLoggedIn: boolean,
     family: string | undefined,
     members: Guest[],
     status: Status,
-    token: string | undefined,
 };
 
 const initialState: UserState = {
-    isLoggedIn: false,
     family: undefined,
     members: [],
     status: 'idle',
-    token: undefined
 };
 
 export const userLogin = createAsyncThunk(
@@ -25,6 +21,7 @@ export const userLogin = createAsyncThunk(
     async(request: AuthenticationRequest) => {
 
         const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/login`, {
+            credentials: 'include',
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -38,17 +35,27 @@ export const userLogin = createAsyncThunk(
     }
 )
 
+export const userLogout = createAsyncThunk(
+    'users/userLogout',
+    async() => {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/logout`, {
+            credentials: 'include',
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token' : `${process.env.REACT_APP_CLIENT_TOKEN}`
+            }
+        }).then(response => response.json());
+            
+        return response;
+    }
+);
+
 export const userSlice = createSlice({
     name: 'users',
     initialState,
-    reducers: {
-        logout: (state) => {
-            state.isLoggedIn = false;
-            state.family = undefined;
-            state.members = [];
-            state.status ='idle';
-        }
-    },
+    reducers: {},
     extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
         builder
         .addCase(userLogin.pending, (state) => {
@@ -58,21 +65,26 @@ export const userSlice = createSlice({
             state.status = 'failed';
         })
         .addCase(userLogin.fulfilled, (state, action) => {
-            if (action.payload.length > 0) {
-                state.family = action.payload.family;
-                state.members = action.payload.members;
-                state.isLoggedIn = true;
-                state.status = 'idle'
-                state.token = action.payload.token;
-            } else {
-                state = initialState;
-            }
+            state.family = action.payload.family;
+            state.members = action.payload.members;
+            state.status = 'idle'
+        })
+        .addCase(userLogout.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(userLogout.rejected, (state) => {
+            state.status = 'failed';
+        })
+        .addCase(userLogout.fulfilled, (state) => {
+            state.family = undefined;
+            state.members = [];
+            state.status ='idle';
         })
     }
 });
 
 export const selectFamily = (state: RootState): string => state.users.family as string;
 export const selectMembers = (state: RootState): Guest[] => state.users.members;
-export const selectLoginState = (state: RootState): boolean => state.users.isLoggedIn;
+export const selectLoginStatus = (state: RootState): Status => state.users.status;
 
 export default userSlice.reducer;

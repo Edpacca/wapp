@@ -1,10 +1,11 @@
 import './admin.css';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { CreateFamily } from "../../models/CreateFamily";
 import { Guest } from "../../models/Guest";
-import { getGuests, registerUser, selectGuests } from "./adminSlice";
+import { adminLogout, getGuests, registerUser, selectGuests } from "./adminSlice";
 import { GuestManager } from "./GuestManager";
+import AuthContext from '../../context/AuthContext';
 
 export function AdminDashboard() {
 
@@ -13,6 +14,7 @@ export function AdminDashboard() {
     const [family, setFamily] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [memberCount, setMemberCount] = useState<number>(1);
+    const { getAdminLoggedIn } = useContext(AuthContext);
 
     function CreateFamily(): CreateFamily {
 
@@ -37,8 +39,14 @@ export function AdminDashboard() {
         return newFamily;
     }
 
+    async function logout() {
+        dispatch(adminLogout());
+        await getAdminLoggedIn();
+    }
+
     return(
         <div className="App-header">
+            <button onClick={() => logout()} className="button">Logout</button>
             <p>Admin Page</p>
             <div className="admin-inputs">
                 <input type="text" className="textbox login" placeholder="Family" id="family-input" value={family} onChange={(e) => setFamily(e.target.value)}></input>

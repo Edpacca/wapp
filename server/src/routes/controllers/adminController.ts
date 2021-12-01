@@ -70,6 +70,20 @@ export async function LoginAdmin(request, result) {
     }
 }
 
+export async function AdminLoggedIn(request, result) {
+    try {
+        const token = request.cookies.token;
+        if (!token) return result.json(false);
+
+        jwt.verify(token, process.env.ADMIN_TOKEN_KEY);
+
+        return result.json(true);
+
+    } catch (err) {
+        return result.json(false);
+    }
+}
+
 async function GenerateToken() {
     const token = jwt.sign(
         { client: "wapp" },

@@ -95,12 +95,25 @@ export async function LoginUser(request, result) {
 
             result.cookie('token', token);
             return result.status(200).json(obfsUser);
-
         }
 
         return result.status(400).send("Invalid Credentials");
 
     } catch (error) {
         console.log(error)
+    }
+}
+
+export async function LoggedIn(request, result) {
+    try {
+        const token = request.cookies.token;
+        if (!token) return result.json(false);
+
+        jwt.verify(token, process.env.TOKEN_KEY);
+
+        return result.json(true);
+
+    } catch (err) {
+        return result.json(false);
     }
 }

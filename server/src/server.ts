@@ -15,7 +15,7 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors({credentials: true, origin: `${process.env.CLIENT_URL}`}));
+app.use(cors({credentials: true, origin: [`${process.env.CLIENT_URL}`]}));
 app.use(morgan('combined'));
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))

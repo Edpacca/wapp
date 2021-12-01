@@ -1,9 +1,9 @@
 import * as _ from 'lodash';
 import * as express from 'express';
 import { CreateGuest, GetGuest, GetGuests, GetGuestsByFamily, UpdateMealChoices } from './controllers/guestController';
-import { RegisterUser, LoginUser } from './controllers/usersController';
+import { RegisterUser, LoginUser, LoggedIn } from './controllers/usersController';
 import { verifyAdminToken, verifyClientToken, verifyUserToken } from '../middleware/auth';
-import { LoginAdmin, RegisterAdmin } from './controllers/adminController';
+import { AdminLoggedIn, LoginAdmin, RegisterAdmin } from './controllers/adminController';
 
 export function appRouter(app: express.Express): void {
 
@@ -38,6 +38,14 @@ export function appRouter(app: express.Express): void {
         LoginUser(request, result);
     });
 
+    app.get("/guest/loggedIn", (request, result) => {
+        LoggedIn(request, result);
+    });
+
+    app.get("/admin/loggedIn", (request, result) => {
+        AdminLoggedIn(request, result);
+    });
+
     // app.post("/admin/register", (request, result) => {
     //     return result.status(200).send(RegisterAdmin());
     // });
@@ -45,4 +53,12 @@ export function appRouter(app: express.Express): void {
     app.post("/admin/login", verifyClientToken, (request, result) => {
         (LoginAdmin(request, result));
     });
+
+    app.get("/logout", verifyClientToken, (request, result) => {
+        return result.cookie("token", "", {
+            httpOnly: true,
+            expires: new Date(0)
+        }).status(200).send("logged out");
+    });
 }
+

@@ -6,23 +6,20 @@ import { Guest } from '../../models/Guest';
 import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
 
 export interface AdminState {    
-    isAdmin: boolean,
     guests: Guest[],
     status: Status,
-    token: string | undefined
 };
 
 const initialState: AdminState = {
-    isAdmin: false,
     guests: [],
     status: 'idle',
-    token: undefined
 };
 
 export const adminLogin = createAsyncThunk(
     'admin/adminLogin',
     async(request: AdminAuthenticationRequest) => {
         const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/admin/login`, {
+            credentials: 'include',
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -30,6 +27,23 @@ export const adminLogin = createAsyncThunk(
                 'x-access-token' : `${process.env.REACT_APP_CLIENT_TOKEN}`
             },
             body: JSON.stringify(request)}).then(response => response.json());
+            
+        return response;
+    }
+);
+
+export const adminLogout = createAsyncThunk(
+    'admin/adminLogout',
+    async() => {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/logout`, {
+            credentials: 'include',
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token' : `${process.env.REACT_APP_CLIENT_TOKEN}`
+            }
+        }).then(response => response.json());
             
         return response;
     }
@@ -70,14 +84,7 @@ export const registerUser = createAsyncThunk(
 export const adminSlice = createSlice({
     name: 'admin',
     initialState,
-    reducers: {
-        adminLoginQuick: (state, action) => {
-            state.isAdmin = action.payload;
-            state.token = undefined;
-            state.guests = [];
-            state.status = 'idle';
-        }
-    },
+    reducers: {},
     extraReducers: (builder: ActionReducerMapBuilder<AdminState>) => {
         builder
         .addCase(adminLogin.pending, (state) => {
@@ -87,11 +94,7 @@ export const adminSlice = createSlice({
             state.status = 'failed';
         })
         .addCase(adminLogin.fulfilled, (state, action) => {
-            if (action.payload.token) {
                 state.status = 'idle';
-                state.isAdmin = true;
-                state.token = action.payload.token;
-            }
         })
         .addCase(registerUser.pending, (state) => {
             state.status = 'loading';
@@ -113,12 +116,21 @@ export const adminSlice = createSlice({
             state.guests = mapGuests(action.payload);
             state.status = "idle";
         })
-        
+        .addCase(adminLogout.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(adminLogout.rejected, (state) => {
+            state.status = 'failed';
+        })
+        .addCase(adminLogout.fulfilled, (state) => {
+            state.guests = [];
+            state.status ='idle';
+        });
     }
 });
 
-export const selectIsAdmin = (state: RootState): boolean => state.admin.isAdmin;
 export const selectGuests = (state: RootState): Guest[] => state.admin.guests;
+export const selectAdminStatus = (state: RootState): Status => state.admin.status;
 
 export default adminSlice.reducer;
 
