@@ -1,8 +1,8 @@
+import './admin.css';
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { CreateFamily } from "../../models/CreateFamily";
 import { Guest } from "../../models/Guest";
-import './admin.css';
 import { getGuests, registerUser, selectGuests } from "./adminSlice";
 import { GuestManager } from "./GuestManager";
 

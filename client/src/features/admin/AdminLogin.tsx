@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
+import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
+import { adminLogin } from "./adminSlice";
 
 export function AdminLogin() {
     const dispatch = useAppDispatch();
@@ -9,11 +11,11 @@ export function AdminLogin() {
 
     function captureLogin() {
         if (name && password) {
-            const request = {
+            const request: AdminAuthenticationRequest = {
                 name: name,
                 password: password
             }
-            // dispatch(adminLogin(request))
+            dispatch(adminLogin(request))
         }
     }
 

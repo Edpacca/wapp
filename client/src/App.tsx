@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.css';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { Wapp } from './app/Wapp';
@@ -6,11 +5,12 @@ import { AdminHome } from './features/admin/AdminHome';
 import { Login } from './features/user/Login';
 import { selectLoginState } from './features/user/userSlice'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { selectIsAdmin } from './features/admin/adminSlice';
 
 function App() {
 
   const isLoggedIn = useAppSelector(selectLoginState);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const isAdmin = useAppSelector(selectIsAdmin);
   const dispatch = useAppDispatch();
 
   return (
@@ -23,7 +23,7 @@ function App() {
         </BrowserRouter>
       <div>
         <button onClick={() => dispatch({type: 'users/logout'})} className="button">Logout</button>
-        <button onClick={() => {setIsAdmin(!isAdmin); dispatch({type: 'admin/adminLoginQuick', payload: !isAdmin})}} className="button">Admin</button>
+        <button onClick={() => {dispatch({type: 'admin/adminLoginQuick', payload: false})}} className="button">Admin Logout</button>
       </div>
 
     </div>

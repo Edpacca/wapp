@@ -7,13 +7,15 @@ import cors from 'cors';
 import db from '../db'
 import { appRouter as routes } from './routes/routes';
 import 'dotenv/config';
+import { RegisterAdmin } from './routes/controllers/adminController';
 
 const app = express();
 const { API_PORT } = process.env;
 app.use(helmet());
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors());
+app.use(cors({credentials: true, origin: `${process.env.CLIENT_URL}`}));
 app.use(morgan('combined'));
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
@@ -21,6 +23,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 routes(app);
 
 const server = app.listen(API_PORT, function () {
+    RegisterAdmin();
     const address = server?.address();
     const port = _.isString(address) ? address : address?.port;
     console.log(`wapp server running on ${port}\n`);

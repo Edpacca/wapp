@@ -57,7 +57,6 @@ export async function RegisterUser(request, result) {
             token: user.token,
             members: user.members
         }
-
         result.status(201).json(obfsUser);
 
     } catch(error) {
@@ -93,12 +92,13 @@ export async function LoginUser(request, result) {
                 token: user.token,
                 members: user.members
             }
-            
-            result.status(200).json(obfsUser);
+
+            result.cookie('token', token);
+            return result.status(200).json(obfsUser);
 
         }
 
-        result.status(400).send("Invalid Credentials");
+        return result.status(400).send("Invalid Credentials");
 
     } catch (error) {
         console.log(error)

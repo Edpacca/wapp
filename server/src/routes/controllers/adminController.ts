@@ -2,8 +2,14 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Admin from '../../models/adminModel';
 import { ObfuscatedAdminModel } from '../../models/ObfuscatedAdminModel';
+import cookieParser from 'cookie-parser';
 
-export async function RegisterAdmin(request, result) {
+export async function RegisterAdmin() {
+
+    const existingAdmin = await Admin.findOne({name: "AdmiralAdmin"});
+    if (existingAdmin) {
+        return;
+    }
 
     const encryptedPassword = await bcrypt.hash("adminpassword", 10);
 
@@ -16,7 +22,7 @@ export async function RegisterAdmin(request, result) {
         
     const token = jwt.sign(
         { admin_id: admin._id, name: admin.name },
-        process.env.TOKEN_KEY,
+        process.env.ADMIN_TOKEN_KEY,
         {
             expiresIn: "2h",
         }
@@ -24,7 +30,7 @@ export async function RegisterAdmin(request, result) {
 
     admin.token = token;
 
-    return result.status(200).json(admin);
+    return token;
 }
 
 export async function LoginAdmin(request, result) {
@@ -32,7 +38,7 @@ export async function LoginAdmin(request, result) {
         const { name, password } = request.body;
 
         if (!(name && password)) {
-            result.status(400).send("All input required");
+            return result.status(400).send("All input required");
         }
 
         const admin = await Admin.findOne({name});
@@ -40,7 +46,7 @@ export async function LoginAdmin(request, result) {
         if (admin && (await bcrypt.compare(password, admin.password))) {
             const token = jwt.sign(
                 { admin_id: admin._id, name: admin.name },
-                process.env.TOKEN_KEY,
+                process.env.ADMIN_TOKEN_KEY,
                 {
                     expiresIn: "2h",
                 }
@@ -54,12 +60,21 @@ export async function LoginAdmin(request, result) {
                 token: admin.token,
             }
             
-            return result.status(200).json(obfsAdmin);
+            return result.cookie('token', token, {httpOnly: true}).status(200).send(obfsAdmin);
         }
 
-        result.status(400).send("Invalid Credentials");
+        return result.status(400).send("Invalid Credentials");
 
     } catch (error) {
         console.log(error)
     }
+}
+
+async function GenerateToken() {
+    const token = jwt.sign(
+        { client: "wapp" },
+        process.env.CLIENT_SECRET
+    );
+
+    console.log(token);
 }

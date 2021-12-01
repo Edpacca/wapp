@@ -1,7 +1,4 @@
 import './admin.css';
-import { useState } from "react";
-import { selectIsAdmin } from "./adminSlice";
-import { useSelector } from "react-redux";
 import { AdminDashboard } from './AdminDashboard';
 import { AdminLogin } from './AdminLogin';
 

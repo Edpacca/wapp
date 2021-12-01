@@ -29,6 +29,7 @@ export const userLogin = createAsyncThunk(
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
+                'x-access-token' : `${process.env.REACT_APP_CLIENT_TOKEN}`
             },
             body: JSON.stringify(request)})
             .then(response => response.json());

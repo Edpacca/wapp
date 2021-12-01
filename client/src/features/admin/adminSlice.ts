@@ -1,31 +1,33 @@
 import { ActionReducerMapBuilder, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { AuthenticationRequest } from "../../models/AuthenticationRequest";
 import { CreateFamily } from "../../models/CreateFamily";
 import { Status } from "../../models/Status";
 import { Guest } from '../../models/Guest';
+import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
 
 export interface AdminState {    
     isAdmin: boolean,
     guests: Guest[],
-    status: Status
+    status: Status,
+    token: string | undefined
 };
 
 const initialState: AdminState = {
     isAdmin: false,
     guests: [],
     status: 'idle',
+    token: undefined
 };
 
 export const adminLogin = createAsyncThunk(
     'admin/adminLogin',
-    async(request: AuthenticationRequest) => {
-        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/admin`, {
+    async(request: AdminAuthenticationRequest) => {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/admin/login`, {
             method: 'POST',
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'
-               //'authorization' : `Bearer ${token}`
+                'Content-Type': 'application/json',
+                'x-access-token' : `${process.env.REACT_APP_CLIENT_TOKEN}`
             },
             body: JSON.stringify(request)}).then(response => response.json());
             
@@ -37,11 +39,11 @@ export const getGuests = createAsyncThunk(
     'admin/getGuests',
     async() => {
         const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest/all`, {
+            credentials: 'include',
             method: 'GET',
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'
-               //'authorization' : `Bearer ${token}`
+                'Content-Type': 'application/json',
             }}).then(response => response.json());
             
         return response;
@@ -53,11 +55,11 @@ export const registerUser = createAsyncThunk(
     async(request: CreateFamily) => {
 
         const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/register`, {
+            credentials: 'include',
             method: 'POST',
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'
-               //'authorization' : `Bearer ${token}`
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(request)}).then(response => response.json());
             
@@ -71,10 +73,26 @@ export const adminSlice = createSlice({
     reducers: {
         adminLoginQuick: (state, action) => {
             state.isAdmin = action.payload;
+            state.token = undefined;
+            state.guests = [];
+            state.status = 'idle';
         }
     },
     extraReducers: (builder: ActionReducerMapBuilder<AdminState>) => {
         builder
+        .addCase(adminLogin.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(adminLogin.rejected, (state) => {
+            state.status = 'failed';
+        })
+        .addCase(adminLogin.fulfilled, (state, action) => {
+            if (action.payload.token) {
+                state.status = 'idle';
+                state.isAdmin = true;
+                state.token = action.payload.token;
+            }
+        })
         .addCase(registerUser.pending, (state) => {
             state.status = 'loading';
         })
