@@ -5,6 +5,17 @@ import { Guest } from "../../models/Guest";
 import './admin.css';
 import { getGuests, registerUser, selectGuests } from "./adminSlice";
 import { GuestManager } from "./GuestManager";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+export function AdminRoute() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/admin" element={<AdminHome/>}/>
+            </Routes>
+        </BrowserRouter>
+    )
+}
 
 export function AdminHome() {
 

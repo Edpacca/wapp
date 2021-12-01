@@ -104,3 +104,21 @@ export async function LoginUser(request, result) {
         console.log(error)
     }
 }
+
+export async function RegisterAdmin() {
+
+    const encryptedPassword = await bcrypt.hash("adminpassword", 10);
+        const familyId = "0000";
+
+        const admin = await User.create(
+            {
+                family: "Admin",
+                familyId,
+                password: encryptedPassword,
+                members: [],
+                admin: true
+            }
+        );
+
+        return admin;
+}
