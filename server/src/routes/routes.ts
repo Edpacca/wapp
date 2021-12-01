@@ -1,8 +1,9 @@
 import * as _ from 'lodash';
 import * as express from 'express';
 import { CreateGuest, GetGuest, GetGuests, GetGuestsByFamily, UpdateMealChoices } from './controllers/guestController';
-import { RegisterUser, LoginUser, RegisterAdmin } from './controllers/usersController';
+import { RegisterUser, LoginUser } from './controllers/usersController';
 import { verifyToken } from '../middleware/auth';
+import { LoginAdmin, RegisterAdmin } from './controllers/adminController';
 
 export function appRouter(app: express.Express): void {
 
@@ -34,7 +35,11 @@ export function appRouter(app: express.Express): void {
         return LoginUser(request, result);
     });
 
-    app.post("/admin-register", (request, result) => {
-        return result.status(200).send(RegisterAdmin());
+    // app.post("/admin/register", (request, result) => {
+    //     return result.status(200).send(RegisterAdmin(request, result));
+    // });
+
+    app.post("/admin/login", (request, result) => {
+        return result.status(200).send(LoginAdmin(request, result));
     });
 }
