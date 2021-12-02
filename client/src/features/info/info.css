@@ -1,0 +1,21 @@
+.itinerary {
+    width: 60vw;
+    margin: auto;
+}
+
+.day {
+    width: 100%;
+    text-align: left;
+}
+
+.day-title {
+    text-align: center;
+    border: 1px solid greenyellow;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.438);
+}
+
+.activities {
+
+}

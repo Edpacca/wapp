@@ -27,6 +27,7 @@
     grid-template-columns: 2fr 2fr 1fr 3fr 3fr 3fr 4fr;
     border-collapse: collapse;
     vertical-align: top;
+    border-spacing: 0px;
 }
 
 .manager {
@@ -47,15 +48,16 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     padding: 5px;
-
 }
 
 .adminTable > td {
     border: 1px solid white;
+    grid-template-rows: 1rem;
 }
 
 .link {
     color: greenyellow;
     text-decoration: underline;
+    vertical-align: top;
 }
 
