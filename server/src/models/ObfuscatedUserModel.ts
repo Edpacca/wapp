@@ -1,4 +1,5 @@
-export interface ObfuscatedUserModel {
+
+export interface UserLoginResponse {
     id: string,
     family: string,
     familyId: string,

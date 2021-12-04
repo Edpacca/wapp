@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import AuthContext from '../../context/AuthContext';
+import { useContext, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
 import { selectLoginStatus, userLogin } from './userSlice';
+import { getGuestsUser } from '../food/foodSlice';
 
 export function Login() {
 
@@ -10,14 +12,17 @@ export function Login() {
     const [family, setFamily] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const status = useAppSelector(selectLoginStatus);
+    const { getUserLoggedIn, loginContext } = useContext(AuthContext);
 
-    function captureLogin() {
+    async function captureLogin() {
+
         if (family && password) {
             const request: AuthenticationRequest = {
                 family: family,
                 password: password
             }
             dispatch(userLogin(request))
+            .then(async () => await getUserLoggedIn()).then(() => dispatch(getGuestsUser({family: family})))
         }
     }
 

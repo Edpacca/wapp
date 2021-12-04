@@ -3,7 +3,7 @@ import Guest from '../../models/guestModel';
 import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { ObfuscatedUserModel } from '../../models/ObfuscatedUserModel';
+import { UserLoginResponse } from '../../models/ObfuscatedUserModel';
 
 export async function RegisterUser(request, result) {
     try {
@@ -50,7 +50,7 @@ export async function RegisterUser(request, result) {
             });
         });
         
-        const obfsUser: ObfuscatedUserModel = {
+        const obfsUser: UserLoginResponse = {
             id: user._id,
             family: user.family,
             familyId: user.familyId,
@@ -85,7 +85,7 @@ export async function LoginUser(request, result) {
 
             user.token = token;
 
-            const obfsUser: ObfuscatedUserModel = {
+            const obfsUser: UserLoginResponse = {
                 id: user._id,
                 family: user.family,
                 familyId: user.familyId,

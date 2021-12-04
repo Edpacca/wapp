@@ -1,8 +1,8 @@
-.admin-inputs {
+.adminInputs {
     display: grid;
 }
 
-.plus-minus-button {
+.plusMinusButton {
     width: 40px;
     height: 40px;
     border-radius: 20%;
@@ -14,10 +14,10 @@
     font-size: 16px;
 }
 
-.table-wrapper {
+.tableWrapper {
 }
 
-.guest-table {
+.guestTable {
     overflow-x: auto;
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
@@ -34,16 +34,16 @@
     width: 90%;
 }
 
-.table-headers {
+.tableHeaders {
     font-weight: bold;
     text-align: center;
 }
 
-.guest-table > thead, tbody, tr {
+.guestTable > thead, tbody, tr {
     display: contents;
 }
 
-.guest-table > th, td {
+.guestTable > th, td {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

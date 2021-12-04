@@ -134,7 +134,7 @@ export const selectAdminStatus = (state: RootState): Status => state.admin.statu
 
 export default adminSlice.reducer;
 
-function mapGuests(payload: any[]) {
+export function mapGuests(payload: any[]) {
     const guests: Guest[] = [];
 
     payload.forEach(guest => {

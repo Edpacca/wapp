@@ -1,21 +1,23 @@
 import { foodItem } from "../../models/FoodItem";
 import { starters, mains, desserts } from "../../data/menuData"
 import { useAppSelector } from "../../app/hooks";
-import { selectChoices } from "../food/foodSlice";
+import { selectGuests } from "../food/foodSlice";
+import { useState } from "react";
 
 export function HomeMealChoices(
     props: {isActive: boolean}) {
 
-    const mealChoices = useAppSelector(selectChoices);
+    const guests = useAppSelector(selectGuests);
+    const [activeGuest, setActiveGuest] = useState(0);
 
     return(
         <div>
             {
                 props.isActive &&
                 <div>
-                    {renderChoice(starters, mealChoices.starter, 1, "starter")}
-                    {renderChoice(mains, mealChoices.main, 1, "main")}
-                    {renderChoice(desserts, mealChoices.dessert, 1, "dessert")}
+                    {renderChoice(starters, guests[activeGuest].starter, 1, "starter")}
+                    {renderChoice(mains, guests[activeGuest].main, 1, "main")}
+                    {renderChoice(desserts, guests[activeGuest].dessert, 1, "dessert")}
                 </div>
             }
         </div>

@@ -21,7 +21,8 @@ function AuthContextProvider(props: any) {
                 'Content-Type': 'application/json',
             }
         }).then(response => response.json());
-        if (loggedIn) setLoginContext('user');
+        if (loggedIn) setLoginContext('user')
+        else setLoginContext('none');
     }
 
     async function getAdminLoggedIn() {
@@ -33,8 +34,8 @@ function AuthContextProvider(props: any) {
                 'Content-Type': 'application/json',
             }
         }).then(response => response.json());
-        console.log(loggedIn);
-        if (loggedIn) setLoginContext('admin');
+        if (loggedIn) setLoginContext('admin') 
+        else setLoginContext('none') ;
     }
 
     useEffect(() => {

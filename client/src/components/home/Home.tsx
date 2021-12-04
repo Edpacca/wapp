@@ -1,5 +1,5 @@
 import "./home.css"
-import diamond from "../../resources/diamond-white.svg"
+import diamond from "../../assets/diamond-white.svg"
 import { HomeMealChoices } from "./HomeMealChoices"
 import { useState } from "react"
 
