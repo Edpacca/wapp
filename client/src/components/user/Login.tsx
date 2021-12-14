@@ -26,11 +26,29 @@ export function Login() {
         }
     }
 
+    function handleKeyPress(e: React.KeyboardEvent<HTMLDivElement>) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            captureLogin();
+        }
+    }
+
     return(
         <div className="App-header">
             <p>Login Page</p>
-            <input type="text" className={`textbox ${status}`} placeholder="Enter group name" id="family" onChange={(e) => setFamily(e.target.value)}></input>
-            <input type="password" className={`textbox ${status}`} placeholder={status === 'failed' ? "Invalid Credentials" : "Secret"} id="secret" onChange={(e) => setPassword(e.target.value)}></input>
+            <input 
+                type="text"
+                className={`textbox ${status}`}
+                placeholder="Enter group name"
+                id="family" onChange={(e) => setFamily(e.target.value)}>
+            </input>
+            <input 
+                type="password"
+                className={`textbox ${status}`}
+                placeholder={status === 'failed' ? "Invalid Credentials" : "Secret"}
+                id="secret" onChange={(e) => setPassword(e.target.value)}
+                onKeyPress={(e) => handleKeyPress(e)}>
+            </input>
             <button onClick={() => captureLogin()} className="button login">Login</button>
         </div>
     )
