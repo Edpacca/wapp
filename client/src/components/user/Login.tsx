@@ -12,7 +12,7 @@ export function Login() {
     const [family, setFamily] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const status = useAppSelector(selectLoginStatus);
-    const { getUserLoggedIn, loginContext } = useContext(AuthContext);
+    const { getUserLoggedIn } = useContext(AuthContext);
 
     async function captureLogin() {
 
@@ -22,7 +22,8 @@ export function Login() {
                 password: password
             }
             dispatch(userLogin(request))
-            .then(async () => await getUserLoggedIn()).then(() => dispatch(getGuestsUser({family: family})))
+            .then(async () => await getUserLoggedIn());
+            // .then(async () => await getUserLoggedIn()).then(() => dispatch(getGuestsUser({family: family})))
         }
     }
 

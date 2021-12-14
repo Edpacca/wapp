@@ -78,10 +78,10 @@ export const Days: Day[] = [
         title: "Sunday 17th",
         activities: [
             {
-                name: "Family meal",
-                details: "A family meal at the house",
+                name: "Breakfast",
+                details: "A big ol' breaky to beat the hangover",
                 location: "House at Bridge of Lochay",
-                time: "approx. 7pm",
+                time: "approx. 11pm",
                 url: undefined
             },
             {

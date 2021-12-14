@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { UserLoginResponse } from '../../models/ObfuscatedUserModel';
+import { GetGuestObjectByFamily, GetGuestsByFamily } from './guestController';
 
 export async function RegisterUser(request, result) {
     try {
@@ -85,12 +86,14 @@ export async function LoginUser(request, result) {
 
             user.token = token;
 
+            const members = GetGuestObjectByFamily(family);
+
             const obfsUser: UserLoginResponse = {
                 id: user._id,
                 family: user.family,
                 familyId: user.familyId,
                 token: user.token,
-                members: user.members
+                members: members
             }
 
             result.cookie('token', token);

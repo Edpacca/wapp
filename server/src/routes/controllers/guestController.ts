@@ -68,6 +68,16 @@ export async function GetGuestsByFamily(request, result) {
     return result.status(200).json(guests);
 }
 
+export async function GetGuestObjectByFamily(family) {
+    const guests = await Guest.find({ 'family' : family})
+
+    if (!guests || guests.length === 0){
+        return null;
+    }
+
+    return guests;
+}
+
 export async function UpdateMealChoices(request, result) {
 
     const body = request.body
