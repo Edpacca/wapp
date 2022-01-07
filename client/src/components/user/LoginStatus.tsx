@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { Guest } from "../../models/Guest";
 
-export function LoginStatus(props: {family: string, members: string[]}) {
+export function LoginStatus(props: {family: string, members: Guest[]}) {
 
     const [isActive, setIsActive] = useState(false);
 
     if (props.members) {
 
         const memberList = props.members.map(member => {
-            return <option value={member}>{member}</option>
+            return <option value={member.name}>{member.name}</option>
         });
 
         return (

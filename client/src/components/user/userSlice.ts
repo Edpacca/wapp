@@ -2,12 +2,11 @@ import { ActionReducerMapBuilder, createAsyncThunk, createSlice } from "@reduxjs
 import { RootState } from "../../app/store";
 import { AuthenticationRequest } from "../../models/AuthenticationRequest";
 import { Status } from "../../models/Status";
-import { getGuestsUser } from "../food/foodSlice";
-import { useAppDispatch } from "../../app/hooks";
+import { Guest } from "../../models/Guest";
 
 export interface UserState {
     family: string | undefined,
-    members: string[],
+    members: Guest[],
     status: Status,
 };
 
@@ -85,7 +84,7 @@ export const userSlice = createSlice({
 });
 
 export const selectFamily = (state: RootState): string => state.users.family as string;
-export const selectMembers = (state: RootState): string[] => state.users.members;
+export const selectMembers = (state: RootState): Guest[] => state.users.members;
 export const selectLoginStatus = (state: RootState): Status => state.users.status;
 
 export default userSlice.reducer;

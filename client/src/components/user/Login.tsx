@@ -12,7 +12,7 @@ export function Login() {
     const [family, setFamily] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const status = useAppSelector(selectLoginStatus);
-    const { getUserLoggedIn, loginContext } = useContext(AuthContext);
+    const { getUserLoggedIn } = useContext(AuthContext);
 
     async function captureLogin() {
 

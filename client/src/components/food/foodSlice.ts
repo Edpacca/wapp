@@ -12,13 +12,13 @@ export interface Choices {
 };
 
 export interface FoodState {
-    guests: Guest[],
+    guest: Guest | undefined,
     status: Status
 };
 
 
 const initialState: FoodState = {
-    guests: [],
+    guest: undefined,
     status: 'idle'
 };
 

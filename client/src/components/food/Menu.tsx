@@ -3,11 +3,12 @@ import './menu.css';
 import { starters, mains, desserts, chosenTexts } from '../../data/menuData';
 import { useState, Dispatch, SetStateAction } from 'react';
 import { WappSwitch } from './WappSwitch';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { Choices, getGuestsUser } from './foodSlice';
+import { useAppDispatch } from '../../app/hooks';
+import { Choices } from './foodSlice';
 import { foodItem } from '../../models/FoodItem';
+import { Guest } from '../../models/Guest';
 
-export function Menu() {
+export function Menu(props: {members: Guest[]}) {
 
     const [isVegan, setIsVegan ] = useState(false);
     const [isPolish, setIsPolish ] = useState(false);
@@ -33,7 +34,6 @@ export function Menu() {
     return (
         <div className="menu-wrapper">
             <div className="menu-header">For Dinner</div>
-            <button onClick ={() => dispatch(getGuestsUser({family: "Przystup"}))}>GET GUESTS</button>
             <div className="switches">
                 <WappSwitch
                     isFlag={isVegan}
