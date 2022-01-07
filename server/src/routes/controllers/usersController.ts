@@ -109,9 +109,14 @@ export async function LoggedIn(request, result) {
         const token = request.cookies.token;
         if (!token) return result.json(false);
 
-        jwt.verify(token, process.env.TOKEN_KEY);
+        let family = "";
 
-        return result.json(true);
+        jwt.verify(token, process.env.TOKEN_KEY, function(err, decoded) {
+            family = decoded.family;
+            console.log(family);
+        });
+
+        return result.json(family);
 
     } catch (err) {
         return result.json(false);

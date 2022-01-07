@@ -22,7 +22,8 @@ export function Login() {
                 password: password
             }
             dispatch(userLogin(request))
-            .then(async () => await getUserLoggedIn()).then(() => dispatch(getGuestsUser({family: family})))
+            .then(async () => await getUserLoggedIn());
+            // .then(async () => await getUserLoggedIn()).then(() => dispatch(getGuestsUser({family: family})))
         }
     }
 
