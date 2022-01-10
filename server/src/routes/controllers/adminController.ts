@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import Admin from '../../models/adminModel';
-import { ObfuscatedAdminModel } from '../../models/ObfuscatedAdminModel';
+import Admin from '../../models/adminModelSchema';
+import { AdminResponse } from '../../models/AdminResponse';
 import cookieParser from 'cookie-parser';
 
 export async function RegisterAdmin() {
@@ -54,7 +54,7 @@ export async function LoginAdmin(request, result) {
 
             admin.token = token;
 
-            const obfsAdmin: ObfuscatedAdminModel = {
+            const obfsAdmin: AdminResponse = {
                 id: admin._id,
                 name: admin.name,
                 token: admin.token,

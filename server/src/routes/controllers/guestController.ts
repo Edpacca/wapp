@@ -1,5 +1,6 @@
-import Guest from '../../models/guestModel';
+import Guest from '../../models/guestModelSchema';
 import { v4 as uuid } from 'uuid';
+import { GuestResponse } from '../../models/userResponseModel';
 
 export async function CreateGuest(request, result) {
 
@@ -72,10 +73,25 @@ export async function GetGuestObjectByFamily(family) {
     const guests = await Guest.find({ 'family' : family})
 
     if (!guests || guests.length === 0){
-        return null;
+        return [];
     }
 
-    return guests;
+    const guestResponse: GuestResponse[] = [];
+
+    guests.forEach(guest => {
+        guestResponse.push({
+            id: guest._id,
+            family: guest.family,
+            familyId: guest.familyId,
+            name: guest.name,
+            starter: guest.starter,
+            main: guest.main,
+            dessert: guest.dessert,
+            diet: guest.diet,
+        });
+    })
+
+    return guestResponse;
 }
 
 export async function UpdateMealChoices(request, result) {

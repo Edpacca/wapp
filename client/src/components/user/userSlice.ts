@@ -6,13 +6,13 @@ import { Guest } from "../../models/Guest";
 
 export interface UserState {
     family: string | undefined,
-    members: Guest[],
+    guests: Guest[],
     status: Status,
 };
 
 const initialState: UserState = {
     family: undefined,
-    members: [],
+    guests: [],
     status: 'idle',
 };
 
@@ -55,7 +55,25 @@ export const userLogout = createAsyncThunk(
 export const userSlice = createSlice({
     name: 'users',
     initialState,
-    reducers: {},
+    reducers: {
+        loginRefresh: (state, action) => {
+            state.family = action.payload.family;
+            state.guests = action.payload.guests;
+            state.status = 'idle'
+        },
+        starterSelected: (state, action) => {
+
+        },
+        mainSelected: (state, action) => {
+
+        },
+        dessertSelected: (state, action) => {
+
+        },
+        dietSelected: (state, action) => {
+
+        }
+    },
     extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
         builder
         .addCase(userLogin.pending, (state) => {
@@ -66,7 +84,7 @@ export const userSlice = createSlice({
         })
         .addCase(userLogin.fulfilled, (state, action) => {
             state.family = action.payload.family;
-            state.members = action.payload.members;
+            state.guests = action.payload.guests;
             state.status = 'idle'
         })
         .addCase(userLogout.pending, (state) => {
@@ -77,14 +95,14 @@ export const userSlice = createSlice({
         })
         .addCase(userLogout.fulfilled, (state) => {
             state.family = undefined;
-            state.members = [];
+            state.guests = [];
             state.status ='idle';
         })
     }
 });
 
 export const selectFamily = (state: RootState): string => state.users.family as string;
-export const selectMembers = (state: RootState): Guest[] => state.users.members;
+export const selectGuests = (state: RootState): Guest[] => state.users.guests;
 export const selectLoginStatus = (state: RootState): Status => state.users.status;
 
 export default userSlice.reducer;

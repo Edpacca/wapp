@@ -1,16 +1,16 @@
-import User from '../../models/userModel';
-import Guest from '../../models/guestModel';
+import User from '../../models/userModelSchema';
+import Guest from '../../models/guestModelSchema';
 import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { UserLoginResponse } from '../../models/ObfuscatedUserModel';
-import { GetGuestObjectByFamily, GetGuestsByFamily } from './guestController';
+import { UserResponse, GuestResponse } from '../../models/userResponseModel';
+import { GetGuestObjectByFamily } from './guestController';
 
 export async function RegisterUser(request, result) {
     try {
-        const { family, password, members } = request.body; 
+        const { family, password, guests } = request.body; 
 
-        if (!(family && password && members)) {
+        if (!(family && password && guests)) {
             return result.status(400).send("All input is required");
         }
 
@@ -27,8 +27,7 @@ export async function RegisterUser(request, result) {
             {
                 family,
                 familyId,
-                password: encryptedPassword,
-                members
+                password: encryptedPassword
             }
         );
 
@@ -41,24 +40,38 @@ export async function RegisterUser(request, result) {
         );
 
         user.token = token;
+        
+        const guestsResponse: GuestResponse[] = [];
 
-        user.members.forEach(member => {
-            const guest = Guest.create(
+        for (let i = 0; i < guests.length; i++) {
+
+            const newGuest = await Guest.create(
             {
                 family: user.family,
                 familyId: user.familyId,
-                name: member
+                name: guests[i]
             });
-        });
+            
+            guestsResponse.push({
+                id: newGuest.id,
+                family: newGuest.family,
+                familyId: newGuest.familyId,
+                name: newGuest.name,
+                starter: newGuest.starter,
+                main: newGuest.main,
+                dessert: newGuest.dessert,
+                diet: newGuest.diet,
+            });
+        }
         
-        const obfsUser: UserLoginResponse = {
+        const userResponse: UserResponse = {
             id: user._id,
             family: user.family,
             familyId: user.familyId,
             token: user.token,
-            members: user.members
+            guests: guestsResponse
         }
-        result.status(201).json(obfsUser);
+        result.status(201).json(userResponse);
 
     } catch(error) {
         console.log(error)
@@ -86,18 +99,18 @@ export async function LoginUser(request, result) {
 
             user.token = token;
 
-            const members = GetGuestObjectByFamily(family);
+            const guests = await GetGuestObjectByFamily(family);
 
-            const obfsUser: UserLoginResponse = {
+            const userResponse: UserResponse = {
                 id: user._id,
                 family: user.family,
                 familyId: user.familyId,
                 token: user.token,
-                members: members
+                guests: guests
             }
 
             result.cookie('token', token);
-            return result.status(200).json(obfsUser);
+            return result.status(200).json(userResponse);
         }
 
         return result.status(400).send("Invalid Credentials");
@@ -119,7 +132,18 @@ export async function LoggedIn(request, result) {
             console.log(family);
         });
 
-        return result.json(family);
+        const user = await User.findOne({family});
+        const guests = await GetGuestObjectByFamily(family);
+
+        const userResponse: UserResponse = {
+            id: user._id,
+            family: user.family,
+            familyId: user.familyId,
+            token: user.token,
+            guests: guests
+        }
+
+        return result.status(200).json(userResponse);
 
     } catch (err) {
         return result.json(false);

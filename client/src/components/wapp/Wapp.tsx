@@ -5,7 +5,7 @@ import { Itinerary } from '../info/Itinerary';
 import { NavBar } from '../nagivation/NavBar';
 import { selectActivePage } from '../nagivation/NavigationSlice';
 import { WappMap } from '../map/WappMap'
-import { selectFamily, selectMembers, userLogout } from '../user/userSlice';
+import { selectFamily, selectGuests, userLogout } from '../user/userSlice';
 import { LoginStatus } from '../user/LoginStatus';
 import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router';
 export function Wapp() {
 
   const page = useAppSelector(selectActivePage);
-  const members = useAppSelector(selectMembers);
+  const members = useAppSelector(selectGuests);
   const family = useAppSelector(selectFamily);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

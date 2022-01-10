@@ -3,7 +3,6 @@ import { useContext, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
 import { selectLoginStatus, userLogin } from './userSlice';
-import { getGuestsUser } from '../food/foodSlice';
 
 export function Login() {
 
@@ -23,7 +22,6 @@ export function Login() {
             }
             dispatch(userLogin(request))
             .then(async () => await getUserLoggedIn());
-            // .then(async () => await getUserLoggedIn()).then(() => dispatch(getGuestsUser({family: family})))
         }
     }
 

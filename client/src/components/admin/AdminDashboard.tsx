@@ -20,18 +20,18 @@ export function AdminDashboard() {
 
     function CreateFamily(): CreateFamily {
 
-        const members: string[] = [];
+        const guests: string[] = [];
 
         for (let i = 0; i < memberCount; i++) {
             var text = (document
                 .getElementById(`name${i}`) as HTMLInputElement).value;
-            members.push(text);
+            guests.push(text);
         }
 
         const newFamily: CreateFamily = {
             family: family,
             password: password,
-            members: members,
+            guests: guests,
         }
 
         setFamily("");

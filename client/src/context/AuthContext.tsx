@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import { useAppDispatch } from "../app/hooks";
-import { getGuestsUser } from "../components/food/foodSlice";
 
 export type LoginContext = 'user' | 'admin' | 'none';
 
@@ -13,7 +12,6 @@ const AuthContext
 function AuthContextProvider(props: any) {
 
     const [loginContext, setLoginContext] = useState<LoginContext>('none');
-
     const dispatch = useAppDispatch();
 
     async function getUserLoggedIn() {
@@ -27,7 +25,7 @@ function AuthContextProvider(props: any) {
         }).then(response => response.json());
         if (loggedIn) {
             setLoginContext('user');
-            dispatch(getGuestsUser({family: loggedIn.family}));
+            dispatch({ type: 'users/loginRefresh', payload: loggedIn });
         } 
         
         else getAdminLoggedIn();
