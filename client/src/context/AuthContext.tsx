@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useAppDispatch } from "../app/hooks";
 
 export type LoginContext = 'user' | 'admin' | 'none';
 
@@ -11,6 +12,7 @@ const AuthContext
 function AuthContextProvider(props: any) {
 
     const [loginContext, setLoginContext] = useState<LoginContext>('none');
+    const dispatch = useAppDispatch();
 
     async function getUserLoggedIn() {
         const loggedIn = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest/loggedIn`, {
@@ -21,7 +23,12 @@ function AuthContextProvider(props: any) {
                 'Content-Type': 'application/json',
             }
         }).then(response => response.json());
-        if (loggedIn) setLoginContext('user');
+        if (loggedIn) {
+            setLoginContext('user');
+            dispatch({ type: 'users/loginRefresh', payload: loggedIn });
+        } 
+        
+        else getAdminLoggedIn();
     }
 
     async function getAdminLoggedIn() {
@@ -33,14 +40,13 @@ function AuthContextProvider(props: any) {
                 'Content-Type': 'application/json',
             }
         }).then(response => response.json());
-        console.log(loggedIn);
-        if (loggedIn) setLoginContext('admin');
+        if (loggedIn) setLoginContext('admin') 
+        else setLoginContext('none');
     }
 
     useEffect(() => {
         getUserLoggedIn();
-        getAdminLoggedIn();
-    }, [])
+    }, []);
     
     return (
     <AuthContext.Provider value={{ loginContext, getUserLoggedIn, getAdminLoggedIn }}>

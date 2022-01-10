@@ -8,7 +8,6 @@ const User = new Schema(
         familyId: {type: String },
         password: { type: String },
         token: { type: String },
-        members: { type: [String] },
         admin: { type: Boolean }
     }
 )

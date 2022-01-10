@@ -1,4 +1,4 @@
-export interface Guest {
+export interface GuestResponse {
     id: string,
     family: string,
     familyId: string,
@@ -9,6 +9,10 @@ export interface Guest {
     diet: string | undefined,
 }
 
-export interface GuestRequest {
+export interface UserResponse {
+    id: string,
     family: string,
+    familyId: string,
+    token: string,
+    guests: GuestResponse[],
 }

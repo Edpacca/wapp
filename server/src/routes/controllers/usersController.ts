@@ -1,15 +1,16 @@
-import User from '../../models/userModel';
-import Guest from '../../models/guestModel';
+import User from '../../models/userModelSchema';
+import Guest from '../../models/guestModelSchema';
 import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { ObfuscatedUserModel } from '../../models/ObfuscatedUserModel';
+import { UserResponse, GuestResponse } from '../../models/userResponseModel';
+import { GetGuestObjectByFamily } from './guestController';
 
 export async function RegisterUser(request, result) {
     try {
-        const { family, password, members } = request.body; 
+        const { family, password, guests } = request.body; 
 
-        if (!(family && password && members)) {
+        if (!(family && password && guests)) {
             return result.status(400).send("All input is required");
         }
 
@@ -26,8 +27,7 @@ export async function RegisterUser(request, result) {
             {
                 family,
                 familyId,
-                password: encryptedPassword,
-                members
+                password: encryptedPassword
             }
         );
 
@@ -40,24 +40,38 @@ export async function RegisterUser(request, result) {
         );
 
         user.token = token;
+        
+        const guestsResponse: GuestResponse[] = [];
 
-        user.members.forEach(member => {
-            const guest = Guest.create(
+        for (let i = 0; i < guests.length; i++) {
+
+            const newGuest = await Guest.create(
             {
                 family: user.family,
                 familyId: user.familyId,
-                name: member
+                name: guests[i]
             });
-        });
+            
+            guestsResponse.push({
+                id: newGuest.id,
+                family: newGuest.family,
+                familyId: newGuest.familyId,
+                name: newGuest.name,
+                starter: newGuest.starter,
+                main: newGuest.main,
+                dessert: newGuest.dessert,
+                diet: newGuest.diet,
+            });
+        }
         
-        const obfsUser: ObfuscatedUserModel = {
+        const userResponse: UserResponse = {
             id: user._id,
             family: user.family,
             familyId: user.familyId,
             token: user.token,
-            members: user.members
+            guests: guestsResponse
         }
-        result.status(201).json(obfsUser);
+        result.status(201).json(userResponse);
 
     } catch(error) {
         console.log(error)
@@ -85,16 +99,18 @@ export async function LoginUser(request, result) {
 
             user.token = token;
 
-            const obfsUser: ObfuscatedUserModel = {
+            const guests = await GetGuestObjectByFamily(family);
+
+            const userResponse: UserResponse = {
                 id: user._id,
                 family: user.family,
                 familyId: user.familyId,
                 token: user.token,
-                members: user.members
+                guests: guests
             }
 
             result.cookie('token', token);
-            return result.status(200).json(obfsUser);
+            return result.status(200).json(userResponse);
         }
 
         return result.status(400).send("Invalid Credentials");
@@ -109,9 +125,25 @@ export async function LoggedIn(request, result) {
         const token = request.cookies.token;
         if (!token) return result.json(false);
 
-        jwt.verify(token, process.env.TOKEN_KEY);
+        let family = "";
 
-        return result.json(true);
+        jwt.verify(token, process.env.TOKEN_KEY, function(err, decoded) {
+            family = decoded.family;
+            console.log(family);
+        });
+
+        const user = await User.findOne({family});
+        const guests = await GetGuestObjectByFamily(family);
+
+        const userResponse: UserResponse = {
+            id: user._id,
+            family: user.family,
+            familyId: user.familyId,
+            token: user.token,
+            guests: guests
+        }
+
+        return result.status(200).json(userResponse);
 
     } catch (err) {
         return result.json(false);

@@ -1,7 +1,7 @@
 import './App.css';
-import { Wapp } from './app/Wapp';
-import { AdminHome } from './features/admin/AdminHome';
-import { Login } from './features/user/Login';
+import { Wapp } from './components/wapp/Wapp';
+import { AdminHome } from './components/admin/AdminHome';
+import { Login } from './components/user/Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from './context/AuthContext';
@@ -31,6 +31,12 @@ function App() {
         {
           loginContext === 'user' &&
           <Wapp />
+        }
+        {
+          loginContext === 'admin' &&
+          <div>
+            <a className="App-link" href={`${process.env.REACT_APP_CLIENT_SERVER}/admin`}>Admin Dashboard</a>
+          </div>
         }
       </div>
     )

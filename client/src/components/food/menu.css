@@ -280,3 +280,7 @@ input[type="radio"] {
   .cancel:hover {
     background-color: rgba(170, 170, 170, 0.5);
   }
+
+  .guest-choices-top {
+    text-align: left;
+  }

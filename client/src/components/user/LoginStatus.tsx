@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Guest } from "../../models/Guest";
 
-export function LoginStatus(props: {members: Guest[]}) {
+export function LoginStatus(props: {family: string, members: Guest[]}) {
 
     const [isActive, setIsActive] = useState(false);
 
@@ -14,7 +14,7 @@ export function LoginStatus(props: {members: Guest[]}) {
         return (
             <div className="login-status">
                 <div>
-                    <span>{`Logged in as ${props.members[0]?.family}`}</span>
+                    <span>{`Logged in as ${props.family}`}</span>
                     <button onClick={() => setIsActive(!isActive)} className="dropdown-button">&#9660;</button>
                 </div>
                 <div>
