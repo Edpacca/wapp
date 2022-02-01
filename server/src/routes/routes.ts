@@ -37,6 +37,8 @@ export function appRouter(app: express.Express): void {
     app.post("/login", verifyClientToken, (request, result) => {
         LoginUser(request, result);
     });
+    
+    
 
     app.get("/guest/loggedIn", (request, result) => {
         LoggedIn(request, result);
