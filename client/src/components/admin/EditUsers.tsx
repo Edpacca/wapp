@@ -2,7 +2,7 @@ import styles from './admin.module.css';
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { getGuests, selectGuests } from "./adminSlice";
 import { Guest } from "../../models/Guest";
-import { GuestManager } from "./GuestManager";
+import { GuestManager } from "./GuestData/GuestManager";
 
 export function EditUsers() {
 

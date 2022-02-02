@@ -1,3 +1,4 @@
+import styles from './admin.module.css';
 import AuthContext from '../../context/AuthContext';
 import { useAppDispatch } from "../../app/hooks";
 import { useContext } from "react";
@@ -25,10 +26,12 @@ export function AdminDashboard() {
     return(
         <div className="App-header">
             <button onClick={() => logout()} className="button">Logout</button>
-            <button onClick={() => setCreate(!create)} className="button">Create User</button>
-            <button onClick={() => setEdit(!edit)} className="button">Edit Users</button>
             <p>Admin Page</p>
-            { create && <CreateUser/> }
-            { edit && <EditUsers/> }
+            <div className={styles.outline}>            
+                <button onClick={() => setCreate(!create)} className="button">Create User</button>
+                { create && <CreateUser/> }
+            </div>
+                <button onClick={() => setEdit(!edit)} className="button">Edit Users</button>
+                { edit && <EditUsers/> }
         </div>)
     }

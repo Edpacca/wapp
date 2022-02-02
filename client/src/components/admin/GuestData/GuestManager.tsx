@@ -1,5 +1,5 @@
-import styles from './admin.module.css';
-import { Guest } from "../../models/Guest";
+import styles from '../admin.module.css';
+import { Guest } from "../../../models/Guest";
 import { FamilyTable } from './FamilyTable';
 
 export function GuestManager(props: { guests: Guest[] }) {
