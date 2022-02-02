@@ -13,7 +13,7 @@ export interface AdminState {
 
 const initialState: AdminState = {
     guests: [],
-    stagedGuests: new Map,
+    stagedGuests: new Map(),
     status: 'idle',
 };
 
@@ -104,7 +104,10 @@ export const adminSlice = createSlice({
     reducers: {
         stageGuest: (state, action: PayloadAction<Guest>) => {
             state.stagedGuests.set(action.payload.id, action.payload);
-        }
+        },
+        unstageGuest: (state, action: PayloadAction<Guest>) => {
+            state.stagedGuests.delete(action.payload.id);
+        },
     },
     extraReducers: (builder: ActionReducerMapBuilder<AdminState>) => {
         builder

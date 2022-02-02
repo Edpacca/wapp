@@ -1,23 +1,15 @@
 import styles from './admin.module.css';
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { getGuests, selectGuests } from "./adminSlice";
 import { Guest } from "../../models/Guest";
 import { GuestManager } from "./GuestData/GuestManager";
 
-export function EditUsers() {
+export function EditUsers(props: {guests: Guest[]}) {
 
-    const dispatch = useAppDispatch();
-    const guests: Guest[] = useAppSelector(selectGuests);
 
     return (
         <div className={styles.manager}>
-            <button onClick={() => dispatch(getGuests())} 
-                className="button login">
-                    GetGuests
-            </button> 
             {
                 <div >
-                    <GuestManager guests={guests} />
+                    <GuestManager guests={props.guests} />
                 </div>
             }
                 <button onClick={() => {}} 

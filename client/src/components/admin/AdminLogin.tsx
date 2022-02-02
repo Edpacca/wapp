@@ -2,7 +2,7 @@ import AuthContext from '../../context/AuthContext';
 import { useContext, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
-import { adminLogin, selectAdminStatus } from "./adminSlice";
+import { adminLogin, selectAdminStatus, getGuests } from "./adminSlice";
 
 export function AdminLogin() {
 
@@ -18,7 +18,9 @@ export function AdminLogin() {
                 name: name,
                 password: password
             }
-            dispatch(adminLogin(request)).then(() => authenticateSession());
+            dispatch(adminLogin(request))
+            .then(() => authenticateSession()
+            .then(() => dispatch(getGuests())));
         }
     }
 

@@ -1,6 +1,6 @@
 import './App.css';
 import { Wapp } from './components/wapp/Wapp';
-import { AdminHome } from './components/admin/AdminHome';
+import { Admin } from './components/admin/Admin';
 import { Login } from './components/login/Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useContext } from 'react';
@@ -15,7 +15,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<UserApp/>}/>
-                <Route path="/admin" element={<AdminHome isAdmin={loginContext === 'admin'}/>}/>
+                <Route path="/admin" element={<Admin isAdmin={loginContext === 'admin'}/>}/>
             </Routes>
         </BrowserRouter>
     </div>
