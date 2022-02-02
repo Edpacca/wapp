@@ -1,16 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import { useAppDispatch } from "../app/hooks";
 
-export type LoginContext = 'user' | 'admin' | 'none';
+export type LoginContext = 'user' | 'admin' | undefined;
 
 const AuthContext 
-    = createContext<{ loginContext: LoginContext, 
+    = createContext<{ loginContext: LoginContext, setLoginContext: (context: LoginContext) => void,
         authenticateSession: (() => Promise<void>)}>
-        ({ loginContext: 'none', authenticateSession: () => new Promise(r => r)});
+        ({ loginContext: undefined, setLoginContext: (() => {}), authenticateSession: () => new Promise(r => r)});
 
 function AuthContextProvider(props: any) {
 
-    const [loginContext, setLoginContext] = useState<LoginContext>('none');
+    const [loginContext, setLoginContext] = useState<LoginContext>(undefined);
     const dispatch = useAppDispatch();
 
     async function authenticateSession() {
@@ -23,21 +23,10 @@ function AuthContextProvider(props: any) {
             }
         }).then(response => response.json());
 
-        if (loggedIn) {
-            switch (loggedIn.type) {
-                case "user":
-                    setLoginContext('user');
-                    dispatch({ type: 'users/loginRefresh', payload: loggedIn });
-                    break;
-                case "admin":
-                    setLoginContext('admin');
-                    break;
-                default:
-                    setLoginContext('none');
-                    break;
-            }
-        } else {
-            setLoginContext('none');
+        setLoginContext(loggedIn.type);
+
+        if (loggedIn.type === 'user') {
+             dispatch({ type: 'users/loginRefresh', payload: loggedIn.data });
         }
     }
 
@@ -46,7 +35,7 @@ function AuthContextProvider(props: any) {
     }, []);
     
     return (
-    <AuthContext.Provider value={{ loginContext, authenticateSession }}>
+    <AuthContext.Provider value={{ loginContext, setLoginContext, authenticateSession }}>
         {props.children}
     </AuthContext.Provider>
     )

@@ -25,7 +25,7 @@ export function verifyAdminToken(request, result, next) {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.ADMIN_TOKEN_KEY);
+        const decoded = jwt.verify(token, process.env.TOKEN_KEY);
         request.admin = decoded;
     } catch (error) {
         return result.status(401).send("Invalid Token");

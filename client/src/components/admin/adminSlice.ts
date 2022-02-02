@@ -37,7 +37,7 @@ export const adminLogout = createAsyncThunk(
     async() => {
         const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/logout`, {
             credentials: 'include',
-            method: 'GET',
+            method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -120,6 +120,7 @@ export const adminSlice = createSlice({
             state.status = 'loading';
         })
         .addCase(adminLogout.rejected, (state) => {
+            state.guests = [];
             state.status = 'failed';
         })
         .addCase(adminLogout.fulfilled, (state) => {

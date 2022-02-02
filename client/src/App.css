@@ -103,3 +103,8 @@
 .failed {
   border: 3px solid rgb(230, 0, 0);
 }
+
+.error-label {
+  font-size: 1rem;
+  color: red;
+}

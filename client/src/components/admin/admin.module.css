@@ -15,23 +15,27 @@
 }
 
 .tableWrapper {
+    width: 100%;
+    border: 1px solid greenyellow;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.438);
 }
 
 .guestTable {
+    margin: 0.5rem;
     overflow-x: auto;
     font-family: Arial, Helvetica, sans-serif;
-    width: 100%;
     text-align: left;
     font-size: 16px;
     display: grid;
-    grid-template-columns: 2fr 2fr 1fr 3fr 3fr 3fr 4fr;
+    grid-template-columns: 1fr 2fr 3fr 3fr 3fr 4fr;
     border-collapse: collapse;
     vertical-align: top;
     border-spacing: 0px;
 }
 
 .manager {
-    width: 90%;
+    width: 95%;
 }
 
 .tableHeaders {
@@ -51,7 +55,7 @@
 }
 
 .adminTable > td {
-    border: 1px solid white;
+    border: 0px solid white;
     grid-template-rows: 1rem;
 }
 
@@ -61,3 +65,42 @@
     vertical-align: top;
 }
 
+.famTitle {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.famTitle:hover {
+    color: orange;
+}
+
+.tableDropDown {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.tableOption {
+    color: blue;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.tableTextInput {
+    width: 95%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.tableTextInput::placeholder {
+    color: greenyellow;
+    font-weight: bolder;
+}
