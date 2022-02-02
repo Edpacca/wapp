@@ -1,4 +1,4 @@
-import { ActionReducerMapBuilder, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { ActionReducerMapBuilder, createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { CreateFamily } from "../../models/CreateFamily";
 import { Status } from "../../models/Status";
@@ -7,11 +7,13 @@ import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequ
 
 export interface AdminState {    
     guests: Guest[],
+    stagedGuests: Map<String, Guest>,
     status: Status,
 };
 
 const initialState: AdminState = {
     guests: [],
+    stagedGuests: new Map,
     status: 'idle',
 };
 
@@ -81,10 +83,29 @@ export const registerUser = createAsyncThunk(
     }
 );
 
+export const commitGuestEdits = createAsyncThunk(
+    'admin/commitGuestEdits',
+    async(request: Guest[]) => {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest/all`, {
+            credentials: 'include',
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(request)}).then(response => response.json());
+        return response;  
+    }
+);
+
 export const adminSlice = createSlice({
     name: 'admin',
     initialState,
-    reducers: {},
+    reducers: {
+        stageGuest: (state, action: PayloadAction<Guest>) => {
+            state.stagedGuests.set(action.payload.id, action.payload);
+        }
+    },
     extraReducers: (builder: ActionReducerMapBuilder<AdminState>) => {
         builder
         .addCase(adminLogin.pending, (state) => {
@@ -112,7 +133,6 @@ export const adminSlice = createSlice({
             state.status = 'failed';
         })
         .addCase(getGuests.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.guests = mapGuests(action.payload);
             state.status = "idle";
         })
@@ -131,6 +151,7 @@ export const adminSlice = createSlice({
 });
 
 export const selectGuests = (state: RootState): Guest[] => state.admin.guests;
+export const selectStagedGuests= (state: RootState): Guest[] => [...state.admin.stagedGuests.values()]
 export const selectAdminStatus = (state: RootState): Status => state.admin.status;
 
 export default adminSlice.reducer;

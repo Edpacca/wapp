@@ -3,7 +3,7 @@ import { Menu } from '../food/Menu';
 import { Home } from '../home/Home';
 import { Itinerary } from '../info/Itinerary';
 import { NavBar } from '../nagivation/NavBar';
-import { selectActivePage } from '../nagivation/NavigationSlice';
+import { selectPageUser } from '../nagivation/NavigationSlice';
 import { WappMap } from '../map/WappMap'
 import { selectFamily, selectGuests, userLogout } from '../login/userSlice';
 import { LoginStatus } from '../login/LoginStatus';
@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router';
 
 export function Wapp() {
 
-  const page = useAppSelector(selectActivePage);
+  const page = useAppSelector(selectPageUser);
   const members = useAppSelector(selectGuests);
   const family = useAppSelector(selectFamily);
   const dispatch = useAppDispatch();

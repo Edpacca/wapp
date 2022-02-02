@@ -1,6 +1,6 @@
-export function TabLink(props: {title: string, onClick: () => void}) {
+export function TabLink(props: {title: string, isActive: boolean, onClick: () => void}) {
     return(
-        <div className="tabLink">
+        <div className={`tabLink ${props.isActive ? "activeLink" : ""}`}>
             <p onClick={props.onClick}
             >{props.title}</p>
         </div>
