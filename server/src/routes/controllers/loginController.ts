@@ -56,7 +56,7 @@ export async function loginUser(request, result) {
         }
 
         const user = await User.findOne({family});
-        console.log(process.env.TOKEN_KEY);
+
         if (user && (await bcrypt.compare(password, user.password))) {
             const token = jwt.sign(
                 { type: "user", user_id: user._id, name: family },

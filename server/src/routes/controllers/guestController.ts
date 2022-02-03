@@ -94,6 +94,25 @@ export async function GetGuestObjectByFamily(family) {
     return guestResponse;
 }
 
+export async function BatchUpdateGuests(request, result) {
+    const guests = request.body;
+
+    guests.forEach(guest => {
+        Guest.findByIdAndUpdate({_id: guest.id}, {
+            "name": guest.name,
+            "starter": guest.starter,
+            "main": guest.main,
+            "dessert": guest.dessert,
+            "diet": guest.diet }, (err, guest) => {
+            
+            if (!guest || err) {
+                return result.status(500).send(err)
+            }
+        })});
+
+    return result.status(200).json("updated");
+}
+
 export async function UpdateMealChoices(request, result) {
 
     const body = request.body

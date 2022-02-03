@@ -11,9 +11,7 @@ import { selectPageAdmin } from '../nagivation/NavigationSlice';
 import { AdminHome } from './AdminHome';
 import { Guest } from '../../models/Guest';
 
-
 export function AdminDashboard() {
-
     const dispatch = useAppDispatch();
     const { setLoginContext } = useContext(AuthContext);
     const navigate = useNavigate();

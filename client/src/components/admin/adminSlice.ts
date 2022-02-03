@@ -7,13 +7,13 @@ import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequ
 
 export interface AdminState {    
     guests: Guest[],
-    stagedGuests: Map<String, Guest>,
+    stagedGuests: Guest[]
     status: Status,
 };
 
 const initialState: AdminState = {
     guests: [],
-    stagedGuests: new Map(),
+    stagedGuests: [],
     status: 'idle',
 };
 
@@ -103,10 +103,19 @@ export const adminSlice = createSlice({
     initialState,
     reducers: {
         stageGuest: (state, action: PayloadAction<Guest>) => {
-            state.stagedGuests.set(action.payload.id, action.payload);
+            const index = state.stagedGuests.findIndex(guest => guest.id === action.payload.id)
+            if (index === -1) state.stagedGuests.push(action.payload);
+            else state.stagedGuests[index] = action.payload;
+        },
+        editGuest:(state, action: PayloadAction<Guest>) => {
+            const index = state.stagedGuests.findIndex(guest => guest.id === action.payload.id)
+            if (index === -1) return;
+            else state.stagedGuests[index] = {...action.payload};
         },
         unstageGuest: (state, action: PayloadAction<Guest>) => {
-            state.stagedGuests.delete(action.payload.id);
+            const index = state.stagedGuests.findIndex(guest => guest.id === action.payload.id)
+            if (index === -1) return;
+            state.stagedGuests.splice(index, 1);
         },
     },
     extraReducers: (builder: ActionReducerMapBuilder<AdminState>) => {
@@ -154,9 +163,9 @@ export const adminSlice = createSlice({
 });
 
 export const selectGuests = (state: RootState): Guest[] => state.admin.guests;
-export const selectStagedGuests= (state: RootState): Guest[] => [...state.admin.stagedGuests.values()]
+export const selectStagedGuests= (state: RootState): Guest[] => state.admin.stagedGuests;
 export const selectAdminStatus = (state: RootState): Status => state.admin.status;
-
+export const { stageGuest, unstageGuest, editGuest } = adminSlice.actions;
 export default adminSlice.reducer;
 
 export function mapGuests(payload: any[]) {

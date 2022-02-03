@@ -4,6 +4,7 @@ import { Guest } from "../../../models/Guest";
 import { GuestRow } from './GuestRow';
 
 export function FamilyMembersTable(props: {guests: Guest[]}) {
+
     return (
         <table className={styles.guestTable}>
             <thead>

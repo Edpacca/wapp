@@ -155,3 +155,28 @@
     padding: 5px;
 }
 
+.modalBox {
+    width: 80%;
+    border: 2px solid orange;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: auto;
+    padding: 3rem;
+}
+
+.modalButton {
+    margin: 1rem;
+    padding: 0.75rem;
+    width: 8rem;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large;
+    color: white;
+    border-width: 1px solid orange;
+  
+  }
+  
+  .modalButton:hover {
+    background-color: rgba(255, 165, 0, 0.5);
+  }
