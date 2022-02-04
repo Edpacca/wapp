@@ -3,7 +3,7 @@
     font-size: calc(6px + 3vmin);
     font-weight: lighter;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-flow: column;
     padding: 0 10vw 2rem;
 }
 
@@ -11,6 +11,11 @@
     margin: 0 4vw;
 }
 
+.activeLink {
+    color: greenyellow;
+    text-decoration: underline;
+}
+
 .tabLink :hover {
-    color: wheat;
+    color: rgba(255, 255, 255, 0.4)
 }

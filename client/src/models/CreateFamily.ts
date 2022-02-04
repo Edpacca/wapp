@@ -3,3 +3,8 @@ export interface CreateFamily {
     password: string,
     guests: string[]
 }
+
+export interface AddGuestRequest {
+    family: string,
+    name: string
+}

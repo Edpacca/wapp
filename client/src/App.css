@@ -8,6 +8,17 @@
   pointer-events: none;
 }
 
+.App-logo-small {
+  height: 25vmin;
+  pointer-events: none;
+}
+
+.initials-small {
+  position: absolute;
+  font-weight: lighter;
+  font-size: calc(15px + 5vmin);
+}
+
 /* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-float infinite 3s ease-in-out;
@@ -21,6 +32,13 @@
   align-items: center;
   justify-content: center;
   font-size: calc(12px + 2vmin);
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-link {
@@ -102,4 +120,27 @@
 
 .failed {
   border: 3px solid rgb(230, 0, 0);
+}
+
+.error-label {
+  font-size: 1rem;
+  color: red;
+}
+
+.chosenbody {
+}
+
+.chosenrow {
+}
+
+.pendingbody {
+  
+}
+
+.pendingrow {
+  color: orange;
+}
+
+.delete {
+  color: rgb(230, 0, 0);
 }

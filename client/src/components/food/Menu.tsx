@@ -8,7 +8,7 @@ import { Choices } from '../../models/Choices';
 import { foodItem } from '../../models/FoodItem';
 import { Guest } from '../../models/Guest';
 import { GuestListChoices } from './guestListChoicese';
-import { selectGuests } from '../user/userSlice';
+import { selectGuests } from '../login/userSlice';
 
 const initialChoices: Choices = {
     starter: undefined,

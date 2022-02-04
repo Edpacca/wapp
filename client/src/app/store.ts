@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import navigationReducer from '../components/nagivation/NavigationSlice';
-import userReducer from '../components/user/userSlice';
+import userReducer from '../components/login/userSlice';
 import adminReducer from '../components/admin/adminSlice';
 
 export const store = configureStore({

@@ -1,7 +1,7 @@
 import { foodItem } from "../../models/FoodItem";
 import { starters, mains, desserts } from "../../data/menuData"
 import { useAppSelector } from "../../app/hooks";
-import { selectGuests } from "../user/userSlice";
+import { selectGuests } from "../login/userSlice";
 import { useState } from "react";
 
 export function HomeMealChoices(

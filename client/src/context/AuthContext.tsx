@@ -1,21 +1,20 @@
 import { createContext, useEffect, useState } from "react";
 import { useAppDispatch } from "../app/hooks";
 
-export type LoginContext = 'user' | 'admin' | 'none';
+export type LoginContext = 'user' | 'admin' | undefined;
 
 const AuthContext 
-    = createContext<{ loginContext: LoginContext, 
-        getUserLoggedIn: (() => Promise<void>), 
-        getAdminLoggedIn: (() => Promise<void>) }>
-        ({ loginContext: 'none', getUserLoggedIn: () => new Promise(r => r), getAdminLoggedIn: () =>  new Promise(r => r)});
+    = createContext<{ loginContext: LoginContext, setLoginContext: (context: LoginContext) => void,
+        authenticateSession: (() => Promise<void>)}>
+        ({ loginContext: undefined, setLoginContext: (() => {}), authenticateSession: () => new Promise(r => r)});
 
 function AuthContextProvider(props: any) {
 
-    const [loginContext, setLoginContext] = useState<LoginContext>('none');
+    const [loginContext, setLoginContext] = useState<LoginContext>(undefined);
     const dispatch = useAppDispatch();
 
-    async function getUserLoggedIn() {
-        const loggedIn = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest/loggedIn`, {
+    async function authenticateSession() {
+        const loggedIn = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/authenticate`, {
             credentials: 'include',
             method: 'GET',
             mode: 'cors',
@@ -23,33 +22,20 @@ function AuthContextProvider(props: any) {
                 'Content-Type': 'application/json',
             }
         }).then(response => response.json());
-        if (loggedIn) {
-            setLoginContext('user');
-            dispatch({ type: 'users/loginRefresh', payload: loggedIn });
-        } 
-        
-        else getAdminLoggedIn();
-    }
 
-    async function getAdminLoggedIn() {
-        const loggedIn = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/admin/loggedIn`, {
-            credentials: 'include',
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }).then(response => response.json());
-        if (loggedIn) setLoginContext('admin') 
-        else setLoginContext('none');
+        setLoginContext(loggedIn.type);
+
+        if (loggedIn.type === 'user') {
+             dispatch({ type: 'users/loginRefresh', payload: loggedIn.data });
+        }
     }
 
     useEffect(() => {
-        getUserLoggedIn();
+        authenticateSession();
     }, []);
     
     return (
-    <AuthContext.Provider value={{ loginContext, getUserLoggedIn, getAdminLoggedIn }}>
+    <AuthContext.Provider value={{ loginContext, setLoginContext, authenticateSession }}>
         {props.children}
     </AuthContext.Provider>
     )

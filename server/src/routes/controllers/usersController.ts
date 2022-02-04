@@ -4,7 +4,6 @@ import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { UserResponse, GuestResponse } from '../../models/userResponseModel';
-import { GetGuestObjectByFamily } from './guestController';
 
 export async function RegisterUser(request, result) {
     try {
@@ -32,7 +31,7 @@ export async function RegisterUser(request, result) {
         );
 
         const token = jwt.sign(
-            { user_id: user._id, family },
+            { type: "user", user_id: user._id, family },
             process.env.TOKEN_KEY,
             {
                 expiresIn: "2h",
@@ -75,77 +74,46 @@ export async function RegisterUser(request, result) {
 
     } catch(error) {
         console.log(error)
+        return result.status(500);
     }
 }
 
-export async function LoginUser(request, result) {
+export async function AddGuestToFamily(request, result) {
     try {
-        const { family, password } = request.body;
 
-        if (!(family && password)) {
-            result.status(400).send("All input required");
+        const { family, name} = request.body;
+
+        if (!(family && name)) {
+            return result.status(400).send("All input is required");
         }
 
-        const user = await User.findOne({family});
+        const existingUser = await User.findOne({family});
 
-        if (user && (await bcrypt.compare(password, user.password))) {
-            const token = jwt.sign(
-                { user_id: user._id, family },
-                process.env.TOKEN_KEY,
-                {
-                    expiresIn: "2h",
-                }
-            );
-
-            user.token = token;
-
-            const guests = await GetGuestObjectByFamily(family);
-
-            const userResponse: UserResponse = {
-                id: user._id,
-                family: user.family,
-                familyId: user.familyId,
-                token: user.token,
-                guests: guests
+        const guest = await Guest.create(
+            {
+                family: family,
+                familyId: existingUser._id,
+                name: name
             }
-
-            result.cookie('token', token);
-            return result.status(200).json(userResponse);
+        );
+        
+        const guestsResponse: GuestResponse = {
+                id: guest.id,
+                family: guest.family,
+                familyId: guest.familyId,
+                name: guest.name,
+                starter: guest.starter,
+                main: guest.main,
+                dessert: guest.dessert,
+                diet: guest.diet,
         }
 
-        return result.status(400).send("Invalid Credentials");
+        result.status(201).json(guestsResponse);
 
-    } catch (error) {
+    } catch(error) {
         console.log(error)
+        return result.status(500);
     }
 }
 
-export async function LoggedIn(request, result) {
-    try {
-        const token = request.cookies.token;
-        if (!token) return result.json(false);
 
-        let family = "";
-
-        jwt.verify(token, process.env.TOKEN_KEY, function(err, decoded) {
-            family = decoded.family;
-            console.log(family);
-        });
-
-        const user = await User.findOne({family});
-        const guests = await GetGuestObjectByFamily(family);
-
-        const userResponse: UserResponse = {
-            id: user._id,
-            family: user.family,
-            familyId: user.familyId,
-            token: user.token,
-            guests: guests
-        }
-
-        return result.status(200).json(userResponse);
-
-    } catch (err) {
-        return result.json(false);
-    }
-}

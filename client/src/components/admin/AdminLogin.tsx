@@ -2,7 +2,7 @@ import AuthContext from '../../context/AuthContext';
 import { useContext, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
-import { adminLogin, selectAdminStatus } from "./adminSlice";
+import { adminLogin, selectAdminStatus, getGuests } from "./adminSlice";
 
 export function AdminLogin() {
 
@@ -10,7 +10,7 @@ export function AdminLogin() {
     const [name, setName] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const status = useAppSelector(selectAdminStatus);
-    const { getAdminLoggedIn } = useContext(AuthContext);
+    const { authenticateSession } = useContext(AuthContext);
 
     function captureLogin() {
         if (name && password) {
@@ -18,7 +18,9 @@ export function AdminLogin() {
                 name: name,
                 password: password
             }
-            dispatch(adminLogin(request)).then(() => getAdminLoggedIn());
+            dispatch(adminLogin(request))
+            .then(() => authenticateSession()
+            .then(() => dispatch(getGuests())));
         }
     }
 
@@ -30,36 +32,31 @@ export function AdminLogin() {
     }
 
     return(
-        <div className="App-header">
+        <form className="App-header" onSubmit={() => captureLogin()}>
             <p>Admin Login</p>
-            <input 
+            <input
+                required
                 type="text" 
                 className={`textbox ${status}`} 
-                placeholder={   
-                    status === 'failed' 
-                    ? "Invalid Credentials" 
-                    : "Admin"
-                } 
+                placeholder="Admin" 
                 id="name" 
                 onChange={(e) => setName(e.target.value)}
                 >
             </input>
             <input 
                 type="password" 
+                required
                 className={`textbox ${status}`} 
-                placeholder={
-                    status === 'failed' 
-                    ? "Invalid Credentials" 
-                    : "Password"} 
+                placeholder="Password"
                 id="password" 
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyPress={(e) => handleKeyPress(e)}>
             </input>
             <button
-                onClick={() => captureLogin()} 
+                type='submit'
                 className="button login">
                     Login
             </button>
-        </div>
+        </form>
     )
 }
