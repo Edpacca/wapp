@@ -78,5 +78,42 @@ export async function RegisterUser(request, result) {
     }
 }
 
+export async function AddGuestToFamily(request, result) {
+    try {
+
+        const { family, name} = request.body;
+
+        if (!(family && name)) {
+            return result.status(400).send("All input is required");
+        }
+
+        const existingUser = await User.findOne({family});
+
+        const guest = await Guest.create(
+            {
+                family: family,
+                familyId: existingUser._id,
+                name: name
+            }
+        );
+        
+        const guestsResponse: GuestResponse = {
+                id: guest.id,
+                family: guest.family,
+                familyId: guest.familyId,
+                name: guest.name,
+                starter: guest.starter,
+                main: guest.main,
+                dessert: guest.dessert,
+                diet: guest.diet,
+        }
+
+        result.status(201).json(guestsResponse);
+
+    } catch(error) {
+        console.log(error)
+        return result.status(500);
+    }
+}
 
 

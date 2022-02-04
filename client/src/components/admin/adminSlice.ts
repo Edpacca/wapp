@@ -1,10 +1,9 @@
 import { ActionReducerMapBuilder, createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { CreateFamily } from "../../models/CreateFamily";
+import { AddGuestRequest, CreateFamily } from "../../models/CreateFamily";
 import { Status } from "../../models/Status";
 import { Guest } from '../../models/Guest';
 import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
-import { stat } from "fs";
 
 export interface AdminState {    
     guests: Guest[],
@@ -71,7 +70,24 @@ export const registerUser = createAsyncThunk(
     'admin/registerUser',
     async(request: CreateFamily) => {
 
-        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/register`, {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/register/user`, {
+            credentials: 'include',
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(request)}).then(response => response.json());
+            
+        return response;
+    }
+);
+
+export const addGuestToFamily = createAsyncThunk(
+    'admin/addGuestToFamily',
+    async(request: AddGuestRequest) => {
+
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/register/guest`, {
             credentials: 'include',
             method: 'POST',
             mode: 'cors',
@@ -142,6 +158,15 @@ export const adminSlice = createSlice({
         .addCase(registerUser.fulfilled, (state, action) => {
                state.status = 'idle';
         })
+        .addCase(addGuestToFamily.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(addGuestToFamily.rejected, (state) => {
+            state.status = 'failed';
+        })
+        .addCase(addGuestToFamily.fulfilled, (state, action) => {
+               state.status = 'idle';
+        })
         .addCase(getGuests.pending, (state) => {
             state.status = 'loading';
         })
@@ -168,6 +193,7 @@ export const adminSlice = createSlice({
 });
 
 export const selectGuests = (state: RootState): Guest[] => state.admin.guests;
+export const selectFamilies = (state: RootState): string[] => [...new Set(state.admin.guests.map(guest => guest.family))];
 export const selectStagedGuests= (state: RootState): Guest[] => state.admin.stagedGuests;
 export const selectAdminStatus = (state: RootState): Status => state.admin.status;
 export const { stageGuest, unstageGuest, editGuest, clearStagedGuests } = adminSlice.actions;

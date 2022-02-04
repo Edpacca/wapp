@@ -35,7 +35,8 @@ export function CreateUser() {
     }
 
     return(
-        <div className='App-header'>
+        <div className='center'>
+            <p>Create Family</p>
         <div className={styles.adminInputs}>
                 <input 
                     required
