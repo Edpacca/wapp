@@ -2,9 +2,9 @@ import styles from '../admin.module.css';
 import { Guest } from "../../../models/Guest";
 import { GuestRows } from './GuestRows';
 
-export function StagedGuests(props: {guests: Guest[]}) {
+export function StagedGuests(props: {guests: Guest[], css?: string}) {
     return (
-        <div>
+        <div className={props.css ?? ""}>
             <table className={styles.tightTable}>
                 <thead>
                     <th>Name</th>

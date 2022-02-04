@@ -29,7 +29,7 @@
     text-align: left;
     font-size: 16px;
     display: grid;
-    grid-template-columns: 0.5fr 1fr 2fr 3fr 3fr 3fr 4fr;
+    grid-template-columns: 1fr 2fr 4fr 6fr 6fr 6fr 8fr 1fr;
     border-collapse: collapse;
     vertical-align: top;
     border-spacing: 0px;
@@ -58,6 +58,10 @@
 .adminTable > td {
     border: 0px solid white;
     grid-template-rows: 1rem;
+}
+
+.adminTableDelete > td {
+    background-color: rgba(116, 0, 0, 0.664);
 }
 
 .link {

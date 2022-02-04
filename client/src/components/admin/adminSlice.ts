@@ -7,13 +7,15 @@ import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequ
 
 export interface AdminState {    
     guests: Guest[],
-    stagedGuests: Guest[]
+    stagedGuests: Guest[],
+    stagedDeletedGuests: Guest[],
     status: Status,
 };
 
 const initialState: AdminState = {
     guests: [],
     stagedGuests: [],
+    stagedDeletedGuests: [],
     status: 'idle',
 };
 
@@ -102,7 +104,7 @@ export const addGuestToFamily = createAsyncThunk(
 
 export const commitGuestEdits = createAsyncThunk(
     'admin/commitGuestEdits',
-    async(request: Guest[]) => {
+    async(request: { edits: Guest[], deletes: Guest[] }) => {
         const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest/all`, {
             credentials: 'include',
             method: 'PUT',
@@ -122,7 +124,6 @@ export const adminSlice = createSlice({
         stageGuest: (state, action: PayloadAction<Guest>) => {
             const index = state.stagedGuests.findIndex(guest => guest.id === action.payload.id)
             if (index === -1) state.stagedGuests.push(action.payload);
-            else state.stagedGuests[index] = action.payload;
         },
         editGuest:(state, action: PayloadAction<Guest>) => {
             const index = state.stagedGuests.findIndex(guest => guest.id === action.payload.id)
@@ -133,6 +134,15 @@ export const adminSlice = createSlice({
             const index = state.stagedGuests.findIndex(guest => guest.id === action.payload.id)
             if (index === -1) return;
             state.stagedGuests.splice(index, 1);
+        },
+        stageDeletedGuest: (state, action: PayloadAction<Guest>) => {
+            const indexDeleted = state.stagedDeletedGuests.findIndex(guest => guest.id === action.payload.id)
+            if (indexDeleted === -1) state.stagedDeletedGuests.push(action.payload);
+        },
+        unstageDeletedGuest: (state, action: PayloadAction<Guest>) => {
+            const index = state.stagedDeletedGuests.findIndex(guest => guest.id === action.payload.id)
+            if (index === -1) return;
+            state.stagedDeletedGuests.splice(index, 1);
         },
         clearStagedGuests: (state) => {
             state.stagedGuests = [];
@@ -167,6 +177,11 @@ export const adminSlice = createSlice({
         .addCase(addGuestToFamily.fulfilled, (state, action) => {
                state.status = 'idle';
         })
+        .addCase(commitGuestEdits.fulfilled, (state, acion) => {
+            state.status = 'idle';
+            state.stagedGuests = [];
+            state.stagedDeletedGuests = [];
+        })
         .addCase(getGuests.pending, (state) => {
             state.status = 'loading';
         })
@@ -195,8 +210,9 @@ export const adminSlice = createSlice({
 export const selectGuests = (state: RootState): Guest[] => state.admin.guests;
 export const selectFamilies = (state: RootState): string[] => [...new Set(state.admin.guests.map(guest => guest.family))];
 export const selectStagedGuests= (state: RootState): Guest[] => state.admin.stagedGuests;
+export const selectStagedDeletedGuests= (state: RootState): Guest[] => state.admin.stagedDeletedGuests;
 export const selectAdminStatus = (state: RootState): Status => state.admin.status;
-export const { stageGuest, unstageGuest, editGuest, clearStagedGuests } = adminSlice.actions;
+export const { stageGuest, unstageGuest, editGuest, clearStagedGuests, stageDeletedGuest, unstageDeletedGuest } = adminSlice.actions;
 export default adminSlice.reducer;
 
 export function mapGuests(payload: any[]) {
