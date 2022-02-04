@@ -156,12 +156,18 @@
 }
 
 .modalBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
     width: 80%;
     border: 2px solid orange;
     border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.6);
-    margin: auto;
+    background-color: rgba(0, 0, 0, 0.9);
     padding: 3rem;
+    margin: auto;
 }
 
 .modalButton {

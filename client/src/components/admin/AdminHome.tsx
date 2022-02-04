@@ -16,7 +16,7 @@ export function AdminHome(props: {guests: Guest[]}) {
                     <th>Diet</th>
                 </thead>
                 {GuestRows(props.guests.filter(guest => guest.starter?.toString() && guest.main?.toString() && guest.dessert?.toString()), "chosen")}
-                {GuestRows(props.guests.filter(guest => !guest.starter || !guest.main || !guest.dessert), "pending")}
+                {GuestRows(props.guests.filter(guest => guest.starter === null || guest.main === null || guest.dessert === null), "pending")}
             </table>
         </div>
     )

@@ -4,6 +4,7 @@ import { CreateFamily } from "../../models/CreateFamily";
 import { Status } from "../../models/Status";
 import { Guest } from '../../models/Guest';
 import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
+import { stat } from "fs";
 
 export interface AdminState {    
     guests: Guest[],
@@ -117,6 +118,9 @@ export const adminSlice = createSlice({
             if (index === -1) return;
             state.stagedGuests.splice(index, 1);
         },
+        clearStagedGuests: (state) => {
+            state.stagedGuests = [];
+        }
     },
     extraReducers: (builder: ActionReducerMapBuilder<AdminState>) => {
         builder
@@ -145,6 +149,7 @@ export const adminSlice = createSlice({
             state.status = 'failed';
         })
         .addCase(getGuests.fulfilled, (state, action) => {
+            state.guests = [];
             state.guests = mapGuests(action.payload);
             state.status = "idle";
         })
@@ -165,7 +170,7 @@ export const adminSlice = createSlice({
 export const selectGuests = (state: RootState): Guest[] => state.admin.guests;
 export const selectStagedGuests= (state: RootState): Guest[] => state.admin.stagedGuests;
 export const selectAdminStatus = (state: RootState): Status => state.admin.status;
-export const { stageGuest, unstageGuest, editGuest } = adminSlice.actions;
+export const { stageGuest, unstageGuest, editGuest, clearStagedGuests } = adminSlice.actions;
 export default adminSlice.reducer;
 
 export function mapGuests(payload: any[]) {
