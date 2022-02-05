@@ -8,15 +8,15 @@ import { WappError } from "../../models/WappError";
 export interface UserState {
     family: string | undefined,
     guests: Guest[],
-    status: Status,
     errors: WappError[]
+    status: Status,
 };
 
 const initialState: UserState = {
     family: undefined,
     guests: [],
+    errors: [],
     status: 'idle',
-    errors: []
 };
 
 export const userLogin = createAsyncThunk(
@@ -53,6 +53,23 @@ export const userLogout = createAsyncThunk(
         return response;
     }
 );
+
+export const submitUserChoices = createAsyncThunk(
+    'users/submitChoices', 
+    async(request: Guest) => {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/logout`, {
+            credentials: 'include',
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token' : `${process.env.REACT_APP_CLIENT_TOKEN}`
+            },
+            body: JSON.stringify(request)
+        }).then(response => response.json());
+        return response;
+    }
+)
 
 export const userSlice = createSlice({
     name: 'users',
@@ -114,8 +131,8 @@ export const userSlice = createSlice({
     }
 });
 
-export const selectFamily = (state: RootState): string => state.users.family as string;
-export const selectGuests = (state: RootState): Guest[] => state.users.guests;
+export const selectFamilyName = (state: RootState): string => state.users.family as string;
+export const selectUserGuests = (state: RootState): Guest[] => state.users.guests;
 export const selectLoginStatus = (state: RootState): Status => state.users.status;
 export const selectErrors = (state: RootState): WappError[] => state.users.errors;
 

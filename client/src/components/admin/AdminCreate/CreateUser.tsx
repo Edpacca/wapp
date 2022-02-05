@@ -1,8 +1,8 @@
-import styles from './admin.module.css';
-import { useAppDispatch } from "../../app/hooks";
+import styles from '../admin.module.css';
+import { useAppDispatch } from "../../../app/hooks";
 import { useState } from "react";
-import { registerUser } from "./adminSlice";
-import { CreateFamily } from "../../models/CreateFamily";
+import { registerUser } from "../adminSlice";
+import { CreateFamily } from "../../../models/CreateFamily";
 
 export function CreateUser() {
 

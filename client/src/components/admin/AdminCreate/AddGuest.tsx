@@ -1,8 +1,8 @@
-import styles from './admin.module.css';
+import styles from '../admin.module.css';
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { AddGuestRequest } from "../../models/CreateFamily";
-import { addGuestToFamily, selectFamilies } from './adminSlice';
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { AddGuestRequest } from "../../../models/CreateFamily";
+import { addGuestToFamily, selectFamilies } from '../adminSlice';
 
 export function AddGuest() {
     

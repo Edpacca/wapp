@@ -1,23 +1,16 @@
-import { useAppDispatch } from "../../app/hooks";
 import { foodItem } from "../../models/FoodItem"
+import { GuestParameter } from "./Menu";
 
-export function Course(props: { courseTitle: string, course: string, foodItems: foodItem[], 
-    isVegan: boolean, isPolish: boolean, choice: number | undefined}) {
+export function Course(props: { courseTitle: string, course: GuestParameter, foodItems: foodItem[], 
+    isVegan: boolean, isPolish: boolean, choice: number | undefined, setChoice: (choice: number | undefined, param: GuestParameter) => void}) {
     
-    const dispatch = useAppDispatch();
-    const setCourse = (course: string, value: number | undefined) => 
-    {
-        dispatch({
-            type: `food/${course}Selected`, 
-            payload: value})
-    }
 
     const index = props.isPolish ? 1 : 0;
     const foodItems = props.foodItems
         .filter(option => props.isVegan ? option.isVegan : option)
         .map(option => 
             renderOption(option, index, props.course, 
-                () => setCourse(props.course, option.value), option.value === props.choice))
+                () => props.setChoice(option.value, props.course), option.value === props.choice))
 
     return (
             <div className="course-box">
@@ -27,13 +20,13 @@ export function Course(props: { courseTitle: string, course: string, foodItems: 
                 </table>
                 {
                     props.choice !== undefined &&
-                    <button className="cancel" onClick={() => setCourse(props.course, undefined)}>&#10007;</button>
+                    <button className="cancel" onClick={() => props.setChoice(undefined, props.course)}>&#10007;</button>
                 }
             </div>
     )
 }
 
-function renderOption(option: foodItem, index: number, course: string, onClick: () => void, isSelected: boolean) {
+function renderOption(option: foodItem, index: number, course: GuestParameter, setChoice: (choice: number | undefined, param: GuestParameter) => void, isSelected: boolean) {
 
      return(
         <div className="course-wrapper">
@@ -42,7 +35,7 @@ function renderOption(option: foodItem, index: number, course: string, onClick: 
                     <label className="form-control">
                         <input type="radio" 
                             name={course} id={`${course}${option.value}`} 
-                            value={option.value} onChange={onClick} checked={isSelected}>
+                            value={option.value} onChange={() => setChoice(option.value, course)} checked={isSelected}>
                         </input>
                     </label>
                 </td>

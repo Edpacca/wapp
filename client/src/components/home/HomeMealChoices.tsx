@@ -1,13 +1,13 @@
 import { foodItem } from "../../models/FoodItem";
 import { starters, mains, desserts } from "../../data/menuData"
 import { useAppSelector } from "../../app/hooks";
-import { selectGuests } from "../login/userSlice";
+import { selectUserGuests } from "../login/userSlice";
 import { useState } from "react";
 
 export function HomeMealChoices(
     props: {isActive: boolean}) {
 
-    const guests = useAppSelector(selectGuests);
+    const guests = useAppSelector(selectUserGuests);
     const [activeGuest, setActiveGuest] = useState(0);
 
     return(

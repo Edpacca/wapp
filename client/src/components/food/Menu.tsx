@@ -1,3 +1,4 @@
+import styles from './food.module.css'
 import { Course } from './Course';
 import './menu.css';
 import { starters, mains, desserts, chosenTexts } from '../../data/menuData';
@@ -8,61 +9,71 @@ import { Choices } from '../../models/Choices';
 import { foodItem } from '../../models/FoodItem';
 import { Guest } from '../../models/Guest';
 import { GuestListChoices } from './guestListChoicese';
-import { selectGuests } from '../login/userSlice';
+import { selectUserGuests } from '../login/userSlice';
 
-const initialChoices: Choices = {
-    starter: undefined,
-    main: undefined,
-    dessert: undefined,
-    diet: undefined
-}
+export type GuestParameter = 'starter' | 'main' | 'dessert' | 'diet';
 
 export function Menu() {
 
+    const guests = useAppSelector(selectUserGuests);
     const [isVegan, setIsVegan ] = useState(false);
     const [isPolish, setIsPolish ] = useState(false);
-    const guests = useAppSelector(selectGuests);
     const [activeGuest, setActiveGuest] = useState<Guest | undefined>(undefined);
-    const [choices, setChoices] = useState<Choices>(initialChoices);
     const dispatch = useAppDispatch();
 
     function handleChange(setBool: Dispatch<SetStateAction<boolean>>, bool: boolean) {
         setBool(!bool);
     }
 
-    function onTextChange(text: string) {
-        const payload = text.length === 0 ? undefined : text
-        dispatch({type: "users/dietSelected", payload: payload})
+    function selectActiveGuestById(id: string) {
+        const guest = guests.find(g => g.id === id);
+        if (guest) setActiveGuest(guest);
+        else setActiveGuest(undefined);
     }
 
-    function handleSelectNewGuest(guest: Guest) {
-        setActiveGuest(guest);
-        setChoices({
-            starter: guest.starter,
-            main: guest.main,
-            dessert: guest.dessert,
-            diet: guest.diet
-        })
+    function renderDropDown(guests: Guest[]) {
+        return (
+            <select className={styles.guestDropDown} onChange={(e) => selectActiveGuestById(e.target.value)}>
+                <option className={styles.guestOption}>Select Guest</option>
+                {guests.map(guest => <option 
+                className={styles.guestOption} 
+                key={guest.id} value={guest.id}
+                >{guest.name}</option>)}
+            </select>
+        )
     }
 
-    function allChoicesMade(): boolean {
-            return activeGuest 
-            ? (activeGuest.starter !== undefined &&
-               activeGuest.main !== undefined &&
-               activeGuest.dessert !== undefined) 
-            : false;
+    function updateGuestParameter(value: number | string | undefined, param: GuestParameter) {
+        if (activeGuest) {
+            const guest: Guest = activeGuest;
+
+            switch (param) {
+                case 'starter':
+                    guest.starter = value ? value as number : undefined;
+                    break;
+                case 'main':
+                    guest.main = value ? value as number : undefined;
+                    break;
+                case 'dessert':
+                    guest.dessert = value ? value as number : undefined;
+                    break;
+                case 'diet':
+                    guest.diet = value ? value as string : undefined;
+                    break;
+                default:
+                    break;
+            }
+
+            setActiveGuest(guest);
+        }
     }
 
     return (
         <div className="menu-wrapper">
-            <div className="guest-choices-top">
-                <GuestListChoices 
-                    guests={guests}
-                    setActiveGuest={handleSelectNewGuest}
-                />
-            </div>
             <div className="menu-header">For Dinner</div>
-            <div>Selecting for {activeGuest?.name}</div>
+            <div className="guest-choices-top">
+                {renderDropDown(guests)}
+            </div>
             <div className="switches">
                 <WappSwitch
                     isFlag={isVegan}
@@ -80,21 +91,20 @@ export function Menu() {
                         switchClass="polski-switch"
                         sliderClass="slider-polski"/>
                 </div>
-
             </div>
 
             {
                 activeGuest &&
                 <div className="courses-wrapper">
                     <div >
-                        <Course courseTitle={"Starter"} course={"starter"} foodItems={starters} isVegan={isVegan} isPolish={isPolish} choice={choices.starter}/>
-                        <Course courseTitle={"Main Course"} course={"main"} foodItems={mains} isVegan={isVegan} isPolish={isPolish} choice={choices.starter}/>
-                        <Course courseTitle={"Dessert"} course={"dessert"} foodItems={desserts} isVegan={isVegan} isPolish={isPolish} choice={choices.starter}/>
-                        <textarea className="textarea" placeholder="Enter any dietary requirements here" onChange={(e) => onTextChange(e.target.value)}/>
+                        <Course courseTitle={"Starter"} course={"starter"} foodItems={starters} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.starter} setChoice={updateGuestParameter}/>
+                        <Course courseTitle={"Main Course"} course={"main"} foodItems={mains} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.main} setChoice={updateGuestParameter}/>
+                        <Course courseTitle={"Dessert"} course={"dessert"} foodItems={desserts} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.dessert} setChoice={updateGuestParameter}/>
+                        <textarea className="textarea" placeholder="Enter any dietary requirements here" onChange={(e) => updateGuestParameter(e.target.value, 'diet')}/>
                     </div>
                     <div>
                     Your choices...
-                        {renderChoices(choices, isPolish ? 1 : 0, allChoicesMade())}
+                        {/* {renderChoices(choices, isPolish ? 1 : 0, allChoicesMade())} */}
                     </div>
                 </div>
             }
@@ -139,5 +149,14 @@ function renderChoice(course: foodItem[], choice: number | undefined, languageIn
                 {`No ${courseName} chosen.`}
             </span>
         </div>
+    )
+}
+
+
+function allChoicesMade(guest: Guest) {
+    return (
+        guest.starter?.toString() && 
+        guest.main?.toString() && 
+        guest.dessert?.toString()
     )
 }
