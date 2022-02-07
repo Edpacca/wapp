@@ -1,5 +1,5 @@
 import styles from './food.module.css'
-import { Course } from './Course';
+import { Course, MenuCourse } from './Course';
 import './menu.css';
 import { starters, mains, desserts, chosenTexts } from '../../data/menuData';
 import { useState, Dispatch, SetStateAction } from 'react';
@@ -10,8 +10,6 @@ import { foodItem } from '../../models/FoodItem';
 import { Guest } from '../../models/Guest';
 import { GuestListChoices } from './guestListChoicese';
 import { selectUserGuests } from '../login/userSlice';
-
-export type GuestParameter = 'starter' | 'main' | 'dessert' | 'diet';
 
 export function Menu() {
 
@@ -43,22 +41,18 @@ export function Menu() {
         )
     }
 
-    function updateGuestParameter(value: number | string | undefined, param: GuestParameter) {
+    function updateActiveGuestCourse(value: number | undefined, param: Course ) {
         if (activeGuest) {
-            const guest: Guest = activeGuest;
-
+            const guest: Guest = { ...activeGuest };
             switch (param) {
                 case 'starter':
-                    guest.starter = value ? value as number : undefined;
+                    guest.starter = value;
                     break;
                 case 'main':
-                    guest.main = value ? value as number : undefined;
+                    guest.main = value;
                     break;
                 case 'dessert':
-                    guest.dessert = value ? value as number : undefined;
-                    break;
-                case 'diet':
-                    guest.diet = value ? value as string : undefined;
+                    guest.dessert = value;
                     break;
                 default:
                     break;
@@ -68,11 +62,21 @@ export function Menu() {
         }
     }
 
+    function updateDiet(value: string) {
+        if (activeGuest) {
+            const guest: Guest = { ...activeGuest };
+            guest.diet = value;
+            setActiveGuest(guest);
+        }
+    }
+
     return (
         <div className="menu-wrapper">
             <div className="menu-header">For Dinner</div>
             <div className="guest-choices-top">
                 {renderDropDown(guests)}
+                <p>Active guest: {activeGuest?.name}</p>
+
             </div>
             <div className="switches">
                 <WappSwitch
@@ -97,14 +101,14 @@ export function Menu() {
                 activeGuest &&
                 <div className="courses-wrapper">
                     <div >
-                        <Course courseTitle={"Starter"} course={"starter"} foodItems={starters} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.starter} setChoice={updateGuestParameter}/>
-                        <Course courseTitle={"Main Course"} course={"main"} foodItems={mains} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.main} setChoice={updateGuestParameter}/>
-                        <Course courseTitle={"Dessert"} course={"dessert"} foodItems={desserts} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.dessert} setChoice={updateGuestParameter}/>
-                        <textarea className="textarea" placeholder="Enter any dietary requirements here" onChange={(e) => updateGuestParameter(e.target.value, 'diet')}/>
+                        <MenuCourse courseTitle={"Starter"} course={'starter'} foodItems={starters} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.starter} setChoice={updateActiveGuestCourse}/>
+                        <MenuCourse courseTitle={"Main Course"} course={'main'} foodItems={mains} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.main} setChoice={updateActiveGuestCourse}/>
+                        <MenuCourse courseTitle={"Dessert"} course={'dessert'} foodItems={desserts} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.dessert} setChoice={updateActiveGuestCourse}/>
+                        <textarea className="textarea" placeholder="Enter any dietary requirements here" onChange={(e) => updateDiet(e.target.value)}/>
                     </div>
-                    <div>
+                    <div className='choices'>
                     Your choices...
-                        {/* {renderChoices(choices, isPolish ? 1 : 0, allChoicesMade())} */}
+                        {renderChoices(activeGuest, isPolish ? 1 : 0, allChoicesMade(activeGuest))}
                     </div>
                 </div>
             }
@@ -113,13 +117,13 @@ export function Menu() {
     )
 }
 
-function renderChoices(choices: Choices, languageIndex: 1 | 0, ready: boolean) {
+function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean) {
     return (
-        <div className="choices">
-            {renderChoice(starters, choices.starter, languageIndex, chosenTexts.starter, "starter")}
-            {renderChoice(mains, choices.main, languageIndex, chosenTexts.main, "main")}
-            {renderChoice(desserts, choices.dessert, languageIndex, chosenTexts.dessert, "dessert")}
-            {choices.diet === undefined ? <p className="vegan">{chosenTexts.diet[0]}</p> : <span><p className="vegan">{chosenTexts.diet[1]}</p>{choices.diet}</span>}
+        <div>
+            {renderChoice(starters, guest.starter, languageIndex, chosenTexts.starter, "starter")}
+            {renderChoice(mains, guest.main, languageIndex, chosenTexts.main, "main")}
+            {renderChoice(desserts, guest.dessert, languageIndex, chosenTexts.dessert, "dessert")}
+            {guest.diet === undefined ? <p className="vegan">{chosenTexts.diet[0]}</p> : <span><p className="vegan">{chosenTexts.diet[1]}</p>{guest.diet}</span>}
             {
                 ready &&
                 <div>
@@ -135,7 +139,7 @@ function renderChoices(choices: Choices, languageIndex: 1 | 0, ready: boolean) {
 function renderChoice(course: foodItem[], choice: number | undefined, languageIndex: number,
     texts: string[], courseName: string) {
 
-    if (choice) {
+    if (choice !== undefined) {
     return (
         <div className="choice">
             <span className="inline">
@@ -153,10 +157,10 @@ function renderChoice(course: foodItem[], choice: number | undefined, languageIn
 }
 
 
-function allChoicesMade(guest: Guest) {
+function allChoicesMade(guest: Guest): boolean {
     return (
-        guest.starter?.toString() && 
-        guest.main?.toString() && 
-        guest.dessert?.toString()
+        guest.starter !== undefined && 
+        guest.main !== undefined &&     
+        guest.dessert !== undefined
     )
 }

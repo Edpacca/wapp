@@ -37,7 +37,7 @@ export function Login() {
     }
 
     return(
-        <div >
+        <div>
             <div className='center'>
             <img src={diamond} className="App-logo-small" alt="diamond"/>
             <h1 className="initials-small">A | E</h1>

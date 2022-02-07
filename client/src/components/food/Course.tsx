@@ -1,16 +1,16 @@
 import { foodItem } from "../../models/FoodItem"
-import { GuestParameter } from "./Menu";
 
-export function Course(props: { courseTitle: string, course: GuestParameter, foodItems: foodItem[], 
-    isVegan: boolean, isPolish: boolean, choice: number | undefined, setChoice: (choice: number | undefined, param: GuestParameter) => void}) {
+export type Course = 'starter' | 'main' | 'dessert';
+
+export function MenuCourse(props: { courseTitle: string, course: Course, foodItems: foodItem[], 
+    isVegan: boolean, isPolish: boolean, choice: number | undefined, setChoice: (choice: number | undefined, param: Course) => void}) {
     
-
     const index = props.isPolish ? 1 : 0;
     const foodItems = props.foodItems
         .filter(option => props.isVegan ? option.isVegan : option)
         .map(option => 
-            renderOption(option, index, props.course, 
-                () => props.setChoice(option.value, props.course), option.value === props.choice))
+            renderOption(option, index, props.course, option.value === props.choice,
+                () => props.setChoice(option.value, props.course), ))
 
     return (
             <div className="course-box">
@@ -26,9 +26,9 @@ export function Course(props: { courseTitle: string, course: GuestParameter, foo
     )
 }
 
-function renderOption(option: foodItem, index: number, course: GuestParameter, setChoice: (choice: number | undefined, param: GuestParameter) => void, isSelected: boolean) {
+function renderOption(option: foodItem, index: number, course: Course,  isSelected: boolean, setChoice: (choice: number | undefined, param: Course) => void,) {
 
-     return(
+     return(    
         <div className="course-wrapper">
             <tr className="course-row">
                 <td className="table-data">
