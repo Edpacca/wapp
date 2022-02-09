@@ -104,10 +104,10 @@ export function Menu() {
                         <MenuCourse courseTitle={"Starter"} course={'starter'} foodItems={starters} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.starter} setChoice={updateActiveGuestCourse}/>
                         <MenuCourse courseTitle={"Main Course"} course={'main'} foodItems={mains} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.main} setChoice={updateActiveGuestCourse}/>
                         <MenuCourse courseTitle={"Dessert"} course={'dessert'} foodItems={desserts} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.dessert} setChoice={updateActiveGuestCourse}/>
-                        <textarea className="textarea" placeholder="Enter any dietary requirements here" onChange={(e) => updateDiet(e.target.value)}/>
+                        <textarea className="textarea" placeholder={activeGuest.diet !== undefined && (activeGuest.diet as string).length > 0 ? activeGuest.diet : "Enter any dietary requirements here"} onChange={(e) => updateDiet(e.target.value)}/>
                     </div>
                     <div className='choices'>
-                    Your choices...
+                    <strong>{activeGuest.name}'s choices...</strong>
                         {renderChoices(activeGuest, isPolish ? 1 : 0, allChoicesMade(activeGuest))}
                     </div>
                 </div>
@@ -123,13 +123,14 @@ function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean) {
             {renderChoice(starters, guest.starter, languageIndex, chosenTexts.starter, "starter")}
             {renderChoice(mains, guest.main, languageIndex, chosenTexts.main, "main")}
             {renderChoice(desserts, guest.dessert, languageIndex, chosenTexts.dessert, "dessert")}
-            {guest.diet === undefined ? <p className="vegan">{chosenTexts.diet[0]}</p> : <span><p className="vegan">{chosenTexts.diet[1]}</p>{guest.diet}</span>}
             {
                 ready &&
                 <div>
-                    <p>Excellent decisions.</p>
+                    <p>Excellent decisions {guest.name}.</p>
                 </div>
             }
+            {guest.diet === undefined ? <p className="vegan">{chosenTexts.diet[0]}</p> : <span><p className="vegan">{chosenTexts.diet[1]}</p>{guest.diet !== undefined && (guest.diet as string).length > 0 ? guest.diet : "None"}</span>}
+
             <p className="smalltext">Are you ready to submit? You can change your mind up until 1st July 2022</p>
             <button className="button">Submit Choices</button>
         </div>
