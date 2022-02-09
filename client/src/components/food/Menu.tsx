@@ -9,7 +9,8 @@ import { Choices } from '../../models/Choices';
 import { foodItem } from '../../models/FoodItem';
 import { Guest } from '../../models/Guest';
 import { GuestListChoices } from './guestListChoicese';
-import { selectUserGuests } from '../user/userSlice';
+import { selectUserGuests, submitGuestUpdateUser } from '../user/userSlice';
+import { SubmitGuestChoiceModal } from './SubmitGuestChoiceModal';
 
 export function Menu() {
 
@@ -17,6 +18,7 @@ export function Menu() {
     const [isVegan, setIsVegan ] = useState(false);
     const [isPolish, setIsPolish ] = useState(false);
     const [activeGuest, setActiveGuest] = useState<Guest | undefined>(undefined);
+    const [showSubmit, setShowSubmit] = useState<Boolean>(false);
     const dispatch = useAppDispatch();
 
     function handleChange(setBool: Dispatch<SetStateAction<boolean>>, bool: boolean) {
@@ -70,6 +72,12 @@ export function Menu() {
         }
     }
 
+    function submitGuestChoices() {
+        if (activeGuest) dispatch(submitGuestUpdateUser(activeGuest));
+        setShowSubmit(false);
+        setActiveGuest(undefined);
+    }
+
     return (
         <div className="menu-wrapper">
             <div className="menu-header">For Dinner</div>
@@ -96,7 +104,10 @@ export function Menu() {
                         sliderClass="slider-polski"/>
                 </div>
             </div>
-
+            {
+                activeGuest && showSubmit &&
+                <SubmitGuestChoiceModal guest={activeGuest} languageIndex={isPolish ? 1 : 0} setIsVisible={setShowSubmit} submit={submitGuestChoices} />
+            }
             {
                 activeGuest &&
                 <div className="courses-wrapper">
@@ -104,11 +115,11 @@ export function Menu() {
                         <MenuCourse courseTitle={"Starter"} course={'starter'} foodItems={starters} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.starter} setChoice={updateActiveGuestCourse}/>
                         <MenuCourse courseTitle={"Main Course"} course={'main'} foodItems={mains} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.main} setChoice={updateActiveGuestCourse}/>
                         <MenuCourse courseTitle={"Dessert"} course={'dessert'} foodItems={desserts} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.dessert} setChoice={updateActiveGuestCourse}/>
-                        <textarea className="textarea" placeholder={activeGuest.diet !== undefined && (activeGuest.diet as string).length > 0 ? activeGuest.diet : "Enter any dietary requirements here"} onChange={(e) => updateDiet(e.target.value)}/>
+                        <textarea className="textarea" placeholder={activeGuest.diet && (activeGuest.diet as string).length > 0 ? activeGuest.diet : "Enter any dietary requirements here"} onChange={(e) => updateDiet(e.target.value)}/>
                     </div>
                     <div className='choices'>
                     <strong>{activeGuest.name}'s choices...</strong>
-                        {renderChoices(activeGuest, isPolish ? 1 : 0, allChoicesMade(activeGuest))}
+                        {renderChoices(activeGuest, isPolish ? 1 : 0, allChoicesMade(activeGuest), setShowSubmit)}
                     </div>
                 </div>
             }
@@ -117,7 +128,7 @@ export function Menu() {
     )
 }
 
-function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean) {
+function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean, setShowSubmit: (b: boolean) => void) {
     return (
         <div>
             {renderChoice(starters, guest.starter, languageIndex, chosenTexts.starter, "starter")}
@@ -129,10 +140,10 @@ function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean) {
                     <p>Excellent decisions {guest.name}.</p>
                 </div>
             }
-            {guest.diet === undefined ? <p className="vegan">{chosenTexts.diet[0]}</p> : <span><p className="vegan">{chosenTexts.diet[1]}</p>{guest.diet !== undefined && (guest.diet as string).length > 0 ? guest.diet : "None"}</span>}
+            {guest.diet === undefined ? <p className="vegan">{chosenTexts.diet[0]}</p> : <span><p className="vegan">{chosenTexts.diet[1]}</p>{guest.diet && (guest.diet as string).length > 0 ? guest.diet : "None"}</span>}
 
             <p className="smalltext">Are you ready to submit? You can change your mind up until 1st July 2022</p>
-            <button className="button">Submit Choices</button>
+            <button className="button" onClick={() => setShowSubmit(true)}>Submit Choices</button>
         </div>
     )
 }
@@ -140,7 +151,7 @@ function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean) {
 function renderChoice(course: foodItem[], choice: number | undefined, languageIndex: number,
     texts: string[], courseName: string) {
 
-    if (choice !== undefined) {
+    if (choice !== undefined && choice !== null) {
     return (
         <div className="choice">
             <span className="inline">

@@ -31,7 +31,7 @@ function renderOption(option: foodItem, index: number, course: Course,  isSelect
      return(    
         <div className="course-wrapper">
             <tr className="course-row">
-                <td className="table-data">
+                <td className="table-data" key={option.name[0]}>
                     <label className="form-control">
                         <input type="radio" 
                             name={course} id={`${course}${option.value}`} 

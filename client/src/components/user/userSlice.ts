@@ -54,10 +54,10 @@ export const userLogout = createAsyncThunk(
     }
 );
 
-export const submitUserChoices = createAsyncThunk(
-    'users/submitChoices', 
+export const submitGuestUpdateUser = createAsyncThunk(
+    'users/submitGuestChoices', 
     async(request: Guest) => {
-        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/`, {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest`, {
             credentials: 'include',
             method: 'PUT',
             mode: 'cors',
@@ -127,6 +127,16 @@ export const userSlice = createSlice({
             state.guests = [];
             state.status ='idle';
             state.errors = [];
+        })
+        .addCase(submitGuestUpdateUser.fulfilled, (state, action) => {
+            const index = state.guests.findIndex(guest => guest.id === action.payload.id);
+            state.guests[index] = {...action.payload}
+        })
+        .addCase(submitGuestUpdateUser.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(submitGuestUpdateUser.rejected, (state) => {
+            state.status = 'failed';
         })
     }
 });

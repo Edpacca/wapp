@@ -15,9 +15,9 @@ export function HomeMealChoices(
             {
                 props.isActive &&
                 <div>
-                    {renderChoice(starters, guests[activeGuest].starter, 1, "starter")}
-                    {renderChoice(mains, guests[activeGuest].main, 1, "main")}
-                    {renderChoice(desserts, guests[activeGuest].dessert, 1, "dessert")}
+                    {renderChoice(starters, guests[activeGuest].starter, 0, "starter")}
+                    {renderChoice(mains, guests[activeGuest].main, 0, "main")}
+                    {renderChoice(desserts, guests[activeGuest].dessert, 0, "dessert")}
                 </div>
             }
         </div>

@@ -22,7 +22,7 @@ export function Wapp() {
   const { setLoginContext } = useContext(AuthContext);
 
   function logout() {
-    dispatch(userLogout()).then(() => navigate("/"));
+    dispatch(userLogout()).then(() => navigate(""));
     setLoginContext(undefined);
   } 
 

@@ -143,7 +143,7 @@ export const chosenTexts = {
         " to start."
     ],
     main: [
-        "You have chosen a main course of ",
+        "With a main course of ",
         "."
     ],
     dessert: [

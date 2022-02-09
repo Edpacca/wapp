@@ -120,20 +120,20 @@ export async function BatchUpdateGuests(request, result) {
     return result.status(200).json("updated");
 }
 
-export async function UpdateMealChoices(request, result) {
+export async function PutUpdateGuest(request, result) {
 
     const body = request.body
 
     if (!body) {
         return result.status(400).json({
             success: false,
-            error: 'You must provide a body to update',
+            error: 'You must provide a guest to update',
         })
     }
 
     console.log(body);
 
-    Guest.findByIdAndUpdate({_id: request.query.id}, {
+    Guest.findByIdAndUpdate({_id: request.body.id}, {
         "starter": body.starter,
         "main": body.main,
         "dessert": body.dessert,
@@ -150,14 +150,6 @@ export async function UpdateMealChoices(request, result) {
             return result.status(500).send(err)
         }
 
-        return result.status(200).json({
-            success: true,
-            id: guest._id,
-            message: `meal choices updated for ${guest.name}`,
-            starter: body.starter,
-            main: body.main,
-            dessert: body.dessert,
-            diet: body.diet
-        })
+        return result.status(200).json(guest)
     })
 }
