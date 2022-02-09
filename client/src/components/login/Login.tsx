@@ -3,7 +3,7 @@ import diamond from "../../assets/diamond-white.svg"
 import { useContext, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
-import { selectErrors, selectLoginStatus, userLogin } from './userSlice';
+import { selectErrors, selectLoginStatus, userLogin } from '../user/userSlice';
 import { Status } from '../../models/Status';
 import { WappError } from '../../models/WappError';
 

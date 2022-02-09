@@ -9,7 +9,7 @@ import { Choices } from '../../models/Choices';
 import { foodItem } from '../../models/FoodItem';
 import { Guest } from '../../models/Guest';
 import { GuestListChoices } from './guestListChoicese';
-import { selectUserGuests } from '../login/userSlice';
+import { selectUserGuests } from '../user/userSlice';
 
 export function Menu() {
 

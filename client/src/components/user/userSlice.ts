@@ -57,9 +57,9 @@ export const userLogout = createAsyncThunk(
 export const submitUserChoices = createAsyncThunk(
     'users/submitChoices', 
     async(request: Guest) => {
-        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/logout`, {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/`, {
             credentials: 'include',
-            method: 'POST',
+            method: 'PUT',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',

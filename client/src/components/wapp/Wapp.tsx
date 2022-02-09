@@ -5,7 +5,7 @@ import { Itinerary } from '../info/Itinerary';
 import { NavBar } from '../nagivation/NavBar';
 import { selectPageUser } from '../nagivation/NavigationSlice';
 import { WappMap } from '../map/WappMap'
-import { selectFamilyName, selectUserGuests, userLogout } from '../login/userSlice';
+import { selectFamilyName, selectUserGuests, userLogout } from '../user/userSlice';
 import { LoginStatus } from '../login/LoginStatus';
 import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
