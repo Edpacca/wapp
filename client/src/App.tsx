@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/app.css';
 import { Wapp } from './components/wapp/Wapp';
 import { Admin } from './components/admin/Admin';
 import { Login } from './components/login/Login';

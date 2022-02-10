@@ -1,5 +1,5 @@
 import AuthContext from '../../context/AuthContext';
-import diamond from "../../assets/diamond-white.svg"
+import diamond from "../../assets/diamond-white-AE.svg"
 import { useContext, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
@@ -38,11 +38,10 @@ export function Login() {
 
     return(
         <div>
-            <div className='center'>
-            <img src={diamond} className="App-logo-small" alt="diamond"/>
-            <h1 className="initials-small">A | E</h1>
+            <div>
+            <img src={diamond} className="App-logo-login" alt="diamond"/>
             </div>
-            <form onSubmit={() => captureLogin()} className='App-header'>
+            <form onSubmit={() => captureLogin()} className='App-centered'>
                 { status === 'failed' && (errors[0].type === "auth") && <label className='error-label'>{errors[0].message}</label> }
                 <input
                     required

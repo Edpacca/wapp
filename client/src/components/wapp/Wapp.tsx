@@ -28,13 +28,13 @@ export function Wapp() {
 
   return (
     <div>
-      <LoginStatus family={family} members={members}/>
       <NavBar page={page}/>
       {
         page === 'home' &&
         <div>
           <Home />
-          
+          <LoginStatus family={family} guests={members}/>
+          <button onClick={() => logout()} className="button">Logout</button>
         </div>
       }
       {
@@ -49,7 +49,7 @@ export function Wapp() {
         page === 'location' &&
         <WappMap/>
       }
-      <button onClick={() => logout()} className="button">Logout</button>
+      
     </div>
   );
 }

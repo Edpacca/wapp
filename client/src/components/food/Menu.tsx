@@ -11,6 +11,7 @@ import { Guest } from '../../models/Guest';
 import { GuestListChoices } from './guestListChoicese';
 import { selectUserGuests, submitGuestUpdateUser } from '../user/userSlice';
 import { SubmitGuestChoiceModal } from './SubmitGuestChoiceModal';
+import { allChoicesMade } from '../../helpers/allChoicesMade';
 
 export function Menu() {
 
@@ -165,14 +166,5 @@ function renderChoice(course: foodItem[], choice: number | undefined, languageIn
                 {`No ${courseName} chosen.`}
             </span>
         </div>
-    )
-}
-
-
-function allChoicesMade(guest: Guest): boolean {
-    return (
-        guest.starter !== undefined && 
-        guest.main !== undefined &&     
-        guest.dessert !== undefined
     )
 }

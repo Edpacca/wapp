@@ -79,18 +79,6 @@ export const userSlice = createSlice({
             state.family = action.payload.family;
             state.guests = action.payload.guests;
             state.status = 'idle'
-        },
-        starterSelected: (state, action) => {
-
-        },
-        mainSelected: (state, action) => {
-
-        },
-        dessertSelected: (state, action) => {
-
-        },
-        dietSelected: (state, action) => {
-
         }
     },
     extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
