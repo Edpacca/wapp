@@ -1,0 +1,86 @@
+.App {
+  text-align: center;
+}
+
+.App-logo-login {
+  height: 25vh;
+  pointer-events: none;
+  margin: 10vh;
+}
+
+.App-logo-homepage {
+  height: 35vh;
+  pointer-events: none;
+  margin: 0 0 5vh;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
+}
+
+.App-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-header {
+  min-height: calc( 30vh + 10vw );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-link {
+  color: greenyellow;
+}
+
+.button {
+  margin: 1rem;
+  padding: 0.75rem;
+  width: 8rem;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: large;
+  color: white;
+  border-width: 0px;
+  border-style: solid white;
+}
+
+.button:hover {
+  background-color: rgba(119, 119, 119, 0.5);
+}
+
+.textbox {
+  background-color: rgba(119, 119, 119, 0.35);
+  padding: 0.75rem;
+  margin: 0.5rem;
+  width: 14rem;
+  border-width: 0px;
+  border-radius: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: large;
+  color: white;
+  text-align: center;
+}
+
+.textbox:focus-visible {
+  outline: 2px solid yellowgreen;
+}
+
+.failed {
+  border: 3px solid rgb(230, 0, 0);
+}
+
+.error-label {
+  font-size: 1rem;
+  color: red;
+}
+
+.pendingrow {
+  color: orange;
+}
+
+.delete {
+  color: rgb(230, 0, 0);
+}

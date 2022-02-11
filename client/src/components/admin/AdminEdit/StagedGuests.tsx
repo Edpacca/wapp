@@ -1,6 +1,6 @@
 import styles from '../admin.module.css';
 import { Guest } from "../../../models/Guest";
-import { GuestRows } from './GuestRows';
+import { GuestRows } from '../AdminHome/GuestRows';
 
 export function StagedGuests(props: {guests: Guest[], css?: string}) {
     return (

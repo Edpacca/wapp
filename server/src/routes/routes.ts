@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as express from 'express';
-import { BatchUpdateGuests, CreateGuest as createGuest, GetGuest as getGuest, GetGuests as getGuests, GetGuestsByFamily as getGuestsByFamily, UpdateMealChoices as updateMealChoices } from './controllers/guestController';
+import { BatchUpdateGuests, CreateGuest as createGuest, GetGuest as getGuest, GetGuests as getGuests, GetGuestsByFamily as getGuestsByFamily, PutUpdateGuest as updateMealChoices } from './controllers/guestController';
 import { AddGuestToFamily, RegisterUser as registerUser } from './controllers/usersController';
 import { authenticate, logout, loginUser, loginAdmin } from './controllers/loginController';
 import { verifyAdminToken, verifyClientToken, verifyUserToken } from '../middleware/auth';
@@ -38,7 +38,7 @@ export function appRouter(app: express.Express): void {
         getGuestsByFamily(request, result);
     })
 
-    app.put("/guest/dinner", verifyUserToken, (request, result) => {
+    app.put("/guest", verifyUserToken, (request, result) => {
         updateMealChoices(request, result);
     })
 

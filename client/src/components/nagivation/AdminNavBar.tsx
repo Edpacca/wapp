@@ -1,5 +1,5 @@
 import { TabLink } from "./TabLink";
-import './navigation.css'
+import '../../styles/navigation.css'
 import { useAppDispatch } from "../../app/hooks";
 import { changePageAdmin } from './NavigationSlice'
 import { AdminPage } from "../../models/AdminPage";

@@ -2,6 +2,7 @@ import { foodItem } from "../models/FoodItem"
 
 export const starters: foodItem[] = [
     {
+        course: 'starter',
         name: 
             [
                 "Chicken Liver Pate, Red Onion Chutney and Oatcakes",
@@ -17,6 +18,7 @@ export const starters: foodItem[] = [
         value: 0
     },
     {
+        course: 'starter',
         name: 
             [
                 "Lentil and Aubergine Pate, Red Onion Chutney and Oatcakes",
@@ -32,6 +34,7 @@ export const starters: foodItem[] = [
         value: 1
     },
     {
+        course: 'starter',
         name: 
             [
                 "Honeydew Melon, with Mixed Berry Coulis",
@@ -50,6 +53,7 @@ export const starters: foodItem[] = [
 
 export const mains: foodItem[] = [
     {
+        course: 'main',
         name: 
             [
                 "Roast Silverside of Beef, Yorkshire Pudding, Red Wine Gravy",
@@ -65,6 +69,7 @@ export const mains: foodItem[] = [
         value: 0
     },
     {
+        course: 'main',
         name: 
             [
                 "Baked Fillet of Salmon, with Samphire and Lemon Butter ",
@@ -80,6 +85,7 @@ export const mains: foodItem[] = [
         value: 1
     },
     {
+        course: 'main',
         name: 
             [
                 "Mushroom Ravioli, Sauce of Wild Mushrooms, Cherry Tomatoes and Thyme ",
@@ -98,6 +104,7 @@ export const mains: foodItem[] = [
 
 export const desserts: foodItem[] = [
     {
+        course: 'dessert',
         name: 
             [
                 "Chocolate and Raspberry Cheesecake",
@@ -113,6 +120,7 @@ export const desserts: foodItem[] = [
         value: 0
     },
     {
+        course: 'dessert',
         name: 
             [
                 "Crème Brulee",
@@ -135,7 +143,7 @@ export const chosenTexts = {
         " to start."
     ],
     main: [
-        "You have chosen a main course of ",
+        "With a main course of ",
         "."
     ],
     dessert: [

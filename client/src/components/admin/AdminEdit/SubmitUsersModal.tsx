@@ -1,7 +1,7 @@
-import styles from './admin.module.css';
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { clearStagedGuests, commitGuestEdits, getGuests, selectStagedDeletedGuests, selectStagedGuests } from "./adminSlice"
-import { StagedGuests } from "./GuestData/StagedGuests";
+import styles from '../admin.module.css';
+import { useAppDispatch, useAppSelector } from "../../../app/hooks"
+import { clearStagedGuests, commitGuestEdits, getGuests, selectStagedDeletedGuests, selectStagedGuests } from "../adminSlice"
+import { StagedGuests } from "./StagedGuests";
 
 export function SubmitUsersModal(props: {setIsVisible: (isVisible: boolean) => void}) {
 

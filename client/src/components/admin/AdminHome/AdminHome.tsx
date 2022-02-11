@@ -1,6 +1,6 @@
-import styles from './admin.module.css';
-import { Guest } from "../../models/Guest";
-import { GuestRows } from './GuestData/GuestRows';
+import styles from '../admin.module.css';
+import { Guest } from "../../../models/Guest";
+import { GuestRows } from './GuestRows';
 
 export function AdminHome(props: {guests: Guest[]}) {
 

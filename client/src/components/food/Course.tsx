@@ -1,23 +1,16 @@
-import { useAppDispatch } from "../../app/hooks";
 import { foodItem } from "../../models/FoodItem"
 
-export function Course(props: { courseTitle: string, course: string, foodItems: foodItem[], 
-    isVegan: boolean, isPolish: boolean, choice: number | undefined}) {
-    
-    const dispatch = useAppDispatch();
-    const setCourse = (course: string, value: number | undefined) => 
-    {
-        dispatch({
-            type: `food/${course}Selected`, 
-            payload: value})
-    }
+export type Course = 'starter' | 'main' | 'dessert';
 
+export function MenuCourse(props: { courseTitle: string, course: Course, foodItems: foodItem[], 
+    isVegan: boolean, isPolish: boolean, choice: number | undefined, setChoice: (choice: number | undefined, param: Course) => void}) {
+    
     const index = props.isPolish ? 1 : 0;
     const foodItems = props.foodItems
         .filter(option => props.isVegan ? option.isVegan : option)
         .map(option => 
-            renderOption(option, index, props.course, 
-                () => setCourse(props.course, option.value), option.value === props.choice))
+            renderOption(option, index, props.course, option.value === props.choice,
+                () => props.setChoice(option.value, props.course), ))
 
     return (
             <div className="course-box">
@@ -27,22 +20,22 @@ export function Course(props: { courseTitle: string, course: string, foodItems: 
                 </table>
                 {
                     props.choice !== undefined &&
-                    <button className="cancel" onClick={() => setCourse(props.course, undefined)}>&#10007;</button>
+                    <button className="cancel" onClick={() => props.setChoice(undefined, props.course)}>&#10007;</button>
                 }
             </div>
     )
 }
 
-function renderOption(option: foodItem, index: number, course: string, onClick: () => void, isSelected: boolean) {
+function renderOption(option: foodItem, index: number, course: Course,  isSelected: boolean, setChoice: (choice: number | undefined, param: Course) => void,) {
 
-     return(
+     return(    
         <div className="course-wrapper">
             <tr className="course-row">
-                <td className="table-data">
+                <td className="table-data" key={option.name[0]}>
                     <label className="form-control">
                         <input type="radio" 
                             name={course} id={`${course}${option.value}`} 
-                            value={option.value} onChange={onClick} checked={isSelected}>
+                            value={option.value} onChange={() => setChoice(option.value, course)} checked={isSelected}>
                         </input>
                     </label>
                 </td>

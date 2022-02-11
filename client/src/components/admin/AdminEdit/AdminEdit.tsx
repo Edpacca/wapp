@@ -1,10 +1,10 @@
-import styles from './admin.module.css';
-import { Guest } from "../../models/Guest";
-import { GuestManager } from "./GuestData/GuestManager";
+import styles from '../admin.module.css';
+import { Guest } from "../../../models/Guest";
+import { GuestManager } from "./GuestManager";
 import { SubmitUsersModal } from './SubmitUsersModal';
 import { useState } from 'react';
 
-export function EditUsers(props: {guests: Guest[]}) {
+export function AdminEdit(props: {guests: Guest[]}) {
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 

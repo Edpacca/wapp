@@ -1,28 +1,21 @@
 import "./home.css"
-import diamond from "../../assets/diamond-white.svg"
-import { HomeMealChoices } from "./HomeMealChoices"
-import { useState } from "react"
+import diamond from "../../assets/diamond-white-AE.svg"
+import { Guest } from "../../models/Guest"
+import { LoginStatus } from "../login/LoginStatus"
 
-export function Home() {
-
-    const [isChoices, setIsChoices] = useState(false)
+export function Home(props: {family: string, guests: Guest[]}) {
 
     return(
         <div>
-        <div className="App-header">
-            <img src={diamond} className="App-logo" alt="diamond"/>
-            <h1 className="initials">A | E</h1>
+        <div className="App-centered">
+            <img src={diamond} className="App-logo-homepage" alt="diamond"/>
         </div>
+        <LoginStatus family={props.family} guests={props.guests}/>
         <div className="home-info">
             <p>16 - 07 - 22</p>
             <p>House at Bridge of Lochay</p>
             <p>Killin, Scotland</p>
         </div>
-        <div className="menu-choices">
-            <button className="choices-toggle" onClick={() => setIsChoices(!isChoices)}>&#127869;</button>
-            <HomeMealChoices isActive={isChoices}/>
         </div>
-        </div>
-
     )
 }

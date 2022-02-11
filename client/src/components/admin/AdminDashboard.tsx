@@ -3,13 +3,13 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useContext } from "react";
 import { adminLogout, getGuests, selectGuests } from "./adminSlice";
 import { useNavigate } from 'react-router-dom';
-import { EditUsers } from './EditUsers';
+import { AdminEdit } from './AdminEdit/AdminEdit';
 import { AdminNavBar } from '../nagivation/AdminNavBar';
 import { AdminPage } from '../../models/AdminPage';
 import { selectPageAdmin } from '../nagivation/NavigationSlice';
-import { AdminHome } from './AdminHome';
+import { AdminHome } from './AdminHome/AdminHome';
 import { Guest } from '../../models/Guest';
-import { AdminCreate } from './AdminCreate';
+import { AdminCreate } from './AdminCreate/AdminCreate';
 
 export function AdminDashboard() {
     const dispatch = useAppDispatch();
@@ -31,7 +31,7 @@ export function AdminDashboard() {
             <AdminNavBar page={page}/>
                 { page === 'home' && <AdminHome guests={guests}/> }
                 { page === 'create' && <AdminCreate/> }
-                { page === 'edit' && <EditUsers guests={guests}/> }
+                { page === 'edit' && <AdminEdit guests={guests}/> }
         </div>)
 }
 

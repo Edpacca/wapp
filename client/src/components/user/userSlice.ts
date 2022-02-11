@@ -8,15 +8,15 @@ import { WappError } from "../../models/WappError";
 export interface UserState {
     family: string | undefined,
     guests: Guest[],
-    status: Status,
     errors: WappError[]
+    status: Status,
 };
 
 const initialState: UserState = {
     family: undefined,
     guests: [],
+    errors: [],
     status: 'idle',
-    errors: []
 };
 
 export const userLogin = createAsyncThunk(
@@ -54,6 +54,23 @@ export const userLogout = createAsyncThunk(
     }
 );
 
+export const submitGuestUpdateUser = createAsyncThunk(
+    'users/submitGuestChoices', 
+    async(request: Guest) => {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest`, {
+            credentials: 'include',
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token' : `${process.env.REACT_APP_CLIENT_TOKEN}`
+            },
+            body: JSON.stringify(request)
+        }).then(response => response.json());
+        return response;
+    }
+)
+
 export const userSlice = createSlice({
     name: 'users',
     initialState,
@@ -62,18 +79,6 @@ export const userSlice = createSlice({
             state.family = action.payload.family;
             state.guests = action.payload.guests;
             state.status = 'idle'
-        },
-        starterSelected: (state, action) => {
-
-        },
-        mainSelected: (state, action) => {
-
-        },
-        dessertSelected: (state, action) => {
-
-        },
-        dietSelected: (state, action) => {
-
         }
     },
     extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
@@ -111,11 +116,21 @@ export const userSlice = createSlice({
             state.status ='idle';
             state.errors = [];
         })
+        .addCase(submitGuestUpdateUser.fulfilled, (state, action) => {
+            const index = state.guests.findIndex(guest => guest.id === action.payload.id);
+            state.guests[index] = {...action.payload}
+        })
+        .addCase(submitGuestUpdateUser.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(submitGuestUpdateUser.rejected, (state) => {
+            state.status = 'failed';
+        })
     }
 });
 
-export const selectFamily = (state: RootState): string => state.users.family as string;
-export const selectGuests = (state: RootState): Guest[] => state.users.guests;
+export const selectFamilyName = (state: RootState): string => state.users.family as string;
+export const selectUserGuests = (state: RootState): Guest[] => state.users.guests;
 export const selectLoginStatus = (state: RootState): Status => state.users.status;
 export const selectErrors = (state: RootState): WappError[] => state.users.errors;
 

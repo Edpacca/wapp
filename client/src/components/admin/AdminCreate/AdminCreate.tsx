@@ -1,4 +1,4 @@
-import styles from './admin.module.css';
+import styles from '../admin.module.css';
 import { AddGuest } from "./AddGuest";
 import { CreateUser } from "./CreateUser";
 
