@@ -24,11 +24,10 @@
   }
   
   .members {
-    position: absolute;
     width: 14em;
     padding: 0.5em;
     text-align: left;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-top: 0px;
     border-radius: 0 0 10px 10px;
