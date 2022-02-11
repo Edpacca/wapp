@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router';
 export function Wapp() {
 
   const page = useAppSelector(selectPageUser);
-  const members = useAppSelector(selectUserGuests);
+  const guests = useAppSelector(selectUserGuests);
   const family = useAppSelector(selectFamilyName);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -32,8 +32,7 @@ export function Wapp() {
       {
         page === 'home' &&
         <div>
-          <Home />
-          <LoginStatus family={family} guests={members}/>
+          <Home family={family} guests={guests} />
           <button onClick={() => logout()} className="button">Logout</button>
         </div>
       }

@@ -9,8 +9,9 @@
   }
 
   .login-status {
+    text-align: left;
     padding: 0.5em;
-    width: 80vw;
+    width: 14em;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -21,15 +22,10 @@
     border-radius: 10px 10px 0 0;
     border-bottom: 0px;
   }
-
-  .arrows {
-    margin: 0 1em;
-    color: rgba(255, 255, 255, 0.5);
-  }
   
   .members {
     position: absolute;
-    width: 80vw;
+    width: 14em;
     padding: 0.5em;
     text-align: left;
     background-color: rgba(0, 0, 0, 0.7);
@@ -38,8 +34,23 @@
     border-radius: 0 0 10px 10px;
   }
   
-  .dropdown-button {
-    background-color: transparent;
-    color: white;
-    border-style: none;
+  .icons {
+    margin: 0 1em;
+    color: rgba(255, 255, 255, 0.75);
   }
+
+  .info {
+    margin: 0 1em;
+    font-style: italic;
+    color: goldenrod
+  }
+
+  .right {
+    float: right;
+  }
+
+  .arrow {
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding-left: 1em;
+  }
+  
