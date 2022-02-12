@@ -2,30 +2,29 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    color: white;
-    width: 80%;
-    margin: auto
+    margin: auto;
+    width: 90vw;
+}
+
+.courses-wrapper {
+  margin: auto;
+
 }
 
 .menu-header {
     text-align: center;
-    font-size: 3rem;
-    font-weight: 400;
     font-style: italic;
-    margin-bottom: 5vh;
-    width: 100%;
-}
+    margin: 3vh;
 
-.courses-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.course-box {
-    background-color: rgba(255, 255, 255, 0.205);
-    border-radius: 4px;
-    padding: 1rem;
-    margin-bottom: 2rem;
+    h2 {
+      font-size: 3rem;
+      font-weight: 400;
+      margin: 0;
+    }
+    p {
+      font-size: 1.5em;
+      margin: 0;
+    }
 }
 
 .course-options {
@@ -91,7 +90,6 @@ input[type="radio"] {
      box-shadow: inset 1em 1em var(--form-control-color);
      border: 2px solid white;
   }
-  
 
   .right-float {
     margin-left: auto;
@@ -108,28 +106,7 @@ input[type="radio"] {
     margin: auto;
   }
 
-  .textarea {
-    background-color: rgba(119, 119, 119, 0.35);
-    padding: 0.75rem;
-    margin: auto;
-    margin-bottom: 2rem;
-    width: 100%;
-    border-width: 0px;
-    border-radius: 10px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: large;
-    color: white;
-    text-align: left;
-    height: 2.75rem;
-  }
 
-  .textarea::placeholder {
-    color: var(--vegan-green);
-  }
-  
-  .textarea:focus {
-    background-color: rgba(119, 119, 119, 0.5);
-  }
 
   .error {
     color: var(--vegan-green);

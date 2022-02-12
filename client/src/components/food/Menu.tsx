@@ -13,7 +13,6 @@ import { GuestDropDown } from '../common/GuestDropDown';
 export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest | undefined}) {
 
     const guests = props.guests;
-    const family = props.family;
     const [isVegan, setIsVegan ] = useState(false);
     const [isPolish, setIsPolish ] = useState(false);
     const [activeGuest, setActiveGuest] = useState<Guest | undefined>(props.activeGuest);
@@ -68,8 +67,11 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
     return (
         <div className="menu-wrapper">
             <div>
-                <GuestDropDown placeholder={family} guests={guests} selectOption={selectActiveGuestById} />
-                <p>Active guest: {activeGuest?.name}</p>
+                <GuestDropDown placeholder='Select guest' guests={guests} selectOption={selectActiveGuestById} />
+                <div className='menu-header'>
+                    <h2>À la Carte</h2>
+                    { activeGuest && <p>{activeGuest?.name} is choosing...</p> }
+                </div>
             </div>
             <div className="switches">
                 <WappSwitch
@@ -90,12 +92,12 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
             }
             {
                 activeGuest &&
-                <div className="courses-wrapper">
-                    <div >
+                <div>
+                    <div className="courses-wrapper">
                         <MenuCourse courseTitle={"Starter"} course={'starter'} foodItems={starters} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.starter} setChoice={updateActiveGuestCourse}/>
                         <MenuCourse courseTitle={"Main Course"} course={'main'} foodItems={mains} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.main} setChoice={updateActiveGuestCourse}/>
                         <MenuCourse courseTitle={"Dessert"} course={'dessert'} foodItems={desserts} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.dessert} setChoice={updateActiveGuestCourse}/>
-                        <textarea className="textarea" placeholder={activeGuest.diet && (activeGuest.diet as string).length > 0 ? activeGuest.diet : "Enter any dietary requirements here"} onChange={(e) => updateDiet(e.target.value)}/>
+                        <textarea placeholder={activeGuest.diet && (activeGuest.diet as string).length > 0 ? "Diet: " + activeGuest.diet : "Enter any dietary requirements here"} onChange={(e) => updateDiet(e.target.value)}/>
                     </div>
                     <div className='choices'>
                     <strong>{activeGuest.name}'s choices...</strong>

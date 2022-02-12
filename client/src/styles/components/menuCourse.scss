@@ -1,0 +1,92 @@
+@import '../common/colours.scss';
+
+
+
+@media only screen and (min-width: 1200px) {
+    .courses-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 2em;
+    }
+}
+
+
+.course-sheet {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 8px;
+    color: $ink;
+    margin: 2rem auto;
+    padding-bottom: 0.5em;
+    overflow-wrap: wrap;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 100%;
+    h2 {
+        padding-top: 1em;
+        font-family: initial;
+        font-style: italic;
+    }
+}
+
+.bkg-starter {
+    background-image: url('/src/assets/menu-paper-starter.webp');
+}
+
+.bkg-main {
+    background-image: url('/src/assets/menu-paper-main.webp');
+}
+
+.bkg-dessert {
+    background-image: url('/src/assets/menu-paper-dessert.webp');
+}
+
+.course-options-wrapper {
+    display: grid;
+    font-size: calc(10px + 1vmin);
+    align-content: center;
+    align-items: center;
+    justify-content: start;
+    padding-bottom: 2em;
+}
+
+.course-option {
+    padding: 0.75em;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    align-content: center;
+    align-items: center;
+    justify-content: start;
+}
+
+.course-button {
+    all: revert;
+    height: 1.5em;
+    width: 1.5em;
+    background-color: $transparent;
+    border: 1px solid $ink;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $ink;
+}
+
+.course-button-cancel {
+    all: revert;
+    height: 2em;
+    width: 2em;
+    border-radius: 4px;
+    margin: auto;
+    background-color: $transparent;
+    border: 1px solid $ink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $ink;
+}
+
+.course-check {
+    margin-left: 5px;
+    margin-bottom: 3px;
+}
