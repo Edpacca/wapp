@@ -1,7 +1,5 @@
 @import '../common/colours.scss';
 
-
-
 @media only screen and (min-width: 1200px) {
     .courses-wrapper {
         display: grid;
@@ -9,7 +7,6 @@
         column-gap: 2em;
     }
 }
-
 
 .course-sheet {
     background-repeat: no-repeat;
@@ -53,10 +50,11 @@
     padding: 0.75em;
     text-align: left;
     display: grid;
-    grid-template-columns: 1fr 8fr;
+    grid-template-columns: 5vmin auto;
     align-content: center;
     align-items: center;
     justify-content: start;
+    column-gap: 1em;
 }
 
 .course-button {
@@ -70,6 +68,11 @@
     align-items: center;
     justify-content: center;
     color: $ink;
+}
+
+.course-button:hover {
+    border: 2px solid $ink;
+    background-color: $transparent;
 }
 
 .course-button-cancel {
@@ -89,4 +92,8 @@
 .course-check {
     margin-left: 5px;
     margin-bottom: 3px;
+}
+
+.course-option-selected {
+    border: 2px solid $ink;
 }

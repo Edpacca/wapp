@@ -8,7 +8,7 @@
 
 .courses-wrapper {
   margin: auto;
-
+  width: 90vw;
 }
 
 .menu-header {
@@ -27,106 +27,16 @@
     }
 }
 
-.course-options {
-    font-weight: bold;
-    list-style: none;
+.switches {
+  display: flex;
+  width: 90vw;
 }
 
-.option {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    align-items: center;
+.right-switch {
+  margin-left: auto;
+  order: 2;
 }
 
-.food-description {
-    font-style: italic;
+.choice {
+  padding: 0.5em;
 }
-
-.food-label {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    }
-
-.course-table {
-    width: 100%;
-}
-
-.course-row {
-    border: 0px solid rgb(255, 255, 255);
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 16fr 2fr;
-    align-items: center;
-    text-align: left;
-    margin: 0.25rem;
-    border-radius: 3px;
-}
-
-.food-name {
-    display: flex;
-}
-
-.food-img {
-    width: 100%;
-}
-
-.form-control {
-    margin: 1rem;
-}
-
-input[type="radio"] {
-    appearance: none;
-    background-color: rgba(255, 255, 255, 0.1);
-    margin: 0;
-    font: inherit;
-    width: 1.1em;
-    height: 1.1em;
-    border: 1px solid white;
-    border-radius: 20%;
-  }
-
-  input[type="radio"]:checked {
-     box-shadow: inset 1em 1em var(--form-control-color);
-     border: 2px solid white;
-  }
-
-  .right-float {
-    margin-left: auto;
-    order: 2;
-    }
-
-  .choice {
-    margin: 1rem;
-  }
-
-  .choices {
-    font-size: larger;
-    text-align: center;
-    margin: auto;
-  }
-
-
-
-  .error {
-    color: var(--vegan-green);
-  }
-
-  .smalltext {
-    font-size: initial;
-  }
-
-  .cancel {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: large;
-    color: white;
-    border-width: 0px;
-    border-style: solid white;
-  }
-  
-  .cancel:hover {
-    background-color: rgba(170, 170, 170, 0.5);
-  }

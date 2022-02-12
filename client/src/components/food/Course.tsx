@@ -49,7 +49,7 @@ function renderOption(option: foodItem, index: number, course: Course,  isSelect
     
     return (
         <div className="course-option">
-                <button className="course-button" onClick={() => setChoice(option.value, course)}>
+                <button className={`course-button ${isSelected ? 'course-option-selected' : ''}`} onClick={() => setChoice(option.value, course)}>
                         {isSelected && <FontAwesomeIcon icon={faCheck} size="2x" className="course-check"/>}
                 </button>
                 {option.name[index]}

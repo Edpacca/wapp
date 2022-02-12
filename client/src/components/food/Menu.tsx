@@ -74,17 +74,22 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
                 </div>
             </div>
             <div className="switches">
-                <WappSwitch
-                    isFlag={isVegan}
-                    handleChange={() => handleChange(setIsVegan, isVegan)}
-                    switchClass="vegan-switch"
-                    sliderClass="slider"/>
-
-                <WappSwitch
-                    isFlag={isPolish}
-                    handleChange={() => handleChange(setIsPolish, isPolish)}
-                    switchClass="polski-switch"
-                    sliderClass="slider-polski"/>
+                <div>
+                    <WappSwitch
+                        isFlag={isVegan}
+                        handleChange={() => handleChange(setIsVegan, isVegan)}
+                        switchClass="vegan-switch"
+                        sliderClass="slider"/>
+                    <p className='slider-label'>Vegan</p>
+                </div>
+                <div className="right-switch">
+                    <WappSwitch
+                        isFlag={isPolish}
+                        handleChange={() => handleChange(setIsPolish, isPolish)}
+                        switchClass="polski-switch"
+                        sliderClass="slider-polski"/>
+                    <p className='slider-label'>Polski</p>
+                </div>
             </div>
             {
                 activeGuest && showSubmit &&
@@ -99,7 +104,7 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
                         <MenuCourse courseTitle={"Dessert"} course={'dessert'} foodItems={desserts} isVegan={isVegan} isPolish={isPolish} choice={activeGuest.dessert} setChoice={updateActiveGuestCourse}/>
                         <textarea placeholder={activeGuest.diet && (activeGuest.diet as string).length > 0 ? "Diet: " + activeGuest.diet : "Enter any dietary requirements here"} onChange={(e) => updateDiet(e.target.value)}/>
                     </div>
-                    <div className='choices'>
+                    <div>
                     <strong>{activeGuest.name}'s choices...</strong>
                         {renderChoices(activeGuest, isPolish ? 1 : 0, allChoicesMade(activeGuest), setShowSubmit)}
                     </div>
@@ -122,10 +127,10 @@ function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean, setSh
                     <p>Excellent decisions {guest.name}.</p>
                 </div>
             }
-            {guest.diet === undefined ? <p className="vegan">{chosenTexts.diet[0]}</p> : <span><p className="vegan">{chosenTexts.diet[1]}</p>{guest.diet && (guest.diet as string).length > 0 ? guest.diet : "None"}</span>}
+            {guest.diet === undefined ? <p className="green">{chosenTexts.diet[0]}</p> : <span className="green"><p>{chosenTexts.diet[1]}</p>{guest.diet && (guest.diet as string).length > 0 ? guest.diet : "None"}</span>}
 
             <p className="smalltext">Are you ready to submit? You can change your mind up until 1st July 2022</p>
-            <button className="button" onClick={() => setShowSubmit(true)}>Submit Choices</button>
+            <button onClick={() => setShowSubmit(true)}>Submit Choices</button>
         </div>
     )
 }
@@ -143,7 +148,7 @@ function renderChoice(course: foodItem[], choice: number | undefined, languageIn
     )}
     return (
         <div className="choice">
-            <span className="inline error">
+            <span className="orange">
                 {`No ${courseName} chosen.`}
             </span>
         </div>
