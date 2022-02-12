@@ -1,8 +1,5 @@
-export function WappSwitch(props: {isFlag: boolean, 
-    handleChange: () => void, 
-    text: string, textClass: string, 
-    sliderClass: string, 
-    switchClass: string}) {
+export function WappSwitch(props: {isFlag: boolean, handleChange: () => void, 
+    sliderClass: string, switchClass: string}) {
     return(
         <div className={props.switchClass}>
             <div className="inline">
@@ -10,7 +7,6 @@ export function WappSwitch(props: {isFlag: boolean,
                     <input type="checkbox" checked={props.isFlag} onChange={() => props.handleChange()}/>
                     <span className={props.sliderClass}></span>
                 </label>
-                <p className={props.textClass}>{props.text}</p>
             </div>
         </div>
     )

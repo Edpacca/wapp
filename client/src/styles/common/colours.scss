@@ -1,0 +1,17 @@
+$transparent: rgba(0, 0, 0, 0);
+$white50: rgba(255, 255, 255, 0.5);
+$white75: rgba(255, 255, 255, 0.75);
+$black50: rgba(0, 0, 0, 0.5);
+$error: rgb(148, 30, 0);
+
+.green {
+    color: greenyellow;
+}
+  
+.orange {
+    color: orange;
+}
+
+.red {
+    color: $error
+}

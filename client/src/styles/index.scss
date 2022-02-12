@@ -1,0 +1,33 @@
+@import './app.scss';
+
+// Components
+@import './components/button.scss';
+@import './components/dropdown.scss';
+@import './components/modal.scss';
+@import './components/navigation.scss';
+@import './components/switch.scss';
+@import './components/textbox.scss';
+@import './components/menu.scss';
+
+//Common
+@import './common/colours.scss';
+@import './common/layout.scss';
+@import './common/types.scss';
+
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  -webkit-font-smoothing: antialiased;
+  color: white;
+  -moz-osx-font-smoothing: grayscale;
+  background: url('/src/assets/forest-background3.webp') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

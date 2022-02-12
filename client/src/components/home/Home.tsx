@@ -1,7 +1,7 @@
 import "./home.css"
 import diamond from "../../assets/diamond-white-AE.svg"
 import { Guest } from "../../models/Guest"
-import { LoginStatus } from "../login/LoginStatus"
+import { GuestDropDown } from "../common/GuestDropDown"
 
 export function Home(props: {family: string, guests: Guest[]}) {
 
@@ -10,7 +10,7 @@ export function Home(props: {family: string, guests: Guest[]}) {
         <div className="App-centered">
             <img src={diamond} className="App-logo-homepage" alt="diamond"/>
         </div>
-        <LoginStatus family={props.family} guests={props.guests}/>
+        <GuestDropDown placeholder={props.family} guests={props.guests}/>
         <div className="home-info">
             <p>16 - 07 - 22</p>
             <p>House at Bridge of Lochay</p>

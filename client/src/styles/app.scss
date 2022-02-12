@@ -1,0 +1,35 @@
+@import './common/colours.scss';
+
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo-login {
+  height: 25vh;
+  pointer-events: none;
+  margin: 10vh;
+}
+
+.App-logo-homepage {
+  height: 35vh;
+  pointer-events: none;
+  margin: 0 0 5vh;
+  filter: drop-shadow(0 0 12px $white50);
+}
+
+.App-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-header {
+  min-height: calc( 30vh + 10vw );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

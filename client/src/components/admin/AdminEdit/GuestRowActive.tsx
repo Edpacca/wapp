@@ -2,7 +2,7 @@ import styles from '../admin.module.css';
 import { Guest } from "../../../models/Guest";
 import { foodItem } from '../../../models/FoodItem';
 import { useState } from 'react';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch } from '../../../store/hooks';
 import { editGuest } from '../adminSlice';
 
 export function GuestRowActive(props: {guest: Guest, active: boolean, setActive: () => void,  canDelete: boolean, setCanDelete: () => void,

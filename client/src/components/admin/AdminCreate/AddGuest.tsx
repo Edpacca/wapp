@@ -1,6 +1,6 @@
 import styles from '../admin.module.css';
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { AddGuestRequest } from "../../../models/CreateFamily";
 import { addGuestToFamily, selectFamilies } from '../adminSlice';
 

@@ -1,0 +1,59 @@
+@import '../common/colours.scss';
+
+.dropdown-wrapper {
+  font-size: large;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown {
+    text-align: left;
+    width: 14em;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid $white50;
+    color: white;
+    padding: 0.5em 0;
+  }
+
+  .dd-active {
+    border-radius: 10px 10px 0 0;
+    border-bottom: 0px;
+  }
+  
+  .dd-options {
+    width: 14em;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid $white50;
+    border-top: 0px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .dd-option {
+    box-sizing: border-box;
+    padding: 0.5em;
+  }
+
+  .dd-select:hover {
+    color: goldenrod;
+    font-weight: bold;
+    background-color: $black50;
+    // background-image: linear-gradient($transparent, black, $transparent); 
+  }
+
+  .dd-arrow {
+    border-left: 1px solid $white50;
+  }
+
+  .dd-icon {
+    padding: 0 1em;
+  }
+
+  .dd-option-icon {
+    margin: auto;
+    color: $white75;
+  }

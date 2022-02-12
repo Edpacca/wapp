@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { Menu } from '../food/Menu';
 import { Home } from '../home/Home';
 import { Itinerary } from '../info/Itinerary';
@@ -6,7 +6,6 @@ import { NavBar } from '../nagivation/NavBar';
 import { selectPageUser } from '../nagivation/NavigationSlice';
 import { WappMap } from '../map/WappMap'
 import { selectFamilyName, selectUserGuests, userLogout } from '../user/userSlice';
-import { LoginStatus } from '../login/LoginStatus';
 import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 import { useNavigate } from 'react-router';
@@ -33,12 +32,12 @@ export function Wapp() {
         page === 'home' &&
         <div>
           <Home family={family} guests={guests} />
-          <button onClick={() => logout()} className="button">Logout</button>
+          <button onClick={() => logout()}>Logout</button>
         </div>
       }
       {
         page === 'meal' &&
-        <Menu />
+        <Menu family={family} guests={guests}/>
       }
       {
         page === 'info' &&

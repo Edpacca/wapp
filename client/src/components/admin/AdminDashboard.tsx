@@ -1,5 +1,5 @@
 import AuthContext from '../../context/AuthContext';
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useContext } from "react";
 import { adminLogout, getGuests, selectGuests } from "./adminSlice";
 import { useNavigate } from 'react-router-dom';

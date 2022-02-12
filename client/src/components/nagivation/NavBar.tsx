@@ -1,7 +1,6 @@
 import { TabLink } from "./TabLink";
-import '../../styles/navigation.css';
 import { UserPage } from "../../models/ActivePage";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch } from "../../store/hooks";
 import {
     changePageUser
 } from './NavigationSlice'

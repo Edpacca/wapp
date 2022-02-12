@@ -1,5 +1,5 @@
 import styles from '../admin.module.css';
-import { useAppDispatch } from "../../../app/hooks";
+import { useAppDispatch } from "../../../store/hooks";
 import { useState } from "react";
 import { registerUser } from "../adminSlice";
 import { CreateFamily } from "../../../models/CreateFamily";

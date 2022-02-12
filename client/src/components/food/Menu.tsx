@@ -1,21 +1,19 @@
-import styles from './food.module.css'
 import { Course, MenuCourse } from './Course';
-import './menu.css';
 import { starters, mains, desserts, chosenTexts } from '../../data/menuData';
 import { useState, Dispatch, SetStateAction } from 'react';
-import { WappSwitch } from './WappSwitch';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { Choices } from '../../models/Choices';
+import { WappSwitch } from '../common/WappSwitch';
+import { useAppDispatch } from '../../store/hooks';
 import { foodItem } from '../../models/FoodItem';
 import { Guest } from '../../models/Guest';
-import { GuestListChoices } from './guestListChoicese';
-import { selectUserGuests, submitGuestUpdateUser } from '../user/userSlice';
+import { submitGuestUpdateUser } from '../user/userSlice';
 import { SubmitGuestChoiceModal } from './SubmitGuestChoiceModal';
 import { allChoicesMade } from '../../helpers/allChoicesMade';
+import { GuestDropDown } from '../common/GuestDropDown';
 
-export function Menu() {
+export function Menu(props: {family: string, guests: Guest[]}) {
 
-    const guests = useAppSelector(selectUserGuests);
+    const guests = props.guests;
+    const family = props.family;
     const [isVegan, setIsVegan ] = useState(false);
     const [isPolish, setIsPolish ] = useState(false);
     const [activeGuest, setActiveGuest] = useState<Guest | undefined>(undefined);
@@ -30,18 +28,6 @@ export function Menu() {
         const guest = guests.find(g => g.id === id);
         if (guest) setActiveGuest(guest);
         else setActiveGuest(undefined);
-    }
-
-    function renderDropDown(guests: Guest[]) {
-        return (
-            <select className={styles.guestDropDown} onChange={(e) => selectActiveGuestById(e.target.value)}>
-                <option className={styles.guestOption}>Select Guest</option>
-                {guests.map(guest => <option 
-                className={styles.guestOption} 
-                key={guest.id} value={guest.id}
-                >{guest.name}</option>)}
-            </select>
-        )
     }
 
     function updateActiveGuestCourse(value: number | undefined, param: Course ) {
@@ -81,29 +67,22 @@ export function Menu() {
 
     return (
         <div className="menu-wrapper">
-            <div className="menu-header">For Dinner</div>
-            <div className="guest-choices-top">
-                {renderDropDown(guests)}
+            <div>
+                <GuestDropDown placeholder={family} guests={guests} selectOption={selectActiveGuestById} />
                 <p>Active guest: {activeGuest?.name}</p>
-
             </div>
             <div className="switches">
                 <WappSwitch
                     isFlag={isVegan}
                     handleChange={() => handleChange(setIsVegan, isVegan)}
-                    text="Filter vegan"
-                    textClass="vegan"
                     switchClass="vegan-switch"
                     sliderClass="slider"/>
-                <div className="right-float">
-                    <WappSwitch
-                        isFlag={isPolish}
-                        handleChange={() => handleChange(setIsPolish, isPolish)}
-                        text="Polski"
-                        textClass="polski"
-                        switchClass="polski-switch"
-                        sliderClass="slider-polski"/>
-                </div>
+
+                <WappSwitch
+                    isFlag={isPolish}
+                    handleChange={() => handleChange(setIsPolish, isPolish)}
+                    switchClass="polski-switch"
+                    sliderClass="slider-polski"/>
             </div>
             {
                 activeGuest && showSubmit &&

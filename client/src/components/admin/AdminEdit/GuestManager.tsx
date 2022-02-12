@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../../app/hooks";
+import { useAppSelector } from "../../../store/hooks";
 import { Guest } from "../../../models/Guest";
 import { selectFamilies } from "../adminSlice";
 import { FamilyTable } from './FamilyTable';

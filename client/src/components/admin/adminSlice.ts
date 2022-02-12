@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder, createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
+import { RootState } from "../../store/store";
 import { AddGuestRequest, CreateFamily } from "../../models/CreateFamily";
 import { Status } from "../../models/Status";
 import { Guest } from '../../models/Guest';
