@@ -10,13 +10,13 @@ import { SubmitGuestChoiceModal } from './SubmitGuestChoiceModal';
 import { allChoicesMade } from '../../helpers/allChoicesMade';
 import { GuestDropDown } from '../common/GuestDropDown';
 
-export function Menu(props: {family: string, guests: Guest[]}) {
+export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest | undefined}) {
 
     const guests = props.guests;
     const family = props.family;
     const [isVegan, setIsVegan ] = useState(false);
     const [isPolish, setIsPolish ] = useState(false);
-    const [activeGuest, setActiveGuest] = useState<Guest | undefined>(undefined);
+    const [activeGuest, setActiveGuest] = useState<Guest | undefined>(props.activeGuest);
     const [showSubmit, setShowSubmit] = useState<Boolean>(false);
     const dispatch = useAppDispatch();
 

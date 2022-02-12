@@ -13,7 +13,7 @@ function App() {
     <div className="App">
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<UserApp/>}/>
+                <Route path="" element={<UserApp/>}/>
                 <Route path="/admin" element={<Admin isAdmin={loginContext === 'admin'}/>}/>
             </Routes>
         </BrowserRouter>

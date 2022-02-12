@@ -4,7 +4,7 @@ import { useState } from "react";
 import { allChoicesMade } from "../../helpers/allChoicesMade";
 import { Guest } from "../../models/Guest";
 
-export function GuestDropDown(props: {placeholder: string, guests: Guest[], selectOption?: (option: string) => void}) {
+export function GuestDropDown(props: {placeholder: string, guests: Guest[], selectOption: (option: string) => void}) {
     
     const [isActive, setIsActive] = useState(false);
 
@@ -14,10 +14,8 @@ export function GuestDropDown(props: {placeholder: string, guests: Guest[], sele
             ? <FontAwesomeIcon icon ={faCheck}/> 
             : <span className='info'>choose meal</span>;
 
-        const selectStyle = props.selectOption ? 'dd-select' : '';
-        const select = props.selectOption ? props.selectOption : () => {};
         return (
-            <div className={`dd-option inline ${selectStyle}`} onClick={() => select(guest.id)}>
+            <div className={`dd-option inline dd-select`} onClick={() => props.selectOption(guest.id)}>
                 <option key={guest.name}>
                     {guest.name} 
                 </option>
@@ -30,7 +28,10 @@ export function GuestDropDown(props: {placeholder: string, guests: Guest[], sele
 
     return (
         <div className="dropdown-wrapper">
-            <div className={`dropdown ${isActive ? 'dd-active' : ""}`} onClick={() => setIsActive(!isActive)}>
+            <div className={`dropdown ${isActive ? 'dd-active' : ""}`} onClick={() => { 
+                setIsActive(!isActive);
+                props.selectOption("");
+            }}>
                 <span className='dd-icon'><FontAwesomeIcon icon={faUserGroup}/></span>
                 <span>{props.placeholder}</span>
                 {arrows(isActive)}
