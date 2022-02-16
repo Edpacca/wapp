@@ -1,5 +1,6 @@
 .scroll-img-wrapper {
-    width: 50%;
+    overflow: visible;
+    position: absolute;
+    width: 20em;
     justify-content: center;
-    margin: auto;
 }

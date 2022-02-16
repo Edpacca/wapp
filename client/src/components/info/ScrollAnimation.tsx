@@ -1,20 +1,30 @@
-export function ScrollAnimation(props: { imageUrl: string }) {
+import { useEffect, useState } from "react";
 
-    let lastKnownScrollPosition = 0;
+export function ScrollAnimation(props: { imageUrl: string, id: string, vFactor: number,  hFactor: number}) {
 
-    function move(event) {
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const handleScroll = () => {
+        const position = window.scrollY;
+        const element = document.getElementById(props.id);
+        if (element) { 
+            element.style.marginTop = (props.vFactor * position).toString() + "px";
+            element.style.marginLeft = (props.hFactor * position).toString() + "px";
+        }
+        setScrollPosition(position)
+    } 
+    
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
 
-    }
-
-    document.addEventListener('scroll', move(e) {
-        lastKnownScrollPosition = window.scrollY;
-        
-    })
-
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     return(
-        <div className="scroll-img-wrapper">
-            <img src={props.imageUrl} alt=""></img>
+        <div className="scroll-img-wrapper" id={props.id}>
+            <img  src={props.imageUrl} alt=""></img>
+            <p>{scrollPosition}</p>
         </div>    
     )
 }
