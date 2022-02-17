@@ -1,6 +1,10 @@
 .scroll-img-wrapper {
-    overflow: visible;
     position: absolute;
-    width: 20em;
+    width: 2em;
     justify-content: center;
+}
+
+.leaf_1 {
+    position: absolute;
+    overflow-x: hidden;
 }

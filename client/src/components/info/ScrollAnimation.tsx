@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
+import { XY } from "../../models/XY";
 
-export function ScrollAnimation(props: { imageUrl: string, id: string, vFactor: number,  hFactor: number}) {
+export function ScrollAnimation(props: { imageUrl: string, id: string, startingPos: XY, vFactor: number,  hFactor: number}) {
 
-    const [scrollPosition, setScrollPosition] = useState(0);
+    const [yScrollPosition, setyScrollPosition] = useState(0);
+    const [imgPos, setImgPos] = useState<XY>(props.startingPos);
+
     const handleScroll = () => {
-        const position = window.scrollY;
-        const element = document.getElementById(props.id);
+        const yScroll = window.scrollY;
+        const x = props.startingPos.x + (props.hFactor * yScroll);
+        const y = props.startingPos.y + (props.vFactor * yScroll);
+        setImgPos({x, y});
+        const element = document.getElementById(props.id)
         if (element) { 
-            element.style.marginTop = (props.vFactor * position).toString() + "px";
-            element.style.marginLeft = (props.hFactor * position).toString() + "px";
+            element.style.left = x.toString() + "px";
+            element.style.top = y.toString() + "px";
         }
-        setScrollPosition(position)
+        setyScrollPosition(yScroll)
     } 
     
     useEffect(() => {
@@ -23,8 +29,10 @@ export function ScrollAnimation(props: { imageUrl: string, id: string, vFactor: 
 
     return(
         <div className="scroll-img-wrapper" id={props.id}>
-            <img  src={props.imageUrl} alt=""></img>
-            <p>{scrollPosition}</p>
+            <img className={props.id} src={props.imageUrl} alt=""></img>
+            <p>{yScrollPosition}</p>
+            <p>x: {imgPos.x}</p>
+            <p>y: {imgPos.y}</p>
         </div>    
     )
 }

@@ -1,8 +1,13 @@
 .itinerary {
-    width: 80vw;
-    height: 400vh;
-    margin: auto;
-    overflow-x: hidden;
+    background: url('/src/assets/menu-paper-dessert.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+     background-position: center, center;
+    background-attachment: fixed;
+    height: 200vh;
+    width: 100vw;
+    position: absolute;
+    opacity: 50%;
 }
 
 .day {

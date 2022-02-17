@@ -24,11 +24,15 @@ body {
   -webkit-font-smoothing: antialiased;
   color: white;
   -moz-osx-font-smoothing: grayscale;
-  background: url('/src/assets/forest-background.webp') no-repeat center center fixed;
+  background: url('/src/assets/forest-background.webp');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center, center;
+  background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 code {
