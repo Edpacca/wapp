@@ -15,11 +15,11 @@ export function GuestDropDown(props: {placeholder: string, guests: Guest[], sele
             : <span className='info'>choose meal</span>;
 
         return (
-            <div className={`dd-option inline dd-select`} onClick={() => { 
+            <div key={guest.name} className={`dd-option inline dd-select`} onClick={() => { 
                 props.selectOption(guest.id);  
                 setIsActive(false);
                 }}>
-                <option key={guest.name}>
+                <option>
                     {guest.name} 
                 </option>
                 <span className='dd-option-icon'>

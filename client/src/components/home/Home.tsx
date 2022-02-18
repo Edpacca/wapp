@@ -1,5 +1,5 @@
 import "./home.css"
-import diamond from "../../assets/diamond-white-AE.svg"
+import diamond from "../../assets/logos/diamond-white-AE.svg"
 import { Guest } from "../../models/Guest"
 import { GuestDropDown } from "../common/GuestDropDown"
 import { useAppDispatch } from "../../store/hooks"

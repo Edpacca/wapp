@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { Menu } from '../food/Menu';
 import { Home } from '../home/Home';
-import { Itinerary } from '../info/Itinerary';
+import { Info } from '../info/Info';
 import { NavBar } from '../nagivation/NavBar';
 import { selectPageUser } from '../nagivation/NavigationSlice';
 import { WappMap } from '../map/WappMap'
@@ -43,7 +43,7 @@ export function Wapp() {
       }
       {
         page === 'info' &&
-        <Itinerary/>
+        <Info/>
       }
       {
         page === 'location' &&

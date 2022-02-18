@@ -68,7 +68,7 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
         <div className="menu-wrapper">
             <div>
                 <GuestDropDown placeholder='Select guest' guests={guests} selectOption={selectActiveGuestById} />
-                <div className='menu-header'>
+                <div className='text-header'>
                     <h2>À la Carte</h2>
                     { activeGuest && <p>{activeGuest?.name} is choosing...</p> }
                 </div>

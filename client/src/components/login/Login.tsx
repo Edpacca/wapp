@@ -1,5 +1,5 @@
 import AuthContext from '../../context/AuthContext';
-import diamond from "../../assets/diamond-white-AE.svg"
+import diamond from "../../assets/logos/diamond-white-AE.svg"
 import { useContext, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
