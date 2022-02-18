@@ -1,10 +1,13 @@
-.scroll-img-wrapper {
+.scroll-img-outer {
+    overflow: hidden;
     position: absolute;
-    width: 2em;
-    justify-content: center;
+}
+
+.scroll-img-inner {
+    width: 5vw;
+    position: fixed;
 }
 
 .leaf_1 {
-    position: absolute;
-    overflow-x: hidden;
+    // width: 5vw;
 }

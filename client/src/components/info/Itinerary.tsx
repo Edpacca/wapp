@@ -6,7 +6,12 @@ export function Itinerary() {
 
     return(
         <div className="itinerary">
-            <ScrollAnimation imageUrl={leaf} startingPos={{ x: 50, y: 30 }} id={"leaf_1"} hFactor={1} vFactor={1.5}/>
+            <div className="scroll-img-outer">
+              <ScrollAnimation imageUrl={leaf} startingPos={{ x: -20, y: 20 }} id={"leaf_1"} hFactor={0.2} vFactor={0.3}/>
+            </div>
+            <div className="scroll-img-outer">
+              <ScrollAnimation imageUrl={leaf} startingPos={{ x: -20, y: 320 }} id={"leaf_2"} hFactor={0.4} vFactor={0.2}/>
+            </div>
             {/* <DayActivities/> */}
         </div>
     )
