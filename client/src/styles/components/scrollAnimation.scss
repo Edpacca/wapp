@@ -10,7 +10,19 @@
 
 .animation-panel {
     position: relative;
-    margin-bottom: 80vh;
+    height: 100vh;
 }
 .castle-wrap {
 }   
+
+.marker1 {
+    position: absolute;
+    top: 100vh;
+    width: 5vw;
+}
+
+.marker2 {
+    position: absolute;
+    top: 200vh;
+    width: 5vw;
+}

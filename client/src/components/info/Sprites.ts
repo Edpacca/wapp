@@ -32,13 +32,13 @@ export const tree: ScrollAnimationProps = {
 export const heart: ScrollAnimationProps = {
     id: "sa-heart", 
     svg: heartSprite, 
-    width: 5,
-    startingPos: { x: 1, y: 1},
+    width: 25,
+    startingPos: { x: 50, y: 20},
     hFactor: 1,
-    vFactor: 1,
-    yScrollBounds: [ 0, 100 ],
-    fadeInBounds: [ 100, 100 ],
-    fadeOutBounds: [ 100, 100 ]
+    vFactor: 1.2,
+    yScrollBounds: [ 10, 40 ],
+    fadeInBounds: [ 0, 10 ],
+    fadeOutBounds: [ 160, 190 ]
 }
 
 export const ringL: ScrollAnimationProps = {

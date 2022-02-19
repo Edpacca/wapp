@@ -1,30 +1,37 @@
+import { prependOnceListener } from "process";
 import { useEffect, useState } from "react";
 import { Panel, ScrollAnimationProps, Transition } from "../../models/ScrollAnimationProps";
 import { XY } from "../../models/XY";
 
-export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Panel, maxHeight: number }) {
+export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Panel, pageHeight: number }) {
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [yST, setYST] = useState(0);
     const [xyT, setXyT] = useState(props.props.startingPos);
-    const panelOffset: number = ( props.panel.index / props.panel.max ) * props.maxHeight;
-    const startingPos: XY = { x: props.props.startingPos.x, y: props.props.startingPos.y + panelOffset };
-    const yScrollBounds: Transition = [ props.props.yScrollBounds[0] + panelOffset, props.props.yScrollBounds[1] + panelOffset ];
-    const fadeIn: Transition = [ props.props.fadeInBounds[0] + panelOffset, props.props.fadeInBounds[1] + panelOffset ];
-    const fadeOut: Transition = [ props.props.fadeOutBounds[0] + panelOffset, props.props.fadeOutBounds[1] + panelOffset ];
+
+    // Panel offset in percentage
+    const panelFraction: number = (props.panel.index + 1) / props.panel.max;
+    // const panelOffset: number = ( props.panel.index / props.panel.max ) * 100;
+
+
+    const startingPos: XY = { x: props.props.startingPos.x, y: props.props.startingPos.y };
+    const yScrollBounds: Transition = [ props.props.yScrollBounds[0], props.props.yScrollBounds[1] ];
+    const fadeIn: Transition = [ props.props.fadeInBounds[0], props.props.fadeInBounds[1] ];
+    const fadeOut: Transition = [ props.props.fadeOutBounds[0], props.props.fadeOutBounds[1] ];
     const outerId = props.props.id;
     const innerId = `${props.props.id}-img`;
 
     const handleScroll = () => {
 
-        const yScroll = 100 * window.scrollY / props.maxHeight;
+        const yScroll = window.scrollY * panelFraction * panelFraction;
+        
         setYST(yScroll);
         if (isBetween(yScroll, yScrollBounds)) {
             const x = startingPos.x - (props.props.width / 2) + (props.props.hFactor * yScroll);
             const y = startingPos.y + (props.props.vFactor * yScroll);
             const outerElement = document.getElementById(outerId);
             outerElement!.style.left = x + "vw";
-            outerElement!.style.top = y + "vh";
+            outerElement!.style.top = y + (100 * props.panel.index) + "vh";
             setXyT({x, y});
         }
 
@@ -55,8 +62,9 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
         <div className="scroll-img-outer">
             <div className="scroll-img-inner" id={props.props.id}>
                 <img className={props.props.id} src={props.props.svg} id={`${props.props.id}-img`} alt=""></img>
-                <p>{yST}</p>
+                <p>{yST.toFixed(0)}</p>
                 <p>{xyT.x + " , " + xyT.y}</p>
+                <p>{props.pageHeight}</p>
             </div>    
         </div>
 
