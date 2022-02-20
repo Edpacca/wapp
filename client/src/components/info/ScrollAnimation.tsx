@@ -1,6 +1,6 @@
 import { prependOnceListener } from "process";
 import { useEffect, useState } from "react";
-import { Panel, ScrollAnimationProps, Transition } from "../../models/ScrollAnimationProps";
+import { Extremum, Panel, ScrollAnimationProps, Transition } from "../../models/ScrollAnimationProps";
 import { XY } from "../../models/XY";
 
 export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Panel, pageHeight: number }) {
@@ -8,16 +8,13 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
     const [isLoaded, setIsLoaded] = useState(false);
     const [yST, setYST] = useState(0);
     const [xyT, setXyT] = useState(props.props.startingPos);
-
-    // Panel offset in percentage
+    
+    const panelOffset = props.panel.index * props.panel.height;
     const panelFraction: number = (props.panel.index + 1) / props.panel.max;
-    // const panelOffset: number = ( props.panel.index / props.panel.max ) * 100;
-
-
-    const startingPos: XY = { x: props.props.startingPos.x, y: props.props.startingPos.y };
-    const yScrollBounds: Transition = [ props.props.yScrollBounds[0], props.props.yScrollBounds[1] ];
+    const startingPos: XY = { x: props.props.startingPos.x, y: props.props.startingPos.y};
+    const yScrollBounds: Transition = [ props.props.yScrollBounds[0], props.props.yScrollBounds[1]];
     const fadeIn: Transition = [ props.props.fadeInBounds[0], props.props.fadeInBounds[1] ];
-    const fadeOut: Transition = [ props.props.fadeOutBounds[0], props.props.fadeOutBounds[1] ];
+    const fadeOut: Transition = [ props.props.fadeOutBounds[0], props.props.fadeOutBounds[1]];
     const outerId = props.props.id;
     const innerId = `${props.props.id}-img`;
 
@@ -26,18 +23,18 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
         const yScroll = window.scrollY * panelFraction * panelFraction;
         
         setYST(yScroll);
-        if (isBetween(yScroll, yScrollBounds)) {
-            const x = startingPos.x - (props.props.width / 2) + (props.props.hFactor * yScroll);
-            const y = startingPos.y + (props.props.vFactor * yScroll);
+        if (isBetween(yScroll, yScrollBounds, panelOffset)) {
+            const x = startingPos.x - (props.props.width / 2) + (props.props.hFactor * (yScroll  - panelOffset));
+            const y = startingPos.y + (props.props.vFactor * (yScroll - panelOffset));
             const outerElement = document.getElementById(outerId);
             outerElement!.style.left = x + "vw";
-            outerElement!.style.top = y + (100 * props.panel.index) + "vh";
+            outerElement!.style.top = y + "vh";
             setXyT({x, y});
         }
 
         const innerElement = document.getElementById(innerId)
-        opacity(innerElement!, yScroll, fadeIn, 'in');
-        opacity(innerElement!, yScroll, fadeOut, 'out');
+        opacity(innerElement!, yScroll, fadeIn, panelOffset, {minima: 0, maxima: 100});
+        opacity(innerElement!, yScroll, fadeOut, panelOffset, {minima: 100, maxima: 0});
     } 
     
     useEffect(() => {
@@ -67,34 +64,31 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
                 {/* <p>{props.pageHeight}</p> */}
             </div>    
         </div>
-
     )
 }
 
-function absToPanelPercentage(yScroll: number, panel: Panel) {
-
-}
-
-function opacity(element: HTMLElement, yScroll: number, transition: Transition, direction: 'in' | 'out') {
-    if (isBetween(yScroll, transition)) {
-        element.style.opacity = getPercentage(yScroll, transition, direction);
-    }
-    if (direction === 'in' && yScroll > transition[1]) {
-        element.style.opacity = "100";
+function opacity(element: HTMLElement, yScroll: number, transition: Transition, offset: number, extremum: Extremum) {
+    const offsetYScroll = yScroll - offset;
+    const isPositive = extremum.maxima - extremum.minima > 0;
+    if (isBetween(yScroll, transition, offset)) {
+        element.style.opacity = getPercentage(offsetYScroll, transition, isPositive)
     }
 
-    if (direction === 'out' && yScroll > transition[1]) {
-        element.style.opacity = "0";
+    if (offsetYScroll < transition[0] && isPositive) {
+        element.style.opacity = extremum.minima.toString();
+    }
+
+    if (offsetYScroll > transition[1]) {
+        element.style.opacity = extremum.maxima.toString();
     }
 }
 
-function isBetween(value: number, bounds: Transition) {
-    return value >= bounds[0] && value <= bounds[1];
+function isBetween(value: number, bounds: Transition, offset: number) {
+    const offsetvalue = value - offset;
+    return offsetvalue >= bounds[0] && offsetvalue <= bounds[1];
 }
 
-function getPercentage(yScroll: number, transition: Transition, direction: 'in' | 'out' ) {
-    const offset = direction === 'in' ? 0 : 1;
-    const modifier = direction === 'in' ? 1 : -1;
-    const percentage = offset + (modifier * ((yScroll - transition[0]) / ( transition[1] - transition[0])))
-    return percentage.toString();
+function getPercentage(yScroll: number, transition: Transition, isPositive: boolean) {
+    const percentage = ((yScroll - transition[0]) / ( transition[1] - transition[0]))
+    return isPositive ? percentage.toString() : (1 - percentage).toString();
 }

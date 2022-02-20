@@ -15,7 +15,11 @@ export interface ScrollAnimationProps {
 }
 
 export type Transition = [number, number];
+
+export interface Extremum { minima: number, maxima: number }
+
 export interface Panel {
     index: number,
     max: number,
+    height: number
 }

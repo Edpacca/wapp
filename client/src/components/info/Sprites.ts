@@ -5,87 +5,117 @@ import  heartSprite  from '../../assets/sprites/heart.svg';
 import  ringLSprite  from '../../assets/sprites/ring-L.svg';
 import  ringR1Sprite  from '../../assets/sprites/ring-R1.svg';
 import  ringR2Sprite  from '../../assets/sprites/ring-R2.svg';
+import scrollSprite from '../../assets/sprites/scroll.svg';
+import scrollASprite from '../../assets/sprites/scroll-A.svg';
+import scrollESprite from '../../assets/sprites/scroll-E.svg';
 
+// Registy
+export const scroll: ScrollAnimationProps = {
+    id: "sa-scroll", 
+    svg: scrollSprite, 
+    width: 50,
+    startingPos: { x: 50, y: 10},
+    hFactor: 0,
+    vFactor: 1.2,
+    yScrollBounds: [ 0, 16 ],
+    fadeInBounds: [ 9, 14 ],
+    fadeOutBounds: [ 28, 32 ]
+}
+
+export const scrollA: ScrollAnimationProps = {
+    id: "sa-scrollA", 
+    svg: scrollASprite, 
+    width: 50,
+    startingPos: { x: 50, y: 10},
+    hFactor: 0,
+    vFactor: 1.2,
+    yScrollBounds: [ 0, 16 ],
+    fadeInBounds: [ 17, 21 ],
+    fadeOutBounds: [ 28, 32 ]
+}
+
+export const scrollE: ScrollAnimationProps = {
+    id: "sa-scrollE", 
+    svg: scrollESprite, 
+    width: 50,
+    startingPos: { x: 50, y: 10},
+    hFactor: 0,
+    vFactor: 1.2,
+    yScrollBounds: [ 0, 16 ],
+    fadeInBounds: [ 19, 23 ],
+    fadeOutBounds: [ 28, 32 ]
+}
+
+// Ceremony
 export const castle: ScrollAnimationProps = {
     id: "sa-castle", 
     svg: castleSprite,
-    width: 50,
-    startingPos: { x: 50, y: 22},
+    width: 60,
+    startingPos: { x: 50, y: 30},
     hFactor: 0,
     vFactor: 0.5,
-    yScrollBounds: [ 0, 9 ],
-    fadeInBounds: [ 0, 7 ],
-    fadeOutBounds: [ 21, 23 ]
+    yScrollBounds: [ 2, 11 ],
+    fadeInBounds: [ 2, 7 ],
+    fadeOutBounds: [ 23, 26 ]
 }
 
 export const tree: ScrollAnimationProps = {
     id: "sa-tree", 
     svg: treeSprite, 
-    width: 25,
-    startingPos: { x: 100, y: 21},
-    hFactor: -3.5,
+    width: 30,
+    startingPos: { x: 100, y: 29},
+    hFactor: -2.3,
     vFactor: 0,
-    yScrollBounds: [ 0, 9 ],
-    fadeInBounds: [ 0, 7 ],
-    fadeOutBounds: [ 21, 23 ]
+    yScrollBounds: [ 2, 11 ],
+    fadeInBounds: [ 2, 7 ],
+    fadeOutBounds: [ 23, 26 ]
 }
 
 export const ringL: ScrollAnimationProps = {
     id: "sa-ringL", 
     svg: ringLSprite, 
-    width: 25,
-    startingPos: { x: 15, y: 41},
-    hFactor: 3.2,
+    width: 30,
+    startingPos: { x: 15, y: 49},
+    hFactor: 3.06,
     vFactor: -0.4,
-    yScrollBounds: [ 2, 11 ],
+    yScrollBounds: [ 4, 12 ],
     fadeInBounds: [ 4, 9 ],
-    fadeOutBounds: [ 24, 28 ]
+    fadeOutBounds: [ 27, 34 ]
 }
 
 export const ringR1: ScrollAnimationProps = {
     id: "sa-ringR1", 
     svg: ringR1Sprite, 
-    width: 25,
-    startingPos: { x: 85, y: 41},
-    hFactor: -3.2,
+    width: 30,
+    startingPos: { x: 85, y: 49},
+    hFactor: -3.06,
     vFactor: -0.4,
-    yScrollBounds: [ 2, 11 ],
+    yScrollBounds: [ 4, 12 ],
     fadeInBounds: [ 4, 9 ],
-    fadeOutBounds: [ 24, 28 ]
+    fadeOutBounds: [ 29, 34 ]
 }
 
 export const ringR2: ScrollAnimationProps = {
     id: "sa-ringR2", 
     svg: ringR2Sprite, 
-    width: 25,
-    startingPos: { x: 85, y: 41},
-    hFactor: -3.2,
+    width: 30,
+    startingPos: { x: 85, y: 49},
+    hFactor: -3.06,
     vFactor: -0.4,
-    yScrollBounds: [ 2, 11 ],
+    yScrollBounds: [ 4, 12 ],
     fadeInBounds: [ 4, 9 ],
-    fadeOutBounds: [ 24, 28 ]
+    fadeOutBounds: [ 27, 34 ]
 }
 
 export const heart: ScrollAnimationProps = {
     id: "sa-heart", 
     svg: heartSprite, 
-    width: 10,
-    startingPos: { x: 50, y: 41},
+    width: 13,
+    startingPos: { x: 50, y: 49},
     hFactor: 0,
     vFactor: -0.5,
-    yScrollBounds: [ 9, 26 ],
+    yScrollBounds: [ 10, 32 ],
     fadeInBounds: [ 9, 14 ],
-    fadeOutBounds: [ 21, 26 ]
+    fadeOutBounds: [ 24, 32 ]
 }
 
-export const tree2: ScrollAnimationProps = {
-    id: "sa-tree-2", 
-    svg: treeSprite, 
-    width: 25,
-    startingPos: { x: 50, y: 0},
-    hFactor: 1,
-    vFactor: 1,
-    yScrollBounds: [ 0, 100 ],
-    fadeInBounds: [ 100, 100 ],
-    fadeOutBounds: [ 100, 100 ]
-}

@@ -1,11 +1,18 @@
 import { ScrollAnimation } from "./ScrollAnimation";
-import leaf from '../../assets/icons/leaf-solid.svg';
-import { castle, tree, heart, ringL, ringR1, ringR2 } from "./Sprites";
+import { scroll, scrollA, scrollE, castle, tree, heart, ringL, ringR1, ringR2 } from "./Sprites";
+import { Panel } from "../../models/ScrollAnimationProps";
 
 export function BigDay() {
 
     const clientHeight = document.documentElement.scrollHeight;
-    const panelCount = 3;
+    const maxPanels = 3;
+    const panelHeight = 300;
+    const panel0: Panel = {index: 0, max: maxPanels, height: panelHeight}
+    const panel1: Panel = {index: 1, max: maxPanels, height: panelHeight}
+    const panel2: Panel = {index: 2, max: maxPanels, height: panelHeight}
+    const panel3: Panel = {index: 3, max: maxPanels, height: panelHeight}
+
+
 
     return (
         <div>
@@ -16,17 +23,31 @@ export function BigDay() {
 
             <div className="animation-panel">
                 <div className="timeline-text">
+                    <div className="head" >Signing Registry</div>
+                    <div className="sub">Killin Registry Office</div>
+                    <div className="sub">12:00</div>
+                    <div className="sub2">Bride, Groom + witnesses only</div>
+                </div>
+                <div>
+                <div className="scroll-wrap"><ScrollAnimation props={scroll} panel={panel0} pageHeight={clientHeight}/></div>
+                <div className="scroll-wrap"><ScrollAnimation props={scrollA} panel={panel0} pageHeight={clientHeight}/></div>
+                <div className="scroll-wrap"><ScrollAnimation props={scrollE} panel={panel0} pageHeight={clientHeight}/></div>
+                </div>
+            </div>
+
+            <div className="animation-panel">
+                <div className="timeline-text">
                     <div className="head" >Ceremony</div>
                     <div className="sub">Finlarig Estate</div>
                     <div className="sub">13:00</div>
                 </div>
                 <div>
-                    <div className="castle-wrap"><ScrollAnimation props={castle} panel={{ index: 0, max: panelCount }} pageHeight={clientHeight}/></div>
-                    <div className="tree-wrap"><ScrollAnimation props={tree} panel={{ index: 0, max: panelCount }} pageHeight={clientHeight}/></div>
-                    <div className="ring-wrap"><ScrollAnimation props={ringR2} panel={{ index: 0, max: panelCount }} pageHeight={clientHeight}/></div>
-                    <div className="ring-wrap"><ScrollAnimation props={ringL} panel={{ index: 0, max: panelCount }} pageHeight={clientHeight}/></div>
-                    <div className="ring-wrap"><ScrollAnimation props={ringR1} panel={{ index: 0, max: panelCount }} pageHeight={clientHeight}/></div>
-                    <div className="heart-wrap"><ScrollAnimation props={heart} panel={{ index: 0, max: panelCount }} pageHeight={clientHeight}/></div>
+                    <div className="castle-wrap"><ScrollAnimation props={castle} panel={panel1} pageHeight={clientHeight}/></div>
+                    <div className="tree-wrap"><ScrollAnimation props={tree} panel={panel1} pageHeight={clientHeight}/></div>
+                    <div className="ring-wrap"><ScrollAnimation props={ringR2} panel={panel1} pageHeight={clientHeight}/></div>
+                    <div className="ring-wrap"><ScrollAnimation props={ringL} panel={panel1} pageHeight={clientHeight}/></div>
+                    <div className="ring-wrap"><ScrollAnimation props={ringR1} panel={panel1} pageHeight={clientHeight}/></div>
+                    <div className="heart-wrap"><ScrollAnimation props={heart} panel={panel1} pageHeight={clientHeight}/></div>
                 </div>
             </div>
 
