@@ -47,7 +47,7 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
             const innerElement = document.getElementById(innerId);
             outerElement!.style.left = startingPos.x - (props.props.width / 2) + "vw";
             outerElement!.style.top = startingPos.y + "vh";
-            innerElement!.style.width = props.props.width + "vw";
+            innerElement!.style.width = props.props.width + "vmin";
             innerElement!.style.opacity = "0";
             setIsLoaded(true);
         }
@@ -62,9 +62,9 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
         <div className="scroll-img-outer">
             <div className="scroll-img-inner" id={props.props.id}>
                 <img className={props.props.id} src={props.props.svg} id={`${props.props.id}-img`} alt=""></img>
-                <p>{yST.toFixed(0)}</p>
-                <p>{xyT.x + " , " + xyT.y}</p>
-                <p>{props.pageHeight}</p>
+                {/* <p>{yST.toFixed(0)}</p> */}
+                {/* <p>{xyT.x + " , " + xyT.y}</p> */}
+                {/* <p>{props.pageHeight}</p> */}
             </div>    
         </div>
 
@@ -79,6 +79,10 @@ function opacity(element: HTMLElement, yScroll: number, transition: Transition, 
     if (isBetween(yScroll, transition)) {
         element.style.opacity = getPercentage(yScroll, transition, direction);
     }
+    if (direction === 'in' && yScroll > transition[1]) {
+        element.style.opacity = "100";
+    }
+
     if (direction === 'out' && yScroll > transition[1]) {
         element.style.opacity = "0";
     }

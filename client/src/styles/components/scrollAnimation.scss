@@ -9,9 +9,30 @@
 }
 
 .animation-panel {
+    font-family: Georgia, 'Times New Roman', Times, serif;
     position: relative;
-    height: 100vh;
+    height: 60vh;
+    margin-top: 10vh;
 }
+
+.timeline-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    .head {
+        font-style: italic;
+        font-size: 2.5rem;
+        font-weight: 400;
+    }
+    
+    .sub {
+        font-size: 1.5rem;
+        font-weight: 200;
+    }
+}
+ 
+
+
+
 .castle-wrap {
 }   
 
@@ -25,4 +46,12 @@
     position: absolute;
     top: 200vh;
     width: 5vw;
+}
+
+.sa-ringR2, .sa-ringR1, .sa-ringL {
+    filter: drop-shadow(0 0 4px rgb(255, 174, 0));
+}
+
+.sa-heart {
+    filter: drop-shadow(0 0 2px rgb(255, 174, 0));
 }
