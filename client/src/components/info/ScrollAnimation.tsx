@@ -44,7 +44,7 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
             const innerElement = document.getElementById(innerId);
             outerElement!.style.left = startingPos.x - (props.props.width / 2) + "vw";
             outerElement!.style.top = startingPos.y + "vh";
-            innerElement!.style.width = props.props.width + "vmin";
+            innerElement!.style.width = props.props.width + "vw";
             innerElement!.style.opacity = "0";
             setIsLoaded(true);
         }

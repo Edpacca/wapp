@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="372.03428"
-     inkscape:cy="352.96293"
+     inkscape:zoom="0.7"
+     inkscape:cx="374.26827"
+     inkscape:cy="386.07268"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -65,14 +65,15 @@
        transform="scale(0.26458333)" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:100.69477081px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#552200;fill-opacity:1;stroke:#552200;stroke-width:1.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       x="122.37718"
-       y="162.67207"
-       id="text2031-6"><tspan
+       style="font-style:normal;font-weight:normal;font-size:68.70256042px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#005000;fill-opacity:1;stroke:none;stroke-width:1.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+       x="133.34399"
+       y="142.54047"
+       id="text2031-6-8"
+       transform="matrix(1.0009374,0.03378509,-0.03368347,0.99792655,0,0)"><tspan
          sodipodi:role="line"
-         id="tspan2029-6"
-         x="122.37718"
-         y="162.67207"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Harrington;-inkscape-font-specification:Harrington;fill:#552200;fill-opacity:1;stroke:#552200;stroke-width:1.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">E</tspan></text>
+         id="tspan2029-6-4"
+         x="133.34399"
+         y="142.54047"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Harrington;-inkscape-font-specification:Harrington;fill:#005000;fill-opacity:1;stroke:none;stroke-width:1.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;">E</tspan></text>
   </g>
 </svg>

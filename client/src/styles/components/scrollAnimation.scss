@@ -54,8 +54,12 @@
     width: 5vw;
 }
 
-.sa-ringR2, .sa-ringR1, .sa-ringL {
-    filter: drop-shadow(0 0 4px rgb(255, 174, 0));
+.sa-ringR2, .sa-ringR1, .sa-ringL, .sa-scroll {
+    filter: drop-shadow(0 0 6px rgb(255, 174, 0));
+}
+
+.sa-quill {
+    filter: drop-shadow(0 0 10px rgb(255, 255, 255));
 }
 
 .sa-heart {

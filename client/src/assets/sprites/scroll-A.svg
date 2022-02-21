@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="372.03428"
-     inkscape:cy="352.96293"
+     inkscape:zoom="0.7"
+     inkscape:cx="374.26827"
+     inkscape:cy="386.07268"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -65,15 +65,15 @@
        transform="scale(0.26458333)" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:100.69477081px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#552200;fill-opacity:1;stroke:#552200;stroke-width:1.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
-       x="39.028378"
-       y="151.89911"
-       id="text2031"
-       transform="rotate(5.5406629)"><tspan
+       style="font-style:normal;font-weight:normal;font-size:68.7025528px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#005000;fill-opacity:1;stroke:none;stroke-width:1.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+       x="55.542019"
+       y="143.97641"
+       id="text2031-5"
+       transform="matrix(1.0012939,0.01927413,-0.01979527,0.99832673,0,0)"><tspan
          sodipodi:role="line"
-         id="tspan2029"
-         x="39.028378"
-         y="151.89911"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Harrington;-inkscape-font-specification:Harrington;stroke:#552200;stroke-width:1.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill:#552200;">A</tspan></text>
+         id="tspan2029-2"
+         x="55.542019"
+         y="143.97641"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Harrington;-inkscape-font-specification:Harrington;fill:#005000;stroke:none;stroke-width:1.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1;">A</tspan></text>
   </g>
 </svg>

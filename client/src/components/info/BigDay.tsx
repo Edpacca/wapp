@@ -1,5 +1,9 @@
 import { ScrollAnimation } from "./ScrollAnimation";
-import { scroll, scrollA, scrollE, castle, tree, heart, ringL, ringR1, ringR2 } from "./Sprites";
+import { 
+    scroll, quill, scrollA, scrollE, 
+    castle, tree, heart, ringL, ringR1, ringR2
+
+} from "./Sprites";
 import { Panel } from "../../models/ScrollAnimationProps";
 
 export function BigDay() {
@@ -11,8 +15,6 @@ export function BigDay() {
     const panel1: Panel = {index: 1, max: maxPanels, height: panelHeight}
     const panel2: Panel = {index: 2, max: maxPanels, height: panelHeight}
     const panel3: Panel = {index: 3, max: maxPanels, height: panelHeight}
-
-
 
     return (
         <div>
@@ -30,8 +32,9 @@ export function BigDay() {
                 </div>
                 <div>
                 <div className="scroll-wrap"><ScrollAnimation props={scroll} panel={panel0} pageHeight={clientHeight}/></div>
-                <div className="scroll-wrap"><ScrollAnimation props={scrollA} panel={panel0} pageHeight={clientHeight}/></div>
-                <div className="scroll-wrap"><ScrollAnimation props={scrollE} panel={panel0} pageHeight={clientHeight}/></div>
+                <div className="quill-wrap"><ScrollAnimation props={quill} panel={panel0} pageHeight={clientHeight}/></div>
+                <div className="letters-wrap"><ScrollAnimation props={scrollA} panel={panel0} pageHeight={clientHeight}/></div>
+                <div className="letters-wrap"><ScrollAnimation props={scrollE} panel={panel0} pageHeight={clientHeight}/></div>
                 </div>
             </div>
 

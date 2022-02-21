@@ -6,6 +6,7 @@ import  ringLSprite  from '../../assets/sprites/ring-L.svg';
 import  ringR1Sprite  from '../../assets/sprites/ring-R1.svg';
 import  ringR2Sprite  from '../../assets/sprites/ring-R2.svg';
 import scrollSprite from '../../assets/sprites/scroll.svg';
+import quillSprite from '../../assets/sprites/quill.svg';
 import scrollASprite from '../../assets/sprites/scroll-A.svg';
 import scrollESprite from '../../assets/sprites/scroll-E.svg';
 
@@ -20,6 +21,18 @@ export const scroll: ScrollAnimationProps = {
     yScrollBounds: [ 0, 16 ],
     fadeInBounds: [ 9, 14 ],
     fadeOutBounds: [ 28, 32 ]
+}
+
+export const quill: ScrollAnimationProps = {
+    id: "sa-quill", 
+    svg: quillSprite, 
+    width: 20,
+    startingPos: { x: 10, y: 22},
+    hFactor: 1.6,
+    vFactor: 0.1,
+    yScrollBounds: [ 10, 28 ],
+    fadeInBounds: [ 12, 14 ],
+    fadeOutBounds: [ 23, 28 ]
 }
 
 export const scrollA: ScrollAnimationProps = {
