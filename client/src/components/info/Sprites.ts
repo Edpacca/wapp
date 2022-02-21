@@ -9,6 +9,13 @@ import scrollSprite from '../../assets/sprites/scroll.svg';
 import quillSprite from '../../assets/sprites/quill.svg';
 import scrollASprite from '../../assets/sprites/scroll-A.svg';
 import scrollESprite from '../../assets/sprites/scroll-E.svg';
+import cameraTop1Sprite from '../../assets/sprites/camera-top1.svg';
+import cameraTop2Sprite from '../../assets/sprites/camera-top2.svg';
+import cameraBottomSprite from '../../assets/sprites/camera-bottom1.svg';
+import cameraLSprite from '../../assets/sprites/camera-L1.svg';
+import cameraRSprite from '../../assets/sprites/camera-R1.svg';
+import cameraInnerSprite from '../../assets/sprites/camera-inner-ring.svg';
+import cameraOuterSprite from '../../assets/sprites/camera-outer-ring.svg';
 
 // Registy
 export const scroll: ScrollAnimationProps = {
@@ -132,3 +139,87 @@ export const heart: ScrollAnimationProps = {
     fadeOutBounds: [ 24, 32 ]
 }
 
+// Photographs
+export const cameraTop1: ScrollAnimationProps = {
+    id: "sa-cameraTop1", 
+    svg: cameraTop1Sprite, 
+    width: 40,
+    startingPos: { x: 50, y: 30},
+    hFactor: 0,
+    vFactor: 1.5,
+    yScrollBounds: [ 2, 11 ],
+    fadeInBounds: [ 2, 7 ],
+    fadeOutBounds: [ 23, 26 ]
+}
+
+export const cameraTop2: ScrollAnimationProps = {
+    id: "sa-cameraTop2", 
+    svg: cameraTop2Sprite, 
+    width: 40,
+    startingPos: { x: 50, y: 30},
+    hFactor: 0,
+    vFactor: 1.5,
+    yScrollBounds: [ 2, 11 ],
+    fadeInBounds: [ 2, 7 ],
+    fadeOutBounds: [ 23, 26 ]
+}
+
+export const cameraBottom: ScrollAnimationProps = {
+    id: "sa-cameraBottom", 
+    svg: cameraBottomSprite, 
+    width: 40,
+    startingPos: { x: 50, y: 30},
+    hFactor: 0,
+    vFactor: 1.5,
+    yScrollBounds: [ 2, 11 ],
+    fadeInBounds: [ 2, 7 ],
+    fadeOutBounds: [ 23, 26 ]
+}
+
+export const cameraL: ScrollAnimationProps = {
+    id: "sa-cameraL", 
+    svg: cameraLSprite, 
+    width: 40,
+    startingPos: { x: 0, y: 45.6},
+    hFactor: 4.75,
+    vFactor: 0,
+    yScrollBounds: [ 2, 11 ],
+    fadeInBounds: [ 2, 7 ],
+    fadeOutBounds: [ 23, 26 ]
+}
+
+export const cameraR: ScrollAnimationProps = {
+    id: "sa-cameraR", 
+    svg: cameraRSprite, 
+    width: 40,
+    startingPos: { x: 100, y: 45.6},
+    hFactor: -4.75,
+    vFactor: 0,
+    yScrollBounds: [ 2, 11 ],
+    fadeInBounds: [ 2, 7 ],
+    fadeOutBounds: [ 23, 26 ]
+}
+
+export const cameraInner: ScrollAnimationProps = {
+    id: "sa-cameraInner", 
+    svg: cameraInnerSprite, 
+    width: 40,
+    startingPos: { x: 50, y: 30},
+    hFactor: 0,
+    vFactor: 1.5,
+    yScrollBounds: [ 2, 11 ],
+    fadeInBounds: [ 2, 7 ],
+    fadeOutBounds: [ 23, 26 ]
+}
+
+export const cameraOuter: ScrollAnimationProps = {
+    id: "sa-cameraOuter", 
+    svg: cameraOuterSprite, 
+    width: 40,
+    startingPos: { x: 50, y: 30},
+    hFactor: 0,
+    vFactor: 1.5,
+    yScrollBounds: [ 2, 11 ],
+    fadeInBounds: [ 2, 7 ],
+    fadeOutBounds: [ 23, 26 ]
+}

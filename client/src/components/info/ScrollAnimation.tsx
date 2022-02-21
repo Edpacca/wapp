@@ -1,4 +1,3 @@
-import { prependOnceListener } from "process";
 import { useEffect, useState } from "react";
 import { Extremum, Panel, ScrollAnimationProps, Transition } from "../../models/ScrollAnimationProps";
 import { XY } from "../../models/XY";
@@ -20,7 +19,7 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
 
     const handleScroll = () => {
 
-        const yScroll = window.scrollY * panelFraction * panelFraction;
+        const yScroll = window.scrollY;
         
         setYST(yScroll);
         if (isBetween(yScroll, yScrollBounds, panelOffset)) {

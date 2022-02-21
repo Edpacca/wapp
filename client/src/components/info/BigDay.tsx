@@ -1,7 +1,8 @@
 import { ScrollAnimation } from "./ScrollAnimation";
 import { 
     scroll, quill, scrollA, scrollE, 
-    castle, tree, heart, ringL, ringR1, ringR2
+    castle, tree, heart, ringL, ringR1, ringR2,
+    cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter
 
 } from "./Sprites";
 import { Panel } from "../../models/ScrollAnimationProps";
@@ -10,7 +11,7 @@ export function BigDay() {
 
     const clientHeight = document.documentElement.scrollHeight;
     const maxPanels = 3;
-    const panelHeight = 300;
+    const panelHeight = clientHeight * 0.7;
     const panel0: Panel = {index: 0, max: maxPanels, height: panelHeight}
     const panel1: Panel = {index: 1, max: maxPanels, height: panelHeight}
     const panel2: Panel = {index: 2, max: maxPanels, height: panelHeight}
@@ -18,10 +19,10 @@ export function BigDay() {
 
     return (
         <div>
-            <div className="text-header">
+            {/* <div className="text-header">
                 <h2>The Big Day</h2>
                 <p>Scroll through the plan</p>
-            </div>
+            </div> */}
 
             <div className="animation-panel">
                 <div className="timeline-text">
@@ -59,6 +60,15 @@ export function BigDay() {
                     <div className="head" >Photographs</div>
                     <div className="sub">Finlarig Estate</div>
                     <div className="sub">13:45</div>
+                </div>
+                <div>
+                 <div className="camera-wrap"><ScrollAnimation props={cameraTop1} panel={panel2} pageHeight={clientHeight}/></div>
+                 <div className="camera-wrap"><ScrollAnimation props={cameraTop2} panel={panel2} pageHeight={clientHeight}/></div>
+                 <div className="camera-wrap"><ScrollAnimation props={cameraBottom} panel={panel2} pageHeight={clientHeight}/></div>
+                 <div className="camera-wrap"><ScrollAnimation props={cameraL} panel={panel2} pageHeight={clientHeight}/></div>
+                 <div className="camera-wrap"><ScrollAnimation props={cameraR} panel={panel2} pageHeight={clientHeight}/></div>
+                 <div className="camera-wrap"><ScrollAnimation props={cameraInner} panel={panel2} pageHeight={clientHeight}/></div>
+                 <div className="camera-wrap"><ScrollAnimation props={cameraOuter} panel={panel2} pageHeight={clientHeight}/></div>
                 </div>
             </div>
 
