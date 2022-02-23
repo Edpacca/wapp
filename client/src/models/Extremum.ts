@@ -1,0 +1,1 @@
+export interface Extremum { minima: number, maxima: number }

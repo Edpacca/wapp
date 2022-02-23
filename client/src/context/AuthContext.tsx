@@ -11,6 +11,7 @@ const AuthContext
 function AuthContextProvider(props: any) {
 
     const [loginContext, setLoginContext] = useState<LoginContext>(undefined);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const dispatch = useAppDispatch();
 
     async function authenticateSession() {
@@ -25,13 +26,16 @@ function AuthContextProvider(props: any) {
 
         setLoginContext(loggedIn.type);
 
-        if (loggedIn.type === 'user') {
+        if (isLoggedIn && loggedIn.type === 'user') {
              dispatch({ type: 'users/loginRefresh', payload: loggedIn.data });
         }
     }
 
     useEffect(() => {
-        authenticateSession();
+        if (!isLoggedIn) {
+            authenticateSession();
+            setIsLoggedIn(true);
+        }
     }, []);
     
     return (

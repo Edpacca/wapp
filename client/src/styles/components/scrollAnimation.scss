@@ -6,22 +6,38 @@
 
 .scroll-img-inner {
     width: 5vw;
-    // position: fixed;
     border: 1px dotted gold;
     border-radius: 10px;
 }
 
+// .scroll-img-inner-active {
+//     width: 5vw;
+//     border: 2px solid gold;
+//     border-radius: 10px;
+// }
+
 .animation-panel {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    // position: relative;
-    height: 60vh;
+    height: 70vh;
+    width: 90vmin;
+    margin: auto;
     margin-top: 10vh;
-    border: 1px dashed red;
+    // border: 1px dashed red;
+}
+
+.main-header {
+    font-style: italic;
+    font-size: 3rem;
+    font-weight: 400;
+    top: 10vh;
 }
 
 .timeline-text {
     font-family: Georgia, 'Times New Roman', Times, serif;
-
+    position: absolute;
+    width: 100vw;
+    overflow: hidden;
+    left: calc(50% - 50vw);
     .head {
         font-style: italic;
         font-size: 2.5rem;
@@ -38,22 +54,6 @@
         font-size: 1.1rem;
         font-weight: 100; 
     }
-}
- 
-
-.castle-wrap {
-}   
-
-.marker1 {
-    position: absolute;
-    top: 100vh;
-    width: 5vw;
-}
-
-.marker2 {
-    position: absolute;
-    top: 200vh;
-    width: 5vw;
 }
 
 .sa-ringR2, .sa-ringR1, .sa-ringL, .sa-scroll {
