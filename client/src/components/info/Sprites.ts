@@ -25,9 +25,9 @@ export const scroll: ScrollAnimationProps = {
     startingPos: { x: 50, y: 10},
     hFactor: 0,
     vFactor: 1.2,
-    yScrollBounds: [ 0, 16 ],
-    fadeInBounds: [ 9, 14 ],
-    fadeOutBounds: [ 28, 32 ]
+    yScrollBounds: [ 0, 40 ],
+    fadeInBounds: [ 12, 28 ],
+    fadeOutBounds: [ 80, 90 ]
 }
 
 export const quill: ScrollAnimationProps = {
@@ -37,9 +37,9 @@ export const quill: ScrollAnimationProps = {
     startingPos: { x: 10, y: 22},
     hFactor: 1.6,
     vFactor: 0.1,
-    yScrollBounds: [ 10, 28 ],
-    fadeInBounds: [ 12, 14 ],
-    fadeOutBounds: [ 23, 28 ]
+    yScrollBounds: [ 0, 40 ],
+    fadeInBounds: [ 12, 28 ],
+    fadeOutBounds: [ 80, 90 ]
 }
 
 export const scrollA: ScrollAnimationProps = {
@@ -49,9 +49,9 @@ export const scrollA: ScrollAnimationProps = {
     startingPos: { x: 50, y: 10},
     hFactor: 0,
     vFactor: 1.2,
-    yScrollBounds: [ 0, 16 ],
-    fadeInBounds: [ 17, 21 ],
-    fadeOutBounds: [ 28, 32 ]
+    yScrollBounds: [ 0, 40 ],
+    fadeInBounds: [ 12, 28 ],
+    fadeOutBounds: [ 80, 90 ]
 }
 
 export const scrollE: ScrollAnimationProps = {
@@ -61,9 +61,9 @@ export const scrollE: ScrollAnimationProps = {
     startingPos: { x: 50, y: 10},
     hFactor: 0,
     vFactor: 1.2,
-    yScrollBounds: [ 0, 16 ],
-    fadeInBounds: [ 19, 23 ],
-    fadeOutBounds: [ 28, 32 ]
+    yScrollBounds: [ 0, 40 ],
+    fadeInBounds: [ 12, 28 ],
+    fadeOutBounds: [ 80, 90 ]
 }
 
 // Ceremony

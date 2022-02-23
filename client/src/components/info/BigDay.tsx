@@ -6,16 +6,38 @@ import {
 
 } from "./Sprites";
 import { Panel } from "../../models/ScrollAnimationProps";
+import { useEffect, useState } from "react";
 
 export function BigDay() {
 
-    const clientHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    const clientWidth = document.documentElement.scrollWidth;
+    const scrollHeight = document.documentElement.scrollHeight;
     const maxPanels = 3;
     const panelHeight = clientHeight * 0.7;
-    const panel0: Panel = {index: 0, max: maxPanels, height: panelHeight}
-    const panel1: Panel = {index: 1, max: maxPanels, height: panelHeight}
-    const panel2: Panel = {index: 2, max: maxPanels, height: panelHeight}
-    const panel3: Panel = {index: 3, max: maxPanels, height: panelHeight}
+    const panel0: Panel = {index: 0, max: maxPanels, height: 0}
+    const panel1: Panel = {index: 1, max: maxPanels, height: 0}
+    const panel2: Panel = {index: 2, max: maxPanels, height: 0}
+    const panel3: Panel = {index: 3, max: maxPanels, height: 0}
+
+    const [yScroll, setYScroll] = useState(0);
+    const handleScroll = () => {
+
+        const yScrollCapture = window.scrollY;
+        setYScroll(yScrollCapture);
+        const debug = document.getElementById("debug");
+        const debug2 = document.getElementById("debug2");
+        debug!.style.marginTop = yScrollCapture + "px";
+        debug2!.style.marginTop = yScrollCapture + "px";
+    } 
+
+    useEffect(() => {
+            
+            window.addEventListener("scroll", handleScroll);
+            return () => {
+                window.removeEventListener("scroll", handleScroll);
+            };
+    }, []);
 
     return (
         <div>
@@ -24,6 +46,16 @@ export function BigDay() {
                 <p>Scroll through the plan</p>
             </div> */}
 
+            <div className="debug-r" id="debug2">
+                <p>{`scroll height: ${scrollHeight}`}</p>
+                <p>{`client height: ${clientHeight}`}</p>
+                <p>{`client width: ${clientWidth}`}</p>
+            </div>
+
+            <div className="debug-scroll" id="debug">
+                <hr />
+                <p>{yScroll}</p>
+            </div>
             <div className="animation-panel">
                 <div className="timeline-text">
                     <div className="head" >Signing Registry</div>
@@ -62,13 +94,13 @@ export function BigDay() {
                     <div className="sub">13:45</div>
                 </div>
                 <div>
-                 <div className="camera-wrap"><ScrollAnimation props={cameraTop1} panel={panel2} pageHeight={clientHeight}/></div>
+                 {/* <div className="camera-wrap"><ScrollAnimation props={cameraTop1} panel={panel2} pageHeight={clientHeight}/></div>
                  <div className="camera-wrap"><ScrollAnimation props={cameraTop2} panel={panel2} pageHeight={clientHeight}/></div>
                  <div className="camera-wrap"><ScrollAnimation props={cameraBottom} panel={panel2} pageHeight={clientHeight}/></div>
                  <div className="camera-wrap"><ScrollAnimation props={cameraL} panel={panel2} pageHeight={clientHeight}/></div>
                  <div className="camera-wrap"><ScrollAnimation props={cameraR} panel={panel2} pageHeight={clientHeight}/></div>
                  <div className="camera-wrap"><ScrollAnimation props={cameraInner} panel={panel2} pageHeight={clientHeight}/></div>
-                 <div className="camera-wrap"><ScrollAnimation props={cameraOuter} panel={panel2} pageHeight={clientHeight}/></div>
+                 <div className="camera-wrap"><ScrollAnimation props={cameraOuter} panel={panel2} pageHeight={clientHeight}/></div> */}
                 </div>
             </div>
 

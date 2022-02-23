@@ -5,8 +5,7 @@ import { XY } from "../../models/XY";
 export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Panel, pageHeight: number }) {
 
     const [isLoaded, setIsLoaded] = useState(false);
-    const [yST, setYST] = useState(0);
-    const [xyT, setXyT] = useState(props.props.startingPos);
+    const [pos, setPos] = useState(props.props.startingPos);
     
     const panelOffset = props.panel.index * props.panel.height;
     const panelFraction: number = (props.panel.index + 1) / props.panel.max;
@@ -19,16 +18,15 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
 
     const handleScroll = () => {
 
-        const yScroll = window.scrollY;
+        const yScroll = window.scrollY - panelOffset;
         
-        setYST(yScroll);
         if (isBetween(yScroll, yScrollBounds, panelOffset)) {
-            const x = startingPos.x - (props.props.width / 2) + (props.props.hFactor * (yScroll  - panelOffset));
-            const y = startingPos.y + (props.props.vFactor * (yScroll - panelOffset));
+            const x = startingPos.x - (props.props.width / 2) + (props.props.hFactor * (yScroll));
+            const y = startingPos.y + (props.props.vFactor * (yScroll));
             const outerElement = document.getElementById(outerId);
-            outerElement!.style.left = x + "vw";
-            outerElement!.style.top = y + "vh";
-            setXyT({x, y});
+            outerElement!.style.marginLeft = x + "vw";
+            outerElement!.style.marginTop = y + "px";
+            setPos({x, y});
         }
 
         const innerElement = document.getElementById(innerId)
@@ -41,9 +39,9 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
         if (!isLoaded) {
             const outerElement = document.getElementById(outerId);
             const innerElement = document.getElementById(innerId);
-            outerElement!.style.left = startingPos.x - (props.props.width / 2) + "vw";
-            outerElement!.style.top = startingPos.y + "vh";
+            outerElement!.style.marginLeft = startingPos.x - (props.props.width / 2) + "vw";
             innerElement!.style.width = props.props.width + "vw";
+            outerElement!.style.marginTop = startingPos.y + "px";
             innerElement!.style.opacity = "0";
             setIsLoaded(true);
         }
@@ -57,10 +55,12 @@ export function ScrollAnimation(props: { props: ScrollAnimationProps, panel: Pan
     return(
         <div className="scroll-img-outer">
             <div className="scroll-img-inner" id={props.props.id}>
+                <div className="debug-coord">
+                    <span className="x">{pos.x.toFixed(0)}</span>
+                    ,
+                    <span className="y">{pos.y.toFixed(0)}</span>
+                </div>
                 <img className={props.props.id} src={props.props.svg} id={`${props.props.id}-img`} alt=""></img>
-                {/* <p>{yST.toFixed(0)}</p> */}
-                {/* <p>{xyT.x + " , " + xyT.y}</p> */}
-                {/* <p>{props.pageHeight}</p> */}
             </div>    
         </div>
     )

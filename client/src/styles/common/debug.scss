@@ -1,0 +1,36 @@
+.debug-scroll {
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    color: turquoise;
+
+    hr {
+        margin: 0;
+        border: 1px solid turquoise;
+    }
+}
+
+.debug-r {
+    position: absolute;
+    right: 0;
+    color: lime;
+}
+
+.debug-coord {
+    position: absolute;
+    font-family: system-ui;
+
+    .x {
+        color: lime;
+    }
+    .y {
+        color: yellow;
+    }
+}
+
+.debug-vbar {
+    margin-left: 50%;
+    position: absolute;
+    height: 100vh;
+    border-left: 1px solid turquoise;
+}

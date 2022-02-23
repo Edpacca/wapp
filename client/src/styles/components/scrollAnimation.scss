@@ -1,18 +1,22 @@
 .scroll-img-outer {
     overflow: hidden;
     position: absolute;
+    width: 100%;
 }
 
 .scroll-img-inner {
     width: 5vw;
-    position: fixed;
+    // position: fixed;
+    border: 1px dotted gold;
+    border-radius: 10px;
 }
 
 .animation-panel {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    position: relative;
+    // position: relative;
     height: 60vh;
     margin-top: 10vh;
+    border: 1px dashed red;
 }
 
 .timeline-text {
@@ -36,8 +40,6 @@
     }
 }
  
-
-
 
 .castle-wrap {
 }   

@@ -6,6 +6,7 @@ export function Info() {
 
     return(
         <div className="itinerary">
+
           <BigDay />
             {/* <DayActivities/> */}
         </div>
