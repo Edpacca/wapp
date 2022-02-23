@@ -14,7 +14,8 @@ export function BigDay() {
     const clientWidth = document.documentElement.scrollWidth;
     const scrollHeight = document.documentElement.scrollHeight;
     const maxPanels = 3;
-    const panelHeight = clientHeight * 0.7;
+    const panelHeight = clientHeight * 0.6;
+    const panelGap = clientHeight * 0.1;
     const panel0: Panel = {index: 0, max: maxPanels, height: 0}
     const panel1: Panel = {index: 1, max: maxPanels, height: 0}
     const panel2: Panel = {index: 2, max: maxPanels, height: 0}
@@ -23,12 +24,13 @@ export function BigDay() {
     const [yScroll, setYScroll] = useState(0);
     const handleScroll = () => {
 
-        const yScrollCapture = window.scrollY;
-        setYScroll(yScrollCapture);
+        const yScroll = window.scrollY;
+        const relativeYScroll = yScroll % (panelHeight + panelGap);
+        setYScroll(relativeYScroll);
         const debug = document.getElementById("debug");
         const debug2 = document.getElementById("debug2");
-        debug!.style.marginTop = yScrollCapture + "px";
-        debug2!.style.marginTop = yScrollCapture + "px";
+        debug!.style.marginTop = yScroll + "px";
+        debug2!.style.marginTop = yScroll + "px";
     } 
 
     useEffect(() => {
@@ -50,6 +52,7 @@ export function BigDay() {
                 <p>{`scroll height: ${scrollHeight}`}</p>
                 <p>{`client height: ${clientHeight}`}</p>
                 <p>{`client width: ${clientWidth}`}</p>
+                <p>{`panel height: ${panelHeight.toFixed(0)}`}</p>
             </div>
 
             <div className="debug-scroll" id="debug">
