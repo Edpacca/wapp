@@ -8,7 +8,6 @@ import { XY } from "../../../models/XY";
 export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel: PanelProps, yScrollPercent: number, isPanelActive: boolean }) {
 
     const [isLoaded, setIsLoaded] = useState(false);
-
     const [width, setWidth] = useState(props.animation.width * 0.01 * props.panel.width);
 
     const initalPosition: XY = { 
@@ -29,37 +28,21 @@ export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel:
     const fadeIn: Transition = props.animation.fadeInBounds;
     const fadeOut: Transition = props.animation.fadeOutBounds;
 
-    const outerId = props.animation.id;
-    const innerId = `${props.animation.id}-img`;
-
     function handleScroll() {
         if (props.isPanelActive) {
             if (isBetween(yScrollPercent, yScrollBounds)) {
-                // const outerElement = document.getElementById(outerId);
-    
-                // if (outerElement) {
                     const percentage = getPercentage(yScrollPercent, yScrollBounds);
                     const xDiff = percentage * (finalPosition.x - initalPosition.x);
                     const yDiff = percentage * (finalPosition.y - initalPosition.y);
                     setPosition({x: initalPosition.x + xDiff, y: initalPosition.y + yDiff });
-                    // outerElement!.style.marginLeft = initalPosition.x + xDiff + "px";
-                    // outerElement!.style.marginTop = initalPosition.y + yDiff + "px";
-                // }
             }
             
             if (yScrollPercent > yScrollBounds[1]) {
-                // const outerElement = document.getElementById(outerId);
-                // if (outerElement) {
-                //     outerElement!.style.marginLeft = finalPosition + "px";
-                //     outerElement!.style.marginTop = finalPosition + "px";
-                // }
+                setPosition(props.animation.finalPosition);
             }
     
-            // const innerElement = document.getElementById(innerId);
-            // if (innerElement) {
                 calcOpacity( yScrollPercent, fadeIn, {minima: 0, maxima: 100});
                 calcOpacity(yScrollPercent, fadeOut, {minima: 100, maxima: 0});
-            // }
         }
     }
 
@@ -74,15 +57,8 @@ export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel:
             setOpacity(opacity);
         }
     
-        if (yScrollPercent < transition[0] && isPositive) {
-            // element.style.opacity = extremum.minima.toString();
-            setOpacity(extremum.minima);
-        }
-    
-        if (yScrollPercent > transition[1]) {
-            // element.style.opacity = extremum.maxima.toString();
-            setOpacity(extremum.maxima);
-        }
+        if (yScrollPercent < transition[0] && isPositive) setOpacity(extremum.minima);
+        if (yScrollPercent > transition[1]) setOpacity(extremum.maxima);
     }
     
     useEffect(() => {
@@ -90,12 +66,6 @@ export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel:
             setOpacity(0);
             setPosition(initalPosition);
             setWidth(props.animation.width * 0.01 * props.panel.width);
-            // const outerElement = document.getElementById(outerId);
-            // const innerElement = document.getElementById(innerId);
-            // innerElement!.style.width = width + "px";
-            // outerElement!.style.marginLeft = initalPosition.x + "px";
-            // outerElement!.style.marginTop = initalPosition.y + "px";
-            // innerElement!.style.opacity = "0";
             setIsLoaded(true);
         }
 
@@ -108,14 +78,12 @@ export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel:
 
     return(
         <div className="scroll-img-outer" style={{marginTop: position.y + "px", marginLeft: position.x + "px"}} >
-            <div className="scroll-img-inner" style={{opacity: opacity, width: width}} id={props.animation.id}>
+            <div className="scroll-img-inner" style={{opacity: opacity, width: width + "px"}} id={props.animation.id}>
                 <img className={props.animation.id} src={props.animation.svg} id={`${props.animation.id}-img`} alt=""></img>
             </div>    
         </div>
     )
 }
-
-
 
 function isBetween(value: number, bounds: Transition) {
     return value >= bounds[0] && value <= bounds[1];
