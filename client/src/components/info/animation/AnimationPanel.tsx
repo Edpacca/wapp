@@ -21,7 +21,7 @@ export function AnimationPanel(props: { sprites: ScrollAnimationProps[], panel: 
                     />
                 </div>    
             })
-        }
+            }
             </div>
         </div>
     )
