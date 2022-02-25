@@ -1,13 +1,13 @@
 .scroll-img-outer {
     overflow: hidden;
     position: absolute;
-    width: 100%;
+    width: 90vmin;
 }
 
 .scroll-img-inner {
     width: 5vw;
-    border: 1px dotted gold;
-    border-radius: 10px;
+    // border: 1px dotted gold;
+    // border-radius: 10px;
 }
 
 // .scroll-img-inner-active {
@@ -18,7 +18,7 @@
 
 .animation-panel {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    height: 70vh;
+    height: 40vh;
     width: 90vmin;
     margin: auto;
     margin-top: 10vh;

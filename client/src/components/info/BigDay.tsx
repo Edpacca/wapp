@@ -13,7 +13,7 @@ export function BigDay() {
 
     const clientHeight = document.documentElement.clientHeight;
     const clientWidth = document.documentElement.scrollWidth;
-    const panelHeight = clientHeight * 0.7;
+    const panelHeight = clientHeight * 0.4;
     const panelWidth = 0.9 * Math.min(clientHeight, clientWidth);
     const panelGap = clientHeight * 0.1;
     const panelXMargin = 0.5 * (clientWidth - panelWidth);
@@ -31,7 +31,6 @@ export function BigDay() {
     const activePanel = Math.floor(yScroll / (panelHeight + panelGap));
 
     const handleScroll = () => {
-
         const yScroll = window.scrollY;
         const relativeYScroll = yScroll % (panelHeight + panelGap);
         const yScrollPercent = 100 * relativeYScroll / panelHeight
@@ -128,8 +127,8 @@ export function BigDay() {
                 panelIndex={5}/>
            
             <div className="timeline-text">
-                    <div className="head" >Dinner</div>
-                    <div className="sub">Dancing</div>
+                    <div className="head" >Dancing</div>
+                    <div className="sub">House at Bridge of Lochay</div>
                     <div className="sub">20:00</div>
             </div>
             

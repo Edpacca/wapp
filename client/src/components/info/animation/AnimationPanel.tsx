@@ -6,10 +6,9 @@ export function AnimationPanel(props: { sprites: ScrollAnimationProps[], panel: 
     yScrollPercent: number, activePanel: number, panelIndex: number }) {
 
     const isActivePanel = props.activePanel === props.panelIndex;
-    
+
     return (
         <div className="animation-panel">
-            <div>
             {
             props.sprites.map(sprite => {
                 return <div key={sprite.id} className={`${sprite.id}-wrap`}>
@@ -22,7 +21,6 @@ export function AnimationPanel(props: { sprites: ScrollAnimationProps[], panel: 
                 </div>    
             })
             }
-            </div>
         </div>
     )
 }

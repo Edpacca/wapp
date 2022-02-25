@@ -4,49 +4,48 @@ import { ScrollAnimationProps } from "../../../models/ScrollAnimationProps";
 import { PanelProps } from "../../../models/ScrollDimensionProps";
 import { Transition } from "../../../models/Transition";
 import { XY } from "../../../models/XY";
+import ScrollImg from "./ScrollImg";
 
 export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel: PanelProps, yScrollPercent: number, isPanelActive: boolean }) {
 
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [width, setWidth] = useState(props.animation.width * 0.01 * props.panel.width);
+    const width = props.animation.width * props.panel.width;
 
-    const initalPosition: XY = { 
-        x: props.animation.initialPosition.x * 0.01 * props.panel.width - (width / 2),
-        y: props.animation.initialPosition.y * 0.01 * props.panel.height
+    const initialPosition: XY = { 
+        x: props.animation.initialPosition.x * props.panel.width - (width / 2),
+        y: props.animation.initialPosition.y * props.panel.height
     };
     const finalPosition: XY = {
-        x: props.animation.finalPosition.x * 0.01 * props.panel.width - (width / 2),
-        y: props.animation.finalPosition.y * 0.01 * props.panel.height,
+        x: props.animation.finalPosition.x * props.panel.width - (width / 2),
+        y: props.animation.finalPosition.y * props.panel.height,
     } 
 
-    const [position, setPosition] = useState<XY>(initalPosition);
+    const [position, setPosition] = useState<XY>(initialPosition);
     const [opacity, setOpacity] = useState<number>(0);
 
-    const yScrollPercent = props.yScrollPercent;
-    const yScrollBounds: Transition = props.animation.animationBounds;
+    
+    useEffect(() => {
+        handleScrollAnimation();
+    }, [props.yScrollPercent]);
 
-    const fadeIn: Transition = props.animation.fadeInBounds;
-    const fadeOut: Transition = props.animation.fadeOutBounds;
-
-    function handleScroll() {
+    function handleScrollAnimation() {
         if (props.isPanelActive) {
-            if (isBetween(yScrollPercent, yScrollBounds)) {
-                    const percentage = getPercentage(yScrollPercent, yScrollBounds);
-                    const xDiff = percentage * (finalPosition.x - initalPosition.x);
-                    const yDiff = percentage * (finalPosition.y - initalPosition.y);
-                    setPosition({x: initalPosition.x + xDiff, y: initalPosition.y + yDiff });
+            if (isBetween(props.yScrollPercent, props.animation.animationBounds)) {
+                const percentage = getPercentage(props.yScrollPercent, props.animation.animationBounds);
+                const xDiff = percentage * (finalPosition.x - initialPosition.x);
+                const yDiff = percentage * (finalPosition.y - initialPosition.y);
+                setPosition({x: initialPosition.x + xDiff, y: initialPosition.y + yDiff });
             }
             
-            if (yScrollPercent > yScrollBounds[1]) {
-                setPosition(props.animation.finalPosition);
+            if (props.yScrollPercent > props.animation.animationBounds[1]) {
+                setPosition(finalPosition);
             }
-    
-                calcOpacity( yScrollPercent, fadeIn, {minima: 0, maxima: 100});
-                calcOpacity(yScrollPercent, fadeOut, {minima: 100, maxima: 0});
+
+            handleOpacity( props.yScrollPercent, props.animation.fadeInBounds, {minima: 0, maxima: 100});
+            handleOpacity(props.yScrollPercent, props.animation.fadeOutBounds, {minima: 100, maxima: 0});
         }
     }
 
-    function calcOpacity(yScrollPercent: number, transition: Transition, extremum: Extremum) {
+    function handleOpacity(yScrollPercent: number, transition: Transition, extremum: Extremum) {
         const isPositive = extremum.maxima - extremum.minima > 0;
     
         if (isBetween(yScrollPercent, transition)) {
@@ -60,28 +59,9 @@ export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel:
         if (yScrollPercent < transition[0] && isPositive) setOpacity(extremum.minima);
         if (yScrollPercent > transition[1]) setOpacity(extremum.maxima);
     }
-    
-    useEffect(() => {
-        if (!isLoaded) {
-            setOpacity(0);
-            setPosition(initalPosition);
-            setWidth(props.animation.width * 0.01 * props.panel.width);
-            setIsLoaded(true);
-        }
-
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-
-    }, [yScrollPercent]);
 
     return(
-        <div className="scroll-img-outer" style={{marginTop: position.y + "px", marginLeft: position.x + "px"}} >
-            <div className="scroll-img-inner" style={{opacity: opacity, width: width + "px"}} id={props.animation.id}>
-                <img className={props.animation.id} src={props.animation.svg} id={`${props.animation.id}-img`} alt=""></img>
-            </div>    
-        </div>
+        <ScrollImg position={position} opacity={opacity} width={width} id={props.animation.id} svg={props.animation.svg} />
     )
 }
 
