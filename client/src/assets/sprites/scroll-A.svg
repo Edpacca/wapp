@@ -2,20 +2,20 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="301.94388mm"
    height="237.03674mm"
    viewBox="0 0 301.94388 237.03674"
    version="1.1"
    id="svg1398"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="scroll-A.svg">
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="scroll-A.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs1392" />
   <sodipodi:namedview
@@ -26,20 +26,21 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="374.26827"
-     inkscape:cy="386.07268"
+     inkscape:cx="184.28571"
+     inkscape:cy="537.14286"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="1072"
-     inkscape:window-y="394"
+     inkscape:window-height="1120"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     inkscape:pagecheckerboard="0" />
   <metadata
      id="metadata1395">
     <rdf:RDF>
@@ -48,7 +49,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -63,17 +63,21 @@
        id="path2023"
        inkscape:connector-curvature="0"
        transform="scale(0.26458333)" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:68.7025528px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#005000;fill-opacity:1;stroke:none;stroke-width:1.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
-       x="55.542019"
-       y="143.97641"
-       id="text2031-5"
-       transform="matrix(1.0012939,0.01927413,-0.01979527,0.99832673,0,0)"><tspan
-         sodipodi:role="line"
-         id="tspan2029-2"
+    <g
+       id="g845"
+       style="fill:#c8b8a0;fill-opacity:0.54826957">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:68.7026px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#c8b8a0;fill-opacity:0.54826957;stroke:none;stroke-width:1.365;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          x="55.542019"
          y="143.97641"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Harrington;-inkscape-font-specification:Harrington;fill:#005000;stroke:none;stroke-width:1.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1;">A</tspan></text>
+         id="text2031-5"
+         transform="matrix(1.0012939,0.01927413,-0.01979527,0.99832673,0,0)"><tspan
+           sodipodi:role="line"
+           id="tspan2029-2"
+           x="55.542019"
+           y="143.97641"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Harrington;-inkscape-font-specification:Harrington;fill:#c8b8a0;fill-opacity:0.54826957;stroke:none;stroke-width:1.365;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">A</tspan></text>
+    </g>
   </g>
 </svg>

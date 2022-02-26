@@ -2,7 +2,7 @@ import { ScrollAnimation } from "./animation/ScrollAnimation";
 import { 
     scroll, quill, scrollA, scrollE, 
     castle, tree, heart, ringL, ringR1, ringR2,
-    cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter
+    cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter, cameraFlash
 
 } from "./animation/Sprites";
 import { useEffect, useState } from "react";
@@ -13,8 +13,8 @@ export function BigDay() {
 
     const clientHeight = document.documentElement.clientHeight;
     const clientWidth = document.documentElement.scrollWidth;
-    const panelHeight = clientHeight * 0.4;
-    const panelWidth = 0.9 * Math.min(clientHeight, clientWidth);
+    const panelHeight = Math.max(clientHeight, clientWidth) * 0.4;
+    const panelWidth = panelHeight;
     const panelGap = clientHeight * 0.1;
     const panelXMargin = 0.5 * (clientWidth - panelWidth);
 
@@ -81,7 +81,7 @@ export function BigDay() {
             </div>
 
             <AnimationPanel 
-                sprites={[cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter]}
+                sprites={[cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter, cameraFlash]}
                 panel={panelProps}
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}

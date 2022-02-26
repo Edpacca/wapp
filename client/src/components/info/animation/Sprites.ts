@@ -16,6 +16,7 @@ import cameraLSprite from '../../../assets/sprites/camera-L1.svg';
 import cameraRSprite from '../../../assets/sprites/camera-R1.svg';
 import cameraInnerSprite from '../../../assets/sprites/camera-inner-ring.svg';
 import cameraOuterSprite from '../../../assets/sprites/camera-outer-ring.svg';
+import cameraFlashSprite from '../../../assets/sprites/camera-flash.svg';
 
 // Registy
 export const scroll: ScrollAnimationProps = {
@@ -140,7 +141,7 @@ export const cameraTop1: ScrollAnimationProps = {
     initialPosition: { x: 0.50, y: 0.10},
     finalPosition: { x: 0.50, y: 0.50 },  
     fadeInBounds: [ 10, 15 ],
-    fadeOutBounds: [ 70, 80 ]
+    fadeOutBounds: [ 68, 73 ]
 }
 
 export const cameraTop2: ScrollAnimationProps = {
@@ -151,7 +152,7 @@ export const cameraTop2: ScrollAnimationProps = {
     initialPosition: { x: 0.50, y: 0.10},
     finalPosition: { x: 0.50, y: 0.50 },  
     fadeInBounds: [ 2, 15 ],
-    fadeOutBounds: [ 70, 80 ]
+    fadeOutBounds: [ 66, 71 ]
 }
 
 export const cameraBottom: ScrollAnimationProps = {
@@ -162,7 +163,7 @@ export const cameraBottom: ScrollAnimationProps = {
     initialPosition: { x: 0.50, y: 0.90},
     finalPosition: { x: 0.50, y: 0.50 },  
     fadeInBounds: [ 3, 15 ],
-    fadeOutBounds: [ 70, 80 ]
+    fadeOutBounds: [ 64, 69 ]
 }
 
 export const cameraL: ScrollAnimationProps = {
@@ -173,7 +174,7 @@ export const cameraL: ScrollAnimationProps = {
     initialPosition: { x: 0.0, y: 0.30},
     finalPosition: { x: 0.50, y: 0.50 },  
     fadeInBounds: [ 2, 15 ],
-    fadeOutBounds: [ 70, 80 ]
+    fadeOutBounds: [ 62, 67 ]
 }
 
 export const cameraR: ScrollAnimationProps = {
@@ -184,7 +185,7 @@ export const cameraR: ScrollAnimationProps = {
     initialPosition: { x: 1.0, y: 0.30},
     finalPosition: { x: 0.50, y: 0.50 },  
     fadeInBounds: [ 2, 15 ],
-    fadeOutBounds: [ 70, 80 ]
+    fadeOutBounds: [ 60, 65 ]
 }
 
 export const cameraInner: ScrollAnimationProps = {
@@ -206,5 +207,16 @@ export const cameraOuter: ScrollAnimationProps = {
     initialPosition: { x: 0.50, y: 0.60},
     finalPosition: { x: 0.50, y: 0.50 },  
     fadeInBounds: [ 13, 15 ],
-    fadeOutBounds: [ 70, 80 ]
+    fadeOutBounds: [ 65, 70 ]
+}
+
+export const cameraFlash: ScrollAnimationProps = {
+    id: "sa-cameraFlash", 
+    svg: cameraFlashSprite, 
+    width: 0.60,
+    animationBounds: [ 0, 0 ],
+    initialPosition: { x: 0.35, y: 0.35},
+    finalPosition: { x: 0.35, y: 0.35 },  
+    fadeInBounds: [ 35, 39 ],
+    fadeOutBounds: [ 43, 45 ]
 }

@@ -18,12 +18,26 @@
 
 .animation-panel {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    height: 40vh;
-    width: 90vmin;
+    height: 40vmax;
+    width: 40vmax;
     margin: auto;
     margin-top: 10vh;
-    // border: 1px dashed red;
+    border: 1px dashed red;
 }
+
+// @media only screen and (max-width: 600px) {
+//     .animation-panel {
+//         height: 40vh;
+//         width: 90vmin;
+//     }
+// }
+
+// @media only screen and (min-width: 600px) {
+//     .animation-panel {
+//         height: 50vh;
+//         width: 40vw;
+//     }
+// }
 
 .main-header {
     font-style: italic;
@@ -56,8 +70,12 @@
     }
 }
 
-.sa-ringR2, .sa-ringR1, .sa-ringL, .sa-scroll {
+.sa-ringR2, .sa-ringR1, .sa-ringL {
     filter: drop-shadow(0 0 6px rgb(255, 174, 0));
+}
+
+.sa-scroll {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
 }
 
 .sa-quill {
@@ -67,3 +85,17 @@
 .sa-heart {
     filter: drop-shadow(0 0 2px rgb(255, 174, 0));
 }
+
+.sa-cameraFlash {
+    filter: drop-shadow(0 0 12px rgb(255, 218, 139)); 
+    animation: rotation 20s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }

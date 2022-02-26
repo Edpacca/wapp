@@ -8,7 +8,7 @@ import ScrollImg from "./ScrollImg";
 
 export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel: PanelProps, yScrollPercent: number, isPanelActive: boolean }) {
 
-    const width = props.animation.width * props.panel.width;
+    const width = props.animation.width * props.panel.height;
 
     const initialPosition: XY = { 
         x: props.animation.initialPosition.x * props.panel.width - (width / 2),
