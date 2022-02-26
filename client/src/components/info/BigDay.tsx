@@ -2,7 +2,8 @@ import { ScrollAnimation } from "./animation/ScrollAnimation";
 import { 
     scroll, quill, scrollA, scrollE, 
     castle, tree, heart, ringL, ringR1, ringR2,
-    cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter, cameraFlash
+    cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter, cameraFlash,
+    drinks
 
 } from "./animation/Sprites";
 import { useEffect, useState } from "react";
@@ -94,7 +95,7 @@ export function BigDay() {
             </div>
             
             <AnimationPanel 
-                sprites={[]}
+                sprites={[drinks]}
                 panel={panelProps}
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}

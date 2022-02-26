@@ -17,6 +17,7 @@ import cameraRSprite from '../../../assets/sprites/camera-R1.svg';
 import cameraInnerSprite from '../../../assets/sprites/camera-inner-ring.svg';
 import cameraOuterSprite from '../../../assets/sprites/camera-outer-ring.svg';
 import cameraFlashSprite from '../../../assets/sprites/camera-flash.svg';
+import drinksSprite from '../../../assets/sprites/drinks.svg';
 
 // Registy
 export const scroll: ScrollAnimationProps = {
@@ -219,4 +220,15 @@ export const cameraFlash: ScrollAnimationProps = {
     finalPosition: { x: 0.35, y: 0.35 },  
     fadeInBounds: [ 35, 39 ],
     fadeOutBounds: [ 43, 45 ]
+}
+
+export const drinks: ScrollAnimationProps = {
+    id: "sa-drinks", 
+    svg: drinksSprite, 
+    width: 1.5,
+    animationBounds: [ 0, 80 ],
+    initialPosition: { x: -0.5, y: 0.5},
+    finalPosition: { x: 1.5, y: 0.5 },  
+    fadeInBounds: [ 1, 20 ],
+    fadeOutBounds: [ 60, 80 ]
 }
