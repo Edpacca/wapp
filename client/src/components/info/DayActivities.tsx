@@ -1,31 +1,32 @@
 import { useState } from "react"
-import { Days, Day, Activity } from "../../data/activityData"
+import { DAYS, Day, Activity } from "../../data/activityData"
 
 export function DayActivities() {
 
+    const [activeDay, setActiveDay] = useState(5);
+
     return (
-        <div>
-            {Days.map(day => RenderDay(day))}
+        <div className="days">
+            {DAYS.map((day, index) => RenderDay(day, index, activeDay === index, setActiveDay))}
         </div>
     )
 }
 
-function RenderDay(day: Day) {
+function RenderDay(day: Day, index: number, isActive: Boolean, setActive: (index: number) => void) {
 
     const activities = day.activities.map(activity => {
-        return <li>{renderActivity(activity)}</li>
+        return <li key={activity.heading}>{renderActivity(activity)}</li>
     })
 
-    const [ showActivities, setShowActivities ] = useState<boolean>(false);
-
     return (
-        <div className="day">
-            <div>
-                <h2 className="day-title" onClick={() => setShowActivities(!showActivities)}>{day.title}</h2>
+        <div className="day" onClick={() => isActive ? setActive(5) : setActive(index)}>
+            <div className="calendar">
+                <div className="date">{day.date.getDate()}<sup>th</sup></div>
+                <div className="day-title">{day.title}</div>
             </div>
             <ul className="activities">
                 {   
-                    showActivities &&
+                    isActive &&
                     activities
                 }
             </ul>
@@ -37,8 +38,8 @@ function RenderDay(day: Day) {
 function renderActivity(activity: Activity) {
 
     const title = activity.url 
-    ? <a href={activity.url} className="link">{activity.name}</a> 
-    : activity.name;
+    ? <a href={activity.url} className="link">{activity.heading}</a> 
+    : activity.heading;
 
     return(
         <div>

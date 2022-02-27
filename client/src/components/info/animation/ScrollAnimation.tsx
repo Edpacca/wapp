@@ -11,11 +11,11 @@ export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel:
     const width = props.animation.width * props.panel.height;
 
     const initialPosition: XY = { 
-        x: props.animation.initialPosition.x * props.panel.width - (width / 2),
+        x: (props.animation.initialPosition.x * props.panel.height) - (width / 2),
         y: props.animation.initialPosition.y * props.panel.height
     };
     const finalPosition: XY = {
-        x: props.animation.finalPosition.x * props.panel.width - (width / 2),
+        x: (props.animation.finalPosition.x * props.panel.height) - (width / 2),
         y: props.animation.finalPosition.y * props.panel.height,
     } 
 

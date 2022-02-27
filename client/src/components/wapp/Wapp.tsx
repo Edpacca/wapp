@@ -30,6 +30,7 @@ export function Wapp() {
   return (
     <div>
       <NavBar page={page}/>
+      {/* <div className='debug-vbar'></div> */}
       {
         page === 'home' &&
         <div>

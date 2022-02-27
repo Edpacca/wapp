@@ -1,4 +1,8 @@
-import { ScrollAnimation } from "./animation/ScrollAnimation";
+
+import { useEffect, useState } from "react";
+import { PanelProps } from "../../models/ScrollDimensionProps";
+import { AnimationPanel } from "./animation/AnimationPanel";
+import TimelineInfo from "./animation/TimelineInfo";
 import { 
     scroll, quill, scrollA, scrollE, 
     castle, tree, heart, ringL, ringR1, ringR2,
@@ -6,17 +10,15 @@ import {
     drinks
 
 } from "./animation/Sprites";
-import { useEffect, useState } from "react";
-import { PanelProps } from "../../models/ScrollDimensionProps";
-import { AnimationPanel } from "./animation/AnimationPanel";
+import { BIG_DAY_SCHEDULE } from "../../data/activityData";
 
 export function BigDay() {
 
-    const clientHeight = document.documentElement.clientHeight;
-    const clientWidth = document.documentElement.scrollWidth;
+    const clientHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+    const clientWidth = Math.min(document.documentElement.clientWidth, window.innerWidth);
     const panelHeight = Math.max(clientHeight, clientWidth) * 0.4;
     const panelWidth = panelHeight;
-    const panelGap = clientHeight * 0.1;
+    const panelGap = clientHeight * 0.10;
     const panelXMargin = 0.5 * (clientWidth - panelWidth);
 
     const panelProps: PanelProps = {
@@ -50,36 +52,33 @@ export function BigDay() {
 
     return (
         <div>
-            <div className="timeline-text main-header">
+            <div className="main-header">
                 <div>The Big Day</div>
+                <div className="sub">16th July 2022</div>
+                <div className="sub2">Scroll through, and tap the titles for more info.</div>
             </div>
-            <div className="debug-scroll" id="debug">{yScrollPercent}</div>
+            <div className="debug-scroll" id="debug">
+                <span>{yScrollPercent}</span>
+                <br/>
+                <span>{activePanel}</span>
+                <br/>
+                <span>{yScroll}</span>
+                </div>
             <AnimationPanel 
                 sprites={[scroll, quill, scrollA, scrollE]}
                 panel={panelProps}
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={0}/>
+            <TimelineInfo activity={BIG_DAY_SCHEDULE[0]}  />
             
-            <div className="timeline-text">
-                <div className="head" >Signing Registry</div>
-                <div className="sub">Killin Registry Office</div>
-                <div className="sub">12:00</div>
-                <div className="sub2">Bride, Groom + witnesses only</div>
-            </div>
-
             <AnimationPanel 
                 sprites={[castle, tree, heart, ringR2, ringL, ringR1 ]}
                 panel={panelProps}
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={1}/>
-           
-            <div className="timeline-text">
-                    <div className="head" >Ceremony</div>
-                    <div className="sub">Finlarig Estate</div>
-                    <div className="sub">13:00</div>
-            </div>
+           <TimelineInfo activity={BIG_DAY_SCHEDULE[1]}  />
 
             <AnimationPanel 
                 sprites={[cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter, cameraFlash]}
@@ -87,12 +86,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={2}/>
-
-            <div className="timeline-text">
-                    <div className="head" >Photographs</div>
-                    <div className="sub">Finlarig Estate</div>
-                    <div className="sub">13:45</div>
-            </div>
+            <TimelineInfo activity={BIG_DAY_SCHEDULE[2]}  />
             
             <AnimationPanel 
                 sprites={[drinks]}
@@ -100,12 +94,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={3}/>
-            
-            <div className="timeline-text">
-                    <div className="head" >Drinks Reception</div>
-                    <div className="sub">House at Bridge of Lochay</div>
-                    <div className="sub">14:00</div>
-            </div>
+            <TimelineInfo activity={BIG_DAY_SCHEDULE[3]}  />
 
             <AnimationPanel 
                 sprites={[]}
@@ -113,12 +102,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={4}/>
-           
-            <div className="timeline-text">
-                    <div className="head" >Dinner</div>
-                    <div className="sub">House at Bridge of Lochay</div>
-                    <div className="sub">18:00</div>
-            </div>
+           <TimelineInfo activity={BIG_DAY_SCHEDULE[4]}  />
 
             <AnimationPanel 
                 sprites={[]}
@@ -126,13 +110,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={5}/>
-           
-            <div className="timeline-text">
-                    <div className="head" >Dancing</div>
-                    <div className="sub">House at Bridge of Lochay</div>
-                    <div className="sub">20:00</div>
-            </div>
-            
+           <TimelineInfo activity={BIG_DAY_SCHEDULE[5]}  />
         </div>
     )
 }

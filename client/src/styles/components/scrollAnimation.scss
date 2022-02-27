@@ -1,3 +1,5 @@
+@import '../common/colours.scss';
+
 .scroll-img-outer {
     overflow: hidden;
     position: absolute;
@@ -5,7 +7,7 @@
 }
 
 .scroll-img-inner {
-    width: 5vw;
+    width: 5vw; 
     // border: 1px dotted gold;
     // border-radius: 10px;
 }
@@ -21,41 +23,48 @@
     height: 40vmax;
     width: 40vmax;
     margin: auto;
-    margin-top: 10vh;
     border: 1px dashed red;
 }
-
-// @media only screen and (max-width: 600px) {
-//     .animation-panel {
-//         height: 40vh;
-//         width: 90vmin;
-//     }
-// }
-
-// @media only screen and (min-width: 600px) {
-//     .animation-panel {
-//         height: 50vh;
-//         width: 40vw;
-//     }
-// }
 
 .main-header {
     font-style: italic;
     font-size: 3rem;
     font-weight: 400;
     top: 10vh;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 100vw;
+    overflow: hidden;
+    left: calc(50% - 50vw);
+
+    .sub {
+        font-size: 1.5rem;
+        font-weight: 200;
+    }
+
+    .sub2 {
+        color: yellowgreen;
+        font-style: normal;
+        font-size: 1.1rem;
+        font-weight: 100; 
+    }
 }
 
 .timeline-text {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    position: absolute;
     width: 100vw;
     overflow: hidden;
+    // position: absolute;
+    min-height: 10vh;
     left: calc(50% - 50vw);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0,0,0,0.75), rgba(0, 0, 0, 0));
     .head {
         font-style: italic;
         font-size: 2.5rem;
         font-weight: 400;
+    }
+
+    .head:hover {
+        color: rgb(255, 174, 0);
     }
     
     .sub {
@@ -68,6 +77,23 @@
         font-size: 1.1rem;
         font-weight: 100; 
     }
+
+    .details {
+        padding: 1rem;
+        font-family: "system-ui";
+        margin: auto;
+        max-width: 50vw;
+
+    }
+}
+
+.timeline-text:hover {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0,0,0,1), rgba(0, 0, 0, 0));
+
+    .head {
+        color: rgb(255, 174, 0);
+    }
+
 }
 
 .sa-ringR2, .sa-ringR1, .sa-ringL {
