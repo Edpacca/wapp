@@ -21,12 +21,13 @@ function AuthContextProvider(props: any) {
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
+                'x-access-token' : `${process.env.REACT_APP_CLIENT_TOKEN}`
             }
         }).then(response => response.json());
 
         setLoginContext(loggedIn.type);
 
-        if (isLoggedIn && loggedIn.type === 'user') {
+        if (loggedIn.type === 'user') {
              dispatch({ type: 'users/loginRefresh', payload: loggedIn.data });
         }
     }
