@@ -12,6 +12,7 @@ export interface Activity {
 export interface Day {
     date: Date,
     title: string,
+    summary: string,
     activities: Activity[],
 }
 
@@ -60,6 +61,7 @@ export const DAYS: Day[] = [
     {
         date: new Date(2022, 7, 15),
         title: "Friday",
+        summary: "Friday will be a relaxed time for folk to turn up and get settled",
         activities: [
             {
                 heading: "Family meal",
@@ -80,6 +82,7 @@ export const DAYS: Day[] = [
     {
         date: new Date(2022, 7, 16),
         title: "Saturday",
+        summary: "Saturdy is the big day!",
         activities: [
             {
                 heading: "Breakfast",
@@ -117,6 +120,7 @@ export const DAYS: Day[] = [
     {
         date: new Date(2022, 7, 17),
         title: "Sunday",
+        summary: "Friday will be a relaxed time for folk to turn up and get settled",
         activities: [
             {
                 heading: "Breakfast",
@@ -136,6 +140,7 @@ export const DAYS: Day[] = [
     {
         date: new Date(2022, 7, 18),
         title: "Monday",
+        summary: "Friday will be a relaxed time for folk to turn up and get settled",
         activities: [
             {
                 heading: "Family meal",

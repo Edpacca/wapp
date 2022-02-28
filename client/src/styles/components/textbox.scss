@@ -12,7 +12,12 @@
   }
   
   .textbox:focus-visible {
-    outline: 2px solid yellowgreen;
+    outline: 2px solid white;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  }
+
+  .textbox:focus-visible::placeholder {
+    color: rgb(161, 161, 161);
   }
 
   .error-label {

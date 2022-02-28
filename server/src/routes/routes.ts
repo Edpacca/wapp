@@ -10,19 +10,19 @@ export function appRouter(app: express.Express): void {
 
     // AUTHENTICATION
     app.get("/authenticate", (request, result) => {
-        authenticate(request, result);
+        return authenticate(request, result);
     });
 
     app.post("/login", verifyClientToken, (request, result) => {
-        loginUser(request, result);
+        return loginUser(request, result);
     });
 
     app.post("/admin/login", verifyClientToken, (request, result) => {
-        loginAdmin(request, result);
+        return loginAdmin(request, result);
     });
 
     app.post("/logout", verifyClientToken, (request, result) => {
-        logout(request, result);
+        return logout(request, result);
     });
 
     // USER

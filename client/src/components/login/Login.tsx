@@ -29,13 +29,6 @@ export function Login() {
         }
     }
 
-    function handleKeyPress(e: React.KeyboardEvent<HTMLDivElement>) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            captureLogin();
-        }
-    }
-
     return(
         <div>
             <div>
@@ -58,7 +51,7 @@ export function Login() {
                     className={`textbox ${status}`}
                     placeholder={"Secret"}
                     id="secret" onChange={(e) => setPassword(e.target.value)}
-                    onKeyPress={(e) => handleKeyPress(e)}>
+                    >
                 </input>
             <button type='submit' className="button login">Login</button>
             </form>

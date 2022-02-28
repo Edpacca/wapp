@@ -10,11 +10,10 @@ import { InvalidCredentialsError, ServerError } from '../../constants/errors';
 export async function authenticate(request, result) {
     try {
         const token = request.cookies.token;
-        if (!token) return result.json(false);
+        if (!token) return result.status(401).json(false);
 
         let type;
         let name;
-        console.log(process.env.TOKEN_KEY)
         
         jwt.verify(token, process.env.TOKEN_KEY, function(err, decoded) {
             type = decoded.type ?? "";

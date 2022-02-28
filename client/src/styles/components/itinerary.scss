@@ -22,7 +22,7 @@
     text-align: center;
     margin: auto;
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .date {
@@ -42,18 +42,47 @@
 }
 
 .activities {
-    text-align: left;
+    align-items: center;
+    font-family: "system-ui";
+    font-size: larger;
+    .time {
+        font-weight: bold;
+        color: yellowgreen;
+    }
 
     .link {
-        color: yellowgreen;
+        font-size: 2rem;
+        color: white;
+        font-family: initial;
     }   
 }
 
 .activity-list {
-    padding-inline-start: 1ch;
+    padding-bottom: 2em;
 }
 
 .activity-list::marker {
+    all: revert;
     font-size: 3rem;
-    padding: 1em;
+    margin: 0;
+}
+
+.lr-selector {
+    width: 40vw;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    align-items: center;
+    margin: auto;
+
+    .leaf-button {
+        width: 5vmin;
+        opacity: 0.5;
+    }
+
+    .leaf-button:hover {
+        opacity: 1;
+    }
+
+
 }
