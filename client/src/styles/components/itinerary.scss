@@ -4,14 +4,17 @@
 //     margin: auto;
 // }
 
+.days-wrapper {
+    padding: 1em;
+}
+
 .day {
     text-align: left;
 }
 
 .days {
-    padding: 2vw;
     display: grid;
-    grid-template-columns: 24vw 24vw 24vw 24vw;
+    grid-template-columns: 25% 25% 25% 25%;
     font-family: 'system-ui';
 }
 
@@ -26,19 +29,31 @@
 }
 
 .calendar {
-    border: 1px solid greenyellow;
+    border: 1px solid white;
     border-radius: 8px;
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.438);
+    background-color: rgba(0, 0, 0, 0.4);
     height: 10vw;
 }
 
-.activities {
+.active {
+    border: 1px solid greenyellow;
+    background-color: rgba(0, 0, 0, 0.6);
+}
 
-    
+.activities {
+    text-align: left;
 
     .link {
         color: yellowgreen;
     }   
 }
 
+.activity-list {
+    padding-inline-start: 1ch;
+}
+
+.activity-list::marker {
+    font-size: 3rem;
+    padding: 1em;
+}

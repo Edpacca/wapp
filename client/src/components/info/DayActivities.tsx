@@ -3,34 +3,36 @@ import { DAYS, Day, Activity } from "../../data/activityData"
 
 export function DayActivities() {
 
-    const [activeDay, setActiveDay] = useState(5);
+    const [activeDay, setActiveDay] = useState<number | undefined>(undefined);
 
     return (
-        <div className="days">
-            {DAYS.map((day, index) => RenderDay(day, index, activeDay === index, setActiveDay))}
+        <div className="days-wrapper">
+            <div className="days">
+                {DAYS.map((day, index) => RenderDay(day, index, activeDay === index, setActiveDay))}
+            </div>
+            { 
+                activeDay != undefined &&
+                <div className="activities">
+                    {
+                        DAYS[activeDay].activities.map(activity => {
+                            return renderActivity(activity)
+                        })
+                    }
+                </div>    
+            }
         </div>
+
     )
 }
 
-function RenderDay(day: Day, index: number, isActive: Boolean, setActive: (index: number) => void) {
-
-    const activities = day.activities.map(activity => {
-        return <li key={activity.heading}>{renderActivity(activity)}</li>
-    })
+function RenderDay(day: Day, index: number, isActive: Boolean, setActive: (index: number | undefined) => void) {
 
     return (
-        <div className="day" onClick={() => isActive ? setActive(5) : setActive(index)}>
-            <div className="calendar">
+        <div className="day" onClick={() => isActive ? setActive(undefined) : setActive(index)}>
+            <div className={`calendar${isActive ? " active" : ""}`}>
                 <div className="date">{day.date.getDate()}<sup>th</sup></div>
                 <div className="day-title">{day.title}</div>
             </div>
-            <ul className="activities">
-                {   
-                    isActive &&
-                    activities
-                }
-            </ul>
-            <br/>
         </div>
     )
 }
@@ -42,10 +44,9 @@ function renderActivity(activity: Activity) {
     : activity.heading;
 
     return(
-        <div>
-            <h3 className="link">{title}</h3>
-            <p>{activity.details}</p>
-            <br/>
-        </div>
+        <li key={activity.heading} style={{listStyleImage: `url(${activity.icon}`}} className="activity-list">
+                <span className="link">{title}</span>
+                <p>{activity.details}</p>
+        </li>
     )
 }

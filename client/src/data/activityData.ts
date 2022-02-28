@@ -1,3 +1,5 @@
+import leaf from '../assets/icons/leaf-solid.svg';
+
 export interface Activity {
     heading: string,
     location: string,
@@ -5,6 +7,7 @@ export interface Activity {
     subheading?: string,
     details?: string
     url?: string
+    icon?: string
 }
 export interface Day {
     date: Date,
@@ -63,7 +66,7 @@ export const DAYS: Day[] = [
                 details: "A family meal at the house",
                 location: "House at Bridge of Lochay",
                 time: "approx. 7pm",
-                url: undefined
+                icon: leaf,
             },
             {
                 heading: "Pub trip",
@@ -83,14 +86,12 @@ export const DAYS: Day[] = [
                 details: "A family meal at the house",
                 location: "House at Bridge of Lochay",
                 time: "until 11am",
-                url: undefined
             },
             {
                 heading: "Signing Registry",
                 details: "Gettin' hitched official like",
                 location: "House at Bridge of Lochay",
                 time: "11am",
-                url: undefined
             },
             {
                 heading: "Wedding Ceremony",
@@ -104,14 +105,12 @@ export const DAYS: Day[] = [
                 details: "A trip to the local pub",
                 location: "House at Bridge of Lochay",
                 time: "2pm",
-                url: undefined
             },
             {
                 heading: "Dinner",
                 details: "Food times",
                 location: "House at Bridge of Lochay",
                 time: "4pm",
-                url: undefined
             },
         ]
     },
@@ -124,7 +123,6 @@ export const DAYS: Day[] = [
                 details: "A big ol' breaky to beat the hangover",
                 location: "House at Bridge of Lochay",
                 time: "approx. 11pm",
-                url: undefined
             },
             {
                 heading: "Pub trip",
@@ -144,7 +142,6 @@ export const DAYS: Day[] = [
                 details: "A family meal at the house",
                 location: "House at Bridge of Lochay",
                 time: "approx. 7pm",
-                url: undefined
             },
             {
                 heading: "Pub trip",
