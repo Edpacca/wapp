@@ -1,0 +1,27 @@
+@import '../common/colours.scss';
+
+.info-header {
+    border: 1px solid white;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.info-header:hover {
+    background-color: $black50;
+}
+
+.big-day {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 3rem;
+}
+
+.backbutton {
+    position: absolute;
+    left: 0;
+    width: 8vw;
+    background-color: $transparent;
+    .leaf {
+        width: 5vw;
+    }
+}

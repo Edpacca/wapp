@@ -37,8 +37,8 @@ export function BigDay() {
         const yScroll = window.scrollY;
         const relativeYScroll = yScroll % (panelHeight + panelGap);
         const yScrollPercent = 100 * relativeYScroll / panelHeight
-        const element = document.getElementById("debug");
-        element!.style.marginTop = yScroll + "px";
+        // const element = document.getElementById("debug");
+        // element!.style.marginTop = yScroll + "px";
         setYScroll(yScroll);
         setYScrollPercent(yScrollPercent);
     } 
@@ -57,13 +57,13 @@ export function BigDay() {
                 <div className="sub">16th July 2022</div>
                 <div className="sub2">Scroll through, and tap the titles for more info.</div>
             </div>
-            <div className="debug-scroll" id="debug">
+            {/* <div className="debug-scroll" id="debug">
                 <span>{yScrollPercent}</span>
                 <br/>
                 <span>{activePanel}</span>
                 <br/>
                 <span>{yScroll}</span>
-                </div>
+            </div> */}
             <AnimationPanel 
                 sprites={[scroll, quill, scrollA, scrollE]}
                 panel={panelProps}

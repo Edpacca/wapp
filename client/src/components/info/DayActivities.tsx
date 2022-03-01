@@ -5,7 +5,14 @@ import rightLeaf from "../../assets/icons/leaf-arrow-right.svg";
 
 export function DayActivities() {
 
-    const [activeDay, setActiveDay] = useState<number>(0);
+    const today = new Date();
+    const event = new Date(2022, 7, 15);
+    let initialDay = 0;
+    if (today.getTime() > event.getTime()) {
+        initialDay = (event.getDay() + 3) % 7
+    }
+
+    const [activeDay, setActiveDay] = useState<number>(initialDay);
 
     return (
         <div>
@@ -15,34 +22,17 @@ export function DayActivities() {
                 <img className="leaf-button r" src={rightLeaf} onClick={() => setActiveDay((activeDay + 1) % 4)}/>
             </div>
             <div className="days-wrapper">
-                {/* <div className="days">
-                    {DAYS.map((day, index) => RenderDay(day, index, activeDay === index, setActiveDay))}
-                </div> */}
-                { 
-                    <div className="activities">
-                        {
-                            DAYS[activeDay].activities.map(activity => {
-                                return renderActivity(activity)
-                            })
-                        }
-                    </div>    
-                }
-            </div>
-        </div>
-
-
-
-
-    )
-}
-
-function RenderDay(day: Day, index: number, isActive: Boolean, setActive: (index: number) => void) {
-
-    return (
-        <div className="day" onClick={() => setActive(index)}>
-            <div className={`calendar${isActive ? " active" : ""}`}>
-                <div className="date">{day.date.getDate()}<sup>th</sup></div>
-                <div className="day-title">{day.title}</div>
+                <div className="summary">
+                    {DAYS[activeDay].summary}
+                </div>
+                
+                <div className="activities">
+                    {
+                        DAYS[activeDay].activities.map(activity => {
+                            return renderActivity(activity)
+                        })
+                    }
+                </div>    
             </div>
         </div>
     )
