@@ -18,6 +18,7 @@ import cameraInnerSprite from '../../../assets/sprites/camera-inner-ring.svg';
 import cameraOuterSprite from '../../../assets/sprites/camera-outer-ring.svg';
 import cameraFlashSprite from '../../../assets/sprites/camera-flash.svg';
 import drinksSprite from '../../../assets/sprites/drinks.svg';
+import discoBlank from '../../../assets/sprites/discoball/disco-none.svg';
 
 // Registy
 export const scroll: ScrollAnimationProps = {
@@ -231,4 +232,17 @@ export const drinks: ScrollAnimationProps = {
     finalPosition: { x: 1.5, y: 0.5 },  
     fadeInBounds: [ 1, 20 ],
     fadeOutBounds: [ 60, 80 ]
+}
+
+// Dancing
+
+export const discoball: ScrollAnimationProps = {
+    id: "sa-discoball", 
+    svg: discoBlank, 
+    width: 0.8,
+    animationBounds: [ 0, 80 ],
+    initialPosition: { x: 0.5, y: -0.3},
+    finalPosition: { x: 0.5, y: 0.3 },  
+    fadeInBounds: [ 1, 50 ],
+    fadeOutBounds: [ 90, 100 ]
 }

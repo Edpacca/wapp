@@ -125,3 +125,51 @@
       transform: rotate(0deg);
     }
   }
+
+  .sa-discoball-inner {
+    width: 30vmax;
+    height: 30vmax;
+    margin-left: calc(50% - 15vmax);
+    background: url('../../assets/sprites/discoball/disco-1.svg'); 
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: name 1s infinite linear;
+  }
+
+@keyframes name {
+    0% { 
+        background: url('../../assets/sprites/discoball/disco-1.svg'); 
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    20% { 
+        background: url('../../assets/sprites/discoball/disco-2.svg'); 
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    40% { 
+        background: url('../../assets/sprites/discoball/disco-3.svg'); 
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    60% { 
+        background: url('../../assets/sprites/discoball/disco-4.svg'); 
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    80% { 
+        background: url('../../assets/sprites/discoball/disco-5.svg'); 
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+.bottom-margin {
+    margin-top: 100vmax;
+}

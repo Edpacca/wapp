@@ -7,7 +7,8 @@ import {
     scroll, quill, scrollA, scrollE, 
     castle, tree, heart, ringL, ringR1, ringR2,
     cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter, cameraFlash,
-    drinks
+    drinks,
+    discoball
 
 } from "./animation/Sprites";
 import { BIG_DAY_SCHEDULE } from "../../data/activityData";
@@ -105,12 +106,13 @@ export function BigDay() {
            <TimelineInfo activity={BIG_DAY_SCHEDULE[4]}  />
 
             <AnimationPanel 
-                sprites={[]}
+                sprites={[discoball]}
                 panel={panelProps}
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={5}/>
            <TimelineInfo activity={BIG_DAY_SCHEDULE[5]}  />
+           <div className="bottom-margin"></div>
         </div>
     )
 }
