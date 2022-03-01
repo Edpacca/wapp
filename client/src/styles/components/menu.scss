@@ -1,0 +1,28 @@
+.menu-wrapper {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 90vw;
+}
+
+.courses-wrapper {
+  margin: auto;
+  width: 90vw;
+}
+
+
+
+.switches {
+  display: flex;
+  width: 90vw;
+}
+
+.right-switch {
+  margin-left: auto;
+  order: 2;
+}
+
+.choice {
+  padding: 0.5em;
+}

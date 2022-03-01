@@ -1,0 +1,45 @@
+@import './app.scss';
+
+// Components
+@import './components/button.scss';
+@import './components/dropdown.scss';
+@import './components/modal.scss';
+@import './components/navigation.scss';
+@import './components/switch.scss';
+@import './components/textbox.scss';
+@import './components/menu.scss';
+@import './components/menuCourse.scss';
+@import './components/textarea.scss';
+@import './components/scrollAnimation.scss';
+@import './components/activityDays.scss';
+@import './components/info.scss';
+@import './components/home.scss';
+
+//Common
+@import './common/colours.scss';
+@import './common/layout.scss';
+@import './common/types.scss';
+//Debug
+@import './common/debug.scss';
+
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  -webkit-font-smoothing: antialiased;
+  color: white;
+  -moz-osx-font-smoothing: grayscale;
+  background: url('/src/assets/backgrounds/forest-background.webp');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center, center;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

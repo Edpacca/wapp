@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useAppDispatch } from "../../../app/hooks";
+import { useAppDispatch } from "../../../store/hooks";
 import { foodItem } from "../../../models/FoodItem";
 import { Guest } from "../../../models/Guest";
 import { stageDeletedGuest, stageGuest, unstageDeletedGuest, unstageGuest } from "../adminSlice";

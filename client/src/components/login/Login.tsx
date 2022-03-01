@@ -1,7 +1,7 @@
 import AuthContext from '../../context/AuthContext';
-import diamond from "../../assets/diamond-white-AE.svg"
+import diamond from "../../assets/logos/diamond-white-AE.svg"
 import { useContext, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
 import { selectErrors, selectLoginStatus, userLogin } from '../user/userSlice';
 import { Status } from '../../models/Status';
@@ -29,13 +29,6 @@ export function Login() {
         }
     }
 
-    function handleKeyPress(e: React.KeyboardEvent<HTMLDivElement>) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            captureLogin();
-        }
-    }
-
     return(
         <div>
             <div>
@@ -58,7 +51,7 @@ export function Login() {
                     className={`textbox ${status}`}
                     placeholder={"Secret"}
                     id="secret" onChange={(e) => setPassword(e.target.value)}
-                    onKeyPress={(e) => handleKeyPress(e)}>
+                    >
                 </input>
             <button type='submit' className="button login">Login</button>
             </form>

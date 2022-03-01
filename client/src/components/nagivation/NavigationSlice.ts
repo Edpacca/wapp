@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
+import { RootState } from "../../store/store";
 import { UserPage } from "../../models/ActivePage";
 import { AdminPage } from "../../models/AdminPage";
 import { Status } from "../../models/Status";

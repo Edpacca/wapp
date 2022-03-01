@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
+import { RootState } from "../../store/store";
 import { AuthenticationRequest } from "../../models/AuthenticationRequest";
 import { Status } from "../../models/Status";
 import { Guest } from "../../models/Guest";
@@ -10,6 +10,7 @@ export interface UserState {
     guests: Guest[],
     errors: WappError[]
     status: Status,
+    isLoggedIn: boolean,
 };
 
 const initialState: UserState = {
@@ -17,6 +18,7 @@ const initialState: UserState = {
     guests: [],
     errors: [],
     status: 'idle',
+    isLoggedIn: false,
 };
 
 export const userLogin = createAsyncThunk(
@@ -99,6 +101,7 @@ export const userSlice = createSlice({
                 state.family = action.payload.family;
                 state.guests = action.payload.guests;
                 state.errors = [];
+                state.isLoggedIn = true;
             }
         })
         .addCase(userLogout.pending, (state) => {
@@ -109,12 +112,14 @@ export const userSlice = createSlice({
             state.guests = [];
             state.status ='idle';
             state.errors = [];
+            state.isLoggedIn = false;
         })
         .addCase(userLogout.fulfilled, (state) => {
             state.family = undefined;
             state.guests = [];
             state.status ='idle';
             state.errors = [];
+            state.isLoggedIn = false;
         })
         .addCase(submitGuestUpdateUser.fulfilled, (state, action) => {
             const index = state.guests.findIndex(guest => guest.id === action.payload.id);
@@ -133,5 +138,6 @@ export const selectFamilyName = (state: RootState): string => state.users.family
 export const selectUserGuests = (state: RootState): Guest[] => state.users.guests;
 export const selectLoginStatus = (state: RootState): Status => state.users.status;
 export const selectErrors = (state: RootState): WappError[] => state.users.errors;
+export const selectIsLoggedIn = (state: RootState): Boolean => state.users.isLoggedIn;
 
 export default userSlice.reducer;

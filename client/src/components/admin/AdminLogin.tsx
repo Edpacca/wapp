@@ -1,6 +1,6 @@
 import AuthContext from '../../context/AuthContext';
 import { useContext, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
 import { adminLogin, selectAdminStatus, getGuests } from "./adminSlice";
 

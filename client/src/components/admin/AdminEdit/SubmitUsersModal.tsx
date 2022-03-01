@@ -1,5 +1,5 @@
 import styles from '../admin.module.css';
-import { useAppDispatch, useAppSelector } from "../../../app/hooks"
+import { useAppDispatch, useAppSelector } from "../../../store/hooks"
 import { clearStagedGuests, commitGuestEdits, getGuests, selectStagedDeletedGuests, selectStagedGuests } from "../adminSlice"
 import { StagedGuests } from "./StagedGuests";
 

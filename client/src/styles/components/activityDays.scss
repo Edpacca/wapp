@@ -1,0 +1,76 @@
+.day-title {
+    text-align: center;
+    margin: auto;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.lr-selector {
+    width: 30vw;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    align-items: center;
+    margin: auto;
+
+    .leaf-button {
+        width: 5vmin;
+        opacity: 0.5;
+    }
+
+    .leaf-button:hover {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .lr-selector {
+        width: 65vw;
+
+        .leaf-button {
+            width: 10vmin;
+        }
+    }
+}
+
+.days-wrapper {
+    font-family: "system-ui";
+}
+
+.summary {
+    font-size: larger;
+    font-style: italic;
+    width: 80vw;
+    margin: auto;
+}
+
+.activities {
+    align-items: center;
+    font-size: larger;
+    overflow-x: hidden;
+    width: 80vw;
+    margin: auto;
+    padding-top: 2em;
+
+    .time {
+        font-weight: bold;
+        color: yellowgreen;
+    }
+
+    .link {
+        font-size: 2rem;
+        color: white;
+        font-family: initial;
+    }   
+}
+
+.activity-list {
+    padding-bottom: 4em;
+    list-style: none;
+
+    .activity-icon {
+        width: 4em;
+    }
+}
+
+

@@ -1,0 +1,11 @@
+@import './colours.scss';
+
+.failed {
+    border: 3px solid $error
+}
+
+.info {
+    margin: 0 1em;
+    font-style: italic;
+    color: goldenrod
+  }

@@ -1,0 +1,182 @@
+@import '../common/colours.scss';
+
+.scroll-img-outer {
+    overflow: hidden;
+    position: absolute;
+    width: 90vmin;
+}
+
+.scroll-img-inner {
+    width: 5vw; 
+    // border: 1px dotted gold;
+    // border-radius: 10px;
+}
+
+// .scroll-img-inner-active {
+//     width: 5vw;
+//     border: 2px solid gold;
+//     border-radius: 10px;
+// }
+
+.animation-panel {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 40vmax;
+    width: 40vmax;
+    margin: auto;
+    // border: 1px dashed red;
+}
+
+.main-header {
+    font-style: italic;
+    font-size: 3rem;
+    font-weight: 400;
+    top: 10vh;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 100vw;
+    overflow: hidden;
+    left: calc(50% - 50vw);
+
+    .sub {
+        font-size: 1.5rem;
+        font-weight: 200;
+    }
+
+    .sub2 {
+        color: rgba(255, 255, 255, 0.75);
+        font-style: normal;
+        font-size: 1.1rem;
+        font-weight: 100; 
+    }
+}
+
+.timeline-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 100vw;
+    overflow: hidden;
+    // position: absolute;
+    min-height: 10vh;
+    left: calc(50% - 50vw);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0,0,0,0.75), rgba(0, 0, 0, 0));
+    .head {
+        font-style: italic;
+        font-size: 2.5rem;
+        font-weight: 400;
+    }
+
+    .head:hover {
+        color: rgb(255, 174, 0);
+    }
+    
+    .sub {
+        font-size: 1.5rem;
+        font-weight: 200;
+    }
+
+    .sub2 {
+        font-style: italic;
+        font-size: 1.1rem;
+        font-weight: 100; 
+    }
+
+    .details {
+        padding: 1rem;
+        font-family: "system-ui";
+        margin: auto;
+        max-width: 50vw;
+    }
+
+    @media screen and (max-width: 540px) {
+        .details {
+            max-width: none;
+            width: 80vw;
+        }
+    }
+}
+
+.timeline-text:hover {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0,0,0,1), rgba(0, 0, 0, 0));
+
+    .head {
+        color: rgb(255, 174, 0);
+    }
+
+}
+
+.sa-ringR2, .sa-ringR1, .sa-ringL {
+    filter: drop-shadow(0 0 6px rgb(255, 174, 0));
+}
+
+.sa-scroll {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+.sa-quill {
+    filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+}
+
+.sa-heart {
+    filter: drop-shadow(0 0 2px rgb(255, 174, 0));
+}
+
+.sa-cameraFlash {
+    filter: drop-shadow(0 0 12px rgb(255, 218, 139)); 
+    animation: rotation 20s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  .sa-discoball-inner {
+    width: 30vmax;
+    height: 30vmax;
+    margin-left: calc(50% - 15vmax);
+    background: url('../../assets/sprites/discoball/disco-1.svg'); 
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: name 1s infinite linear;
+    filter: drop-shadow(0 0 12px rgb(255, 218, 139)); 
+  }
+
+@keyframes name {
+    0% { 
+        background: url('../../assets/sprites/discoball/disco-1.svg'); 
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    20% { 
+        background: url('../../assets/sprites/discoball/disco-2.svg'); 
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    40% { 
+        background: url('../../assets/sprites/discoball/disco-3.svg'); 
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    60% { 
+        background: url('../../assets/sprites/discoball/disco-4.svg'); 
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    80% { 
+        background: url('../../assets/sprites/discoball/disco-5.svg'); 
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+.bottom-margin {
+    margin-top: 100vmax;
+}
