@@ -1,4 +1,12 @@
-import leaf from '../assets/icons/leaf-solid.svg';
+import barrel from '../assets/icons/barrel.svg';
+import house from '../assets/icons/house.svg';
+import knifeFork from '../assets/icons/knife-fork.svg';
+import rings from '../assets/icons/rings.svg';
+import coffee from '../assets/icons/coffee.svg';
+import pen from '../assets/icons/pen.svg';
+import drink from '../assets/icons/drink.svg';
+import camera from '../assets/icons/camera.svg';
+import disco from '../assets/icons/disco.svg';
 
 export interface Activity {
     heading: string,
@@ -67,53 +75,73 @@ export const DAYS: Day[] = [
                 heading: "Family meal",
                 details: "A family meal at the house",
                 location: "House at Bridge of Lochay",
-                time: "approx. 7pm",
-                icon: leaf,
+                time: "~7pm",
+                icon: house,
             },
             {
                 heading: "Pub trip",
                 details: "A trip to the local pub",
                 location: "The Pub",
-                time: "approx. 9pm",
-                url: "https://www.fallsofdochartinn.co.uk/"
+                time: "~9pm",
+                url: "https://www.fallsofdochartinn.co.uk/",
+                icon: barrel,
             },
         ]
     },
     {
         date: new Date(2022, 7, 16),
         title: "Saturday",
-        summary: "Saturdy is the big day!",
+        summary: "Saturdy is the big day! Also check out our interactive scrolling timeline 😎",
         activities: [
             {
                 heading: "Breakfast",
-                details: "A family meal at the house",
+                details: "A help yourself breakfast situation",
                 location: "House at Bridge of Lochay",
-                time: "until 11am",
+                time: "morning",
+                icon: coffee
             },
             {
                 heading: "Signing Registry",
-                details: "Gettin' hitched official like",
-                location: "House at Bridge of Lochay",
+                details: "Ala, Eddie and their witnesses will head off to officially get married in Killin",
+                location: "Killing Registry Office",
                 time: "11am",
+                icon: pen
             },
             {
                 heading: "Wedding Ceremony",
-                details: "A trip to the local pub",
-                location: "House at Bridge of Lochay",
+                details: "The big ceremony",
+                location: "Finlarig Castle",
                 time: "1pm",
-                url: "https://www.fallsofdochartinn.co.uk/"
+                url: "https://www.undiscoveredscotland.co.uk/killin/finlarigcastle/index.html",
+                icon: rings
             },
             {
-                heading: "Post Hitched Cocktails / Nibbles",
-                details: "A trip to the local pub",
-                location: "House at Bridge of Lochay",
+                heading: "Photographs",
+                details: "Group photos then individual photos",
+                location: "Finlarig Castle",
                 time: "2pm",
+                icon: camera
+            },
+            {
+                heading: "Drinks Reception",
+                details: "While the bride and groom get their couple photos taken, the rest of you can head back to the house for some afternoon drinks, nibbles and games.",
+                location: "House at Bridge of Lochay",
+                time: "2:30pm",
+                icon: drink
             },
             {
                 heading: "Dinner",
                 details: "Food times",
                 location: "House at Bridge of Lochay",
-                time: "4pm",
+                time: "6pm",
+                icon: knifeFork
+            },
+            {
+                heading: "Dancing",
+                details: "Dance times",
+                location: "House at Bridge of Lochay",
+                time: "8pm",
+                icon: disco
             },
         ]
     },
@@ -126,34 +154,37 @@ export const DAYS: Day[] = [
                 heading: "Breakfast",
                 details: "A big ol' breaky to beat the hangover",
                 location: "House at Bridge of Lochay",
-                time: "approx. 11pm",
+                time: "Morning",
+                icon: coffee,
+            },
+            {
+                heading: "Wee Hike",
+                details: "A short outdoor adventure around Killin",
+                location: "Killing",
+                time: "Noon",
+                icon: coffee,
             },
             {
                 heading: "Pub trip",
                 details: "A trip to the local pub",
                 location: "House at Bridge of Lochay",
-                time: "approx. 7pm",
-                url: "https://www.fallsofdochartinn.co.uk/"
+                time: "Evening",
+                url: "https://www.fallsofdochartinn.co.uk/",
+                icon: barrel
             },
         ]
     },
     {
         date: new Date(2022, 7, 18),
         title: "Monday",
-        summary: "Friday will be a relaxed time for folk to turn up and get settled",
+        summary: "We have the House and The Bridge of Lochay booked until 10am on Monday morning. We should all make an effort to be ready to go by this time.",
         activities: [
             {
-                heading: "Family meal",
-                details: "A family meal at the house",
+                heading: "Departure",
+                details: "Final goodbyes",
                 location: "House at Bridge of Lochay",
-                time: "approx. 7pm",
-            },
-            {
-                heading: "Pub trip",
-                details: "A trip to the local pub",
-                location: "House at Bridge of Lochay",
-                time: "approx. 7pm",
-                url: "https://www.fallsofdochartinn.co.uk/"
+                time: "10am",
+                icon: house
             },
         ]
     }

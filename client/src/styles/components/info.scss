@@ -2,8 +2,19 @@
 
 .info-header {
     border: 1px solid white;
+    border-radius: 25px;
+    width: 80vw;
     padding: 1em;
+    margin: auto;
     margin-bottom: 1em;
+}
+
+.bd-header {
+    background: url('../../assets/images/three-flowers.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgba(245, 245, 245, 0.233);
 }
 
 .info-header:hover {
@@ -14,6 +25,13 @@
     font-style: italic;
     font-weight: 400;
     font-size: 3rem;
+    filter: drop-shadow(4px 4px 4px black) drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.678));
+}
+
+.flowers {
+    width: 30vw;
+    position: absolute;
+    left: calc(50% - 15vw);
 }
 
 .backbutton {

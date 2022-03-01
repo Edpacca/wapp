@@ -34,19 +34,24 @@
 }
 
 .days-wrapper {
-    padding: 2em 1em;
     font-family: "system-ui";
 }
 
 .summary {
     font-size: larger;
     font-style: italic;
+    width: 80vw;
+    margin: auto;
 }
 
 .activities {
     align-items: center;
     font-size: larger;
     overflow-x: hidden;
+    width: 80vw;
+    margin: auto;
+    padding-top: 2em;
+
     .time {
         font-weight: bold;
         color: yellowgreen;
@@ -60,11 +65,12 @@
 }
 
 .activity-list {
-    padding-bottom: 2em;
+    padding-bottom: 4em;
+    list-style: none;
+
+    .activity-icon {
+        width: 4em;
+    }
 }
 
-.activity-list::marker {
-    all: revert;
-    font-size: 3rem;
-    margin: 0;
-}
+

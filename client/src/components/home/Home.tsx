@@ -25,6 +25,10 @@ export function Home(props: {family: string, guests: Guest[], setActiveGuest: (g
             <p>House at Bridge of Lochay</p>
             <p>Killin, Scotland</p>
         </div>
+        <div>
+            <div className="horizontal-bar"/>
+            <p>We are arriving on {} at {}</p>
+        </div>
         </div>
     )
 }
