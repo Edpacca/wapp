@@ -15,7 +15,8 @@ export async function CreateGuest(request, result) {
             starter: null,
             main: null,
             dessert: null,
-            diet: null
+            diet: null,
+            seat: request.body.seat,
         });
 
         guest
@@ -88,6 +89,7 @@ export async function GetGuestObjectByFamily(family) {
             main: guest.main,
             dessert: guest.dessert,
             diet: guest.diet,
+            seat: guest.seat
         });
     })
 
@@ -103,7 +105,8 @@ export async function BatchUpdateGuests(request, result) {
             "starter": guest.starter,
             "main": guest.main,
             "dessert": guest.dessert,
-            "diet": guest.diet }, (err, guest) => {
+            "diet": guest.diet,
+            "seat": guest.seat }, (err, guest) => {
             
             if (!guest || err) {
                 return result.status(500).send(err);
@@ -131,13 +134,12 @@ export async function PutUpdateGuest(request, result) {
         })
     }
 
-    console.log(body);
-
     Guest.findByIdAndUpdate({_id: request.body.id}, {
         "starter": body.starter,
         "main": body.main,
         "dessert": body.dessert,
-        "diet": body.diet }, (err, guest) => {
+        "diet": body.diet,
+        "seat": body.seat }, (err, guest) => {
         
         if (!guest) {
             return result.status(404).json({

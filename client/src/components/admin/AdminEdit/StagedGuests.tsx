@@ -12,6 +12,7 @@ export function StagedGuests(props: {guests: Guest[], css?: string}) {
                     <th>Main</th>
                     <th>Dessert</th>
                     <th>Diet</th>
+                    <th>Seat</th>
                 </thead>
                 {GuestRows(props.guests, "chosen")}
             </table>

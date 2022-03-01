@@ -9,7 +9,7 @@ export function GuestRowActive(props: {guest: Guest, active: boolean, setActive:
      starters: foodItem[], mains: foodItem[], desserts: foodItem[]}) {
 
     const [guest, setGuest] = useState<Guest>(props.guest);
-    type GuestParam = 'name' | 'starter' | 'main' | 'dessert' | 'diet';
+    type GuestParam = 'name' | 'starter' | 'main' | 'dessert' | 'diet' | 'seat';
     const dispatch = useAppDispatch();
 
     function updateGuest(newValue: string | number, param: GuestParam) {
@@ -31,6 +31,9 @@ export function GuestRowActive(props: {guest: Guest, active: boolean, setActive:
                 break;
             case 'diet':
                 buffer.diet = newValue as string;
+                break;
+            case 'seat':
+                buffer.seat = newValue as number;
                 break;
             default:
                 break;
@@ -62,6 +65,7 @@ export function GuestRowActive(props: {guest: Guest, active: boolean, setActive:
         <td>{renderDropDown(props.mains, props.guest.main, `${props.guest.id}-main`, 'main')}</td>
         <td>{renderDropDown(props.desserts, props.guest.dessert, `${props.guest.id}-dessert`, 'dessert')}</td>
         <td><input className={styles.tableTextInput} placeholder={props.guest.diet} onChange={(e) => updateGuest(e.target.value, 'diet')}></input></td>
+        <td><input type="number" className={styles.tableTextInput} placeholder={props.guest.seat?.toString()} onChange={(e) => updateGuest(e.target.value, 'seat')}></input></td>
         <td><input type="checkbox" checked={props.canDelete} onChange={() => props.setCanDelete()} className={styles.checkbox}/></td>
     </tr>
     )

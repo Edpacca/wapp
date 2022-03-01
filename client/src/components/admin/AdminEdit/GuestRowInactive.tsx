@@ -13,6 +13,7 @@ export function GuestRowInactive(props: {guest: Guest, active: boolean, setActiv
         <td><p className={styles.tableText}>{props.guest.main?.toString() ? props.mains[props.guest.main].name[0] : "-"}</p></td>
         <td><p className={styles.tableText}>{props.guest.dessert?.toString() ? props.desserts[props.guest.dessert].name[0] : "-"}</p></td>
         <td><p className={styles.tableText}>{props.guest.diet}</p></td>
+        <td><p className={styles.tableText}>{props.guest.seat}</p></td>
         <td>{props.canDelete && <input type="checkbox" checked={props.canDelete} onChange={() => props.setCanDelete()} className={styles.checkbox}/>}</td>
     </tr>
     )

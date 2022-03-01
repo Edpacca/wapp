@@ -16,6 +16,7 @@ export function FamilyMembersTable(props: {guests: Guest[]}) {
                     <th>Main</th>
                     <th>Dessert</th>
                     <th>Diet</th>
+                    <th>Seat</th>
                     <th>Delete</th>
                 </tr>
             </thead>
