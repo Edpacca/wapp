@@ -5,6 +5,7 @@ const BackButton = (props: {value: InfoTypes, onClick: (value: InfoTypes) => voi
     return (
         <button className="backbutton" onClick={() => props.onClick(props.value)}>
             <img className="leaf" src={leftLeaf} alt={""}/>
+            <div>Back</div>
         </button>
     )
 }

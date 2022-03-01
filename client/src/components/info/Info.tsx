@@ -14,19 +14,18 @@ export function Info() {
             {
                 activeInfo === 'none' &&
                 <>
-                <div className="info-header bd-header" onClick={() => setActiveInfo('scroll')}>
-                    <h1 className="big-day">The Big Day</h1>
-                    {/* <img className="flowers" src={flowers} alt={""}/> */}
-                    <div>An Interactive plan.</div>
+                <div className="info-header bigday-header" onClick={() => setActiveInfo('scroll')}>
+                    <h1 className="info-h1">The Big Day</h1>
+                    <div className="bigday-sub">An Interactive plan.</div>
                 </div>
-                <div className="info-header" onClick={() => setActiveInfo('days')}>
-                        <h1 className="big-day">Full Itinerary</h1>
+                <div className="info-header itinerary-header" onClick={() => setActiveInfo('days')}>
+                        <h1 className="info-h1">Full Itinerary</h1>
                 </div>
-                <div className="info-header" onClick={() => setActiveInfo('seating')}>
-                        <h1 className="big-day">Seating Plan</h1>
+                <div className="info-header seating-header" onClick={() => setActiveInfo('seating')}>
+                        <h1 className="info-h1">Seating Plan</h1>
                 </div>
-                <div className="info-header" onClick={() => setActiveInfo('room')}>
-                        <h1 className="big-day">Room info</h1>
+                <div className="info-header room-header" onClick={() => setActiveInfo('room')}>
+                        <h1 className="info-h1">Room info</h1>
                 </div>
                 </>
             }

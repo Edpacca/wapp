@@ -7,6 +7,7 @@ import pen from '../assets/icons/pen.svg';
 import drink from '../assets/icons/drink.svg';
 import camera from '../assets/icons/camera.svg';
 import disco from '../assets/icons/disco.svg';
+import footsteps from '../assets/icons/footsteps.svg';
 
 export interface Activity {
     heading: string,
@@ -162,7 +163,7 @@ export const DAYS: Day[] = [
                 details: "A short outdoor adventure around Killin",
                 location: "Killing",
                 time: "Noon",
-                icon: coffee,
+                icon: footsteps,
             },
             {
                 heading: "Pub trip",

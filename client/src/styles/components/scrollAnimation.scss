@@ -83,7 +83,13 @@
         font-family: "system-ui";
         margin: auto;
         max-width: 50vw;
+    }
 
+    @media screen and (max-width: 540px) {
+        .details {
+            max-width: none;
+            width: 80vw;
+        }
     }
 }
 
@@ -135,6 +141,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     animation: name 1s infinite linear;
+    filter: drop-shadow(0 0 12px rgb(255, 218, 139)); 
   }
 
 @keyframes name {
