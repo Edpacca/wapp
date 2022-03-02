@@ -1,7 +1,8 @@
 import { useState } from "react";
 import BackButton from "./BackButton";
-import { BigDay } from "./BigDay";
-import { DayActivities } from "./DayActivities";
+import { BigDay } from "./bigday/BigDay";
+import { Itinerary } from "./Itinerary";
+import { SeatingPlan } from "./seating/SeatingPlan";
 
 export type InfoTypes = 'none' | 'days' | 'scroll' | 'seating' | 'room';
 
@@ -35,11 +36,15 @@ export function Info() {
             }
             {
                 activeInfo === 'days' &&
-                <DayActivities setActive={setActiveInfo}/>
+                <Itinerary setActive={setActiveInfo}/>
             }
             {
                 activeInfo === 'scroll' &&
                 <BigDay />
+            }
+            {
+                activeInfo === 'seating' &&
+                <SeatingPlan />
             }
         </div>
     )
