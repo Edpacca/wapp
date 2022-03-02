@@ -6,7 +6,7 @@ export const SeatingPlan = () => {
     const guestSeats: Seat[] = [];
     
     for (let i = 0; i < 50; i++) {
-        guestSeats.push({ seatNumber: i })        
+        guestSeats.push({ seatNumber: i, occupant: "Billy" })        
     }
 
     return (

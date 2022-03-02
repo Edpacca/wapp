@@ -1,4 +1,5 @@
 import Guest from '../../models/guestModelSchema';
+import Seat from '../../models/seatModelSchema';
 import { v4 as uuid } from 'uuid';
 import { GuestResponse } from '../../models/userResponseModel';
 
@@ -16,11 +17,10 @@ export async function CreateGuest(request, result) {
             main: null,
             dessert: null,
             diet: null,
-            seat: request.body.seat,
+            seat: null,
         });
 
-        guest
-        .save()
+        guest.save()
         .then(() => {
             return result.status(201).json({
                 success: true,
@@ -99,7 +99,7 @@ export async function GetGuestObjectByFamily(family) {
 export async function BatchUpdateGuests(request, result) {
     const { edits, deletes } = request.body;
 
-    edits.forEach(guest => {
+    await edits.forEach(guest => {
         Guest.findByIdAndUpdate({_id: guest.id}, {
             "name": guest.name,
             "starter": guest.starter,
@@ -113,12 +113,34 @@ export async function BatchUpdateGuests(request, result) {
             }
         })});
 
-    deletes.forEach(guest => {
+    const options = { upsert: true, new: true, setDefaultsOnInsert: true };
+
+    await edits.forEach(guest => {
+        Seat.findOneAndUpdate({'guestId': guest.id}, {
+            "guestId": guest.id,
+            "guestName": guest.name,
+            "seatNumber": guest.seat
+        }, options, (err, seat) => {
+            if (err) {
+                return result.status(500).send(err);
+            }
+        });
+    });
+
+    await deletes.forEach(guest => {
         Guest.findByIdAndDelete({_id: guest.id}, (err, guest) => {
             if (!guest || err){
                 return result.status(500).send(err);
             }
     })});
+
+    deletes.forEach(guest => {
+        Seat.findOneAndDelete({'guestId': guest.id}, (err, seat) => {
+            if (err) {
+                return result.status(500).send(err);
+            }
+        });
+    })
 
     return result.status(200).json("updated");
 }
