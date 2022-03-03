@@ -1,7 +1,22 @@
 import Seat from '../../models/seatModelSchema';
+import { SeatResponse } from '../../models/userResponseModel';
 
-export function GetSeats(request, result) {
-    Seat.find({}, (err, seats) => {
-        return result.status(200).json(seats);
-    });
+export async function GetSeats() {
+
+    const seats = await Seat.find({});
+    if (!seats || seats.length === 0) {
+        return [];
+    }
+
+    const seatResponse: SeatResponse[] = [];
+
+    seats.forEach(seat => {
+        seatResponse.push({
+            id: seat._id,
+            guestName: seat.guestName,
+            seatNumber: seat.seatNumber
+        });
+    })
+
+    return seatResponse;
 }

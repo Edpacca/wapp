@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Seat } from "../../models/Seat";
+import { useAppSelector } from "../../store/hooks";
+import { selectUserSeats } from "../user/userSlice";
 import BackButton from "./BackButton";
 import { BigDay } from "./bigday/BigDay";
 import { Itinerary } from "./Itinerary";
@@ -9,6 +12,7 @@ export type InfoTypes = 'none' | 'days' | 'scroll' | 'seating' | 'room';
 export function Info() {
 
     const [activeInfo, setActiveInfo] = useState<InfoTypes>('none');
+    const guestSeats: Seat[] = useAppSelector(selectUserSeats);
 
     return(
         <div>
@@ -44,7 +48,7 @@ export function Info() {
             }
             {
                 activeInfo === 'seating' &&
-                <SeatingPlan />
+                <SeatingPlan guestSeats={guestSeats} />
             }
         </div>
     )

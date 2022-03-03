@@ -4,10 +4,12 @@ import { AuthenticationRequest } from "../../models/AuthenticationRequest";
 import { Status } from "../../models/Status";
 import { Guest } from "../../models/Guest";
 import { WappError } from "../../models/WappError";
+import { Seat } from "../../models/Seat";
 
 export interface UserState {
     family: string | undefined,
     guests: Guest[],
+    seats: Seat[],
     errors: WappError[]
     status: Status,
     isLoggedIn: boolean,
@@ -16,6 +18,7 @@ export interface UserState {
 const initialState: UserState = {
     family: undefined,
     guests: [],
+    seats: [],
     errors: [],
     status: 'idle',
     isLoggedIn: false,
@@ -80,6 +83,7 @@ export const userSlice = createSlice({
         loginRefresh: (state, action) => {
             state.family = action.payload.family;
             state.guests = action.payload.guests;
+            state.seats = action.payload.seats;
             state.status = 'idle'
         }
     },
@@ -100,6 +104,7 @@ export const userSlice = createSlice({
                 state.status = 'idle';
                 state.family = action.payload.family;
                 state.guests = action.payload.guests;
+                state.seats = action.payload.seats;
                 state.errors = [];
                 state.isLoggedIn = true;
             }
@@ -110,6 +115,7 @@ export const userSlice = createSlice({
         .addCase(userLogout.rejected, (state) => {
             state.family = undefined;
             state.guests = [];
+            state.seats = [];
             state.status ='idle';
             state.errors = [];
             state.isLoggedIn = false;
@@ -117,6 +123,7 @@ export const userSlice = createSlice({
         .addCase(userLogout.fulfilled, (state) => {
             state.family = undefined;
             state.guests = [];
+            state.seats = [];
             state.status ='idle';
             state.errors = [];
             state.isLoggedIn = false;
@@ -136,6 +143,7 @@ export const userSlice = createSlice({
 
 export const selectFamilyName = (state: RootState): string => state.users.family as string;
 export const selectUserGuests = (state: RootState): Guest[] => state.users.guests;
+export const selectUserSeats = (state: RootState): Seat[] => state.users.seats;
 export const selectLoginStatus = (state: RootState): Status => state.users.status;
 export const selectErrors = (state: RootState): WappError[] => state.users.errors;
 export const selectIsLoggedIn = (state: RootState): Boolean => state.users.isLoggedIn;

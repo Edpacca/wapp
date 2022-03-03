@@ -10,10 +10,17 @@ export interface GuestResponse {
     seat: string | undefined
 }
 
+export interface SeatResponse {
+    id: string,
+    guestName: string,
+    seatNumber: number
+}
+
 export interface UserResponse {
     id: string,
     family: string,
     familyId: string,
     token: string,
     guests: GuestResponse[],
+    seats?: SeatResponse[]
 }

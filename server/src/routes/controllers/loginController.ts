@@ -6,6 +6,7 @@ import { GetGuestObjectByFamily } from './guestController';
 import Admin from '../../models/adminModelSchema';
 import { AdminResponse } from '../../models/AdminResponse';
 import { InvalidCredentialsError, ServerError } from '../../constants/errors';
+import { GetSeats } from './seatsController';
 
 export async function authenticate(request, result) {
     try {
@@ -24,14 +25,15 @@ export async function authenticate(request, result) {
                 case "user": {
                     const user = await User.findOne({name});
                     const guests = await GetGuestObjectByFamily(name);
+                    const seats = await GetSeats();
                     const userResponse: UserResponse = {
                         id: user._id,
                         family: name,
                         familyId: user.familyId,
                         token: user.token,
-                        guests: guests
+                        guests: guests,
+                        seats: seats
                     }
-            
                     return result.status(200).json({type: "user", data: userResponse});
                 }
                 case "admin" :
@@ -68,13 +70,15 @@ export async function loginUser(request, result) {
             user.token = token;
 
             const guests = await GetGuestObjectByFamily(family);
+            const seats = await GetSeats();
 
             const userResponse: UserResponse = {
                 id: user._id,
                 family: user.family,
                 familyId: user.familyId,
                 token: user.token,
-                guests: guests
+                guests: guests,
+                seats: seats
             }
 
             result.cookie('token', token);

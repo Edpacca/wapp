@@ -25,7 +25,7 @@ export function Login() {
                 password: password
             }
             dispatch(userLogin(request))
-            .then(async () => await authenticateSession());
+            .then(() => authenticateSession());
         }
     }
 
