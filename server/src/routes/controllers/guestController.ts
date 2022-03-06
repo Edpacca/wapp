@@ -3,7 +3,7 @@ import Seat from '../../models/schema/seatModelSchema';
 import { v4 as uuid } from 'uuid';
 import { GuestResponse } from '../../models/responses/guestResponse';
 
-export async function CreateGuest(request, result) {
+export async function createGuest(request, result) {
 
     const existingGuest = await Guest.findOne({family: request.body.family});
     let familyId = existingGuest ? existingGuest.familyId : uuid();
@@ -36,7 +36,7 @@ export async function CreateGuest(request, result) {
     }
 }
 
-export async function GetGuest(request, result) {
+export async function getGuest(request, result) {
 
     Guest.findById({_id: request.query.id}, (err, guest) => {
         
@@ -51,13 +51,13 @@ export async function GetGuest(request, result) {
     })
 }
 
-export function GetGuests(request, result) {
+export function getGuests(request, result) {
     Guest.find({}, function(err, guests) {
         return result.status(200).json(guests)
     })
 }
 
-export async function GetGuestsByFamily(request, result) {
+export async function getGuestsByFamily(request, result) {
     const guests = await Guest.find({ 'family' : request.body.family})
 
     if (!guests || guests.length === 0){
@@ -70,7 +70,7 @@ export async function GetGuestsByFamily(request, result) {
     return result.status(200).json(guests);
 }
 
-export async function GetGuestObjectByFamily(family) {
+export async function getGuestObjectByFamily(family) {
     const guests = await Guest.find({ 'family' : family})
 
     if (!guests || guests.length === 0){
@@ -96,7 +96,7 @@ export async function GetGuestObjectByFamily(family) {
     return guestResponse;
 }
 
-export async function BatchUpdateGuests(request, result) {
+export async function batchUpdateGuests(request, result) {
     const { edits, deletes } = request.body;
 
     await edits.forEach(guest => {
@@ -145,7 +145,7 @@ export async function BatchUpdateGuests(request, result) {
     return result.status(200).json("updated");
 }
 
-export async function PutUpdateGuest(request, result) {
+export async function putUpdateGuest(request, result) {
 
     const body = request.body
 

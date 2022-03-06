@@ -1,7 +1,7 @@
 import { ArrivalResponse } from '../../models/responses/ArrivalResponse';
 import Arrival from '../../models/schema/arrivalModelSchema';
 
-export async function GetArrivals() {
+export async function getArrivals() {
 
     const arrivals = await Arrival.find({});
     if (!arrivals || arrivals.length === 0) {
@@ -23,7 +23,7 @@ export async function GetArrivals() {
 }
 
 
-export async function UpdateArrival(request, result) {
+export async function updateArrival(request, result) {
     const arrival = request.body;
 
     const options = { upsert: true, new: true, setDefaultsOnInsert: true };
@@ -39,5 +39,5 @@ export async function UpdateArrival(request, result) {
         }
     });
 
-    return result.status(200).json(arrival);
+    return result.status(200).json({ result: "SUCCESS", arrival });
 }

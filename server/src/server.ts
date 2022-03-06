@@ -7,7 +7,7 @@ import cors from 'cors';
 import db from '../db'
 import { appRouter as routes } from './routes/routes';
 import 'dotenv/config';
-import { RegisterAdmin } from './routes/controllers/adminController';
+import { registerAdmin } from './routes/controllers/adminController';
 
 const app = express();
 const { API_PORT } = process.env;
@@ -23,7 +23,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 routes(app);
 
 const server = app.listen(API_PORT, function () {
-    RegisterAdmin();
+    registerAdmin();
     const address = server?.address();
     const port = _.isString(address) ? address : address?.port;
     console.log(`wapp server running on ${port}\n`);

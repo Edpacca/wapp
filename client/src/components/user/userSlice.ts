@@ -155,6 +155,13 @@ export const userSlice = createSlice({
         .addCase(submitGuestUpdateUser.rejected, (state) => {
             state.status = 'failed';
         })
+        .addCase(submitUserArrivalTime.fulfilled, (state, action) => {
+            if (action.payload.result === "SUCCESS") {
+                const index = state.arrivals.findIndex(arrival => arrival.familyId === action.payload.arrival.familyId)
+                if (index === -1) state.arrivals.push(action.payload.arrival);
+                else state.arrivals[index] = {...action.payload.arrival};
+            }
+        })
     }
 });
 
@@ -162,13 +169,7 @@ export const selectFamily = (state: RootState): Family | undefined => state.user
 export const selectUserGuests = (state: RootState): Guest[] => state.users.guests;
 export const selectUserSeats = (state: RootState): Seat[] => state.users.seats;
 export const selectUserArrivals = (state: RootState): Arrival[] => state.users.arrivals;
-export const selectFamilyArrival = (state: RootState): Arrival | undefined => {
-    // if (state.users.arrivals.length > 0) {
-    //     const arrival = state.users.arrivals.filter(arrival => arrival.familyId === state.users.familyId);
-    //     return arrival.length > 0 ? arrival[0] : undefined;
-    // }
-    return undefined;
-}
+export const selectFamilyArrival = (state: RootState): Arrival | undefined => state.users.arrivals.find(arrival => arrival.familyId === state.users.family?.id);
 export const selectErrors = (state: RootState): WappError[] => state.users.errors;
 export const selectLoginStatus = (state: RootState): Status => state.users.status;
 

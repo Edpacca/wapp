@@ -1,10 +1,11 @@
 import * as _ from 'lodash';
 import * as express from 'express';
-import { BatchUpdateGuests, CreateGuest as createGuest, GetGuest as getGuest, GetGuests as getGuests, GetGuestsByFamily as getGuestsByFamily, PutUpdateGuest as updateMealChoices } from './controllers/guestController';
-import { AddGuestToFamily, RegisterUser as registerUser } from './controllers/usersController';
+import { batchUpdateGuests, createGuest as createGuest, getGuest as getGuest, getGuests as getGuests, getGuestsByFamily as getGuestsByFamily, putUpdateGuest as updateMealChoices } from './controllers/guestController';
+import { addGuestToFamily, registerUser as registerUser } from './controllers/usersController';
 import { authenticate, logout, loginUser, loginAdmin } from './controllers/loginController';
 import { verifyAdminToken, verifyClientToken, verifyUserToken } from '../middleware/auth';
-import { RegisterAdmin } from './controllers/adminController';
+import { registerAdmin } from './controllers/adminController';
+import { updateArrival } from './controllers/arrivalController';
 
 export function appRouter(app: express.Express): void {
 
@@ -27,36 +28,40 @@ export function appRouter(app: express.Express): void {
 
     // USER
     app.post("/guest", verifyUserToken, (request, result) => {
-        createGuest(request, result);
+        return createGuest(request, result);
     })
 
     app.get("/guest", verifyUserToken, (request, result) => {
-        getGuest(request, result);
+        return getGuest(request, result);
     })
 
     app.get("/guest/family", verifyUserToken, (request, result) => {
-        getGuestsByFamily(request, result);
+        return getGuestsByFamily(request, result);
     })
 
     app.put("/guest", verifyUserToken, (request, result) => {
-        updateMealChoices(request, result);
+        return updateMealChoices(request, result);
+    })
+
+    app.put("/guest/arrival", verifyUserToken, (request, result) => {
+        return updateArrival(request, result);
     })
 
     // ADMIN
     app.get("/guest/all", verifyAdminToken, (request, result) => {
-        getGuests(request, result);
+        return getGuests(request, result);
     })
 
     app.put("/guest/all", verifyAdminToken, (request, result) => {
-        BatchUpdateGuests(request, result);
+        return batchUpdateGuests(request, result);
     })
 
     app.post("/register/user", verifyAdminToken, (request, result) => {
-        registerUser(request, result);
+        return registerUser(request, result);
     });
 
     app.post("/register/guest", verifyAdminToken, (request, result) => {
-        AddGuestToFamily(request, result);
+        return addGuestToFamily(request, result);
     });
 
     // app.post("/admin/register", (request, result) => {

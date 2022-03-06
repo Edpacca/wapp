@@ -6,7 +6,7 @@ import Guest from '../../models/schema/guestModelSchema';
 import { UserResponse } from '../../models/responses/userResponse';
 import { GuestResponse } from '../../models/responses/guestResponse';
 
-export async function RegisterUser(request, result) {
+export async function registerUser(request, result) {
     try {
         const { family, password, guests } = request.body; 
 
@@ -76,7 +76,7 @@ export async function RegisterUser(request, result) {
     }
 }
 
-export async function AddGuestToFamily(request, result) {
+export async function addGuestToFamily(request, result) {
     try {
 
         const { family, name} = request.body;

@@ -1,4 +1,4 @@
-interface ArrivalDay {
+export interface ArrivalDay {
     day: string,
     times: string[]
 }

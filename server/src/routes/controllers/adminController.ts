@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Admin from '../../models/schema/adminModelSchema';
 
-export async function RegisterAdmin() {
+export async function registerAdmin() {
 
     const existingAdmin = await Admin.findOne({name: "AdmiralAdmin"});
     if (existingAdmin) {

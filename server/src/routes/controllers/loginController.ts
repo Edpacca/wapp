@@ -3,11 +3,11 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs';
 import Admin from '../../models/schema/adminModelSchema';
 import { UserResponse } from '../../models/responses/userResponse';
-import { GetGuestObjectByFamily } from './guestController';
+import { getGuestObjectByFamily } from './guestController';
 import { InvalidCredentialsError, ServerError } from '../../constants/errors';
-import { GetSeats } from './seatsController';
+import { getSeats } from './seatsController';
 import { LoginResponseSuccess, LoginResponseFailure } from '../../models/responses/loginResponse';
-import { GetArrivals } from './arrivalController';
+import { getArrivals } from './arrivalController';
 
 export async function authenticate(request, result) {
     try {
@@ -25,9 +25,9 @@ export async function authenticate(request, result) {
             switch (type) {
                 case "user": {
                     const user = await User.findOne({name});
-                    const guests = await GetGuestObjectByFamily(name);
-                    const seats = await GetSeats();
-                    const arrivals = await GetArrivals();
+                    const guests = await getGuestObjectByFamily(name);
+                    const seats = await getSeats();
+                    const arrivals = await getArrivals();
                     const userResponse: UserResponse = {
                         id: user._id,
                         family: {name: name, id: user.familyId},

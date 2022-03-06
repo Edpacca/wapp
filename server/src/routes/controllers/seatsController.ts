@@ -1,7 +1,7 @@
 import Seat from '../../models/schema/seatModelSchema';
 import { SeatResponse } from '../../models/responses/seatResponse';
 
-export async function GetSeats() {
+export async function getSeats() {
 
     const seats = await Seat.find({});
     if (!seats || seats.length === 0) {
