@@ -102,9 +102,9 @@ export const userSlice = createSlice({
                 state.errors = action.payload.errors;
             } else {
                 state.status = 'idle';
-                state.family = action.payload.family;
-                state.guests = action.payload.guests;
-                state.seats = action.payload.seats;
+                // state.family = action.payload.family;
+                // state.guests = action.payload.guests;
+                // state.seats = action.payload.seats;
                 state.errors = [];
                 state.isLoggedIn = true;
             }

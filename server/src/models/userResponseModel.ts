@@ -20,7 +20,6 @@ export interface UserResponse {
     id: string,
     family: string,
     familyId: string,
-    token: string,
     guests: GuestResponse[],
     seats?: SeatResponse[]
 }

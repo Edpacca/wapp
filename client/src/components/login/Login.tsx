@@ -29,12 +29,20 @@ export function Login() {
         }
     }
 
+    const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          event.stopPropagation();
+          captureLogin();
+        }
+      }
+
     return(
         <div>
             <div>
             <img src={diamond} className="App-logo-login" alt="diamond"/>
             </div>
-            <form onSubmit={() => captureLogin()} className='App-centered'>
+            <div className='App-centered'>
                 { status === 'failed' && (errors[0].type === "auth") && <label className='error-label'>{errors[0].message}</label> }
                 <input
                     required
@@ -50,11 +58,13 @@ export function Login() {
                     type="password"
                     className={`textbox ${status}`}
                     placeholder={"Secret"}
-                    id="secret" onChange={(e) => setPassword(e.target.value)}
+                    id="secret" 
+                    onChange={(e) => setPassword(e.target.value)}
+                    onKeyDown={onKeyDown}
                     >
                 </input>
-            <button type='submit' className="button login">Login</button>
-            </form>
+            <button onClick={() => captureLogin()} className="button login">Login</button>
+            </div>
         </div>
     )
 }

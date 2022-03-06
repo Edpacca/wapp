@@ -30,14 +30,13 @@ export async function authenticate(request, result) {
                         id: user._id,
                         family: name,
                         familyId: user.familyId,
-                        token: user.token,
                         guests: guests,
                         seats: seats
                     }
                     return result.status(200).json({type: "user", data: userResponse});
                 }
                 case "admin" :
-                    return result.status(200).json({type: "admin", data: name});
+                    return result.status(200).json({type: "admin"});
                 default:
                     return result.status(401).json(false);
             }
@@ -51,7 +50,7 @@ export async function authenticate(request, result) {
 export async function loginUser(request, result) {
     try {
         const { family, password } = request.body;
-
+        
         if (!(family && password)) {
             result.status(400).json({errors: [InvalidCredentialsError]});
         }
@@ -68,21 +67,8 @@ export async function loginUser(request, result) {
             );
 
             user.token = token;
-
-            const guests = await GetGuestObjectByFamily(family);
-            const seats = await GetSeats();
-
-            const userResponse: UserResponse = {
-                id: user._id,
-                family: user.family,
-                familyId: user.familyId,
-                token: user.token,
-                guests: guests,
-                seats: seats
-            }
-
             result.cookie('token', token);
-            return result.status(200).json(userResponse);
+            return result.status(200).json({result: "SUCCESS", family: user.family, id: user._id});
         }
 
         return result.status(401).json({errors: [InvalidCredentialsError]});
@@ -112,17 +98,9 @@ export async function loginAdmin(request, result) {
                     expiresIn: "2h",
                 }
             );
-
-            admin.token = token;
-
-            const obfsAdmin: AdminResponse = {
-                id: admin._id,
-                name: admin.name,
-                token: admin.token,
-            }
             
             result.cookie('token', token);
-            return result.status(200).send(obfsAdmin);
+            return result.status(200).send({result: "SUCCESS", name: admin.name, id: admin._id});
         }
 
         return result.status(401).send({errors: [InvalidCredentialsError]});

@@ -68,7 +68,6 @@ export async function RegisterUser(request, result) {
             id: user._id,
             family: user.family,
             familyId: user.familyId,
-            token: user.token,
             guests: guestsResponse
         }
         result.status(201).json(userResponse);

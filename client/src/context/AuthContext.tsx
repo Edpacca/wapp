@@ -34,9 +34,8 @@ function AuthContextProvider(props: any) {
     }
 
     useEffect(() => {
-            if (!isLoggedIn) {
+            if (loginContext === undefined) {
                 authenticateSession();
-                setIsLoggedIn(true);
             }
     }, []);
     
