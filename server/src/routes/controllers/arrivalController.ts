@@ -22,7 +22,6 @@ export async function getArrivals() {
     return arrivalResponse;
 }
 
-
 export async function updateArrival(request, result) {
     const arrival = request.body;
 
