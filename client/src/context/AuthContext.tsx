@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { selectFamilyName, selectIsLoggedIn } from "../components/user/userSlice";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 
 export type LoginContext = 'user' | 'admin' | undefined;
@@ -13,7 +12,6 @@ function AuthContextProvider(props: any) {
 
     const [loginContext, setLoginContext] = useState<LoginContext>(undefined);
     const dispatch = useAppDispatch();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     async function authenticateSession() {
         const loggedIn = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/authenticate`, {

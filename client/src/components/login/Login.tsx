@@ -4,18 +4,17 @@ import { useContext, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
 import { selectErrors, selectLoginStatus, userLogin } from '../user/userSlice';
-import { Status } from '../../models/Status';
 import { WappError } from '../../models/WappError';
 
 export function Login() {
 
     const dispatch = useAppDispatch();
+    const status = useAppSelector(selectLoginStatus);
+    const { authenticateSession } = useContext(AuthContext);
+    const errors: WappError[] = useAppSelector(selectErrors);
 
     const [family, setFamily] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const status: Status = useAppSelector(selectLoginStatus);
-    const errors: WappError[] = useAppSelector(selectErrors);
-    const { authenticateSession } = useContext(AuthContext);
 
     async function captureLogin() {
 
@@ -38,10 +37,7 @@ export function Login() {
     }
 
     const captureTextInput = (value: string, setValue: (value: string) => void): void => {
-        if (value.length === 0) {
-            dispatch({ type: 'users/loginResetStatus' });
-        }
-        
+        if (value.length === 0) dispatch({ type: 'users/loginResetStatus' });
         setValue(value);
     }
 

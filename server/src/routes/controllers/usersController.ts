@@ -1,9 +1,10 @@
-import User from '../../models/schema/userModelSchema';
-import Guest from '../../models/schema/guestModelSchema';
-import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { UserResponse, GuestResponse } from '../../models/responses/userResponse';
+import { v4 as uuid } from 'uuid';
+import User from '../../models/schema/userModelSchema';
+import Guest from '../../models/schema/guestModelSchema';
+import { UserResponse } from '../../models/responses/userResponse';
+import { GuestResponse } from '../../models/responses/guestResponse';
 
 export async function RegisterUser(request, result) {
     try {
@@ -33,9 +34,7 @@ export async function RegisterUser(request, result) {
         const token = jwt.sign(
             { type: "user", user_id: user._id, family },
             process.env.TOKEN_KEY,
-            {
-                expiresIn: "2h",
-            }
+            { expiresIn: "2h" }
         );
 
         user.token = token;
@@ -66,8 +65,7 @@ export async function RegisterUser(request, result) {
         
         const userResponse: UserResponse = {
             id: user._id,
-            family: user.family,
-            familyId: user.familyId,
+            family: { name: user.family, id: user.familyId },
             guests: guestsResponse
         }
         result.status(201).json(userResponse);

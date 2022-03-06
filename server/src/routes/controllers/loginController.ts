@@ -30,8 +30,7 @@ export async function authenticate(request, result) {
                     const arrivals = await GetArrivals();
                     const userResponse: UserResponse = {
                         id: user._id,
-                        family: name,
-                        familyId: user.familyId,
+                        family: {name: name, id: user.familyId},
                         guests: guests,
                         seats: seats,
                         arrivals: arrivals

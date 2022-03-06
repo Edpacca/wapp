@@ -5,20 +5,19 @@ import { Status } from "../../models/Status";
 import { Guest } from "../../models/Guest";
 import { WappError } from "../../models/WappError";
 import { Seat } from "../../models/Seat";
-import { stat } from "fs";
 import { Arrival } from "../../models/Arrival";
+import { Family } from "../../models/Family";
 
 export interface UserState {
-    family: string | undefined,
+    family?: Family,
     guests: Guest[],
     seats: Seat[],
     arrivals: Arrival[],
-    errors: WappError[]
+    errors: WappError[],
     status: Status,
 };
 
 const initialState: UserState = {
-    family: undefined,
     guests: [],
     seats: [],
     arrivals: [],
@@ -65,6 +64,23 @@ export const submitGuestUpdateUser = createAsyncThunk(
     'users/submitGuestChoices', 
     async(request: Guest) => {
         const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest`, {
+            credentials: 'include',
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token' : `${process.env.REACT_APP_CLIENT_TOKEN}`
+            },
+            body: JSON.stringify(request)
+        }).then(response => response.json());
+        return response;
+    }
+)
+
+export const submitUserArrivalTime = createAsyncThunk(
+    'users/submitUserArrivalTime',
+    async(request: Arrival) => {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest/arrival`, {
             credentials: 'include',
             method: 'PUT',
             mode: 'cors',
@@ -142,10 +158,18 @@ export const userSlice = createSlice({
     }
 });
 
-export const selectFamilyName = (state: RootState): string => state.users.family as string;
+export const selectFamily = (state: RootState): Family | undefined => state.users.family;
 export const selectUserGuests = (state: RootState): Guest[] => state.users.guests;
 export const selectUserSeats = (state: RootState): Seat[] => state.users.seats;
 export const selectUserArrivals = (state: RootState): Arrival[] => state.users.arrivals;
+export const selectFamilyArrival = (state: RootState): Arrival | undefined => {
+    // if (state.users.arrivals.length > 0) {
+    //     const arrival = state.users.arrivals.filter(arrival => arrival.familyId === state.users.familyId);
+    //     return arrival.length > 0 ? arrival[0] : undefined;
+    // }
+    return undefined;
+}
 export const selectErrors = (state: RootState): WappError[] => state.users.errors;
+export const selectLoginStatus = (state: RootState): Status => state.users.status;
 
 export default userSlice.reducer;

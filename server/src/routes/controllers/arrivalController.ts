@@ -21,3 +21,23 @@ export async function GetArrivals() {
 
     return arrivalResponse;
 }
+
+
+export async function UpdateArrival(request, result) {
+    const arrival = request.body;
+
+    const options = { upsert: true, new: true, setDefaultsOnInsert: true };
+
+    Arrival.findOneAndUpdate({'familyId': arrival.familyId}, {
+        "familyId": arrival.familyId,
+        "family": arrival.family,
+        "day": arrival.day,
+        "time": arrival.time,
+    }, options, (err) => {
+        if (err) {
+            return result.status(500).send(err);
+        }
+    });
+
+    return result.status(200).json(arrival);
+}
