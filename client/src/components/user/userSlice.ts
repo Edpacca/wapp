@@ -5,23 +5,25 @@ import { Status } from "../../models/Status";
 import { Guest } from "../../models/Guest";
 import { WappError } from "../../models/WappError";
 import { Seat } from "../../models/Seat";
+import { stat } from "fs";
+import { Arrival } from "../../models/Arrival";
 
 export interface UserState {
     family: string | undefined,
     guests: Guest[],
     seats: Seat[],
+    arrivals: Arrival[],
     errors: WappError[]
     status: Status,
-    isLoggedIn: boolean,
 };
 
 const initialState: UserState = {
     family: undefined,
     guests: [],
     seats: [],
+    arrivals: [],
     errors: [],
     status: 'idle',
-    isLoggedIn: false,
 };
 
 export const userLogin = createAsyncThunk(
@@ -84,7 +86,12 @@ export const userSlice = createSlice({
             state.family = action.payload.family;
             state.guests = action.payload.guests;
             state.seats = action.payload.seats;
+            state.arrivals = action.payload.arrivals;
             state.status = 'idle'
+        },
+        loginResetStatus: (state) => {
+            state.status = 'idle';
+            state.errors = [];
         }
     },
     extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
@@ -102,11 +109,7 @@ export const userSlice = createSlice({
                 state.errors = action.payload.errors;
             } else {
                 state.status = 'idle';
-                // state.family = action.payload.family;
-                // state.guests = action.payload.guests;
-                // state.seats = action.payload.seats;
                 state.errors = [];
-                state.isLoggedIn = true;
             }
         })
         .addCase(userLogout.pending, (state) => {
@@ -118,7 +121,6 @@ export const userSlice = createSlice({
             state.seats = [];
             state.status ='idle';
             state.errors = [];
-            state.isLoggedIn = false;
         })
         .addCase(userLogout.fulfilled, (state) => {
             state.family = undefined;
@@ -126,7 +128,6 @@ export const userSlice = createSlice({
             state.seats = [];
             state.status ='idle';
             state.errors = [];
-            state.isLoggedIn = false;
         })
         .addCase(submitGuestUpdateUser.fulfilled, (state, action) => {
             const index = state.guests.findIndex(guest => guest.id === action.payload.id);
@@ -144,8 +145,7 @@ export const userSlice = createSlice({
 export const selectFamilyName = (state: RootState): string => state.users.family as string;
 export const selectUserGuests = (state: RootState): Guest[] => state.users.guests;
 export const selectUserSeats = (state: RootState): Seat[] => state.users.seats;
-export const selectLoginStatus = (state: RootState): Status => state.users.status;
+export const selectUserArrivals = (state: RootState): Arrival[] => state.users.arrivals;
 export const selectErrors = (state: RootState): WappError[] => state.users.errors;
-export const selectIsLoggedIn = (state: RootState): Boolean => state.users.isLoggedIn;
 
 export default userSlice.reducer;

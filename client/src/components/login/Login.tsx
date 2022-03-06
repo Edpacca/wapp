@@ -35,7 +35,15 @@ export function Login() {
           event.stopPropagation();
           captureLogin();
         }
-      }
+    }
+
+    const captureTextInput = (value: string, setValue: (value: string) => void): void => {
+        if (value.length === 0) {
+            dispatch({ type: 'users/loginResetStatus' });
+        }
+        
+        setValue(value);
+    }
 
     return(
         <div>
@@ -51,7 +59,8 @@ export function Login() {
                     className={`textbox ${status}`}
                     placeholder="Username"
                     id="family" 
-                    onChange={(e) => setFamily(e.target.value)}>
+                    onChange={(e) => captureTextInput(e.target.value, setFamily)}
+                    onKeyDown={onKeyDown}>
                 </input>
                 <input 
                     required
@@ -59,7 +68,7 @@ export function Login() {
                     className={`textbox ${status}`}
                     placeholder={"Secret"}
                     id="secret" 
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => captureTextInput(e.target.value, setPassword)}
                     onKeyDown={onKeyDown}
                     >
                 </input>

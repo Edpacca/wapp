@@ -1,12 +1,13 @@
-import User from '../../models/userModelSchema';
+import User from '../../models/schema/userModelSchema';
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs';
-import { UserResponse } from '../../models/userResponseModel';
+import Admin from '../../models/schema/adminModelSchema';
+import { UserResponse } from '../../models/responses/userResponse';
 import { GetGuestObjectByFamily } from './guestController';
-import Admin from '../../models/adminModelSchema';
-import { AdminResponse } from '../../models/AdminResponse';
 import { InvalidCredentialsError, ServerError } from '../../constants/errors';
 import { GetSeats } from './seatsController';
+import { LoginResponseSuccess, LoginResponseFailure } from '../../models/responses/loginResponse';
+import { GetArrivals } from './arrivalController';
 
 export async function authenticate(request, result) {
     try {
@@ -26,12 +27,14 @@ export async function authenticate(request, result) {
                     const user = await User.findOne({name});
                     const guests = await GetGuestObjectByFamily(name);
                     const seats = await GetSeats();
+                    const arrivals = await GetArrivals();
                     const userResponse: UserResponse = {
                         id: user._id,
                         family: name,
                         familyId: user.familyId,
                         guests: guests,
-                        seats: seats
+                        seats: seats,
+                        arrivals: arrivals
                     }
                     return result.status(200).json({type: "user", data: userResponse});
                 }
@@ -68,10 +71,12 @@ export async function loginUser(request, result) {
 
             user.token = token;
             result.cookie('token', token);
-            return result.status(200).json({result: "SUCCESS", family: user.family, id: user._id});
+            const loginResponse: LoginResponseSuccess = {result: "SUCCESS", name: user.family, id: user._id}
+            return result.status(200).json(loginResponse);
         }
 
-        return result.status(401).json({errors: [InvalidCredentialsError]});
+        const loginResponse: LoginResponseFailure = {result: "FAILURE", errors: [InvalidCredentialsError] }
+        return result.status(401).json(loginResponse);
 
     } catch (error) {
         console.log(error)
@@ -86,7 +91,7 @@ export async function loginAdmin(request, result) {
         let errorMessage;
         if (!name) errorMessage = "Please enter a user name";
         if (!password) errorMessage = "Please enter your password";
-        if (errorMessage) result.status(400).json({error: errorMessage});
+        if (errorMessage) result.status(400).json({result: "FAILURE", errors: [errorMessage] });
 
         const admin = await Admin.findOne({name});
 
@@ -100,10 +105,12 @@ export async function loginAdmin(request, result) {
             );
             
             result.cookie('token', token);
-            return result.status(200).send({result: "SUCCESS", name: admin.name, id: admin._id});
+            const loginResponse: LoginResponseSuccess = {result: "SUCCESS", name: admin.name, id: admin._id}
+            return result.status(200).send(loginResponse);
         }
 
-        return result.status(401).send({errors: [InvalidCredentialsError]});
+        const loginResponse: LoginResponseFailure = {result: "FAILURE", errors: [InvalidCredentialsError] }
+        return result.status(401).json(loginResponse);
 
     } catch (error) {
         console.log(error)

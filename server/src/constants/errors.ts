@@ -1,4 +1,4 @@
-import { WappError } from '../models/WappError';
+import { WappError } from '../models/responses/WappError';
 
 export const InvalidCredentialsError: WappError = {
     type: "auth",

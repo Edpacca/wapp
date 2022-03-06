@@ -1,9 +1,9 @@
-import User from '../../models/userModelSchema';
-import Guest from '../../models/guestModelSchema';
+import User from '../../models/schema/userModelSchema';
+import Guest from '../../models/schema/guestModelSchema';
 import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { UserResponse, GuestResponse } from '../../models/userResponseModel';
+import { UserResponse, GuestResponse } from '../../models/responses/userResponse';
 
 export async function RegisterUser(request, result) {
     try {

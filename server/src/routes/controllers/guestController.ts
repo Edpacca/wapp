@@ -1,7 +1,7 @@
-import Guest from '../../models/guestModelSchema';
-import Seat from '../../models/seatModelSchema';
+import Guest from '../../models/schema/guestModelSchema';
+import Seat from '../../models/schema/seatModelSchema';
 import { v4 as uuid } from 'uuid';
-import { GuestResponse } from '../../models/userResponseModel';
+import { GuestResponse } from '../../models/responses/guestResponse';
 
 export async function CreateGuest(request, result) {
 

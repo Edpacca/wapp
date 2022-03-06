@@ -1,5 +1,5 @@
 import Seat from '../../models/schema/seatModelSchema';
-import { SeatResponse } from '../../models/responses/seatResponse';
+import { SeatResponse } from '../../models/responses/userResponse';
 
 export async function GetSeats() {
 
