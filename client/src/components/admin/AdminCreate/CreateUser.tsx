@@ -1,4 +1,3 @@
-import styles from '../admin.module.css';
 import { useAppDispatch } from "../../../store/hooks";
 import { useState } from "react";
 import { registerUser } from "../adminSlice";
@@ -37,7 +36,7 @@ export function CreateUser() {
     return(
         <div className='center'>
             <p>Create Family</p>
-        <div className={styles.adminInputs}>
+        <div className="adminInputs">
                 <input 
                     required
                     pattern='^[A-Za-z]*$'
@@ -62,16 +61,16 @@ export function CreateUser() {
             <div>
                 <button 
                     onClick={() => setMemberCount(memberCount + 1)}
-                    className={styles.plusMinusButton}>
+                    className="plusMinusButton">
                         &#9547;
                 </button>
                 <button 
                     onClick={() => {const count = Math.max(1, memberCount - 1);
                         setMemberCount(count)}} 
-                    className={styles.plusMinusButton}>
+                    className="plusMinusButton">
                         &minus;
                 </button>
-                <div className={styles.adminInputs}>
+                <div className="adminInputs">
                     { renderMembers(memberCount) }
                 </div>
             </div>

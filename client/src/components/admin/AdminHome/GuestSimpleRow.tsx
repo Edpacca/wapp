@@ -8,6 +8,7 @@ export function GuestSimpleRow(guest: Guest, style: string) {
             <td>M{guest.main?.toString() ? guest.main + 1 : "-"}</td>
             <td>D{guest.dessert?.toString() ? guest.dessert + 1 : "-"}</td>
             <td>{guest.diet}</td>
+            <td>{guest.seat}</td>
         </tr>
     )
 }

@@ -1,0 +1,64 @@
+@import '../common/colours.scss';
+
+.seating-wrapper {
+    width: 79vw;
+    height: 79vw;
+    border: 1px dotted red;
+    margin: auto;
+}
+
+.seating-grid {
+    margin: 5vw;
+    display: grid;
+    grid-template-columns: 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw;
+    grid-template-rows: 6vw 6vw 6vw 6vw 6vw;
+    column-gap: 1vw;
+    row-gap: 1vw;
+}
+
+.seat {
+    border: 1px solid goldenrod;
+    background-color: $black50;
+    height: 6vw;
+    width: 6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seat-number {
+    font-size: 2vw;
+    font-weight: 600;
+}
+
+.occupant {
+    font-size: 2vw;
+    font-weight: 600;
+    display: none;
+}
+
+.seat:hover {
+    border: 2px solid goldenrod;
+    background-color: rgba(255, 255, 255, 0.2);
+
+    .occupant {
+        display: initial;
+    }
+
+    .seat-number {
+        display: none;
+    }
+}
+
+.seat:active {
+    border: 2px solid goldenrod;
+    background-color: rgba(255, 255, 255, 0.2);
+
+    .occupant {
+        display: initial;
+    }
+
+    .seat-number {
+        display: none;
+    }
+}

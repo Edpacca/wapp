@@ -1,11 +1,12 @@
-import User from '../../models/userModelSchema';
-import Guest from '../../models/guestModelSchema';
-import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { UserResponse, GuestResponse } from '../../models/userResponseModel';
+import { v4 as uuid } from 'uuid';
+import User from '../../models/schema/userModelSchema';
+import Guest from '../../models/schema/guestModelSchema';
+import { UserResponse } from '../../models/responses/userResponse';
+import { GuestResponse } from '../../models/responses/guestResponse';
 
-export async function RegisterUser(request, result) {
+export async function registerUser(request, result) {
     try {
         const { family, password, guests } = request.body; 
 
@@ -33,9 +34,7 @@ export async function RegisterUser(request, result) {
         const token = jwt.sign(
             { type: "user", user_id: user._id, family },
             process.env.TOKEN_KEY,
-            {
-                expiresIn: "2h",
-            }
+            { expiresIn: "2h" }
         );
 
         user.token = token;
@@ -60,14 +59,13 @@ export async function RegisterUser(request, result) {
                 main: newGuest.main,
                 dessert: newGuest.dessert,
                 diet: newGuest.diet,
+                seat: newGuest.seat,
             });
         }
         
         const userResponse: UserResponse = {
             id: user._id,
-            family: user.family,
-            familyId: user.familyId,
-            token: user.token,
+            family: { name: user.family, id: user.familyId },
             guests: guestsResponse
         }
         result.status(201).json(userResponse);
@@ -78,7 +76,7 @@ export async function RegisterUser(request, result) {
     }
 }
 
-export async function AddGuestToFamily(request, result) {
+export async function addGuestToFamily(request, result) {
     try {
 
         const { family, name} = request.body;
@@ -106,6 +104,7 @@ export async function AddGuestToFamily(request, result) {
                 main: guest.main,
                 dessert: guest.dessert,
                 diet: guest.diet,
+                seat: guest.seat
         }
 
         result.status(201).json(guestsResponse);

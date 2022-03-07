@@ -1,0 +1,65 @@
+.arrival-select {
+    display: grid;
+    justify-content: center;
+}
+
+button.arrival-button {
+    width: 16em;
+    border: 1px solid white;
+    margin: 0.5em auto;
+}
+
+button.arrival-time {
+    padding: 0.25em;
+    width: 7rem;
+}
+
+
+button.selected-arrival {
+    border: 1px solid yellowgreen;
+    color: yellowgreen;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+button.selected-departure {
+    border: 1px solid orange;
+    color: orange;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.arrival-text {
+    font-size: 1.4rem;
+}
+
+.cancel-submit-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrival-times {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media only screen and (max-height: 950px) {
+
+    .arrival-text {
+        font-size: 1rem;
+    }
+
+    button.arrival-button {
+        padding: 0.15em;
+        margin: 0.15em auto;
+    }
+    
+    button.arrival-time {
+        width: 7rem;
+        padding: 0.15em;
+        margin: 0;
+    }
+}

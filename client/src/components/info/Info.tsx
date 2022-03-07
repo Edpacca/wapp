@@ -1,13 +1,23 @@
 import { useState } from "react";
+import { Arrival } from "../../models/Arrival";
+import { Family } from "../../models/Family";
+import { Seat } from "../../models/Seat";
+import { useAppSelector } from "../../store/hooks";
+import { selectFamily, selectUserArrivals, selectUserSeats } from "../user/userSlice";
+import { ArrivalPlan } from "./arrivals/ArrivalPlan";
 import BackButton from "./BackButton";
-import { BigDay } from "./BigDay";
-import { DayActivities } from "./DayActivities";
+import { BigDay } from "./bigday/BigDay";
+import { Itinerary } from "./Itinerary";
+import { SeatingPlan } from "./seating/SeatingPlan";
 
-export type InfoTypes = 'none' | 'days' | 'scroll' | 'seating' | 'room';
+export type InfoTypes = 'none' | 'days' | 'scroll' | 'seating' | 'room' | 'arrivals';
 
 export function Info() {
 
     const [activeInfo, setActiveInfo] = useState<InfoTypes>('none');
+    const guestSeats: Seat[] = useAppSelector(selectUserSeats);
+    const arrivals: Arrival[] = useAppSelector(selectUserArrivals);
+    const family: Family = useAppSelector(selectFamily) as Family;
 
     return(
         <div>
@@ -27,6 +37,10 @@ export function Info() {
                 <div className="info-header room-header" onClick={() => setActiveInfo('room')}>
                         <h1 className="info-h1">Room info</h1>
                 </div>
+                <div className="info-header arrivals-header" onClick={() => setActiveInfo('arrivals')}>
+                        <h1 className="info-h1">Arrivals</h1>
+                        <div className="bigday-sub">Find out when other people are arriving</div>
+                </div>
                 </>
             }
             {
@@ -35,11 +49,19 @@ export function Info() {
             }
             {
                 activeInfo === 'days' &&
-                <DayActivities setActive={setActiveInfo}/>
+                <Itinerary setActive={setActiveInfo}/>
             }
             {
                 activeInfo === 'scroll' &&
                 <BigDay />
+            }
+            {
+                activeInfo === 'seating' &&
+                <SeatingPlan guestSeats={guestSeats} />
+            }
+            {
+                activeInfo === 'arrivals' &&
+                <ArrivalPlan arrivals={arrivals} family={family} />
             }
         </div>
     )

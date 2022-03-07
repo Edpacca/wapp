@@ -1,11 +1,13 @@
-import User from '../../models/userModelSchema';
+import User from '../../models/schema/userModelSchema';
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs';
-import { UserResponse } from '../../models/userResponseModel';
-import { GetGuestObjectByFamily } from './guestController';
-import Admin from '../../models/adminModelSchema';
-import { AdminResponse } from '../../models/AdminResponse';
+import Admin from '../../models/schema/adminModelSchema';
+import { UserResponse } from '../../models/responses/userResponse';
+import { getGuestObjectByFamily } from './guestController';
 import { InvalidCredentialsError, ServerError } from '../../constants/errors';
+import { getSeats } from './seatsController';
+import { LoginResponseSuccess, LoginResponseFailure } from '../../models/responses/loginResponse';
+import { getArrivals } from './arrivalController';
 
 export async function authenticate(request, result) {
     try {
@@ -22,20 +24,21 @@ export async function authenticate(request, result) {
 
             switch (type) {
                 case "user": {
-                    const user = await User.findOne({name});
-                    const guests = await GetGuestObjectByFamily(name);
+                    const user = await User.findOne({family: name});
+                    const guests = await getGuestObjectByFamily(name);
+                    const seats = await getSeats();
+                    const arrivals = await getArrivals();
                     const userResponse: UserResponse = {
                         id: user._id,
-                        family: name,
-                        familyId: user.familyId,
-                        token: user.token,
-                        guests: guests
+                        family: {name: name, id: user.familyId},
+                        guests: guests,
+                        seats: seats,
+                        arrivals: arrivals
                     }
-            
                     return result.status(200).json({type: "user", data: userResponse});
                 }
                 case "admin" :
-                    return result.status(200).json({type: "admin", data: name});
+                    return result.status(200).json({type: "admin"});
                 default:
                     return result.status(401).json(false);
             }
@@ -49,7 +52,7 @@ export async function authenticate(request, result) {
 export async function loginUser(request, result) {
     try {
         const { family, password } = request.body;
-
+        
         if (!(family && password)) {
             result.status(400).json({errors: [InvalidCredentialsError]});
         }
@@ -66,22 +69,13 @@ export async function loginUser(request, result) {
             );
 
             user.token = token;
-
-            const guests = await GetGuestObjectByFamily(family);
-
-            const userResponse: UserResponse = {
-                id: user._id,
-                family: user.family,
-                familyId: user.familyId,
-                token: user.token,
-                guests: guests
-            }
-
             result.cookie('token', token);
-            return result.status(200).json(userResponse);
+            const loginResponse: LoginResponseSuccess = {result: "SUCCESS", name: user.family, id: user._id}
+            return result.status(200).json(loginResponse);
         }
 
-        return result.status(401).json({errors: [InvalidCredentialsError]});
+        const loginResponse: LoginResponseFailure = {result: "FAILURE", errors: [InvalidCredentialsError] }
+        return result.status(401).json(loginResponse);
 
     } catch (error) {
         console.log(error)
@@ -96,7 +90,7 @@ export async function loginAdmin(request, result) {
         let errorMessage;
         if (!name) errorMessage = "Please enter a user name";
         if (!password) errorMessage = "Please enter your password";
-        if (errorMessage) result.status(400).json({error: errorMessage});
+        if (errorMessage) result.status(400).json({result: "FAILURE", errors: [errorMessage] });
 
         const admin = await Admin.findOne({name});
 
@@ -108,20 +102,14 @@ export async function loginAdmin(request, result) {
                     expiresIn: "2h",
                 }
             );
-
-            admin.token = token;
-
-            const obfsAdmin: AdminResponse = {
-                id: admin._id,
-                name: admin.name,
-                token: admin.token,
-            }
             
             result.cookie('token', token);
-            return result.status(200).send(obfsAdmin);
+            const loginResponse: LoginResponseSuccess = {result: "SUCCESS", name: admin.name, id: admin._id}
+            return result.status(200).send(loginResponse);
         }
 
-        return result.status(401).send({errors: [InvalidCredentialsError]});
+        const loginResponse: LoginResponseFailure = {result: "FAILURE", errors: [InvalidCredentialsError] }
+        return result.status(401).json(loginResponse);
 
     } catch (error) {
         console.log(error)

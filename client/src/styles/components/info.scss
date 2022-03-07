@@ -48,6 +48,14 @@
 }
 
 .itinerary-header {
+    background: url('../../assets/images/book.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgba(245, 245, 245, 0.137);
+}
+
+.arrivals-header {
     background: url('../../assets/images/clock.svg');
     background-position: center;
     background-size: contain;

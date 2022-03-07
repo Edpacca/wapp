@@ -1,11 +1,20 @@
 @import './colours.scss';
 
 .failed {
-    border: 3px solid $error
+    outline: 3px solid orange
 }
+
+.failed:focus-visible {
+    outline: 3px solid orange;  
+    filter: drop-shadow(0 0 8px rgba(250, 250, 250, 0.5));
+  }
 
 .info {
     margin: 0 1em;
     font-style: italic;
     color: goldenrod
   }
+
+.underline {
+  text-decoration: underline;
+}

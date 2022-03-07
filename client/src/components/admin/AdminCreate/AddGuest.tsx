@@ -1,4 +1,3 @@
-import styles from '../admin.module.css';
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { AddGuestRequest } from "../../../models/CreateFamily";
@@ -26,10 +25,10 @@ export function AddGuest() {
 
     function renderDropDown(families: string[]) {
         return (
-            <select className={styles.familyDropDown} onChange={(e) => setFamily(e.target.value)}>
-                <option className={styles.tableOption}>Select Family</option>
+            <select className="familyDropDown" onChange={(e) => setFamily(e.target.value)}>
+                <option className="tableOption">Select Family</option>
                 {families.map(family => <option 
-                className={styles.tableOption} 
+                className="tableOption"
                 key={`${family}options`} value={family}
                 >{family}</option>)}
             </select>
@@ -38,7 +37,7 @@ export function AddGuest() {
 
     return(
        
-        <div className={styles.adminInputs}>
+        <div className="adminInputs">
             <p>Add Guest</p>
             {renderDropDown(familyNames)}
             <input 
@@ -53,7 +52,6 @@ export function AddGuest() {
                     className="button login">
                         Add Guest
                 </button>
-
         </div>
     )
 }

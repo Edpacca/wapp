@@ -7,11 +7,11 @@
     transform: translate(-50%, -50%);
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 85vw;
     border: 2px solid greenyellow;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.9);
-    padding: 3rem;
+    padding: 2rem 1rem;
     margin: auto;
 }
 
@@ -24,7 +24,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: large;
     color: white;
-    border-width: 1px solid greenyellow;
+    border: 1px solid greenyellow;
   }
   
   .modalButton:hover {

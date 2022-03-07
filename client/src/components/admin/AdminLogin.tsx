@@ -2,7 +2,7 @@ import AuthContext from '../../context/AuthContext';
 import { useContext, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
-import { adminLogin, selectAdminStatus, getGuests } from "./adminSlice";
+import { adminLogin, selectAdminStatus, getGuests, getArrivals } from "./adminSlice";
 
 export function AdminLogin() {
 
@@ -19,8 +19,9 @@ export function AdminLogin() {
                 password: password
             }
             dispatch(adminLogin(request))
-            .then(() => authenticateSession()
-            .then(() => dispatch(getGuests())));
+            .then(() => authenticateSession())
+            .then(() => dispatch(getGuests()))
+            .then(() => dispatch(getArrivals()));
         }
     }
 
@@ -32,7 +33,7 @@ export function AdminLogin() {
     }
 
     return(
-        <form className="App-header" onSubmit={() => captureLogin()}>
+        <div className="App-header">
             <p>Admin Login</p>
             <input
                 required
@@ -41,6 +42,7 @@ export function AdminLogin() {
                 placeholder="Admin" 
                 id="name" 
                 onChange={(e) => setName(e.target.value)}
+                onKeyPress={(e) => handleKeyPress(e)}
                 >
             </input>
             <input 
@@ -52,11 +54,7 @@ export function AdminLogin() {
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyPress={(e) => handleKeyPress(e)}>
             </input>
-            <button
-                type='submit'
-                className="button login">
-                    Login
-            </button>
-        </form>
+            <button onClick={() => captureLogin()} className="button login">Login</button>
+        </div>
     )
 }

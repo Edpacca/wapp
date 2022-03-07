@@ -1,8 +1,8 @@
 
 import { useEffect, useState } from "react";
-import { PanelProps } from "../../models/ScrollDimensionProps";
-import { AnimationPanel } from "./animation/AnimationPanel";
-import TimelineInfo from "./animation/TimelineInfo";
+import { PanelProps } from "../../../models/ScrollDimensionProps";
+import { AnimationPanel } from "./AnimationPanel";
+import TimelineInfo from "./TimelineInfo";
 import { 
     scroll, quill, scrollA, scrollE, 
     castle, tree, heart, ringL, ringR1, ringR2,
@@ -10,8 +10,8 @@ import {
     drinks,
     discoball
 
-} from "./animation/Sprites";
-import { BIG_DAY_SCHEDULE } from "../../data/activityData";
+} from "./Sprites";
+import { BIG_DAY_SCHEDULE } from "../../../data/activityData";
 
 export function BigDay() {
 

@@ -1,4 +1,3 @@
-import styles from '../admin.module.css';
 import { useAppDispatch, useAppSelector } from "../../../store/hooks"
 import { clearStagedGuests, commitGuestEdits, getGuests, selectStagedDeletedGuests, selectStagedGuests } from "../adminSlice"
 import { StagedGuests } from "./StagedGuests";
@@ -17,7 +16,7 @@ export function SubmitUsersModal(props: {setIsVisible: (isVisible: boolean) => v
     }
 
     return(
-        <div className={styles.modalBox}>
+        <div className="modalBox">
             <h3>Edited Guests: {stagedGuests.length}</h3>
             <StagedGuests guests={stagedGuests}/>
             {   
@@ -28,8 +27,8 @@ export function SubmitUsersModal(props: {setIsVisible: (isVisible: boolean) => v
                 </>
             }
 
-            <button className={styles.modalButton} onClick={() => props.setIsVisible(false)}>Cancel</button>
-            <button className={styles.modalButton} onClick={() => submit()}>Submit</button>
+            <button className="modalButton" onClick={() => props.setIsVisible(false)}>Cancel</button>
+            <button className="modalButton" onClick={() => submit()}>Submit</button>
         </div>
     )
 }

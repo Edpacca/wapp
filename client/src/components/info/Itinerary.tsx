@@ -4,7 +4,7 @@ import leftLeaf from "../../assets/icons/leaf-arrow-left.svg";
 import rightLeaf from "../../assets/icons/leaf-arrow-right.svg";
 import { InfoTypes } from "./Info";
 
-export function DayActivities(props: {setActive: (value: InfoTypes) => void}) {
+export function Itinerary(props: {setActive: (value: InfoTypes) => void}) {
 
     const today = new Date();
     const event = new Date(2022, 7, 15);

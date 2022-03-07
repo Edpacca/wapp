@@ -4,18 +4,17 @@ import { useContext, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
 import { selectErrors, selectLoginStatus, userLogin } from '../user/userSlice';
-import { Status } from '../../models/Status';
 import { WappError } from '../../models/WappError';
 
 export function Login() {
 
     const dispatch = useAppDispatch();
+    const status = useAppSelector(selectLoginStatus);
+    const { authenticateSession } = useContext(AuthContext);
+    const errors: WappError[] = useAppSelector(selectErrors);
 
     const [family, setFamily] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const status: Status = useAppSelector(selectLoginStatus);
-    const errors: WappError[] = useAppSelector(selectErrors);
-    const { authenticateSession } = useContext(AuthContext);
 
     async function captureLogin() {
 
@@ -25,8 +24,21 @@ export function Login() {
                 password: password
             }
             dispatch(userLogin(request))
-            .then(async () => await authenticateSession());
+            .then(() => authenticateSession());
         }
+    }
+
+    const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          event.stopPropagation();
+          captureLogin();
+        }
+    }
+
+    const captureTextInput = (value: string, setValue: (value: string) => void): void => {
+        if (value.length === 0) dispatch({ type: 'users/loginResetStatus' });
+        setValue(value);
     }
 
     return(
@@ -34,7 +46,7 @@ export function Login() {
             <div>
             <img src={diamond} className="App-logo-login" alt="diamond"/>
             </div>
-            <form onSubmit={() => captureLogin()} className='App-centered'>
+            <div className='App-centered'>
                 { status === 'failed' && (errors[0].type === "auth") && <label className='error-label'>{errors[0].message}</label> }
                 <input
                     required
@@ -43,18 +55,21 @@ export function Login() {
                     className={`textbox ${status}`}
                     placeholder="Username"
                     id="family" 
-                    onChange={(e) => setFamily(e.target.value)}>
+                    onChange={(e) => captureTextInput(e.target.value, setFamily)}
+                    onKeyDown={onKeyDown}>
                 </input>
                 <input 
                     required
                     type="password"
                     className={`textbox ${status}`}
                     placeholder={"Secret"}
-                    id="secret" onChange={(e) => setPassword(e.target.value)}
+                    id="secret" 
+                    onChange={(e) => captureTextInput(e.target.value, setPassword)}
+                    onKeyDown={onKeyDown}
                     >
                 </input>
-            <button type='submit' className="button login">Login</button>
-            </form>
+            <button onClick={() => captureLogin()} className="button login">Login</button>
+            </div>
         </div>
     )
 }

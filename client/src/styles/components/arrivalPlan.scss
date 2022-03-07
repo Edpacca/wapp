@@ -1,0 +1,63 @@
+@import '../common/colours.scss';
+
+.arrival-bar {
+    color: yellowgreen;
+    font-weight: bold;
+    background-color: $black50;
+    border: 1px solid yellowgreen;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+    padding: 1em;
+}
+
+.arrival-bar-active {
+    color: yellowgreen;
+    font-weight: bold;
+    background-color: $black50;
+    border: 1px solid yellowgreen;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+    padding: 1em;
+    filter: drop-shadow(0 0 12px rgba(153, 205, 50, 0.5));
+}
+
+.departure-bar {
+    color: orange;
+    font-weight: bold;
+    background-color: $black50;
+    border: 1px solid orange;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+    padding: 1em;
+}
+
+.departure-bar-active {
+    color: orange;
+    font-weight: bold;
+    background-color: $black50;
+    border: 1px solid orange;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+    padding: 1em;
+    filter: drop-shadow(0 0 12px rgba(255, 166, 0, 0.5));
+}
+
+.arrivals-wrapper {
+    padding: 10vh 5vw;
+    h3 {
+        text-align: left;
+    }
+}
+
+.arrival-families {
+    color: rgb(168, 168, 168);
+    text-align: left;
+    font-family: "system-ui";
+    font-weight: initial;
+
+    .active {
+        font-weight: bold;
+        text-decoration: underline;
+        color: white;
+    }
+}

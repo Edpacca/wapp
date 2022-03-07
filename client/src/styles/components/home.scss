@@ -3,3 +3,36 @@
     border-top: 1px solid white;
     margin: 2em auto;
 }
+
+.large-info {
+    font-weight: lighter;
+    font-size: calc(8px + 2vmax);
+}
+
+.med-info {
+  font-weight: lighter;
+  font-size: calc(10px + 1vmax);
+}
+
+.col-info {
+    display: grid;
+}
+
+.sub-home {
+    padding-bottom: 0.5em;
+}
+
+.info-edit {
+    padding: 0.5em;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.info-edit:hover {
+    color: yellowgreen;
+}
+
+.selected-arrival {
+    padding: 0.5em;
+    padding-bottom: 0.1em;
+}

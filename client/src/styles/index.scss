@@ -1,4 +1,5 @@
 @import './app.scss';
+@import './admin/admin.scss';
 
 // Components
 @import './components/button.scss';
@@ -14,6 +15,9 @@
 @import './components/activityDays.scss';
 @import './components/info.scss';
 @import './components/home.scss';
+@import './components/seatingPlan.scss';
+@import './components/arrivalModal.scss';
+@import './components/arrivalPlan.scss';
 
 //Common
 @import './common/colours.scss';
