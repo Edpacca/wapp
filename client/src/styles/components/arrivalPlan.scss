@@ -1,12 +1,31 @@
+@import '../common/colours.scss';
+
 .arrival-bar {
-    border: 1px solid orange;
+    color: yellowgreen;
+    font-weight: bold;
+    background-color: $black50;
+    border: 1px solid yellowgreen;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
     padding: 1em;
 }
 
 .arrival-bar-none {
     padding: 1em;
+    text-align: left;
+    font-weight: bold;
+    color: $white50;
 }
 
 .arrivals-wrapper {
     padding: 10vh 5vw;
+
+    h3 {
+    }
+}
+
+.arrival-families {
+    text-align: left;
+    padding-bottom: 1em;
+    font-family: "system-ui";
 }

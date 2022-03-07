@@ -1,6 +1,4 @@
-import { width } from "@mui/system";
-
-export function ArrivalTimeBar(props: {day: string, time: string, width: number}) {
+export function ArrivalTimeBar(props: {day: string, time: string, width: number, quantity: number}) {
     
     const { classStyle, width } = props.width === 0 
     ? { classStyle: "arrival-bar-none", width: "80vw" } 
@@ -8,7 +6,7 @@ export function ArrivalTimeBar(props: {day: string, time: string, width: number}
     
     return (
         <div className={classStyle} style={{width: width}}>
-            <span>{props.day} {props.time}</span>
+            <span>{props.time} ({props.quantity})</span>
         </div>
     )
 }
