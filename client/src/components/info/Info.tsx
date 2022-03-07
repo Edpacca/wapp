@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Arrival } from "../../models/Arrival";
+import { Family } from "../../models/Family";
 import { Seat } from "../../models/Seat";
 import { useAppSelector } from "../../store/hooks";
-import { selectUserArrivals, selectUserSeats } from "../user/userSlice";
+import { selectFamily, selectUserArrivals, selectUserSeats } from "../user/userSlice";
 import { ArrivalPlan } from "./arrivals/ArrivalPlan";
 import BackButton from "./BackButton";
 import { BigDay } from "./bigday/BigDay";
@@ -16,6 +17,7 @@ export function Info() {
     const [activeInfo, setActiveInfo] = useState<InfoTypes>('none');
     const guestSeats: Seat[] = useAppSelector(selectUserSeats);
     const arrivals: Arrival[] = useAppSelector(selectUserArrivals);
+    const family: Family = useAppSelector(selectFamily) as Family;
 
     return(
         <div>
@@ -59,7 +61,7 @@ export function Info() {
             }
             {
                 activeInfo === 'arrivals' &&
-                <ArrivalPlan arrivals={arrivals} />
+                <ArrivalPlan arrivals={arrivals} family={family} />
             }
         </div>
     )
