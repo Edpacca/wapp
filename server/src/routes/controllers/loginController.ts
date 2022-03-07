@@ -24,7 +24,7 @@ export async function authenticate(request, result) {
 
             switch (type) {
                 case "user": {
-                    const user = await User.findOne({name});
+                    const user = await User.findOne({family: name});
                     const guests = await getGuestObjectByFamily(name);
                     const seats = await getSeats();
                     const arrivals = await getArrivals();

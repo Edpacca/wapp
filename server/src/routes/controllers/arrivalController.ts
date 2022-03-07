@@ -40,3 +40,9 @@ export async function updateArrival(request, result) {
 
     return result.status(200).json({ result: "SUCCESS", arrival });
 }
+
+export async function getArrivalsAdmin(request, result) {
+    Arrival.find({}, function(err, arrivals) {
+        return result.status(200).json(arrivals)
+    })
+}
