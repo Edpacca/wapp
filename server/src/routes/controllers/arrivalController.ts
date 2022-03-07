@@ -14,8 +14,10 @@ export async function getArrivals() {
         arrivalResponse.push({
             family: arrival.family,
             familyId: arrival.familyId,
-            day: arrival.day,
-            time: arrival.time
+            arrivalDay: arrival.arrivalDay,
+            arrivalTime: arrival.arrivalTime,
+            departureDay: arrival.departureDay,
+            departureTime: arrival.departureTime,
         });
     })
 
@@ -30,8 +32,10 @@ export async function updateArrival(request, result) {
     Arrival.findOneAndUpdate({'familyId': arrival.familyId}, {
         "familyId": arrival.familyId,
         "family": arrival.family,
-        "day": arrival.day,
-        "time": arrival.time,
+        "arrivalDay": arrival.arrivalDay,
+        "arrivalTime": arrival.arrivalTime,
+        "departureDay": arrival.departureDay,
+        "departureTime": arrival.departureTime,
     }, options, (err) => {
         if (err) {
             return result.status(500).send(err);

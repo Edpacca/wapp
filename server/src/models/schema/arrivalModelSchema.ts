@@ -6,8 +6,10 @@ const Arrival = new Schema(
     {
         familyId: { type: String, required: true },
         family: { type: String, required: true },
-        day: { type: String, default: null },
-        time: { type: String, default: null },
+        arrivalDay: { type: String, default: null },
+        arrivalTime: { type: String, default: null },
+        departureDay: { type: String, default: null },
+        departureTime: { type: String, default: null },
     }
 )
 

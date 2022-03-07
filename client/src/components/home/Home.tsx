@@ -36,18 +36,25 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
             <div className="sub-home">
                 <div className="horizontal-bar"/>
                 {
-                    arrival &&
+                    arrival?.arrivalDay &&
                         <div className="med-info col-info">
-                            <span>You're arriving around</span>
                             <div className="selected-arrival">
-                                <span>{arrival.day} {arrival.time}</span>
+                                <span>You're arriving {arrival.arrivalDay} {arrival.arrivalTime}</span>
                                 <span className="info-edit" onClick={() => setShowArrivalModal(true)}><FontAwesomeIcon icon={faEdit}/></span>
-                            </div>    
+                            </div>
+                            <div className="selected-arrival">
+                                <span>You're leaving {arrival.departureDay} {arrival.departureTime}</span>
+                                <span className="info-edit" onClick={() => setShowArrivalModal(true)}><FontAwesomeIcon icon={faEdit}/></span>
+                            </div>       
                         </div>
                 }
                 {
-                    !arrival &&
-                    <button onClick={() => setShowArrivalModal(true)}>Let us know when you plan to arrive</button>
+                    !arrival?.arrivalDay &&
+                    <div className="med-info">
+                        <span>Let us know when you plan to arrive</span>
+                        <span className="info-edit" onClick={() => setShowArrivalModal(true)}><FontAwesomeIcon icon={faEdit}/></span>
+                    </div>
+
                 }
                 {
                     showArrivalModal &&

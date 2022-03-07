@@ -1,6 +1,8 @@
 export interface Arrival {
     family: string,
     familyId: string,
-    day: string,
-    time: string
+    arrivalDay: string,
+    arrivalTime: string,
+    departureDay: string,
+    departureTime: string
 }

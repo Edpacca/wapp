@@ -7,7 +7,7 @@ export function ArrivalPlan(props: {arrivals: Arrival[]}) {
     const [max, setMax] = useState(0);
 
     function renderArrivalTimeBar(day: string, time: string) {
-        const arrivals = props.arrivals.filter(arrival => ( arrival.day === day && arrival.time === time));
+        const arrivals = props.arrivals.filter(arrival => ( arrival.arrivalDay === day && arrival.arrivalTime === time));
         const quantity = arrivals.length;
         if (quantity > max) setMax(quantity);
         const width = 100 * quantity / max;

@@ -21,3 +21,27 @@ export const ARRIVAL_DAYS: ArrivalDay[] = [
         ]
     }
 ]
+
+export const DEPARTURE_DAYS: ArrivalDay[] = [
+    {
+        day: "Saturday",
+        times: [
+            "Afternoon",
+            "Evening",
+        ]
+    },
+    {
+        day: "Sunday",
+        times: [
+            "Morning",
+            "Afternoon",
+            "Evening"
+        ]
+    },
+    {
+        day: "Monday",
+        times: [
+            "Morning",
+        ]
+    }
+]
