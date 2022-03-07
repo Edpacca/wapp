@@ -1,4 +1,3 @@
-import styles from '../admin.module.css';
 import { Guest } from "../../../models/Guest";
 import { GuestRows } from './GuestRows';
 
@@ -7,7 +6,7 @@ export function AdminHome(props: {guests: Guest[]}) {
     return (
         <div>
             <h3>Guest Summmary</h3>
-            <table className={styles.tightTable}>
+            <table className="tightTable">
                 <thead>
                     <th>Name</th>
                     <th>Starter</th>

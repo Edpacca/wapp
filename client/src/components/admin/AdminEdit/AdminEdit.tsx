@@ -1,4 +1,3 @@
-import styles from '../admin.module.css';
 import { Guest } from "../../../models/Guest";
 import { GuestManager } from "./GuestManager";
 import { SubmitUsersModal } from './SubmitUsersModal';
@@ -10,7 +9,7 @@ export function AdminEdit(props: {guests: Guest[]}) {
 
     return (
 
-        <div className={styles.manager}>
+        <div className="manager">
             {
                 isModalVisible &&
                 <SubmitUsersModal setIsVisible={setIsModalVisible} />
