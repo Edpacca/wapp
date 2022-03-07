@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
 import { selectErrors, selectLoginStatus, userLogin } from '../user/userSlice';
 import { WappError } from '../../models/WappError';
+import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export function Login() {
 
@@ -68,7 +70,7 @@ export function Login() {
                     onKeyDown={onKeyDown}
                     >
                 </input>
-            <button onClick={() => captureLogin()} className="button login">Login</button>
+            <button onClick={() => captureLogin()} className="button login">Login &nbsp;<FontAwesomeIcon icon={faDoorOpen}/></button>
             </div>
         </div>
     )

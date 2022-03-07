@@ -4,64 +4,14 @@
 }
 
 .plusMinusButton {
-    width: 40px;
-    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     border-radius: 20%;
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
     border: none;
     margin: 0.2rem;
-    padding: 0;
     font-size: 16px;
-}
-
-.tableWrapper {
-    width: 100%;
-    border: 1px solid greenyellow;
-    border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.438);
-}
-
-.guestTable {
-    margin: 0.5rem;
-    overflow-x: auto;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
-    font-size: 16px;
-    display: grid;
-    grid-template-columns: 1fr 2fr 4fr 6fr 6fr 6fr 6fr 2fr 1fr;
-    border-collapse: collapse;
-    vertical-align: top;
-    border-spacing: 0px;
-}
-
-.manager {
-    width: 95%;
-}
-
-.tableHeaders {
-    font-weight: bold;
-    text-align: center;
-}
-
-.guestTable > thead, tbody, tr {
-    display: contents;
-}
-
-.guestTable > th, td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 5px;
-}
-
-.adminTable > td {
-    border: 0px solid white;
-    grid-template-rows: 1rem;
-}
-
-.adminTableDelete > td {
-    background-color: rgba(116, 0, 0, 0.664);
 }
 
 .link {
@@ -80,84 +30,6 @@
 
 .famTitle:hover {
     color: orange;
-}
-
-.tableDropDown {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
-    color: white;
-    border: 1px solid white;
-    border-radius: 8px;
-}
-
-.tableOption {
-    color: blue;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.tableTextInput {
-    width: 95%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
-    color: white;
-    border: 1px solid white;
-    border-radius: 8px;
-}
-
-.tableTextInput::placeholder {
-    color: greenyellow;
-    font-weight: bolder;
-}
-
-.outline {
-    width: 100%;
-    border: 1px solid greenyellow;
-    border-radius: 8px; 
-}
-
-.checkbox {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    background-color: rgba(0, 0, 0, 0);
-    border: 1px solid yellowgreen;
-    border-radius: 8px;
-}
-
-.checkbox:checked:before {
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.tableText {
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    font-weight: bolder;
-}
-
-.tightTable {
-    margin: 0.5rem;
-    overflow-x: auto;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
-    font-size: 16px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    border-collapse: collapse;
-    vertical-align: top;
-    border-spacing: 0px;
-}
-
-.tightTable > thead, tbody, tr {
-    display: contents;
-}
-
-.tightTable > th, td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 5px;
 }
 
 .modalBox {
@@ -212,8 +84,4 @@
     color: white;
     text-align: center;
 }
-
-.pendingrow {
-    color: orange;
-  }
 

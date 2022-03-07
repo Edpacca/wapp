@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { AddGuestRequest } from "../../../models/CreateFamily";
 import { addGuestToFamily, selectFamilies } from '../adminSlice';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export function AddGuest() {
     
@@ -50,7 +52,7 @@ export function AddGuest() {
                 <button 
                     onClick={() => addGuest()}
                     className="button login">
-                        Add Guest
+                        Add Guest &nbsp; <FontAwesomeIcon icon={faPlus}/>
                 </button>
         </div>
     )

@@ -2,6 +2,8 @@ import { useAppDispatch } from "../../../store/hooks";
 import { useState } from "react";
 import { registerUser } from "../adminSlice";
 import { CreateFamily } from "../../../models/CreateFamily";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFeatherPointed, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export function CreateUser() {
 
@@ -29,7 +31,7 @@ export function CreateUser() {
         setFamily("");
         setPassword("");
         setMemberCount(1);
-        (document.getElementById(`name${1}`) as HTMLInputElement).value = "";
+        (document.getElementById(`name${0}`) as HTMLInputElement).value = "";
         return newFamily;
     }
 
@@ -62,13 +64,13 @@ export function CreateUser() {
                 <button 
                     onClick={() => setMemberCount(memberCount + 1)}
                     className="plusMinusButton">
-                        &#9547;
+                        <FontAwesomeIcon icon={faPlus}/>
                 </button>
                 <button 
                     onClick={() => {const count = Math.max(1, memberCount - 1);
                         setMemberCount(count)}} 
                     className="plusMinusButton">
-                        &minus;
+                        <FontAwesomeIcon icon={faMinus}/>
                 </button>
                 <div className="adminInputs">
                     { renderMembers(memberCount) }
@@ -77,7 +79,7 @@ export function CreateUser() {
                 <button 
                     onClick={() => dispatch(registerUser(CreateFamily()))}
                     className="button login">
-                        Register Family
+                        Register Family &nbsp; <FontAwesomeIcon icon={faFeatherPointed}/>
                 </button>
 
         </div>

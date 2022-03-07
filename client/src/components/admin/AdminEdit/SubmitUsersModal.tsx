@@ -1,3 +1,5 @@
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks"
 import { clearStagedGuests, commitGuestEdits, getGuests, selectStagedDeletedGuests, selectStagedGuests } from "../adminSlice"
 import { StagedGuests } from "./StagedGuests";
@@ -27,8 +29,8 @@ export function SubmitUsersModal(props: {setIsVisible: (isVisible: boolean) => v
                 </>
             }
 
-            <button className="modalButton" onClick={() => props.setIsVisible(false)}>Cancel</button>
-            <button className="modalButton" onClick={() => submit()}>Submit</button>
+            <button className="modalButtonOrange" onClick={() => props.setIsVisible(false)}>Cancel &nbsp; <FontAwesomeIcon icon={faXmark}/></button>
+            <button className="modalButtonGreen" onClick={() => submit()}>Submit &nbsp; <FontAwesomeIcon icon={faCheck}/></button>
         </div>
     )
 }

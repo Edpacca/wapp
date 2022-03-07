@@ -1,6 +1,6 @@
-import { TabLink } from "./TabLink";
+import { TabLink } from "../nagivation/TabLink";
 import { useAppDispatch } from "../../store/hooks";
-import { changePageAdmin } from './NavigationSlice'
+import { changePageAdmin } from '../nagivation/NavigationSlice'
 import { AdminPage } from "../../models/AdminPage";
 
 export function AdminNavBar(props: {page: AdminPage}) {
@@ -11,9 +11,15 @@ export function AdminNavBar(props: {page: AdminPage}) {
         <div className="tabLinks">
             { 
                 <TabLink 
-                isActive={props.page === 'home'}
-                title="Home" 
-                onClick={() => dispatch(changePageAdmin('home'))} /> 
+                isActive={props.page === 'meals'}
+                title="Meals" 
+                onClick={() => dispatch(changePageAdmin('meals'))} /> 
+            }
+            { 
+                <TabLink 
+                isActive={props.page === 'arrivals'}
+                title="Arrivals" 
+                onClick={() => dispatch(changePageAdmin('arrivals'))} /> 
             }
             { 
                 <TabLink 

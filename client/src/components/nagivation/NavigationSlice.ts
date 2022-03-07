@@ -14,7 +14,7 @@ export interface NavigationState {
 const initialState: NavigationState = {
     status: 'idle',
     userPage: 'home',
-    adminPage: 'home'
+    adminPage: 'meals'
 }
 
 export const navigationSlice = createSlice({

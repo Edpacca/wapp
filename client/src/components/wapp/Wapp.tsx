@@ -10,6 +10,8 @@ import { useContext, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
 import { useNavigate } from 'react-router';
 import { Guest } from '../../models/Guest';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 
 export function Wapp() {
 
@@ -30,12 +32,11 @@ export function Wapp() {
   return (
     <div>
       <NavBar page={page}/>
-      {/* <div className='debug-vbar'></div> */}
       {
         page === 'home' &&
         <div>
           <Home family={family} guests={guests} setActiveGuest={setActiveGuest}/>
-          <button onClick={() => logout()}>Logout</button>
+          <button onClick={() => logout()}>Logout &nbsp; <FontAwesomeIcon icon={faDoorOpen}/></button>
         </div>
       }
       {
@@ -50,7 +51,6 @@ export function Wapp() {
         page === 'location' &&
         <WappMap/>
       }
-      
     </div>
   );
 }
