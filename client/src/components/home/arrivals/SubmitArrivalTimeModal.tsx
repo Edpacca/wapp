@@ -20,7 +20,7 @@ export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (is
                 day: day,
                 time: time,
             }
-
+            
             dispatch(submitUserArrivalTime(arrival))
             .then(() => props.setIsVisible(false));
         }

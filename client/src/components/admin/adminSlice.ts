@@ -4,9 +4,11 @@ import { AddGuestRequest, CreateFamily } from "../../models/CreateFamily";
 import { Status } from "../../models/Status";
 import { Guest } from '../../models/Guest';
 import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
+import { Arrival } from "../../models/Arrival";
 
 export interface AdminState {    
     guests: Guest[],
+    arrivals: Arrival[],
     stagedGuests: Guest[],
     stagedDeletedGuests: Guest[],
     status: Status,
@@ -14,6 +16,7 @@ export interface AdminState {
 
 const initialState: AdminState = {
     guests: [],
+    arrivals: [],
     stagedGuests: [],
     stagedDeletedGuests: [],
     status: 'idle',
@@ -57,6 +60,21 @@ export const getGuests = createAsyncThunk(
     'admin/getGuests',
     async() => {
         const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest/all`, {
+            credentials: 'include',
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            }}).then(response => response.json());
+            
+        return response;
+    }
+);
+
+export const getArrivals = createAsyncThunk(
+    'admin/getArrivals',
+    async() => {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/guest/arrival`, {
             credentials: 'include',
             method: 'GET',
             mode: 'cors',
@@ -191,6 +209,10 @@ export const adminSlice = createSlice({
         .addCase(getGuests.fulfilled, (state, action) => {
             state.guests = [];
             state.guests = mapGuests(action.payload);
+            state.status = "idle";
+        })
+        .addCase(getArrivals.fulfilled, (state, action) => {
+            state.arrivals = action.payload;
             state.status = "idle";
         })
         .addCase(adminLogout.pending, (state) => {

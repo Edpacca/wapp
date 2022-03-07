@@ -99,7 +99,13 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         loginRefresh: (state, action) => {
-            state.family = action.payload.family;
+
+            const family: Family = {
+                name: action.payload.family.name,
+                id: action.payload.family.id
+            }
+
+            state.family = family;
             state.guests = action.payload.guests;
             state.seats = action.payload.seats;
             state.arrivals = action.payload.arrivals;
@@ -135,6 +141,7 @@ export const userSlice = createSlice({
             state.family = undefined;
             state.guests = [];
             state.seats = [];
+            state.arrivals = [];
             state.status ='idle';
             state.errors = [];
         })
@@ -142,6 +149,7 @@ export const userSlice = createSlice({
             state.family = undefined;
             state.guests = [];
             state.seats = [];
+            state.arrivals = [];
             state.status ='idle';
             state.errors = [];
         })
