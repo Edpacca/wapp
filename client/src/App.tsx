@@ -4,6 +4,7 @@ import { Login } from './components/login/Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from './context/AuthContext';
+import wizard from './assets/logos/wizard.svg';
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
         {
           loginContext === 'admin' &&
           <div>
-            <a className="App-link" href={`${process.env.REACT_APP_CLIENT_SERVER}/admin`}>Admin Dashboard</a>
+            <a className="App-link" href={`${process.env.REACT_APP_CLIENT_SERVER}/admin`}><img src={wizard} className="wizard"/></a>
           </div>
         }
       </div>

@@ -1,10 +1,10 @@
 import { Guest } from "../../../models/Guest";
 import { GuestRows } from './GuestRows';
 
-export function AdminHome(props: {guests: Guest[]}) {
+export function AdminMeals(props: {guests: Guest[]}) {
 
     return (
-        <div>
+        <div className="tight-table-wrapper">
             <h3>Guest Summmary</h3>
             <table className="tightTable">
                 <thead>

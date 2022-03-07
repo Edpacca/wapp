@@ -1,5 +1,7 @@
 import { Guest } from '../../models/Guest';
 import { starters, mains, desserts } from '../../data/menuData';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export function SubmitGuestChoiceModal(props: {guest: Guest, languageIndex: 0 | 1, setIsVisible: (isVisible: boolean) => void, submit: () => void}) {
 
@@ -16,8 +18,8 @@ export function SubmitGuestChoiceModal(props: {guest: Guest, languageIndex: 0 | 
                 <p className="modalCourse">Dietary Requirements:</p>
                 <p>{props.guest.diet && (props.guest.diet as string).length > 0 ? props.guest.diet : "none"}</p>
             </div>
-            <button className="modalButton" onClick={() => props.setIsVisible(false)}>Cancel</button>
-            <button className="modalButton" onClick={() => props.submit()}>Submit</button>
+            <button className="modalButtonOrange" onClick={() => props.setIsVisible(false)}>Cancel &nbsp; <FontAwesomeIcon icon={faXmark}/></button>
+            <button className="modalButtonGreen" onClick={() => props.submit()}>Submit &nbsp; <FontAwesomeIcon icon={faCheck}/></button>
         </div>
     )
 }

@@ -230,6 +230,7 @@ export const adminSlice = createSlice({
 });
 
 export const selectGuests = (state: RootState): Guest[] => state.admin.guests;
+export const selectAdminArrivals = (state: RootState): Arrival[] => state.admin.arrivals;
 export const selectFamilies = (state: RootState): string[] => [...new Set(state.admin.guests.map(guest => guest.family))];
 export const selectStagedGuests= (state: RootState): Guest[] => state.admin.stagedGuests;
 export const selectStagedDeletedGuests= (state: RootState): Guest[] => state.admin.stagedDeletedGuests;

@@ -1,0 +1,35 @@
+.wizard {
+    width: 30vmax;
+    padding: 1em;
+    animation: glow 10s infinite linear;
+}
+
+@keyframes glow {
+    0% {
+        filter: drop-shadow(0 0 12px red) 
+    }
+    13% {
+        filter: drop-shadow(0 0 12px rgb(255, 145, 0))
+    }
+    25% {
+        filter: drop-shadow(0 0 12px rgb(238, 255, 0))
+    }
+    38% {
+        filter: drop-shadow(0 0 12px rgb(72, 255, 0))
+    }
+    50% {
+        filter: drop-shadow(0 0 12px rgb(0, 255, 213))
+    }
+    63% {
+        filter: drop-shadow(0 0 12px rgb(0, 26, 255))
+    }
+    75% {
+        filter: drop-shadow(0 0 12px rgb(140, 0, 255))
+    }
+    88% {
+        filter: drop-shadow(0 0 12px rgb(255, 0, 221))
+    }
+    100% {
+        filter: drop-shadow(0 0 12px rgb(255, 0, 43))
+    }
+}

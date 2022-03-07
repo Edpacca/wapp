@@ -5,6 +5,8 @@ import { ArrivalSelect } from "./ArrivalSelect";
 import { Arrival } from "../../../models/Arrival";
 import { useAppDispatch } from "../../../store/hooks";
 import { submitUserArrivalTime } from "../../user/userSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faCross, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (isVisible: boolean) => void}) {
 
@@ -66,8 +68,8 @@ export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (is
             <div className="arrival-text">{arrivalString}</div>
             <div className="arrival-text">{departureString}</div>
             <div className="cancel-submit-buttons">
-                <button className="modalButton" onClick={() => props.setIsVisible(false)}>Cancel</button>
-                <button className="modalButton" onClick={() => submitArrivalTime()}>Submit</button>
+                <button className="modalButtonWhite" onClick={() => props.setIsVisible(false)}>Cancel &nbsp; <FontAwesomeIcon icon={faXmark}/> </button>
+                <button className="modalButtonWhite" onClick={() => submitArrivalTime()}>Submit &nbsp; <FontAwesomeIcon icon={faCheck}/></button>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import { Guest } from "../../../models/Guest";
-import { GuestRows } from '../AdminHome/GuestRows';
+import { GuestRows } from '../AdminMeals/GuestRows';
 
 export function StagedGuests(props: {guests: Guest[], css?: string}) {
     return (

@@ -1,5 +1,9 @@
 @import './app.scss';
+
+//Admin
 @import './admin/admin.scss';
+@import './admin/adminLogin.scss';
+@import './admin/adminTables.scss';
 
 // Components
 @import './components/button.scss';

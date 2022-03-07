@@ -1,3 +1,5 @@
+@import '../common/colours.scss';
+
 .menu-wrapper {
     display: grid;
     justify-content: center;
@@ -23,4 +25,17 @@
 
 .choice {
   padding: 0.5em;
+  font-family: "system-ui";
+}
+
+.choice-slab {
+  padding-top: 1em;
+  background-image: linear-gradient($black75, $black75, $transparent); 
+  border-radius: 10px;
+}
+
+.choice-head {
+  font-weight: bold;
+  font-size: 1.3em;
+  padding-bottom: 0.5em;
 }

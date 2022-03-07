@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { AdminAuthenticationRequest } from "../../models/AdminAuthenticationRequest";
 import { adminLogin, selectAdminStatus, getGuests, getArrivals } from "./adminSlice";
+import wizard from '../../assets/logos/wizard.svg'
 
 export function AdminLogin() {
 
@@ -34,7 +35,8 @@ export function AdminLogin() {
 
     return(
         <div className="App-header">
-            <p>Admin Login</p>
+            <img className='wizard' src={wizard}/>
+            <p>You dare enter my domain?</p>
             <input
                 required
                 type="text" 
@@ -54,7 +56,7 @@ export function AdminLogin() {
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyPress={(e) => handleKeyPress(e)}>
             </input>
-            <button onClick={() => captureLogin()} className="button login">Login</button>
+            <button onClick={() => captureLogin()} className="button login">Attempt</button>
         </div>
     )
 }

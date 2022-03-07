@@ -9,6 +9,8 @@ import { submitGuestUpdateUser } from '../user/userSlice';
 import { SubmitGuestChoiceModal } from './SubmitGuestChoiceModal';
 import { allChoicesMade } from '../../helpers/allChoicesMade';
 import { GuestDropDown } from '../common/GuestDropDown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest | undefined}) {
 
@@ -105,7 +107,7 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
                         <textarea placeholder={activeGuest.diet && (activeGuest.diet as string).length > 0 ? "Diet: " + activeGuest.diet : "Enter any dietary requirements here"} onChange={(e) => updateDiet(e.target.value)}/>
                     </div>
                     <div>
-                    <strong>{activeGuest.name}'s choices...</strong>
+                    
                         {renderChoices(activeGuest, isPolish ? 1 : 0, allChoicesMade(activeGuest), setShowSubmit)}
                     </div>
                 </div>
@@ -117,7 +119,8 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
 
 function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean, setShowSubmit: (b: boolean) => void) {
     return (
-        <div>
+        <div className='choice-slab'>
+            <div className='choice-head'>{guest.name}'s choices...</div>
             {renderChoice(starters, guest.starter, languageIndex, chosenTexts.starter, "starter")}
             {renderChoice(mains, guest.main, languageIndex, chosenTexts.main, "main")}
             {renderChoice(desserts, guest.dessert, languageIndex, chosenTexts.dessert, "dessert")}
@@ -127,10 +130,10 @@ function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean, setSh
                     <p>Excellent decisions {guest.name}.</p>
                 </div>
             }
-            {guest.diet === undefined ? <p className="green">{chosenTexts.diet[0]}</p> : <span className="green"><p>{chosenTexts.diet[1]}</p>{guest.diet && (guest.diet as string).length > 0 ? guest.diet : "None"}</span>}
+            {guest.diet === undefined ? <p className="green choice">{chosenTexts.diet[0]}</p> : <span className="green"><p>{chosenTexts.diet[1]}</p>{guest.diet && (guest.diet as string).length > 0 ? guest.diet : "None"}</span>}
 
-            <p className="smalltext">Are you ready to submit? You can change your mind up until 1st July 2022</p>
-            <button onClick={() => setShowSubmit(true)}>Submit Choices</button>
+            <p className="smalltext">Are you ready to submit? <br/> You can change your mind up until 1st July 2022</p>
+            <button onClick={() => setShowSubmit(true)}>Submit &nbsp; <FontAwesomeIcon icon={faAngleRight}/></button>
         </div>
     )
 }
