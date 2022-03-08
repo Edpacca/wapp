@@ -7,11 +7,13 @@ import { WappError } from "../../models/WappError";
 import { Seat } from "../../models/Seat";
 import { Arrival } from "../../models/Arrival";
 import { Family } from "../../models/Family";
+import { Room } from "../../models/Room";
 
 export interface UserState {
     family?: Family,
     guests: Guest[],
     seats: Seat[],
+    rooms: Room[],
     arrivals: Arrival[],
     errors: WappError[],
     status: Status,
@@ -20,6 +22,7 @@ export interface UserState {
 const initialState: UserState = {
     guests: [],
     seats: [],
+    rooms: [],
     arrivals: [],
     errors: [],
     status: 'idle',
@@ -99,16 +102,11 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         loginRefresh: (state, action) => {
-
-            const family: Family = {
-                name: action.payload.family.name,
-                id: action.payload.family.id
-            }
-
-            state.family = family;
+            state.family = action.payload.family;
             state.guests = action.payload.guests;
             state.seats = action.payload.seats;
             state.arrivals = action.payload.arrivals;
+            state.rooms = action.payload.rooms;
             state.status = 'idle'
         },
         loginResetStatus: (state) => {
@@ -141,6 +139,7 @@ export const userSlice = createSlice({
             state.family = undefined;
             state.guests = [];
             state.seats = [];
+            state.rooms = [];
             state.arrivals = [];
             state.status ='idle';
             state.errors = [];
@@ -149,6 +148,7 @@ export const userSlice = createSlice({
             state.family = undefined;
             state.guests = [];
             state.seats = [];
+            state.rooms = [];
             state.arrivals = [];
             state.status ='idle';
             state.errors = [];
@@ -173,12 +173,13 @@ export const userSlice = createSlice({
     }
 });
 
-export const selectFamily = (state: RootState): Family | undefined => state.users.family;
+export const selectUserFamily = (state: RootState): Family | undefined => state.users.family;
 export const selectUserGuests = (state: RootState): Guest[] => state.users.guests;
 export const selectUserSeats = (state: RootState): Seat[] => state.users.seats;
+export const selectUserRooms = (state: RootState): Room[] => state.users.rooms;
 export const selectUserArrivals = (state: RootState): Arrival[] => state.users.arrivals;
-export const selectFamilyArrival = (state: RootState): Arrival | undefined => state.users.arrivals.find(arrival => arrival.familyId === state.users.family?.id);
-export const selectErrors = (state: RootState): WappError[] => state.users.errors;
-export const selectLoginStatus = (state: RootState): Status => state.users.status;
+export const selectUserFamilyArrival = (state: RootState): Arrival | undefined => state.users.arrivals.find(arrival => arrival.familyId === state.users.family?.id);
+export const selectUserErrors = (state: RootState): WappError[] => state.users.errors;
+export const selectUserStatus = (state: RootState): Status => state.users.status;
 
 export default userSlice.reducer;

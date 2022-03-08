@@ -9,13 +9,14 @@ export function FamilyMembersTable(props: {guests: Guest[]}) {
             <thead>
                 <tr className="tableHeaders">
                     <th></th>
-                    <th>Id</th>
+                    {/* <th>Id</th> */}
                     <th>Name</th>
                     <th>Starter</th>
                     <th>Main</th>
                     <th>Dessert</th>
                     <th>Diet</th>
                     <th>Seat</th>
+                    <th>Room</th>
                     <th>Delete</th>
                 </tr>
             </thead>

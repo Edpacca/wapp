@@ -9,9 +9,7 @@ export function FamilyTable(props: {guests: Guest[]}) {
 
     return (
         <div className="tableWrapper">
-            <div>
-                <h3 className="famTitle" onClick={() => setToggle(!toggle)}>{familyName}</h3>
-            </div>
+            <h3 className="famTitle" onClick={() => setToggle(!toggle)}>{familyName}</h3>
             { toggle && <FamilyMembersTable guests={props.guests}/>}
         </div>
     )

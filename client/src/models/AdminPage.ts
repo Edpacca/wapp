@@ -1,1 +1,1 @@
-export type AdminPage = 'meals' | 'arrivals' | 'edit' | 'create'
+export type AdminPage = 'summary' | 'arrivals' | 'edit' | 'create'

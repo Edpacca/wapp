@@ -3,7 +3,7 @@ import diamond from "../../assets/logos/diamond-white-AE.svg"
 import { useContext, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
-import { selectErrors, selectLoginStatus, userLogin } from '../user/userSlice';
+import { selectUserErrors, selectUserStatus, userLogin } from '../user/userSlice';
 import { WappError } from '../../models/WappError';
 import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,9 +11,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export function Login() {
 
     const dispatch = useAppDispatch();
-    const status = useAppSelector(selectLoginStatus);
+    const status = useAppSelector(selectUserStatus);
     const { authenticateSession } = useContext(AuthContext);
-    const errors: WappError[] = useAppSelector(selectErrors);
+    const errors: WappError[] = useAppSelector(selectUserErrors);
 
     const [family, setFamily] = useState<string>("");
     const [password, setPassword] = useState<string>("");

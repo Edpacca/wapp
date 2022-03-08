@@ -5,7 +5,7 @@ import { Info } from '../info/Info';
 import { NavBar } from '../nagivation/NavBar';
 import { selectPageUser } from '../nagivation/NavigationSlice';
 import { WappMap } from '../map/WappMap'
-import { selectFamily, selectUserGuests, userLogout } from '../user/userSlice';
+import { selectUserFamily, selectUserGuests, userLogout } from '../user/userSlice';
 import { useContext, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
 import { useNavigate } from 'react-router';
@@ -17,7 +17,7 @@ export function Wapp() {
 
   const page = useAppSelector(selectPageUser);
   const guests = useAppSelector(selectUserGuests);
-  const family = useAppSelector(selectFamily) ?? {name : "", id: ""};
+  const family = useAppSelector(selectUserFamily) ?? {name : "", id: ""};
   const [activeGuest, setActiveGuest] = useState<Guest | undefined>(undefined);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

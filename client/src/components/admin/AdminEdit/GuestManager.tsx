@@ -8,9 +8,5 @@ export function GuestManager(props: { guests: Guest[] }) {
     const familyNames: String[] = useAppSelector(selectFamilies);
     const families: Guest[][] = familyNames.map(family => props.guests.filter(guest => guest.family === family));
 
-    return (
-        <div>
-            {families.map(family => <FamilyTable guests={family}/>)}
-        </div>
-    )
+    return <>{families.map(family => <FamilyTable guests={family}/>)}</>
 }

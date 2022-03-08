@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { DAYS, Activity } from "../../data/activityData"
-import leftLeaf from "../../assets/icons/leaf-arrow-left.svg";
-import rightLeaf from "../../assets/icons/leaf-arrow-right.svg";
-import { InfoTypes } from "./Info";
+import { DAYS, Activity } from "../../../data/activityData";
+import leftLeaf from "../../../assets/icons/leaf-arrow-left.svg";
+import rightLeaf from "../../../assets/icons/leaf-arrow-right.svg";
+import { InfoTypes } from "../Info";
 
 export function Itinerary(props: {setActive: (value: InfoTypes) => void}) {
 

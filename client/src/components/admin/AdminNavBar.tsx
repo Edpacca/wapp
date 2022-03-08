@@ -11,9 +11,9 @@ export function AdminNavBar(props: {page: AdminPage}) {
         <div className="tabLinks">
             { 
                 <TabLink 
-                isActive={props.page === 'meals'}
-                title="Meals" 
-                onClick={() => dispatch(changePageAdmin('meals'))} /> 
+                isActive={props.page === 'summary'}
+                title="Summary" 
+                onClick={() => dispatch(changePageAdmin('summary'))} /> 
             }
             { 
                 <TabLink 

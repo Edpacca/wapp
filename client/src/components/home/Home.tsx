@@ -3,7 +3,7 @@ import { Guest } from "../../models/Guest"
 import { GuestDropDown } from "../common/GuestDropDown"
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
 import { changePageUser } from "../nagivation/NavigationSlice"
-import { selectFamilyArrival } from "../user/userSlice"
+import { selectUserFamilyArrival } from "../user/userSlice"
 import { useState } from "react"
 import { SubmitArrivalTimeModal } from "./arrivals/SubmitArrivalTimeModal"
 import { Family } from "../../models/Family"
@@ -13,7 +13,7 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons"
 export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (guest: Guest | undefined) => void}) {
 
     const dispatch = useAppDispatch();
-    const arrival = useAppSelector(selectFamilyArrival);
+    const arrival = useAppSelector(selectUserFamilyArrival);
     const [showArrivalModal, setShowArrivalModal] = useState(false);
 
     const redirectToMeal = (guestId: string) => {
