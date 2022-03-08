@@ -60,6 +60,7 @@ export async function registerUser(request, result) {
                 dessert: newGuest.dessert,
                 diet: newGuest.diet,
                 seat: newGuest.seat,
+                room: newGuest.room,
             });
         }
         
@@ -104,7 +105,8 @@ export async function addGuestToFamily(request, result) {
                 main: guest.main,
                 dessert: guest.dessert,
                 diet: guest.diet,
-                seat: guest.seat
+                seat: guest.seat,
+                room: guest.room,
         }
 
         result.status(201).json(guestsResponse);

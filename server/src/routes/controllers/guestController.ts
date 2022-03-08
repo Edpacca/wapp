@@ -1,5 +1,6 @@
 import Guest from '../../models/schema/guestModelSchema';
 import Seat from '../../models/schema/seatModelSchema';
+import Room from '../../models/schema/roomModelSchema';
 import { v4 as uuid } from 'uuid';
 import { GuestResponse } from '../../models/responses/guestResponse';
 
@@ -130,6 +131,17 @@ export async function batchUpdateGuests(request, result) {
         });
     });
 
+    await edits.forEach(guest => {
+        if (!guest.room) return;
+        
+        Room.findOneAndUpdate({'roomNumber': guest.room}, {$push: {'guestNames': guest.name}},
+         options, (err, room) => {
+            if (err) {
+                return result.status(500).send(err);
+            }
+        });
+    });
+
     await deletes.forEach(guest => {
         Guest.findByIdAndDelete({_id: guest.id}, (err, guest) => {
             if (!guest || err){
@@ -139,6 +151,14 @@ export async function batchUpdateGuests(request, result) {
 
     deletes.forEach(guest => {
         Seat.findOneAndDelete({'guestId': guest.id}, (err, seat) => {
+            if (err) {
+                return result.status(500).send(err);
+            }
+        });
+    })
+
+    deletes.forEach(guest => {
+        Room.findOneAndDelete({'guestId': guest.id}, (err, room) => {
             if (err) {
                 return result.status(500).send(err);
             }

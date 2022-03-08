@@ -1,0 +1,77 @@
+@import '../common/colours.scss';
+
+.rooms-wrapper {
+    padding-top: 5vh;
+    width: 80vw;
+    margin: auto;
+}
+
+.rooms-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.room-tile {
+    width: 15vw;
+    height: 15vw;
+    margin: 0.2em;
+    border: 1px solid rgb(87, 87, 87);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $black50;
+    position: relative;
+
+    .icon {
+        position: absolute;
+        top: 0.2em;
+        font-size: large;
+        color: $white50;
+    }
+
+    .bed {
+        color: white;
+    }
+}
+
+.active-tile {
+    border: 2px solid goldenrod;
+    filter: drop-shadow(0 0 2px rgba(218, 165, 32, 0.315));
+}
+
+@media only screen and (max-width: 450px) {
+    .room-tile {
+        width: 40vw;
+        min-height: 40vw;
+        position: relative;
+    
+        .moon {
+            position: absolute;
+            top: 0.2em;
+            font-size: large;
+        }
+    }
+
+    .rooms-wrapper {
+        width: 95vw;
+    }
+}
+
+.room-number {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 1em;
+}
+
+.room-guests {
+
+    font-size: initial;
+
+    .active-guest {
+        color: orange;
+    }
+}

@@ -3,21 +3,26 @@ import { Arrival } from "../../models/Arrival";
 import { Family } from "../../models/Family";
 import { Seat } from "../../models/Seat";
 import { useAppSelector } from "../../store/hooks";
-import { selectFamily, selectUserArrivals, selectUserSeats } from "../user/userSlice";
+import { selectUserFamily, selectUserArrivals, selectUserGuests, selectUserRooms, selectUserSeats } from "../user/userSlice";
 import { ArrivalPlan } from "./arrivals/ArrivalPlan";
-import BackButton from "./BackButton";
+import BackButton from "../common/BackButton";
 import { BigDay } from "./bigday/BigDay";
-import { Itinerary } from "./Itinerary";
+import { Itinerary } from "./itinerary/Itinerary";
+import { Rooms } from "./rooms/Rooms";
 import { SeatingPlan } from "./seating/SeatingPlan";
+import { Room } from "../../models/Room";
+import { Guest } from "../../models/Guest";
 
 export type InfoTypes = 'none' | 'days' | 'scroll' | 'seating' | 'room' | 'arrivals';
 
 export function Info() {
 
     const [activeInfo, setActiveInfo] = useState<InfoTypes>('none');
-    const guestSeats: Seat[] = useAppSelector(selectUserSeats);
+    const guests: Guest[] = useAppSelector(selectUserGuests);
+    const seats: Seat[] = useAppSelector(selectUserSeats);
     const arrivals: Arrival[] = useAppSelector(selectUserArrivals);
-    const family: Family = useAppSelector(selectFamily) as Family;
+    const rooms: Room[] = useAppSelector(selectUserRooms);
+    const family: Family = useAppSelector(selectUserFamily) as Family;
 
     return(
         <div>
@@ -31,16 +36,26 @@ export function Info() {
                 <div className="info-header itinerary-header" onClick={() => setActiveInfo('days')}>
                         <h1 className="info-h1">Full Itinerary</h1>
                 </div>
-                <div className="info-header seating-header" onClick={() => setActiveInfo('seating')}>
+                {
+                    seats != [] &&
+                    <div className="info-header seating-header" onClick={() => setActiveInfo('seating')}>
                         <h1 className="info-h1">Seating Plan</h1>
-                </div>
-                <div className="info-header room-header" onClick={() => setActiveInfo('room')}>
+                    </div>
+                }
+
+                {
+                    rooms != [] &&
+                    <div className="info-header room-header" onClick={() => setActiveInfo('room')}>
                         <h1 className="info-h1">Room info</h1>
-                </div>
-                <div className="info-header arrivals-header" onClick={() => setActiveInfo('arrivals')}>
+                    </div>
+                }
+                {
+                    arrivals != [] &&
+                    <div className="info-header arrivals-header" onClick={() => setActiveInfo('arrivals')}>
                         <h1 className="info-h1">Arrivals</h1>
                         <div className="bigday-sub">Find out when other people are arriving</div>
-                </div>
+                    </div>
+                }
                 </>
             }
             {
@@ -57,7 +72,11 @@ export function Info() {
             }
             {
                 activeInfo === 'seating' &&
-                <SeatingPlan guestSeats={guestSeats} />
+                <SeatingPlan guestSeats={seats} />
+            }
+            {
+                activeInfo === 'room' && 
+                <Rooms rooms={rooms} activeGuestNames={guests.map(guest => guest.name)}/>
             }
             {
                 activeInfo === 'arrivals' &&

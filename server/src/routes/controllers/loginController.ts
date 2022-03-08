@@ -8,6 +8,7 @@ import { InvalidCredentialsError, ServerError } from '../../constants/errors';
 import { getSeats } from './seatsController';
 import { LoginResponseSuccess, LoginResponseFailure } from '../../models/responses/loginResponse';
 import { getArrivals } from './arrivalController';
+import { getRooms } from './roomController';
 
 export async function authenticate(request, result) {
     try {
@@ -27,12 +28,14 @@ export async function authenticate(request, result) {
                     const user = await User.findOne({family: name});
                     const guests = await getGuestObjectByFamily(name);
                     const seats = await getSeats();
+                    const rooms = await getRooms();
                     const arrivals = await getArrivals();
                     const userResponse: UserResponse = {
                         id: user._id,
                         family: {name: name, id: user.familyId},
                         guests: guests,
                         seats: seats,
+                        rooms: rooms,
                         arrivals: arrivals
                     }
                     return result.status(200).json({type: "user", data: userResponse});
