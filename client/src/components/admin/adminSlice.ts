@@ -252,7 +252,8 @@ export function mapGuests(payload: any[]) {
             main: guest.main,
             dessert: guest.dessert,
             diet: guest.diet,
-            seat: guest.seat
+            seat: guest.seat,
+            room: guest.room
         }
 
         guests.push(guestMap);

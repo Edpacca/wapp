@@ -7,5 +7,6 @@ export interface GuestResponse {
     main: number | undefined,
     dessert: number | undefined,
     diet: string | undefined,
-    seat: string | undefined
+    seat: string | undefined,
+    room?: string
 }

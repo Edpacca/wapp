@@ -11,7 +11,8 @@ const Guest = new Schema(
         main: { type: Number, default: null },
         dessert: { type: Number, default: null },
         diet: { type: String, default: null },
-        seat: {type: Number, default: null }
+        seat: {type: Number, default: null },
+        room: {type: String, default: null }
     }
 )
 

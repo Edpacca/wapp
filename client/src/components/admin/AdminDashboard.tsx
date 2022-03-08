@@ -7,7 +7,7 @@ import { AdminEdit } from './AdminEdit/AdminEdit';
 import { AdminNavBar } from './AdminNavBar';
 import { AdminPage } from '../../models/AdminPage';
 import { selectPageAdmin } from '../nagivation/NavigationSlice';
-import { AdminMeals } from './AdminMeals/AdminMeals';
+import { AdminSummary } from './AdminSummary/AdminSummary';
 import { Guest } from '../../models/Guest';
 import { AdminCreate } from './AdminCreate/AdminCreate';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
@@ -32,7 +32,7 @@ export function AdminDashboard() {
     return(
         <div className="App-header">
             <AdminNavBar page={page}/>
-                { page === 'meals' && <AdminMeals guests={guests}/> }
+                { page === 'summary' && <AdminSummary guests={guests}/> }
                 { page === 'arrivals' && <AdminArrivals arrivals={arrivals}/> }
                 { page === 'create' && <AdminCreate/> }
                 { page === 'edit' && <AdminEdit guests={guests}/> }
