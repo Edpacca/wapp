@@ -6,8 +6,7 @@ export function FamilyMembersTable(props: {guests: Guest[]}) {
 
     return (
         <table className="guestTable">
-            <thead>
-                <tr className="tableHeaders">
+            <thead className="tableHeaders">
                     <th></th>
                     {/* <th>Id</th> */}
                     <th>Name</th>
@@ -18,11 +17,10 @@ export function FamilyMembersTable(props: {guests: Guest[]}) {
                     <th>Seat</th>
                     <th>Room</th>
                     <th>Delete</th>
-                </tr>
             </thead>
             <tbody>
             {
-                props.guests.map(guest => <GuestRow guest={guest} starters={starters} mains={mains} desserts={desserts} />)
+                props.guests.map(guest => <GuestRow guest={guest} starters={starters} mains={mains} desserts={desserts}/>)
             }
             </tbody>
         </table>
