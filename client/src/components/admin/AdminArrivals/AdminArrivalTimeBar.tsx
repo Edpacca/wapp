@@ -7,7 +7,7 @@ export function AdminArrivalTimeBar(props: {day: string, time: string, width: nu
             <span>{props.day} {props.time} ({props.quantity})</span>
             <div className="arrival-families">
                 {props.families.map(family => 
-                    <span>{family}, </span>
+                    <span key={family}>{family}, </span>
                 )}
             </div>
         </div>

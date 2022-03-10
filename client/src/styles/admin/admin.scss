@@ -85,3 +85,19 @@
     text-align: center;
 }
 
+.admin-course-summary {
+    margin: 2em;
+    text-align: left;
+
+    h2 {
+        color: yellowgreen;
+    }
+
+    .courses {
+        font-size: 1.3em;
+        .total {
+            color: yellowgreen;
+            font-weight: bold;
+        }
+    }
+}

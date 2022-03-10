@@ -163,6 +163,7 @@ export const DAYS: Day[] = [
                 details: "A short outdoor adventure around Killin",
                 location: "Killing",
                 time: "Noon",
+                url: "https://www.walkhighlands.co.uk/perthshire/loch-tay.shtml",
                 icon: footsteps,
             },
             {

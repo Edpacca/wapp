@@ -11,7 +11,6 @@ export async function getRooms() {
     const roomResponse: RoomResponse[] = [];
 
     rooms.forEach(room => {
-        console.log(room);
         roomResponse.push({
             id: room._id,
             roomNumber: room.roomNumber,
