@@ -28,7 +28,8 @@ export async function authenticate(request, result) {
                     const user = await User.findOne({family: name});
                     const guests = await getGuestObjectByFamily(name);
                     const seats = await getSeats();
-                    const rooms = await getRooms();
+                    const guestsWithRooms = guests.filter(guest => guest.room != null).length;
+                    const rooms = guestsWithRooms > 0 ? await getRooms() : [];
                     const arrivals = await getArrivals();
                     const userResponse: UserResponse = {
                         id: user._id,
