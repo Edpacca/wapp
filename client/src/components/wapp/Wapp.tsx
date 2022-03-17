@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router';
 import { Guest } from '../../models/Guest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { PoPolskoSwitch } from '../common/PoPolskoSwitch';
 
 export function Wapp() {
 
@@ -19,6 +20,7 @@ export function Wapp() {
   const guests = useAppSelector(selectUserGuests);
   const family = useAppSelector(selectUserFamily) ?? {name : "", id: ""};
   const [activeGuest, setActiveGuest] = useState<Guest | undefined>(undefined);
+  const [isPolish, setIsPolish] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -34,18 +36,21 @@ export function Wapp() {
       <NavBar page={page}/>
       {
         page === 'home' &&
-        <div>
-          <Home family={family} guests={guests} setActiveGuest={setActiveGuest}/>
-          <button onClick={() => logout()}>Logout &nbsp; <FontAwesomeIcon icon={faDoorOpen}/></button>
-        </div>
+        <>
+          <PoPolskoSwitch isPolish={isPolish} setIsPolish={() => setIsPolish(!isPolish)} style={"right-switch"}/>
+          <div>
+            <Home family={family} guests={guests} setActiveGuest={setActiveGuest} isPolish={isPolish}/>
+            <button onClick={() => logout()}>Logout &nbsp; <FontAwesomeIcon icon={faDoorOpen}/></button>
+          </div>
+        </>
       }
       {
         page === 'meal' &&
-        <Menu family={family.name} guests={guests} activeGuest={activeGuest}/>
+        <Menu family={family.name} guests={guests} activeGuest={activeGuest} isPolish={isPolish}/>
       }
       {
         page === 'info' &&
-        <Info/>
+        <Info languageIndex={isPolish ? 1 : 0}/>
       }
       {
         page === 'map' &&

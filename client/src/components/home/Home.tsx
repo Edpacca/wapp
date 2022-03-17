@@ -10,7 +10,7 @@ import { Family } from "../../models/Family"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
 
-export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (guest: Guest | undefined) => void}) {
+export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (guest: Guest | undefined) => void, isPolish: boolean}) {
 
     const dispatch = useAppDispatch();
     const arrival = useAppSelector(selectUserFamilyArrival);
@@ -59,7 +59,7 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
                 }
                 {
                     showArrivalModal &&
-                    <SubmitArrivalTimeModal family={props.family} setIsVisible={setShowArrivalModal} />
+                    <SubmitArrivalTimeModal setIsVisible={setShowArrivalModal} {...props}/>
                 }
             </div>
         </div>

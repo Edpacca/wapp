@@ -12,7 +12,7 @@ import {
 } from "./Sprites";
 import { BIG_DAY_SCHEDULE } from "../../../data/activityData";
 
-export function BigDay() {
+export function BigDay(props: {languageIndex: 0 | 1}) {
 
     const clientHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
     const clientWidth = Math.min(document.documentElement.clientWidth, window.innerWidth);
@@ -73,7 +73,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={0}/>
-            <TimelineInfo activity={BIG_DAY_SCHEDULE[0]}  />
+            <TimelineInfo activity={BIG_DAY_SCHEDULE[0]} languageIndex={props.languageIndex}/>
             
             <AnimationPanel 
                 sprites={[castle, tree, heart, ringR2, ringL, ringR1 ]}
@@ -81,7 +81,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={1}/>
-           <TimelineInfo activity={BIG_DAY_SCHEDULE[1]}  />
+           <TimelineInfo activity={BIG_DAY_SCHEDULE[1]} languageIndex={props.languageIndex}/>
 
             <AnimationPanel 
                 sprites={[cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter, cameraFlash]}
@@ -89,7 +89,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={2}/>
-            <TimelineInfo activity={BIG_DAY_SCHEDULE[2]}  />
+            <TimelineInfo activity={BIG_DAY_SCHEDULE[2]} languageIndex={props.languageIndex}/>
             
             <AnimationPanel 
                 sprites={[drinks]}
@@ -97,7 +97,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={3}/>
-            <TimelineInfo activity={BIG_DAY_SCHEDULE[3]}  />
+            <TimelineInfo activity={BIG_DAY_SCHEDULE[3]} languageIndex={props.languageIndex}/>
 
             <AnimationPanel 
                 sprites={[]}
@@ -105,7 +105,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={4}/>
-           <TimelineInfo activity={BIG_DAY_SCHEDULE[4]}  />
+           <TimelineInfo activity={BIG_DAY_SCHEDULE[4]} languageIndex={props.languageIndex}/>
 
             <AnimationPanel 
                 sprites={[discoball]}
@@ -113,7 +113,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={5}/>
-           <TimelineInfo activity={BIG_DAY_SCHEDULE[5]}  />
+           <TimelineInfo activity={BIG_DAY_SCHEDULE[5]} languageIndex={props.languageIndex}/>
            <div className="bottom-margin"></div>
         </div>
     )

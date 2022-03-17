@@ -12,11 +12,11 @@ import { GuestDropDown } from '../common/GuestDropDown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
-export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest | undefined}) {
+export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest | undefined, isPolish: boolean}) {
 
     const guests = props.guests;
     const [isVegan, setIsVegan ] = useState(false);
-    const [isPolish, setIsPolish ] = useState(false);
+    const [isPolish, setIsPolish ] = useState(props.isPolish);
     const [activeGuest, setActiveGuest] = useState<Guest | undefined>(props.activeGuest);
     const [showSubmit, setShowSubmit] = useState<Boolean>(false);
     const dispatch = useAppDispatch();
@@ -146,7 +146,7 @@ function renderChoice(course: foodItem[], choice: number | undefined, languageIn
     return (
         <div className="choice">
             <span className="inline">
-                {texts[0] + course[choice as number].name[languageIndex] + texts[1]}
+                {texts[0 + (2 * languageIndex)] + course[choice as number].name[languageIndex] + texts[1 + (2 * languageIndex)]}
             </span>
         </div>
     )}

@@ -6,12 +6,11 @@
 }
 
 .lr-selector {
-    width: 30vw;
+    width: 40vw;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
-    margin: auto;
 
     .leaf-button {
         width: 5vmin;
@@ -23,10 +22,13 @@
     }
 }
 
+.selector-wrapper {
+    padding-top: 5vh;
+}
+
 @media screen and (max-width: 540px) {
     .lr-selector {
-        width: 65vw;
-
+        width: 85vw;
         .leaf-button {
             width: 10vmin;
         }

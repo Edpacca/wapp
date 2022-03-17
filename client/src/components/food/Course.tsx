@@ -51,11 +51,18 @@ function courseOptions(course: Course, foodItems: foodItem[], isVegan: boolean, 
 function renderOption(option: foodItem, index: number, course: Course,  isSelected: boolean, setChoice: (choice: number | undefined, param: Course) => void,) {
     
     return (
-        <div className="course-option">
-                <button className={`course-button ${isSelected ? 'course-option-selected' : ''}`} onClick={() => setChoice(option.value, course)}>
-                        {isSelected && <FontAwesomeIcon icon={faCheck} size="2x" className="course-check"/>}
-                </button>
-                {option.name[index]}
-        </div>
+        <>
+            <div className="course-option">
+                    <button className={`course-button ${isSelected ? 'course-option-selected' : ''}`} onClick={() => setChoice(option.value, course)}>
+                            {isSelected && <FontAwesomeIcon icon={faCheck} size="2x" className="course-check"/>}
+                    </button>
+                    <span>
+                        {option.name[index]}
+                        <span className="food-description">
+                            <br/>{option.description[index]}
+                        </span>
+                    </span>
+            </div>
+        </>
     )
 }

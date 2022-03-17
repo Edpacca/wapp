@@ -7,6 +7,12 @@
     margin-bottom: 2em;
 }
 
+@media screen and (max-width: 540px) {
+    .tabLinks {
+        margin-bottom: 0.5em;
+    }
+}
+
 .tabLink {
     width: 25vw;
     height: 7vh;

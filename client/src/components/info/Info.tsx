@@ -15,7 +15,7 @@ import { Guest } from "../../models/Guest";
 
 export type InfoTypes = 'none' | 'days' | 'scroll' | 'seating' | 'room' | 'arrivals';
 
-export function Info() {
+export function Info(props: {languageIndex: 0 | 1}) {
 
     const [activeInfo, setActiveInfo] = useState<InfoTypes>('none');
     const guests: Guest[] = useAppSelector(selectUserGuests);
@@ -62,11 +62,11 @@ export function Info() {
             }
             {
                 activeInfo === 'days' &&
-                <Itinerary setActive={setActiveInfo}/>
+                <Itinerary setActive={setActiveInfo} languageIndex={props.languageIndex}/>
             }
             {
                 activeInfo === 'scroll' &&
-                <BigDay />
+                <BigDay languageIndex={props.languageIndex}/>
             }
             {
                 activeInfo === 'seating' &&
@@ -78,7 +78,7 @@ export function Info() {
             }
             {
                 activeInfo === 'arrivals' &&
-                <ArrivalPlan arrivals={arrivals} family={family} />
+                <ArrivalPlan arrivals={arrivals} family={family} languageIndex={props.languageIndex} />
             }
         </div>
     )
