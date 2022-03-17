@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { PanelProps } from "../../../models/ScrollDimensionProps";
 import { AnimationPanel } from "./AnimationPanel";
@@ -44,11 +43,14 @@ export function BigDay() {
         setYScrollPercent(yScrollPercent);
     } 
 
+    
     useEffect(() => {
             window.addEventListener("scroll", handleScroll);
             return () => {
                 window.removeEventListener("scroll", handleScroll);
+    
             };
+    // eslint-disable-next-line
     }, []);
 
     return (

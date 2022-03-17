@@ -19,6 +19,7 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
     const redirectToMeal = (guestId: string) => {
         const guest = props.guests.find(guest => guest.id === guestId);
         props.setActiveGuest(guest);
+        // eslint-disable-next-line
         if (guest != undefined) dispatch(changePageUser('meal'));
     }
 

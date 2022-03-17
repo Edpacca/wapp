@@ -140,8 +140,9 @@ function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean, setSh
 
 function renderChoice(course: foodItem[], choice: number | undefined, languageIndex: number,
     texts: string[], courseName: string) {
-
-    if (choice !== undefined && choice !== null) {
+    
+    // eslint-disable-next-line
+    if (choice != undefined) {
     return (
         <div className="choice">
             <span className="inline">

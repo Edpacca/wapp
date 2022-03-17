@@ -48,7 +48,7 @@ export function Wapp() {
         <Info/>
       }
       {
-        page === 'location' &&
+        page === 'map' &&
         <WappMap/>
       }
     </div>

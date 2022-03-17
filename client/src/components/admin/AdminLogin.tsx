@@ -35,7 +35,7 @@ export function AdminLogin() {
 
     return(
         <div className="App-header">
-            <img className='wizard' src={wizard}/>
+            <img className='wizard' src={wizard} alt="wiz"/>
             <p>You dare enter my domain?</p>
             <input
                 required

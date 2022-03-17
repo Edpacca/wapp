@@ -37,20 +37,18 @@ export function Info() {
                         <h1 className="info-h1">Full Itinerary</h1>
                 </div>
                 {
-                    seats != [] &&
                     <div className="info-header seating-header" onClick={() => setActiveInfo('seating')}>
                         <h1 className="info-h1">Seating Plan</h1>
                     </div>
                 }
 
                 {
-                    rooms != [] &&
+                    rooms.length > 0 &&
                     <div className="info-header room-header" onClick={() => setActiveInfo('room')}>
                         <h1 className="info-h1">Room info</h1>
                     </div>
                 }
                 {
-                    arrivals != [] &&
                     <div className="info-header arrivals-header" onClick={() => setActiveInfo('arrivals')}>
                         <h1 className="info-h1">Arrivals</h1>
                         <div className="bigday-sub">Find out when other people are arriving</div>

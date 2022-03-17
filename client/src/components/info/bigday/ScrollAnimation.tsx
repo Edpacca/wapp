@@ -22,9 +22,9 @@ export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel:
     const [position, setPosition] = useState<XY>(initialPosition);
     const [opacity, setOpacity] = useState<number>(0);
 
-    
     useEffect(() => {
         handleScrollAnimation();
+    // eslint-disable-next-line
     }, [props.yScrollPercent]);
 
     function handleScrollAnimation() {

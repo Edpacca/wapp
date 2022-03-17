@@ -1,4 +1,3 @@
-import { Guest } from "../../../models/Guest";
 import { Room } from "../../../models/Room";
 import { RoomTile } from "./RoomTile";
 

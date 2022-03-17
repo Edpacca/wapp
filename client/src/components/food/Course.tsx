@@ -20,6 +20,7 @@ export function MenuCourse(props: {
                     }
                 </div>
                 {
+                    // eslint-disable-next-line
                     props.choice != undefined &&
                     <button className="course-button-cancel" onClick={() => props.setChoice(undefined, props.course)}>
                         <FontAwesomeIcon icon={faXmark} size="2x"/>
@@ -33,7 +34,9 @@ function courseOptions(course: Course, foodItems: foodItem[], isVegan: boolean, 
     choice: number | undefined, setChoice: (choice: number | undefined, param: Course) => void) {
     return (
         foodItems.filter(option => isVegan ? option.isVegan : option)
+        // eslint-disable-next-line
         .map(option => {
+            // eslint-disable-next-line
             if (choice == undefined) {
                 return renderOption(option, index, course, option.value === choice,
                     () => setChoice(option.value, course));

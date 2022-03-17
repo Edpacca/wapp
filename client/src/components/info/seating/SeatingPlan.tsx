@@ -1,6 +1,4 @@
 import { Seat } from "../../../models/Seat";
-import { useAppSelector } from "../../../store/hooks";
-import { selectUserSeats } from "../../user/userSlice";
 import { SeatIcon } from "./SeatIcon";
 
 export const SeatingPlan = (props: {guestSeats: Seat[]}) => {

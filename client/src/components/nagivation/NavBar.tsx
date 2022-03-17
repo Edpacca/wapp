@@ -27,9 +27,9 @@ export function NavBar(props: {page: UserPage}) {
                 onClick={() => dispatch(changePageUser('meal'))} /> 
 
                 <TabLink 
-                isActive={props.page === 'location'}
-                title="Location" 
-                onClick={() => dispatch(changePageUser('location'))} /> 
+                isActive={props.page === 'map'}
+                title="Map" 
+                onClick={() => dispatch(changePageUser('map'))} /> 
         </div>
     )
 }

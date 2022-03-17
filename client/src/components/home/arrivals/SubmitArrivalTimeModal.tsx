@@ -6,7 +6,7 @@ import { Arrival } from "../../../models/Arrival";
 import { useAppDispatch } from "../../../store/hooks";
 import { submitUserArrivalTime } from "../../user/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faCross, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (isVisible: boolean) => void}) {
 
