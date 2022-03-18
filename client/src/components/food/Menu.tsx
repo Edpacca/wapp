@@ -131,7 +131,7 @@ function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean, setSh
             }
             {guest.diet === undefined ? <p className="green choice">{chosenTexts.diet[0 + (2 * languageIndex)]}</p> : <span className="green"><p>{chosenTexts.diet[1 + (2 * languageIndex)]}</p>{guest.diet && (guest.diet as string).length > 0 ? guest.diet : textNone}</span>}
             {
-                languageIndex == 0 
+                languageIndex === 0 
                 ? <p className="smalltext">Are you ready to submit? <br/> You can change your mind up until 1st July</p>
                 : <p className="smalltext">Czy jesteś gotowy, aby zgłosić swoje wybory?<br/> Możesz zmienić zdanie do 1 Lipca</p>
             }

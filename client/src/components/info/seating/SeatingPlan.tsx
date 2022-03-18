@@ -1,7 +1,7 @@
 import { Seat } from "../../../models/Seat";
 import { SeatIcon } from "./SeatIcon";
 
-export const SeatingPlan = (props: {guestSeats: Seat[], activeGuestSeats: number[]}) => {
+export const SeatingPlan = (props: {guestSeats: Seat[], activeGuestSeatNumbers: number[]}) => {
 
     const leftSeats: Seat[] = [];
     const rightSeats: Seat[] = [];
@@ -12,15 +12,16 @@ export const SeatingPlan = (props: {guestSeats: Seat[], activeGuestSeats: number
     }
 
     props.guestSeats.forEach(seat => {
-        
-        const seatBuffer = {...seat}
-        if (props.activeGuestSeats.includes(seat.seatNumber)) {
-            seatBuffer.isActive = true;
+        let seatBuffer = seat;
+
+        if (props.activeGuestSeatNumbers.filter(number => number == seat.seatNumber).length > 0) {
+            seatBuffer = {...seat, isActive: true}
+            console.log(seatBuffer);
         }
 
         if (seatBuffer.seatNumber < 29) leftSeats[seatBuffer.seatNumber] = seatBuffer;
         else rightSeats[seatBuffer.seatNumber] = seatBuffer;
-    })
+    });
 
     return (
         <div className="seating-wrapper">

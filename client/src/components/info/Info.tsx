@@ -23,12 +23,7 @@ export function Info(props: {languageIndex: 0 | 1}) {
     const arrivals: Arrival[] = useAppSelector(selectUserArrivals);
     const rooms: Room[] = useAppSelector(selectUserRooms);
     const family: Family = useAppSelector(selectUserFamily) as Family;
-    const activeGuestSeats: number[] = [];
-    
-    guests.forEach(guest => {
-        if (guest.seat != undefined) activeGuestSeats.push(guest.seat);
-    });
-    
+    const activeGuestSeats: number[] = guests.filter(guest => guest.seat !== undefined).map(guest => guest.seat as number);
 
     return(
         <div>
@@ -76,7 +71,7 @@ export function Info(props: {languageIndex: 0 | 1}) {
             }
             {
                 activeInfo === 'seating' &&
-                <SeatingPlan guestSeats={seats} activeGuestSeats={activeGuestSeats}/>
+                <SeatingPlan guestSeats={seats} activeGuestSeatNumbers={guests.filter(guest => guest.seat !== undefined).map(guest => guest.seat as number)}/>
             }
             {
                 activeInfo === 'room' && 
