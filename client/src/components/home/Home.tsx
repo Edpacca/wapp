@@ -9,12 +9,23 @@ import { SubmitArrivalTimeModal } from "./arrivals/SubmitArrivalTimeModal"
 import { Family } from "../../models/Family"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
+import { days, times } from '../../data/constantsEngPol';
 
-export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (guest: Guest | undefined) => void, isPolish: boolean}) {
+export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (guest: Guest | undefined) => void, languageIndex: 0 | 1}) {
 
     const dispatch = useAppDispatch();
     const arrival = useAppSelector(selectUserFamilyArrival);
     const [showArrivalModal, setShowArrivalModal] = useState(false);
+    
+    const arrivalDay = mapToLanguagePair(arrival?.arrivalDay);
+    const arrivalTime = mapToLanguagePair(arrival?.arrivalTime);
+    const departureDay = mapToLanguagePair(arrival?.departureDay);
+    const departureTime = mapToLanguagePair(arrival?.departureTime);
+
+    const arrivalStrings = {
+        arrival: ["You're arriving", "Przyjeżdżasz w"],
+        departure: ["You're leaving", "Wyjeżdżasz w"]
+    }
 
     const redirectToMeal = (guestId: string) => {
         const guest = props.guests.find(guest => guest.id === guestId);
@@ -40,11 +51,11 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
                     arrival?.arrivalDay &&
                         <div className="med-info col-info">
                             <div className="selected-arrival">
-                                <span>You're arriving {arrival.arrivalDay} {arrival.arrivalTime}</span>
+                                <span>{arrivalStrings.arrival[props.languageIndex]} {arrivalDay[props.languageIndex]} {arrivalTime[props.languageIndex]}</span>
                                 <span className="info-edit" onClick={() => setShowArrivalModal(true)}><FontAwesomeIcon icon={faEdit}/></span>
                             </div>
                             <div className="selected-arrival">
-                                <span>You're leaving {arrival.departureDay} {arrival.departureTime}</span>
+                                <span>{arrivalStrings.departure[props.languageIndex]} {departureDay[props.languageIndex]} {departureTime[props.languageIndex]}</span>
                                 <span className="info-edit" onClick={() => setShowArrivalModal(true)}><FontAwesomeIcon icon={faEdit}/></span>
                             </div>       
                         </div>
@@ -64,4 +75,27 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
             </div>
         </div>
     )
+}
+
+function mapToLanguagePair(value: String | undefined): String[] {
+    switch (value) {
+        case "Friday":
+            return days.friday;
+        case "Saturday":
+            return days.saturday;
+        case "Sunday":
+            return days.sunday;
+        case "Monday":
+            return days.monday;
+        case "Morning":
+            return times.morning;
+        case "Noon":
+            return times.noon;
+        case "Afternoon":
+            return times.afternoon;
+        case "Evening":
+            return times.evening;
+        default:
+            return [""];
+    }
 }

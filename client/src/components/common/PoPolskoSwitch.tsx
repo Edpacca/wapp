@@ -1,8 +1,8 @@
 import { WappSwitch } from "./WappSwitch";
 
-export function PoPolskoSwitch(props: {isPolish: boolean, setIsPolish: () => void, style?: string}) {
+export function PoPolskoSwitch(props: {isPolish: boolean, setIsPolish: () => void, styleString?: string}) {
     return (
-        <div className={props.style}>
+        <div className={props.styleString}>
             <WappSwitch
                 isFlag={props.isPolish}
                 handleChange={() => props.setIsPolish()}

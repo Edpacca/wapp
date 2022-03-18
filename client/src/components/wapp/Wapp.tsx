@@ -37,16 +37,16 @@ export function Wapp() {
       {
         page === 'home' &&
         <>
-          <PoPolskoSwitch isPolish={isPolish} setIsPolish={() => setIsPolish(!isPolish)} style={"right-switch"}/>
+          <PoPolskoSwitch isPolish={isPolish} setIsPolish={() => setIsPolish(!isPolish)} styleString={"right-switch"}/>
           <div>
-            <Home family={family} guests={guests} setActiveGuest={setActiveGuest} isPolish={isPolish}/>
+            <Home family={family} guests={guests} setActiveGuest={setActiveGuest} languageIndex={isPolish ? 1 : 0}/>
             <button onClick={() => logout()}>Logout &nbsp; <FontAwesomeIcon icon={faDoorOpen}/></button>
           </div>
         </>
       }
       {
         page === 'meal' &&
-        <Menu family={family.name} guests={guests} activeGuest={activeGuest} isPolish={isPolish}/>
+        <Menu family={family.name} guests={guests} activeGuest={activeGuest} languageIndex={isPolish ? 1 : 0}/>
       }
       {
         page === 'info' &&

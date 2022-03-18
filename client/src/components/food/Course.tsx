@@ -6,7 +6,7 @@ export type Course = 'starter' | 'main' | 'dessert';
 
 export function MenuCourse(props: { 
     courseTitle: string, course: Course, foodItems: foodItem[], 
-    isVegan: boolean, isPolish: boolean, 
+    isVegan: boolean, languageIndex: 0 | 1, 
     choice: number | undefined, setChoice: (choice: number | undefined, param: Course) => void}) {
     
     return (
@@ -16,7 +16,7 @@ export function MenuCourse(props: {
                     {
                         courseOptions(
                             props.course, props.foodItems, props.isVegan, 
-                            props.isPolish ? 1 : 0, props.choice, props.setChoice)
+                            props.languageIndex, props.choice, props.setChoice)
                     }
                 </div>
                 {

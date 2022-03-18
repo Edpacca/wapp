@@ -8,17 +8,16 @@ import { submitUserArrivalTime } from "../../user/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (isVisible: boolean) => void, isPolish: boolean}) {
+export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (isVisible: boolean) => void, languageIndex: 0 | 1}) {
 
     const dispatch = useAppDispatch();
     const [arrivalDay, setArrivalDay] = useState<string[]>([""]);
     const [arrivalTime, setArrivalTime] = useState<string[]>([""]);
     const [departureDay, setDepartureDay] = useState<string[]>([""]);
     const [departureTime, setDepartureTime] = useState<string[]>([""]);
-    const [languageIndex, setLanguageIndex] = useState<0 | 1>(props.isPolish ? 1 : 0)
 
-    const arrivalString = arrivalDay[0] === "" ? "Set arrival" : `Arriving on ${arrivalDay[languageIndex]} ${arrivalTime[languageIndex]}`;
-    const departureString = departureDay[0] === "" ? "Set departure" : `Departing on ${departureDay[languageIndex]} ${departureTime[languageIndex]}`;
+    const arrivalString = arrivalDay[0] === "" ? "Set arrival" : `Arriving on ${arrivalDay[props.languageIndex]} ${arrivalTime[props.languageIndex]}`;
+    const departureString = departureDay[0] === "" ? "Set departure" : `Departing on ${departureDay[props.languageIndex]} ${departureTime[props.languageIndex]}`;
 
 
     function handleSetArrivalDay(day: string[]) {
@@ -54,14 +53,28 @@ export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (is
                 <h3>Arrival</h3>
                 {
                     ARRIVAL_DAYS.map(arrival =>
-                        <ArrivalSelect arrivalDay={arrival} isArrival={true} setDay={handleSetArrivalDay} setTime={setArrivalTime} isSelected={arrivalDay === arrival.day} selectedTime={arrivalTime[0]} languageIndex={languageIndex}/> 
+                        <ArrivalSelect 
+                            arrivalDay={arrival} 
+                            isArrival={true} 
+                            setDay={handleSetArrivalDay} 
+                            setTime={setArrivalTime} 
+                            isSelected={arrivalDay === arrival.day} 
+                            selectedTime={arrivalTime[0]} 
+                            languageIndex={props.languageIndex}/> 
                     )
                 }
                 <div className="horizontal-bar"/>
                 <h3>Departure</h3>
                 {
                     DEPARTURE_DAYS.map(arrival =>
-                        <ArrivalSelect arrivalDay={arrival} isArrival={false} setDay={handleSetDepartureDay} setTime={setDepartureTime} isSelected={departureDay === arrival.day} selectedTime={departureTime[0]} languageIndex={languageIndex}/> 
+                        <ArrivalSelect
+                            arrivalDay={arrival}
+                            isArrival={false}
+                            setDay={handleSetDepartureDay}
+                            setTime={setDepartureTime}
+                            isSelected={departureDay === arrival.day}
+                            selectedTime={departureTime[0]}
+                            languageIndex={props.languageIndex}/> 
                     )
                 }
             </div>
