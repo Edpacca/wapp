@@ -9,44 +9,64 @@
     align-items: center;
 }
 
-// .seating-grid {
-//     margin: 5vw;
-//     display: grid;
-//     grid-template-columns: 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw;
-//     grid-template-rows: 6vw 6vw 6vw 6vw 6vw;
-//     column-gap: 1vw;
-//     row-gap: 1vw;
-// }
-
 .left-table {
     margin: 5vw 8vw;
     display: grid;
-    // grid-template-columns: $seatSize $seatSize;
-    // column-gap: 1vw;
     row-gap: 1vw;
 }
 
 .right-table {
     margin: 5vw 8vw;
     display: grid;
-    // grid-template-columns: $seatSize $seatSize;
-    // column-gap: 1vw;
     row-gap: 1vw;
 }
 
 .seat {
     border: 1px solid goldenrod;
     background-color: $black50;
-    // height: $seatSize;
-    // width: $seatSize;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px;
 }
 
 .bride-groom {
     border: 1px solid white;
     background-color: $white50;
+}
+
+.seat-title {
+    font-size: 2em;
+}
+
+.occupant {
+    font-size: 1em;
+    font-weight: 600;
+    display: none;
+}
+
+.seat:hover {
+    border: 1px solid goldenrod;
+    background-color: rgba(255, 255, 255, 0.2);
+    .occupant {
+        display: initial;
+    }
+
+    .seat-title {
+        display: none;
+    }
+}
+
+.seat:active {
+    background-color: rgba(255, 255, 255, 0.2);
+
+    .occupant {
+        display: initial;
+    }
+
+    .seat-title {
+        display: none;
+    }
 }
 
 @mixin styling($seatSize, $gap) {
@@ -67,45 +87,4 @@
 
 @media only screen and (max-width: 790px) {
     @include styling($seatSize: 15vw, $gap: 3vw);
-}
-
-.seat-number {
-    font-size: 2em;
-    font-weight: 600;
-
-    img {
-        width: 2em;
-    }
-}
-
-.occupant {
-    font-size: 1em;
-    font-weight: 600;
-    display: none;
-}
-
-.seat:hover {
-    border: 2px solid goldenrod;
-    background-color: rgba(255, 255, 255, 0.2);
-
-    .occupant {
-        display: initial;
-    }
-
-    .seat-number {
-        display: none;
-    }
-}
-
-.seat:active {
-    border: 2px solid goldenrod;
-    background-color: rgba(255, 255, 255, 0.2);
-
-    .occupant {
-        display: initial;
-    }
-
-    .seat-number {
-        display: none;
-    }
 }

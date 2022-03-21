@@ -12,8 +12,9 @@ import { Rooms } from "./rooms/Rooms";
 import { SeatingPlan } from "./seating/SeatingPlan";
 import { Room } from "../../models/Room";
 import { Guest } from "../../models/Guest";
+import { GeneralInfo } from "./general/GeneralInfo";
 
-export type InfoTypes = 'none' | 'days' | 'scroll' | 'seating' | 'room' | 'arrivals';
+export type InfoTypes = 'none' | 'days' | 'scroll' | 'seating' | 'room' | 'arrivals' |  'general' ;
 
 export function Info(props: {languageIndex: 0 | 1}) {
 
@@ -23,13 +24,16 @@ export function Info(props: {languageIndex: 0 | 1}) {
     const arrivals: Arrival[] = useAppSelector(selectUserArrivals);
     const rooms: Room[] = useAppSelector(selectUserRooms);
     const family: Family = useAppSelector(selectUserFamily) as Family;
-    const activeGuestSeats: number[] = guests.filter(guest => guest.seat !== undefined).map(guest => guest.seat as number);
 
     return(
         <div>
             {
                 activeInfo === 'none' &&
                 <>
+                <div className="info-header general-header" onClick={() => setActiveInfo('general')}>
+                    <h1 className="info-h1">General Info</h1>
+                    <div className="bigday-sub">Frequently asked questions</div>
+                </div>
                 <div className="info-header bigday-header" onClick={() => setActiveInfo('scroll')}>
                     <h1 className="info-h1">The Big Day</h1>
                     <div className="bigday-sub">An Interactive plan.</div>
@@ -60,6 +64,10 @@ export function Info(props: {languageIndex: 0 | 1}) {
             {
                 activeInfo !== 'none' &&
                 <BackButton value={'none'} onClick={setActiveInfo}/>
+            }
+            {
+                activeInfo === 'general' &&
+                <GeneralInfo />
             }
             {
                 activeInfo === 'days' &&

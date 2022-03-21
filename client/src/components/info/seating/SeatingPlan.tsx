@@ -13,7 +13,7 @@ export const SeatingPlan = (props: {guestSeats: Seat[], activeGuestSeatNumbers: 
 
     props.guestSeats.forEach(seat => {
         let seatBuffer = seat;
-
+        // eslint-disable-next-line
         if (props.activeGuestSeatNumbers.filter(number => number == seat.seatNumber).length > 0) {
             seatBuffer = {...seat, isActive: true}
             console.log(seatBuffer);
