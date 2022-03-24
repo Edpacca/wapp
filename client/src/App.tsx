@@ -35,7 +35,7 @@ function App() {
         {
           loginContext === 'admin' &&
           <div>
-            <a className="App-link" href={`${process.env.REACT_APP_CLIENT_SERVER}/admin`}><img src={wizard} className="wizard"/></a>
+            <a className="App-link" href={`${process.env.REACT_APP_CLIENT_SERVER}/admin`}><img src={wizard} className="wizard" alt="wiz"/></a>
           </div>
         }
       </div>

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { useAppDispatch } from "../store/hooks";
 
 export type LoginContext = 'user' | 'admin' | undefined;
 
@@ -31,10 +31,12 @@ function AuthContextProvider(props: any) {
         }
     }
 
+    // eslint-disable-next-line
     useEffect(() => {
             if (loginContext === undefined) {
                 authenticateSession();
             }
+    // eslint-disable-next-line
     }, []);
     
     return (

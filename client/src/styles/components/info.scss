@@ -73,9 +73,9 @@
 
 
 .backbutton {
-    position: absolute;
+    padding: 0;
     left: 0;
-    width: 8vw;
+    min-width: 6vw;
     background-color: $transparent;
     .leaf {
         width: 3vmax;
@@ -87,8 +87,5 @@
     .bigday-header {
         background-size: cover;
     }
-
-    .backbutton {
-        margin: 0;
-    }
 }
+

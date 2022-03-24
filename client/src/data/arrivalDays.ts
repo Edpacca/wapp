@@ -1,47 +1,49 @@
+import { days, times } from './constantsEngPol';
+
 export interface ArrivalDay {
-    day: string,
-    times: string[]
+    day: string[],
+    times: string[][]
 }
 
 export const ARRIVAL_DAYS: ArrivalDay[] = [
     {
-        day: "Friday",
+        day: days.friday,
         times: [
-            "Afternoon",
-            "Evening",
+            times.afternoon,
+            times.evening
         ]
     },
     {
-        day: "Saturday",
+        day: days.saturday,
         times: [
-            "Morning",
-            "Noon",
-            "Afternoon",
-            "Evening"
+            times.morning,
+            times.noon,
+            times.afternoon,
+            times.evening,
         ]
     }
 ]
 
 export const DEPARTURE_DAYS: ArrivalDay[] = [
     {
-        day: "Saturday",
+        day: days.saturday,
         times: [
-            "Afternoon",
-            "Evening",
+            times.afternoon,
+            times.evening,
         ]
     },
     {
-        day: "Sunday",
+        day: days.sunday,
         times: [
-            "Morning",
-            "Afternoon",
-            "Evening"
+            times.morning,
+            times.afternoon,
+            times.evening
         ]
     },
     {
-        day: "Monday",
+        day: days.monday,
         times: [
-            "Morning",
+            times.morning
         ]
     }
 ]

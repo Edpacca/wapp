@@ -1,0 +1,78 @@
+@import '../common/colours.scss';
+
+.info-blocks {
+    width: 95vw;
+    margin: auto;
+}
+
+.info-block {
+
+    background-color: $black50;
+    border-radius: 8px;
+    padding: 1em;
+
+    margin: 3em;
+    font-family: 'system-ui';
+    font-size: 1.4em;
+    font-weight: 200;
+    
+    .info-block-head {
+        font-style: italic;
+        font-size: 2.5rem;
+        font-weight: 400;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+}
+
+.info-block-icon {
+    height: 1.7em;
+    margin: 0.5em;
+}
+
+.contact-avatars {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+        margin-top: 1em;
+}
+
+.avatar-phone {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 2em 2em;
+    align-items: center;
+    column-gap: 1em;
+    
+    .number {
+        font-weight: bold;
+        color: yellowgreen;
+
+        a {
+            color: yellowgreen;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: goldenrod;
+        }
+    }
+
+    h3 {
+        font-family: initial;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .info-block {
+        margin: 1em;
+        font-size: 1.2em;
+    }
+}
+
+.bank {
+    color: yellowgreen;
+    font-weight: bold;
+    text-decoration: underline;
+}

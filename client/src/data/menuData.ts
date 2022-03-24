@@ -5,48 +5,45 @@ export const starters: foodItem[] = [
         course: 'starter',
         name: 
             [
-                "Chicken Liver Pate, Red Onion Chutney and Oatcakes",
-                "ser"
+                "Roasted Red Pepper and Tomato Soup",
+                "Zupa z pieczonej czerwonej papryki i pomidorów"
             ],
         description:
         [
-            "ooh we all know cheese. pongy but lovely.",
-            "to jest ser"
+            "",
+            ""
         ],
-        isVegan: false,
-        img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
+        isVegan: true,
         value: 0
     },
     {
         course: 'starter',
         name: 
             [
-                "Lentil and Aubergine Pate, Red Onion Chutney and Oatcakes",
-                "ser"
+                "Smoked Scottish salmon",
+                "Łosoś Szkocki wędzony"
             ],
         description:
         [
-            "ooh we all know cheese. pongy but lovely.",
-            "to jest ser"
+            "served traditionally with lemon, and brown bread.",
+            "podawane tradycyjnie z cytryną i ciemnym pieczywem."
         ],
         isVegan: false,
-        img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
         value: 1
     },
     {
         course: 'starter',
         name: 
             [
-                "Honeydew Melon, with Mixed Berry Coulis",
-                "ser"
+                "Pear, stilton and walnut salad",
+                "Sałatka z grszki, stilton i orzechów"
             ],
         description:
         [
-            "ooh we all know cheese. pongy but lovely.",
-            "to jest ser"
+            "",
+            ""
         ],
-        isVegan: true,
-        img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
+        isVegan: false,
         value: 2
     },
 ];
@@ -56,48 +53,45 @@ export const mains: foodItem[] = [
         course: 'main',
         name: 
             [
-                "Roast Silverside of Beef, Yorkshire Pudding, Red Wine Gravy",
-                "ser"
+                "Trio of baked lamb cutlets",
+                "Trio pieczonych kotletów jagnięcych"
             ],
         description:
         [
-            "ooh we all know cheese. pongy but lovely.",
-            "to jest ser"
+            "set on a minted potato cake with recurrant and red wine gravy.",
+            "na torcie ziemniaczanym z miętą z sosem rekurencyjnym i czerwonym winem."
         ],
         isVegan: false,
-        img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
         value: 0
     },
     {
         course: 'main',
         name: 
             [
-                "Baked Fillet of Salmon, with Samphire and Lemon Butter ",
-                "ser"
+                "Herb-crusted haddock",
+                "Plamiak w skórce ziołowej"
             ],
         description:
         [
-            "ooh we all know cheese. pongy but lovely.",
-            "to jest ser"
+            "baked with cherry tomatoes",
+            "zapiekane z pomidorkami koktajlowymi"
         ],
         isVegan: false,
-        img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
         value: 1
     },
     {
         course: 'main',
         name: 
             [
-                "Mushroom Ravioli, Sauce of Wild Mushrooms, Cherry Tomatoes and Thyme ",
-                "ser"
+                "Courgette and nut bake",
+                "Zapiekanka z cukinii i orzechów"
             ],
         description:
         [
-            "ooh we all know cheese. pongy but lovely.",
-            "to jest ser"
+            "served with a tomato compote",
+            "podawany z kompotem pomidorowym"
         ],
         isVegan: true,
-        img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
         value: 2
     },
 ];
@@ -107,32 +101,45 @@ export const desserts: foodItem[] = [
         course: 'dessert',
         name: 
             [
-                "Chocolate and Raspberry Cheesecake",
-                "ser"
+                "Chocolate brownie",
+                "Ciasto czekoladowe"
             ],
         description:
         [
-            "ooh we all know cheese. pongy but lovely.",
-            "to jest ser"
+            "served with chocolate Sauce and vanilla ice-cream",
+            "podawany z sosem czekoladowym i lodami waniliowymi"
         ],
         isVegan: false,
-        img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
         value: 0
     },
     {
         course: 'dessert',
         name: 
             [
-                "Crème Brulee",
-                "ser"
+                "Fresh fruit salad",
+                "Świeża sałatka owocowa"
             ],
         description:
         [
-            "ooh we all know cheese. pongy but lovely.",
-            "to jest ser"
+            "",
+            ""
+        ],
+        isVegan: true,
+        value: 1
+    },
+    {
+        course: 'dessert',
+        name: 
+            [
+                "Cheese Platter",
+                "Półmisek Serów"
+            ],
+        description:
+        [
+            "served with oatcakes and crackers",
+            "podawane z plackami owsianymi i krakersami"
         ],
         isVegan: false,
-        img: "https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200",
         value: 1
     }
 ]
@@ -140,18 +147,27 @@ export const desserts: foodItem[] = [
 export const chosenTexts = {
     starter: [
         "Kicking things off with ",
-        " to start."
+        " to start.",
+        "Zaczynając od ",
+        "."
     ],
     main: [
         "With a main course of ",
+        ".",
+        "Następnie główne danie z ",
         "."
+
     ],
     dessert: [
         "Ending on a bang with ",
-        " for dessert."
+        " for dessert.",
+        "Kończąc z ",
+        "."
     ],
     diet: [
         "No dietary requirements.",
-        "Dietary requirements: "
+        "Dietary requirements: ",
+        "Brak wymagań dietetycznych.",
+        "Wymagania dietetyczne:"
     ]
 }

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { PanelProps } from "../../../models/ScrollDimensionProps";
 import { AnimationPanel } from "./AnimationPanel";
@@ -12,9 +11,12 @@ import {
 
 } from "./Sprites";
 import { BIG_DAY_SCHEDULE } from "../../../data/activityData";
+import { useAppDispatch } from "../../../store/hooks";
+import { changePageInfo } from "../../nagivation/NavigationSlice";
 
-export function BigDay() {
+export function BigDay(props: {languageIndex: 0 | 1}) {
 
+    const dispatch = useAppDispatch();
     const clientHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
     const clientWidth = Math.min(document.documentElement.clientWidth, window.innerWidth);
     const panelHeight = Math.max(clientHeight, clientWidth) * 0.4;
@@ -31,6 +33,9 @@ export function BigDay() {
 
     const [yScroll, setYScroll] = useState(0);
     const [yScrollPercent, setYScrollPercent] = useState(0);
+    const textBigDay = ["The Big Day", "Wielki dzień"];
+    const dateBigDay = ["16th July 2022", "16 Lipca 2022"]
+    const subtextBigDay = ["Scroll through, and tap the titles for more info.", "Przewiń i dotknij tytułów, aby uzyskać więcej informacji."]
 
     const activePanel = Math.floor(yScroll / (panelHeight + panelGap));
 
@@ -44,19 +49,22 @@ export function BigDay() {
         setYScrollPercent(yScrollPercent);
     } 
 
+    
     useEffect(() => {
             window.addEventListener("scroll", handleScroll);
             return () => {
                 window.removeEventListener("scroll", handleScroll);
+    
             };
+    // eslint-disable-next-line
     }, []);
 
     return (
         <div>
             <div className="main-header">
-                <div>The Big Day</div>
-                <div className="sub">16th July 2022</div>
-                <div className="sub2">Scroll through, and tap the titles for more info.</div>
+                <div>{textBigDay[props.languageIndex]}</div>
+                <div className="sub">{dateBigDay[props.languageIndex]}</div>
+                <div className="sub2">{subtextBigDay[props.languageIndex]}</div>
             </div>
             {/* <div className="debug-scroll" id="debug">
                 <span>{yScrollPercent}</span>
@@ -71,7 +79,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={0}/>
-            <TimelineInfo activity={BIG_DAY_SCHEDULE[0]}  />
+            <TimelineInfo activity={BIG_DAY_SCHEDULE[0]} languageIndex={props.languageIndex}/>
             
             <AnimationPanel 
                 sprites={[castle, tree, heart, ringR2, ringL, ringR1 ]}
@@ -79,7 +87,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={1}/>
-           <TimelineInfo activity={BIG_DAY_SCHEDULE[1]}  />
+           <TimelineInfo activity={BIG_DAY_SCHEDULE[1]} languageIndex={props.languageIndex}/>
 
             <AnimationPanel 
                 sprites={[cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter, cameraFlash]}
@@ -87,7 +95,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={2}/>
-            <TimelineInfo activity={BIG_DAY_SCHEDULE[2]}  />
+            <TimelineInfo activity={BIG_DAY_SCHEDULE[2]} languageIndex={props.languageIndex}/>
             
             <AnimationPanel 
                 sprites={[drinks]}
@@ -95,7 +103,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={3}/>
-            <TimelineInfo activity={BIG_DAY_SCHEDULE[3]}  />
+            <TimelineInfo activity={BIG_DAY_SCHEDULE[3]} languageIndex={props.languageIndex}/>
 
             <AnimationPanel 
                 sprites={[]}
@@ -103,7 +111,7 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={4}/>
-           <TimelineInfo activity={BIG_DAY_SCHEDULE[4]}  />
+           <TimelineInfo activity={BIG_DAY_SCHEDULE[4]} languageIndex={props.languageIndex}/>
 
             <AnimationPanel 
                 sprites={[discoball]}
@@ -111,8 +119,10 @@ export function BigDay() {
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}
                 panelIndex={5}/>
-           <TimelineInfo activity={BIG_DAY_SCHEDULE[5]}  />
-           <div className="bottom-margin"></div>
+           <TimelineInfo activity={BIG_DAY_SCHEDULE[5]} languageIndex={props.languageIndex}/>
+           <div className="bottom-margin">
+               <button onClick={() => dispatch(changePageInfo('none'))}>Return</button>
+           </div>
         </div>
     )
 }

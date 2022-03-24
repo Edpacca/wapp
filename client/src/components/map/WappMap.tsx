@@ -3,8 +3,11 @@ import { useCallback, useRef, useState } from 'react';
 import lochay from '../../assets/map-icons/lochay.svg';
 import finlarig from '../../assets/map-icons/finlarig.svg';
 import registry from '../../assets/map-icons/registry.svg';
-import footsteps from '../../assets/map-icons/footsteps.svg';
+import footstepsA from '../../assets/map-icons/footstepsA.svg';
+import footstepsB from '../../assets/map-icons/footstepsB.svg';
+import mountain from '../../assets/map-icons/mountain.svg';
 import { ACHARN_WOODS } from '../../data/acharnWoods';
+import { SRON_A_CHLACHAIN } from '../../data/sron-a-chlachain';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,7 +21,9 @@ const containerStyle = {
 const lochayCoords = { lat: 56.47815940703385, lng: -4.324116001400637 };
 const finlarigCoords = { lat: 56.47505699164878, lng: -4.314898901371605 };
 const registryCoords = { lat: 56.46795190718324, lng: -4.318373729857583 };
-const walkCoords = { lat: 56.45960546129408, lng: -4.320894272525618 };
+const acharnStartCoords = { lat: 56.45960546129408, lng: -4.320894272525618 };
+const chlachainStartCoords = { lat: 56.4692126040287, lng: -4.31767475314589 };
+const chlachainTopCoords = 	{ lat: 56.465562613516, lng: -4.34184484168226 };
 const center = { lat: 56.46995190718324, lng: -4.322373729857583 };
 
 const libraries: ["places"] = ["places"];
@@ -30,7 +35,7 @@ const options = {
   zoomControl: true,
 }
 
-const lineOptions = {
+const acharnLineOptions = {
   strokeColor: '#d9ff00',
   strokeOpacity: 1,
   strokeWeight: 8,
@@ -43,6 +48,18 @@ const lineOptions = {
   zIndex: 1
 }
 
+const chlachainLineOptions = {
+  strokeColor: '#fc9003',
+  strokeOpacity: 1,
+  strokeWeight: 8,
+  clickable: false,
+  draggable: false,
+  editable: false,
+  visible: true,
+  radius: 30000,
+  paths: SRON_A_CHLACHAIN,
+  zIndex: 1
+}
 
 export function WappMap() {
 
@@ -95,16 +112,33 @@ export function WappMap() {
       color: "white"
     }
 
-    const walkIcon: google.maps.Icon = {
-      url: footsteps,
+    const walkAIcon: google.maps.Icon = {
+      url: footstepsA,
       scaledSize: new google.maps.Size(100, 100),
     }
 
-    const walkLabel: google.maps.MarkerLabel = {
-      text: "Sunday walk",
+    const walkBIcon: google.maps.Icon = {
+      url: footstepsB,
+      scaledSize: new google.maps.Size(100, 100),
+    }
+
+    const acharnWalkLabel: google.maps.MarkerLabel = {
+      text: "Sunday walk A",
       className: "map-label",
       color: "white"
     }
+
+    const chlachainWalkLabel: google.maps.MarkerLabel = {
+      text: "Sunday walk B",
+      className: "map-label",
+      color: "white"
+    }
+
+    const summitIcon: google.maps.Icon = {
+      url: mountain,
+      scaledSize: new google.maps.Size(50, 50),
+    }
+
 
     return (
     <div className="map-wrap">
@@ -121,8 +155,11 @@ export function WappMap() {
           <Marker label={lochayLabel} icon={lochayIcon} key={"house"} position={lochayCoords}/>
           <Marker label={finlarigLabel} icon={finlarigIcon} key={"castle"} position={finlarigCoords}/>
           <Marker label={registryLabel} icon={registryIcon} key={"registry"} position={registryCoords}/>
-          <Marker label={walkLabel} icon={walkIcon} key={"walk"} position={walkCoords}/>
-          <Polyline path={ACHARN_WOODS} options={lineOptions} />
+          <Marker label={acharnWalkLabel} icon={walkAIcon} key={"walkA"} position={acharnStartCoords}/>
+          <Marker label={chlachainWalkLabel} icon={walkBIcon} key={"walkB"} position={chlachainStartCoords}/>
+          <Marker icon={summitIcon} key={"walkBTop"} position={chlachainTopCoords}/>
+          <Polyline path={ACHARN_WOODS} options={acharnLineOptions} />
+          <Polyline path={SRON_A_CHLACHAIN} options={chlachainLineOptions} />
         </>
         }
       </GoogleMap>

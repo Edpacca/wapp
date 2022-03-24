@@ -24,6 +24,7 @@
 @import './components/arrivalPlan.scss';
 @import './components/rooms.scss';
 @import './components/map.scss';
+@import './components/generalInfo.scss';
 
 //Common
 @import './common/colours.scss';
@@ -52,4 +53,12 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  color: yellowgreen;
+}
+
+a :active {
+  color: goldenrod;
 }

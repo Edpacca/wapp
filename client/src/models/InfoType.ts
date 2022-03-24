@@ -1,0 +1,1 @@
+export type InfoPage = 'none' | 'itinerary' | 'bigday' | 'seating' | 'room' | 'arrivals' |  'general' ;
