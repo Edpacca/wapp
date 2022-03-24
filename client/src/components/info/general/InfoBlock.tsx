@@ -6,7 +6,7 @@ export function InfoBlock(props: {info: InfoProps, languageIndex: 1 | 0}) {
             <div className="info-block-head">{props.info.title[props.languageIndex]}</div>
             {
                 props.info.icon &&
-                <img src={props.info.icon} className="info-block-icon"/>
+                <img src={props.info.icon} className="info-block-icon" alt="icon"/>
             }
             <div>{props.info.details[props.languageIndex].map(detail => {
                 if (detail === "") return <br/>

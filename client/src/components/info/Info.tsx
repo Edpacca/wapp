@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Arrival } from "../../models/Arrival";
 import { Family } from "../../models/Family";
 import { Seat } from "../../models/Seat";
