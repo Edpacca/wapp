@@ -2,9 +2,9 @@ import { useState } from "react"
 import { DAYS, Activity } from "../../../data/activityData";
 import leftLeaf from "../../../assets/icons/leaf-arrow-left.svg";
 import rightLeaf from "../../../assets/icons/leaf-arrow-right.svg";
-import { InfoTypes } from "../Info";
+import { InfoPage } from "../../../models/InfoType";
 
-export function Itinerary(props: {setActive: (value: InfoTypes) => void, languageIndex: 1 | 0}) {
+export function Itinerary(props: {setActive: (value: InfoPage) => void, languageIndex: 1 | 0}) {
 
     const today = new Date();
     const event = new Date(2022, 7, 15);
@@ -29,7 +29,7 @@ export function Itinerary(props: {setActive: (value: InfoTypes) => void, languag
                     {
                         activeDay === 1 &&
                         <div>
-                            <button onClick={() => props.setActive('scroll')}>Interactive Timeline</button>
+                            <button onClick={() => props.setActive('bigday')}>Interactive Timeline</button>
                         </div>
                     }
                     {DAYS[activeDay].summary[props.languageIndex]}

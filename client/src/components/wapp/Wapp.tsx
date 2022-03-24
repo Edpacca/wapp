@@ -33,7 +33,7 @@ export function Wapp() {
 
   return (
     <div>
-      <NavBar page={page}/>
+      <NavBar page={page} languageIndex={isPolish ? 1 : 0}/>
       {
         page === 'home' &&
         <>

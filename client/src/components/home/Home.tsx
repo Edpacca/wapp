@@ -42,7 +42,7 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
             <GuestDropDown placeholder={props.family.name} guests={props.guests} selectOption={redirectToMeal}/>
             <div className="large-info">
                 <p>16 - 07 - 22</p>
-                <p>House at Bridge of Lochay</p>
+                <p>House at the Bridge of Lochay</p>
                 <p>Killin, Scotland</p>
             </div>
             <div className="sub-home">
