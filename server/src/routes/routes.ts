@@ -5,7 +5,7 @@ import { addGuestToFamily, registerUser as registerUser } from './controllers/us
 import { authenticate, logout, loginUser, loginAdmin } from './controllers/loginController';
 import { verifyAdminToken, verifyClientToken, verifyUserToken } from '../middleware/auth';
 import { registerAdmin } from './controllers/adminController';
-import { getArrivals, getArrivalsAdmin, updateArrival } from './controllers/arrivalController';
+import { getArrivalsAdmin, updateArrival } from './controllers/arrivalController';
 
 export function appRouter(app: express.Express): void {
 
@@ -71,6 +71,5 @@ export function appRouter(app: express.Express): void {
     // app.post("/admin/register", (request, result) => {
     //     return result.status(200).send(RegisterAdmin());
     // });
-
 }
 

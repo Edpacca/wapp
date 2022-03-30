@@ -15,10 +15,11 @@ export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (is
     const [arrivalTime, setArrivalTime] = useState<string[]>([""]);
     const [departureDay, setDepartureDay] = useState<string[]>([""]);
     const [departureTime, setDepartureTime] = useState<string[]>([""]);
+    const [isError, setIsError] = useState(false);
 
     const arrivalString = arrivalDay[0] === "" ? "Set arrival" : `Arriving on ${arrivalDay[props.languageIndex]} ${arrivalTime[props.languageIndex]}`;
     const departureString = departureDay[0] === "" ? "Set departure" : `Departing on ${departureDay[props.languageIndex]} ${departureTime[props.languageIndex]}`;
-
+    const errorMessage = ["Please select both day and time before submitting", "Proszę wybrać dzień i godzinę przed przesłaniem"];
 
     function handleSetArrivalDay(day: string[]) {
         setArrivalDay(day);
@@ -32,6 +33,7 @@ export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (is
 
     function submitArrivalTime() {
 
+        if (checkDayAndTimeSelected(arrivalDay[0], arrivalTime[0]) && checkDayAndTimeSelected(departureDay[0], departureTime[0])) {
             const arrival: Arrival = {
                 family: props.family.name,
                 familyId: props.family.id,
@@ -43,6 +45,10 @@ export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (is
             
             dispatch(submitUserArrivalTime(arrival))
             .then(() => props.setIsVisible(false));
+            setIsError(false);
+        } else {
+            setIsError(true);
+        }
     }   
 
     return(
@@ -79,6 +85,10 @@ export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (is
                 }
             </div>
             <div className="horizontal-bar"/>
+            {
+                isError &&
+                <p className="orange">{errorMessage[props.languageIndex]}</p>
+            }
             <div className="arrival-text">{arrivalString}</div>
             <div className="arrival-text">{departureString}</div>
             <div className="cancel-submit-buttons">
@@ -87,4 +97,8 @@ export function SubmitArrivalTimeModal(props: {family: Family, setIsVisible: (is
             </div>
         </div>
     )
+}
+
+function checkDayAndTimeSelected(day: string, time: string) {
+    return (day != "" && time != "") || (day == "" && time == "");
 }
