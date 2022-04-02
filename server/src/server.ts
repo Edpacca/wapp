@@ -18,12 +18,14 @@ app.use(express.urlencoded({extended: true}));
 app.use(cors({credentials: true, origin: [`${process.env.CLIENT_URL}`]}));
 app.use(morgan('dev'));
 
+
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+db.on('connection', console.log.bind(console, 'connected biatch'))
 
 routes(app);
 
 const server = app.listen(API_PORT, function () {
-    registerAdmin();
+    // registerAdmin();
     const address = server?.address();
     const port = _.isString(address) ? address : address?.port;
     console.log(`wapp server running on ${port}\n`);
