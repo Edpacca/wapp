@@ -15,7 +15,6 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm ci
 COPY --from=builder /server/lib ./lib
-COPY .env .
 COPY /db ./db
 
 EXPOSE 5500
