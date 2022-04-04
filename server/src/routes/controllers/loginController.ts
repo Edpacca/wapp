@@ -110,7 +110,7 @@ export async function loginAdmin(request, result) {
             
             result.cookie('token', token);
             const loginResponse: LoginResponseSuccess = {result: "SUCCESS", name: admin.name, id: admin._id}
-            return result.status(200).send(loginResponse);
+            return result.status(200).json(loginResponse);
         }
 
         const loginResponse: LoginResponseFailure = {result: "FAILURE", errors: [InvalidCredentialsError] }
