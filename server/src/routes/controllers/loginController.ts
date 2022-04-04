@@ -15,37 +15,37 @@ export async function authenticate(request, result) {
         const token = request.cookies.token;
         if (!token) return result.status(401).json(false);
 
-        let type;
-        let name;
+        let type = "";
+        let name = "";
         
         jwt.verify(token, process.env.TOKEN_KEY, function(err, decoded) {
             type = decoded.type ?? "";
             name = decoded.name ?? "";
         });
 
-            switch (type) {
-                case "user": {
-                    const user = await User.findOne({family: name});
-                    const guests = await getGuestObjectByFamily(name);
-                    const seats = await getSeats();
-                    // eslint-disable-next-line
-                    const guestsWithRooms = guests.filter(guest => guest.room != null).length;
-                    const rooms = guestsWithRooms > 0 ? await getRooms() : [];
-                    const arrivals = await getArrivals();
-                    const userResponse: UserResponse = {
-                        id: user._id,
-                        family: {name: name, id: user.familyId},
-                        guests: guests,
-                        seats: seats,
-                        rooms: rooms,
-                        arrivals: arrivals
-                    }
-                    return result.status(200).json({type: "user", data: userResponse});
+        switch (type) {
+            case "user": {
+                const user = await User.findOne({family: name});
+                const guests = await getGuestObjectByFamily(name);
+                const seats = await getSeats();
+                // eslint-disable-next-line
+                const guestsWithRooms = guests.filter(guest => guest.room != null).length;
+                const rooms = guestsWithRooms > 0 ? await getRooms() : [];
+                const arrivals = await getArrivals();
+                const userResponse: UserResponse = {
+                    id: user._id,
+                    family: {name: name, id: user.familyId},
+                    guests: guests,
+                    seats: seats,
+                    rooms: rooms,
+                    arrivals: arrivals
                 }
-                case "admin" :
-                    return result.status(200).json({type: "admin"});
-                default:
-                    return result.status(401).json(false);
+                return result.status(200).json({type: "user", data: userResponse});
+            }
+            case "admin" :
+                return result.status(200).json({type: "admin"});
+            default:
+                return result.status(401);
             }
 
     } catch (err) {
@@ -55,11 +55,12 @@ export async function authenticate(request, result) {
 }
 
 export async function loginUser(request, result) {
+
     try {
         const { family, password } = request.body;
         
         if (!(family && password)) {
-            result.status(400).json({errors: [InvalidCredentialsError]});
+            return result.status(400).json({errors: [InvalidCredentialsError]});
         }
 
         const user = await User.findOne({family});
