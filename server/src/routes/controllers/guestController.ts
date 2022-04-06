@@ -180,10 +180,10 @@ export async function putUpdateGuest(request, result) {
     }
 
     Guest.findByIdAndUpdate({_id: request.body.id}, {
-        "starter": body.starter,
-        "main": body.main,
-        "dessert": body.dessert,
-        "diet": body.diet,
+        "starter": body.starter ?? null,
+        "main": body.main ?? null,
+        "dessert": body.dessert ?? null,
+        "diet": body.diet ?? null,
         "seat": body.seat,
         "room": body.room }, (err, guest) => {
         
