@@ -99,7 +99,7 @@ export async function getGuestObjectByFamily(family) {
     return guestResponse;
 }
 
-export async function batchUpdateGuests(request, result) {
+export async function updateGuests(request, result) {
     const { edits, deletes } = request.body;
 
     await edits.forEach(guest => {
@@ -168,7 +168,7 @@ export async function batchUpdateGuests(request, result) {
     return result.status(200).json("updated");
 }
 
-export async function putUpdateGuest(request, result) {
+export async function updateGuest(request, result) {
 
     const body = request.body
 

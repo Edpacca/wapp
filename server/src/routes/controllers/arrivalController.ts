@@ -1,7 +1,7 @@
 import { ArrivalResponse } from '../../models/responses/ArrivalResponse';
 import Arrival from '../../models/schema/arrivalModelSchema';
 
-export async function getArrivals() {
+export async function getArrivalResponse() {
 
     const arrivals = await Arrival.find({});
     if (!arrivals || arrivals.length === 0) {
@@ -24,6 +24,12 @@ export async function getArrivals() {
     return arrivalResponse;
 }
 
+export async function getArrivals(request, result) {
+    Arrival.find({}, function(err, arrivals) {
+        return result.status(200).json(arrivals)
+    })
+}
+
 export async function updateArrival(request, result) {
     const arrival = request.body;
 
@@ -43,10 +49,4 @@ export async function updateArrival(request, result) {
     });
 
     return result.status(200).json({ result: "SUCCESS", arrival });
-}
-
-export async function getArrivalsAdmin(request, result) {
-    Arrival.find({}, function(err, arrivals) {
-        return result.status(200).json(arrivals)
-    })
 }

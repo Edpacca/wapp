@@ -1,6 +1,6 @@
 import { useAppDispatch } from "../../../store/hooks";
 import { useState } from "react";
-import { registerUser } from "../adminSlice";
+import { registerFamily } from "../adminSlice";
 import { CreateFamily } from "../../../models/CreateFamily";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFeatherPointed, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -77,7 +77,7 @@ export function CreateUser() {
                 </div>
             </div>
                 <button 
-                    onClick={() => dispatch(registerUser(CreateFamily()))}
+                    onClick={() => dispatch(registerFamily(CreateFamily()))}
                     className="button login">
                         Register Family &nbsp; <FontAwesomeIcon icon={faFeatherPointed}/>
                 </button>
