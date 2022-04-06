@@ -47,10 +47,10 @@
     
     .number {
         font-weight: bold;
-        color: yellowgreen;
+        color: $appgreen;
 
         a {
-            color: yellowgreen;
+            color: $appgreen;
             text-decoration: underline;
         }
 
@@ -72,7 +72,7 @@
 }
 
 .bank {
-    color: yellowgreen;
+    color: $appgreen;
     font-weight: bold;
     text-decoration: underline;
 }

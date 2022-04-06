@@ -26,6 +26,7 @@ export const navigationSlice = createSlice({
     reducers: {
         changePageUser: (state, action: PayloadAction<UserPage>) => {
             state.userPage = action.payload;
+            state.infoPage = 'none';
         },
         changePageAdmin: (state, action: PayloadAction<AdminPage>) => {
             state.adminPage = action.payload;

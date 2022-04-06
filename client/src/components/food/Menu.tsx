@@ -25,6 +25,7 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
     const textSelectGuest = props.languageIndex ? "Wybierz gościa" : "Select guest";
     const textIsChoosing = props.languageIndex ? "wybierasz..." : "is choosing..."
     const textDietaryRequirements = props.languageIndex ? "Wpisz tutaj wszelkie wymagania dietetyczne" : "Enter any dietary requirements here";
+    const textSubmit = props.languageIndex ? "Składać" : "Submit";
 
     function handleChange(setBool: Dispatch<SetStateAction<boolean>>, bool: boolean) {
         setBool(!bool);
@@ -107,8 +108,13 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
                         <textarea placeholder={activeGuest.diet && (activeGuest.diet as string).length > 0 ? "Diet: " + activeGuest.diet : textDietaryRequirements} onChange={(e) => updateDiet(e.target.value)}/>
                     </div>
                     <div>
-                    
-                        {renderChoices(activeGuest, props.languageIndex, allChoicesMade(activeGuest), setShowSubmit)}
+                        {
+                            props.languageIndex === 0 
+                            ? <p className="smalltext">Are you ready to submit? <br/> You can change your mind up until 1st July</p>
+                            : <p className="smalltext">Czy jesteś gotowy, aby zgłosić swoje wybory?<br/> Możesz zmienić zdanie do 1 Lipca</p>
+                        }
+                        <button className='menu-submit' onClick={() => setShowSubmit(true)}>{textSubmit} &nbsp; <FontAwesomeIcon icon={faAngleRight}/></button>
+                        {/* {renderChoices(activeGuest, props.languageIndex, allChoicesMade(activeGuest), setShowSubmit)} */}
                     </div>
                 </div>
             }
@@ -120,7 +126,7 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
 function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean, setShowSubmit: (b: boolean) => void) {
     const textExcellentDecisions = languageIndex ? "Doskonałe decyzje" : "Excellent decisions"
     const textNone = languageIndex ? "Nic" : "None";
-    const textSubmit = languageIndex ? "Składać" : "Submit"
+
 
     return (
         <div className='choice-slab'>
@@ -140,7 +146,6 @@ function renderChoices(guest: Guest, languageIndex: 1 | 0, ready: boolean, setSh
                 ? <p className="smalltext">Are you ready to submit? <br/> You can change your mind up until 1st July</p>
                 : <p className="smalltext">Czy jesteś gotowy, aby zgłosić swoje wybory?<br/> Możesz zmienić zdanie do 1 Lipca</p>
             }
-            <button onClick={() => setShowSubmit(true)}>{textSubmit} &nbsp; <FontAwesomeIcon icon={faAngleRight}/></button>
         </div>
     )
 }

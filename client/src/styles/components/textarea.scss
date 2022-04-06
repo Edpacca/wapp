@@ -1,3 +1,5 @@
+@import '../common/colours.scss';
+
 textarea {
     background-color: rgba(119, 119, 119, 0.35);
     margin: auto;
@@ -14,7 +16,7 @@ textarea {
   }
 
 textarea::placeholder {
-    color: greenyellow;
+    color: $appgreen;
   }
   
 textarea:focus {
@@ -22,5 +24,5 @@ textarea:focus {
   }
 
 textarea:focus-visible {
-    outline: 2px solid yellowgreen;
+    outline: 2px solid $appgreen;
 }

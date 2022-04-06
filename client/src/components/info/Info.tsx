@@ -49,32 +49,32 @@ export function Info(props: {languageIndex: 0 | 1}) {
                 activeInfo === 'none' &&
                 <>
                 <div className="info-header general-header" onClick={() => setActiveInfo('general')}>
-                    <h1 className="info-h1">{textGeneralInfo[props.languageIndex]}</h1>
-                    <div className="bigday-sub">{subtextGeneralInfo[props.languageIndex]}</div>
+                    <div className="info-h1">{textGeneralInfo[props.languageIndex]}</div>
+                    {/* <div className="info-sub">{subtextGeneralInfo[props.languageIndex]}</div> */}
                 </div>
                 <div className="info-header bigday-header" onClick={() => setActiveInfo('bigday')}>
-                    <h1 className="info-h1">{textBigDay[props.languageIndex]}</h1>
-                    <div className="bigday-sub">{subtextBigDay[props.languageIndex]}</div>
+                    <div className="info-h1">{textBigDay[props.languageIndex]}</div>
+                    {/* <div className="info-sub">{subtextBigDay[props.languageIndex]}</div> */}
                 </div>
                 <div className="info-header itinerary-header" onClick={() => setActiveInfo('itinerary')}>
-                        <h1 className="info-h1">{textFullItinerary[props.languageIndex]}</h1>
+                        <div className="info-h1">{textFullItinerary[props.languageIndex]}</div>
                 </div>
                 {
                     <div className="info-header seating-header" onClick={() => setActiveInfo('seating')}>
-                        <h1 className="info-h1">{textSeatingPlan[props.languageIndex]}</h1>
+                        <div className="info-h1">{textSeatingPlan[props.languageIndex]}</div>
                     </div>
                 }
 
                 {
                     rooms.length > 0 &&
                     <div className="info-header room-header" onClick={() => setActiveInfo('room')}>
-                        <h1 className="info-h1">{textRoomInfo[props.languageIndex]}</h1>
+                        <div className="info-h1">{textRoomInfo[props.languageIndex]}</div>
                     </div>
                 }
                 {
                     <div className="info-header arrivals-header" onClick={() => setActiveInfo('arrivals')}>
-                        <h1 className="info-h1">{textArrivals[props.languageIndex]}</h1>
-                        <div className="bigday-sub">{subtextArrivals[props.languageIndex]}</div>
+                        <div className="info-h1">{textArrivals[props.languageIndex]}</div>
+                        {/* <div className="info-sub">{subtextArrivals[props.languageIndex]}</div> */}
                     </div>
                 }
                 </>

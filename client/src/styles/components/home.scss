@@ -1,3 +1,5 @@
+@import '../common/colours.scss';
+
 .horizontal-bar {
     width: 80vw;
     border-top: 1px solid white;
@@ -29,7 +31,7 @@
 }
 
 .info-edit:hover {
-    color: yellowgreen;
+    color: $appgreen;
 }
 
 .selected-arrival {
@@ -40,7 +42,7 @@
 .seedling {
     margin: 0.5em;
     font-size: 3em;
-    color: yellowgreen;
+    color: $appgreen;
     transition: 3s;
 }
 

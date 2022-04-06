@@ -1,3 +1,5 @@
+@import '../common/colours.scss';
+
 .arrival-select {
     display: grid;
     justify-content: center;
@@ -16,8 +18,8 @@ button.arrival-time {
 
 
 button.selected-arrival {
-    border: 1px solid yellowgreen;
-    color: yellowgreen;
+    border: 1px solid $appgreen;
+    color: $appgreen;
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
 }
 

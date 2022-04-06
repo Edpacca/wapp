@@ -1,3 +1,5 @@
+@import '../common/colours.scss';
+
 .adminInputs {
     display: flex;
     flex-direction: column;
@@ -15,7 +17,7 @@
 }
 
 .link {
-    color: greenyellow;
+    color: $appgreen;
     text-decoration: underline;
     vertical-align: top;
 }
@@ -90,13 +92,13 @@
     text-align: left;
 
     h2 {
-        color: yellowgreen;
+        color: $appgreen;
     }
 
     .courses {
         font-size: 1.3em;
         .total {
-            color: yellowgreen;
+            color: $appgreen;
             font-weight: bold;
         }
     }

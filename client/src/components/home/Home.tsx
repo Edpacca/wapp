@@ -8,7 +8,7 @@ import { useState } from "react"
 import { SubmitArrivalTimeModal } from "./arrivals/SubmitArrivalTimeModal"
 import { Family } from "../../models/Family"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEdit, faSeedling } from "@fortawesome/free-solid-svg-icons"
+import { faEdit } from "@fortawesome/free-solid-svg-icons"
 import { days, times } from '../../data/constantsEngPol';
 import { Seedling } from "./Seedling"
 
