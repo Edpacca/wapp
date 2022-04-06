@@ -43,8 +43,6 @@ export function BigDay(props: {languageIndex: 0 | 1}) {
         const yScroll = window.scrollY;
         const relativeYScroll = yScroll % (panelHeight + panelGap);
         const yScrollPercent = 100 * relativeYScroll / panelHeight
-        // const element = document.getElementById("debug");
-        // element!.style.marginTop = yScroll + "px";
         setYScroll(yScroll);
         setYScrollPercent(yScrollPercent);
     } 
@@ -56,7 +54,6 @@ export function BigDay(props: {languageIndex: 0 | 1}) {
                 window.removeEventListener("scroll", handleScroll);
     
             };
-    // eslint-disable-next-line
     }, []);
 
     return (
@@ -66,13 +63,6 @@ export function BigDay(props: {languageIndex: 0 | 1}) {
                 <div className="sub">{dateBigDay[props.languageIndex]}</div>
                 <div className="sub2">{subtextBigDay[props.languageIndex]}</div>
             </div>
-            {/* <div className="debug-scroll" id="debug">
-                <span>{yScrollPercent}</span>
-                <br/>
-                <span>{activePanel}</span>
-                <br/>
-                <span>{yScroll}</span>
-            </div> */}
             <AnimationPanel 
                 sprites={[scroll, quill, scrollA, scrollE]}
                 panel={panelProps}
