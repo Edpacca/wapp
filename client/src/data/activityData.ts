@@ -39,15 +39,15 @@ export const BIG_DAY_SCHEDULE: Activity[] = [
             ""
         ],
         details: [
-            "In Scotland Franny can't legally marry us so in the morning we will sneak off with our witnesses' to do the nuptuals.",
+            "Our celebrant Franny can't legally marry us in Scotland, so in the morning we will sneak off with our witnesses to do the boring part of the nuptuals.",
             ""
         ]
     },
     {
         heading: ["Ceremony",],
-        location: "Finlarig Estate",
+        location: "Finlarig Castle",
         time: ["13:00", "13:00"],
-        details: ["Conducted by Franny the celebrant. This will involve some singing and planting of a seed."],
+        details: ["Finlarig Castle is a 10 minute walk from the House. We'll ask everyone to gather here 10 minutes early and we will meet you all there. Franny will conduct the ceremony, which will involve some singing and the symbolic planting of a seed."],
     },
     {
         heading: ["Photographs",],

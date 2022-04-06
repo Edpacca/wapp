@@ -19,7 +19,7 @@ export function SubmitGuestChoiceModal(props: {guest: Guest, languageIndex: 0 | 
                 <p>{props.guest.diet && (props.guest.diet as string).length > 0 ? props.guest.diet : "none"}</p>
             </div>
             <button className="modalButtonOrange" onClick={() => props.setIsVisible(false)}>Cancel &nbsp; <FontAwesomeIcon icon={faXmark}/></button>
-            <button className="modalButtonGreen" onClick={() => props.submit()}>Submit &nbsp; <FontAwesomeIcon icon={faCheck}/></button>
+            <button className="modalButtonGreen" onClick={() => props.submit()}>Confirm &nbsp; <FontAwesomeIcon icon={faCheck}/></button>
         </div>
     )
 }

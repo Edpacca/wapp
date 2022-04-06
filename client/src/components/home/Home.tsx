@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
 import { days, times } from '../../data/constantsEngPol';
 import { Seedling } from "./Seedling"
+import { HOME_DATA } from "../../data/homeData"
 
 export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (guest: Guest | undefined) => void, languageIndex: 0 | 1}) {
 
@@ -39,12 +40,15 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
             <div className="App-centered">
                 <img src={diamond} className="App-logo-homepage" alt="diamond"/>
             </div>
-            <GuestDropDown placeholder={props.family.name} guests={props.guests} selectOption={redirectToMeal}/>
-            <div className="large-info">
-                <p>16 - 07 - 22</p>
-                <p>House at the Bridge of Lochay</p>
-                <p>Killin, Scotland</p>
+            <div className="home-large-info-wrap">
+                <div className="home-large-info">16 - 07 - 22</div>
+                <div className="home-large-info">House at the Bridge of Lochay</div>
+                <div className="home-large-info">Killin, Scotland</div>
             </div>
+            <div className="home-info">
+                {HOME_DATA[props.languageIndex].map(info => <div>{info}</div>)}
+            </div>
+            <GuestDropDown placeholder={props.family.name} guests={props.guests} selectOption={redirectToMeal}/>
             <div className="sub-home">
                 <div className="horizontal-bar"/>
                 {

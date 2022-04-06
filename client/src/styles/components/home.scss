@@ -6,9 +6,20 @@
     margin: 2em auto;
 }
 
-.large-info {
+.home-large-info-wrap {
     font-weight: lighter;
     font-size: calc(8px + 2vmax);
+    margin-bottom: 1em;
+    .home-large-info {
+        margin: 0.2em;
+    }
+}
+
+.home-info {
+    font-family: "system-ui";
+    font-size: 1.1em;
+    font-weight: lighter;
+    margin: 1em;
 }
 
 .med-info {
