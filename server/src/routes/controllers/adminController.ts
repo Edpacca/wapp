@@ -4,16 +4,16 @@ import Admin from '../../models/schema/adminModelSchema';
 
 export async function registerAdmin() {
 
-    const existingAdmin = await Admin.findOne({name: "AdmiralAdmin"});
+    const existingAdmin = await Admin.findOne({name: process.env.ADMIN_USERNAME});
     if (existingAdmin) {
         return;
     }
 
-    const encryptedPassword = await bcrypt.hash("adminpassword", 10);
+    const encryptedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
 
     const admin = await Admin.create(
         {
-            name: "AdmiralAdmin",
+            name: process.env.ADMIN_USERNAME,
             password: encryptedPassword
         }
     );
@@ -30,5 +30,3 @@ export async function registerAdmin() {
 
     return token;
 }
-
-
