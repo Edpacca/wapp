@@ -36,3 +36,20 @@
     padding: 0.5em;
     padding-bottom: 0.1em;
 }
+
+.seedling {
+    margin: 0.5em;
+    font-size: 3em;
+    color: yellowgreen;
+    transition: 3s;
+}
+
+.seedling:hover {
+    font-size: 6em;
+    transition: 3s;
+}
+
+.seedling:active {
+    font-size: 6em;
+    transition: 3s;
+}

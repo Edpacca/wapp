@@ -8,8 +8,9 @@ import { useState } from "react"
 import { SubmitArrivalTimeModal } from "./arrivals/SubmitArrivalTimeModal"
 import { Family } from "../../models/Family"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEdit } from "@fortawesome/free-solid-svg-icons"
+import { faEdit, faSeedling } from "@fortawesome/free-solid-svg-icons"
 import { days, times } from '../../data/constantsEngPol';
+import { Seedling } from "./Seedling"
 
 export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (guest: Guest | undefined) => void, languageIndex: 0 | 1}) {
 
@@ -72,6 +73,7 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
                     <SubmitArrivalTimeModal setIsVisible={setShowArrivalModal} {...props}/>
                 }
             </div>
+            <Seedling/>
         </div>
     )
 }
