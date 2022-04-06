@@ -140,7 +140,7 @@ export const desserts: foodItem[] = [
             "podawane z plackami owsianymi i krakersami"
         ],
         isVegan: false,
-        value: 1
+        value: 2
     }
 ]
 

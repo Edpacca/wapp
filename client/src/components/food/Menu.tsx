@@ -1,6 +1,6 @@
 import { Course, MenuCourse } from './Course';
 import { starters, mains, desserts, chosenTexts } from '../../data/menuData';
-import { useState, Dispatch, SetStateAction } from 'react';
+import { useState, Dispatch, SetStateAction, useContext } from 'react';
 import { WappSwitch } from '../common/WappSwitch';
 import { useAppDispatch } from '../../store/hooks';
 import { foodItem } from '../../models/FoodItem';
@@ -11,6 +11,7 @@ import { allChoicesMade } from '../../helpers/allChoicesMade';
 import { GuestDropDown } from '../common/GuestDropDown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import AuthContext from '../../context/AuthContext';
 
 export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest | undefined, languageIndex: 0 | 1}) {
 
@@ -18,6 +19,7 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
     const [isVegan, setIsVegan ] = useState(false);
     const [activeGuest, setActiveGuest] = useState<Guest | undefined>(props.activeGuest);
     const [showSubmit, setShowSubmit] = useState<Boolean>(false);
+    const { authenticateSession } = useContext(AuthContext);
     const dispatch = useAppDispatch();
 
     const textSelectGuest = props.languageIndex ? "Wybierz gościa" : "Select guest";
@@ -64,7 +66,10 @@ export function Menu(props: {family: string, guests: Guest[], activeGuest: Guest
     }
 
     function submitGuestChoices() {
-        if (activeGuest) dispatch(submitGuestUpdateUser(activeGuest));
+        if (activeGuest)  {
+            dispatch(submitGuestUpdateUser(activeGuest))
+            .then(() => authenticateSession());
+        }
         setShowSubmit(false);
         setActiveGuest(undefined);
     }
