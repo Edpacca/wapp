@@ -1,4 +1,4 @@
-import {starters, mains, desserts} from '../../../data/menuData';
+import { mains, desserts } from '../../../data/menuData';
 import { Guest } from "../../../models/Guest";
 import { GuestRow } from './GuestRow';
 
@@ -10,7 +10,6 @@ export function FamilyMembersTable(props: {guests: Guest[]}) {
                     <th></th>
                     {/* <th>Id</th> */}
                     <th>Name</th>
-                    <th>Starter</th>
                     <th>Main</th>
                     <th>Dessert</th>
                     <th>Diet</th>
@@ -20,7 +19,7 @@ export function FamilyMembersTable(props: {guests: Guest[]}) {
             </thead>
             <tbody>
             {
-                props.guests.map(guest => <GuestRow guest={guest} starters={starters} mains={mains} desserts={desserts}/>)
+                props.guests.map(guest => <GuestRow guest={guest} mains={mains} desserts={desserts}/>)
             }
             </tbody>
         </table>

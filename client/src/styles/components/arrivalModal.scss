@@ -9,13 +9,13 @@ button.arrival-button {
     width: 16em;
     border: 1px solid white;
     margin: 0.5em auto;
+    padding: 0.75rem 1rem;
 }
 
 button.arrival-time {
     padding: 0.25em;
     width: 7rem;
 }
-
 
 button.selected-arrival {
     border: 1px solid $appgreen;
@@ -54,7 +54,7 @@ button.selected-departure {
         font-size: 1rem;
     }
 
-    button.arrival-button {
+    button.departure-button {
         padding: 0.15em;
         margin: 0.15em auto;
     }

@@ -1,5 +1,5 @@
 export interface foodItem {
-    course: 'starter' | 'main' | 'dessert'
+    course: 'entree' | 'starter' | 'main' | 'dessert'
     name: string[],
     description: string[],
     isVegan: boolean,

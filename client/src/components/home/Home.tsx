@@ -26,7 +26,8 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
 
     const arrivalStrings = {
         arrival: ["You're arriving", "Przyjeżdżasz w"],
-        departure: ["You're leaving", "Wyjeżdżasz w"]
+        departure: ["You're leaving", "Wyjeżdżasz w"],
+        notSet: ["Let us know when you plan to arrive  ", "Daj nam znać, kiedy planujesz przyjechać  "]
     }
 
     const redirectToMeal = (guestId: string) => {
@@ -67,7 +68,7 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
                 {
                     !arrival?.arrivalDay &&
                     <div className="med-info">
-                        <span>Let us know when you plan to arrive</span>
+                        <span>{arrivalStrings.notSet[props.languageIndex]}&#8594;</span>
                         <span className="info-edit" onClick={() => setShowArrivalModal(true)}><FontAwesomeIcon icon={faEdit}/></span>
                     </div>
 

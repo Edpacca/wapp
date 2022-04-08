@@ -1,52 +1,66 @@
 import { foodItem } from "../models/FoodItem"
 
+export const entree: foodItem = 
+{
+    course: 'entree',
+    name: 
+        [
+            "Roasted red pepper and tomato soup",
+            "Zupa z pieczonej czerwonej papryki i pomidorów"
+        ],
+    description:
+    [
+        "with a basil cream drizzle",
+        ""
+    ],
+    isVegan: true,
+    value: 0
+}
+
 export const starters: foodItem[] = [
     {
         course: 'starter',
         name: 
             [
-                "Roasted Red Pepper and Tomato Soup",
+                "Locally cured charcuterie sharing platters",
                 "Zupa z pieczonej czerwonej papryki i pomidorów"
             ],
         description:
         [
-            "",
+            "with olives, sun blushed tomatoes and pickles.",
             ""
         ],
-        isVegan: true,
+        isVegan: false,
         value: 0
     },
     {
         course: 'starter',
         name: 
             [
-                "Smoked Scottish salmon",
-                "Łosoś Szkocki wędzony"
+                "Vegan and vegetarian hors d'oeuvres",
+                "Zupa z pieczonej czerwonej papryki i pomidorów"
             ],
         description:
         [
-            "served traditionally with lemon, and brown bread.",
-            "podawane tradycyjnie z cytryną i ciemnym pieczywem."
-        ],
-        isVegan: false,
-        value: 1
-    },
-    {
-        course: 'starter',
-        name: 
-            [
-                "Pear, stilton and walnut salad",
-                "Sałatka z grszki, stilton i orzechów"
-            ],
-        description:
-        [
-            "",
+            "with flatbreads and dips",
             ""
         ],
-        isVegan: false,
-        value: 2
+        isVegan: true,
+        value: 0
+    }
+]
+
+
+export const setStarter = [
+    {
+        title: "Entree",
+        foodItems: [ entree ]
     },
-];
+    {
+        title: "Starters",
+        foodItems: starters
+    }
+]
 
 export const mains: foodItem[] = [
     {

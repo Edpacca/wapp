@@ -1,13 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { foodItem } from "../../models/FoodItem"
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { CourseType } from "../../models/Course";
 
-export type Course = 'starter' | 'main' | 'dessert';
-
-export function MenuCourse(props: { 
-    courseTitle: string, course: Course, foodItems: foodItem[], 
+export function MenuChoice(props: { 
+    courseTitle: string, course: CourseType, foodItems: foodItem[], 
     isVegan: boolean, languageIndex: 0 | 1, 
-    choice: number | undefined, setChoice: (choice: number | undefined, param: Course) => void}) {
+    choice: number | undefined, setChoice: (choice: number | undefined, param: CourseType) => void}) {
     
     return (
             <div className={`course-sheet bkg-${props.course}`}>
@@ -29,8 +28,8 @@ export function MenuCourse(props: {
     )
 }
 
-function courseOptions(course: Course, foodItems: foodItem[], isVegan: boolean, index: 1 | 0, 
-    choice: number | undefined, setChoice: (choice: number | undefined, param: Course) => void) {
+function courseOptions(course: CourseType, foodItems: foodItem[], isVegan: boolean, index: 1 | 0, 
+    choice: number | undefined, setChoice: (choice: number | undefined, param: CourseType) => void) {
     return (
         foodItems.filter(option => isVegan ? option.isVegan : option)
         .map(option => {
@@ -45,7 +44,7 @@ function courseOptions(course: Course, foodItems: foodItem[], isVegan: boolean, 
     )
 }
 
-function renderOption(option: foodItem, index: number, course: Course,  isSelected: boolean, setChoice: (choice: number | undefined, param: Course) => void,) {
+function renderOption(option: foodItem, index: number, course: CourseType,  isSelected: boolean, setChoice: (choice: number | undefined, param: CourseType) => void,) {
     
     return (
         <>
@@ -54,7 +53,7 @@ function renderOption(option: foodItem, index: number, course: Course,  isSelect
                             {isSelected && <FontAwesomeIcon icon={faCheck} size="2x" className="course-check"/>}
                     </button>
                     <span>
-                        {option.name[index]}
+                        {option.name[index]} {option.isVegan ? <span className="vegan-option">(v)</span> : ""}
                         <span className="food-description">
                             <br/>{option.description[index]}
                         </span>
