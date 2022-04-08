@@ -67,12 +67,12 @@ export const mains: foodItem[] = [
         course: 'main',
         name: 
             [
-                "Trio of baked lamb cutlets",
+                "Canon of Lamb",
                 "Trio pieczonych kotletów jagnięcych"
             ],
         description:
         [
-            "set on a minted potato cake with recurrant and red wine gravy.",
+            "with a red wine and tomato reduction, pea and minted potatoes, local Kinnell Farm vegetables",
             "na torcie ziemniaczanym z miętą z sosem rekurencyjnym i czerwonym winem."
         ],
         isVegan: false,
@@ -82,12 +82,12 @@ export const mains: foodItem[] = [
         course: 'main',
         name: 
             [
-                "Herb-crusted haddock",
+                "Herb-crusted baked cod",
                 "Plamiak w skórce ziołowej"
             ],
         description:
         [
-            "baked with cherry tomatoes",
+            "with a red wine and tomato reduction, pea and minted potatoes, local Kinnell Farm vegetables",
             "zapiekane z pomidorkami koktajlowymi"
         ],
         isVegan: false,
@@ -97,16 +97,31 @@ export const mains: foodItem[] = [
         course: 'main',
         name: 
             [
-                "Courgette and nut bake",
+                "Sunflower seed and sage Risotto",
                 "Zapiekanka z cukinii i orzechów"
             ],
         description:
         [
-            "served with a tomato compote",
+            "with butternut squash",
             "podawany z kompotem pomidorowym"
         ],
         isVegan: true,
         value: 2
+    },
+    {
+        course: 'main',
+        name: 
+            [
+                "Tuscan spaghetti",
+                "with tomatoes, olives, peppers, garlic and rocket"
+            ],
+        description:
+        [
+            "",
+            "podawany z kompotem pomidorowym"
+        ],
+        isVegan: true,
+        value: 3
     },
 ];
 
@@ -115,27 +130,27 @@ export const desserts: foodItem[] = [
         course: 'dessert',
         name: 
             [
-                "Chocolate brownie",
+                "Warm chocolate brownie",
                 "Ciasto czekoladowe"
             ],
         description:
         [
-            "served with chocolate Sauce and vanilla ice-cream",
+            "served with Scottish rasberries, compote and chantilly cream",
             "podawany z sosem czekoladowym i lodami waniliowymi"
         ],
-        isVegan: false,
+        isVegan: true,
         value: 0
     },
     {
         course: 'dessert',
         name: 
             [
-                "Fresh fruit salad",
+                "Scottish Cranachan",
                 "Świeża sałatka owocowa"
             ],
         description:
         [
-            "",
+            "with toasted oats, rasberries, whiskey, local honey and cream",
             ""
         ],
         isVegan: true,
@@ -145,12 +160,12 @@ export const desserts: foodItem[] = [
         course: 'dessert',
         name: 
             [
-                "Cheese Platter",
+                "Cheese board",
                 "Półmisek Serów"
             ],
         description:
         [
-            "served with oatcakes and crackers",
+            "served with figs, fruit, homemade chutneys, oatcakes and crackers",
             "podawane z plackami owsianymi i krakersami"
         ],
         isVegan: false,

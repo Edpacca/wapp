@@ -53,6 +53,8 @@ export const GENERAL_INFO: InfoProps[] = [
                 "You can filter to show only vegan options with the switch at the top of the menu.",
                 "Enter any special dietary requirements such as \"gluten free\" in the text box at the bottom.",
                 "",
+                "(and yes, the desserts are all vegan!)",
+                "",
                 "When you're ready hit submit, and then confirm to save your choices.",
                 "You can change your mind up until the end of June",
                 "",
