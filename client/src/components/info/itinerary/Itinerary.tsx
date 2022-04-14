@@ -14,10 +14,11 @@ export function Itinerary(props: {setActive: (value: InfoPage) => void, language
     }
 
     const [activeDay, setActiveDay] = useState<number>(initialDay);
+    const scrollToTop = () => {window.scrollTo(0, 0)}
 
     return (
         <div>
-            <div className="selector-wrapper">
+            <div>
                 <div className="lr-selector">
                     <img className="leaf-button l" src={leftLeaf} onClick={() => setActiveDay(((activeDay - 1) + 4) % 4)} alt={""}/>
                     <div><h1>{DAYS[activeDay].title[props.languageIndex]}</h1></div>
@@ -43,27 +44,53 @@ export function Itinerary(props: {setActive: (value: InfoPage) => void, language
                     }
                 </div>    
             </div>
+            <div className="selector-wrapper">
+                <div className="lr-selector">
+                    <img className="leaf-button l" src={leftLeaf} onClick={() =>{ setActiveDay(((activeDay - 1) + 4) % 4); scrollToTop(); }} alt={""}/>
+                    <div><h1>{DAYS[activeDay].title[props.languageIndex]}</h1></div>
+                    <img className="leaf-button r" src={rightLeaf} onClick={() =>{ setActiveDay((activeDay + 1) % 4); scrollToTop(); }} alt={""}/>
+                </div>
+            </div>
         </div>
     )
 }
 
 function renderActivity(activity: Activity, languageIndex: 1 | 0) {
 
-    const title = activity.url 
-    ? <a href={activity.url} className="link">{activity.heading[languageIndex]}</a> 
-    : activity.heading[languageIndex];
+    const location = activity.url 
+    ? <a href={activity.url} className="link">{activity.location}</a> 
+    : activity.location;
 
     return(
         <li key={activity.heading[0]} className="activity-list">
             <div>
                 <img src={activity.icon} alt={activity.heading[0]} className="activity-icon"/>
-                <div className="link">{title}</div>
+                <div className="title">{activity.heading[languageIndex]}</div>
                 <div className="time">{activity.time[languageIndex]}</div>
+                <div className="time">{location}</div>
                 {
                     activity.details &&
-                   <p>{activity.details[languageIndex]}</p>
+                   <p>{parseDetails(activity.details[languageIndex])}</p>
+                }
+                {
+                    activity.extraJSX &&
+                    activity.extraJSX()
                 }
             </div>
         </li>
     )
+}
+
+function parseDetails(details: String): JSX.Element {
+    const detailsList = details.split("%");
+    return(
+        <>
+        {
+            detailsList.map(detail => {
+                return <p>{detail}</p>
+            })
+        }
+        </>
+    ) 
+    
 }

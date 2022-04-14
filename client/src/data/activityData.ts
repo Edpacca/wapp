@@ -10,6 +10,7 @@ import disco from '../assets/icons/disco.svg';
 import footsteps from '../assets/icons/footsteps.svg';
 import pingpong from '../assets/icons/pingpong.svg';
 import { days, times } from './constantsEngPol';
+import { Songs } from '../components/info/itinerary/Songs';
 
 export interface Activity {
     heading: string[],
@@ -18,7 +19,8 @@ export interface Activity {
     subheading?: string[],
     details?: string[]
     url?: string
-    icon?: string
+    icon?: string,
+    extraJSX?: () => JSX.Element,
 }
 export interface Day {
     date: Date,
@@ -86,14 +88,14 @@ export const DAYS: Day[] = [
         activities: [
             {
                 heading: ["Family meal"],
-                details: ["Starting with a family meal at the house. Due to space and prep this is just for folk staying at the house with the Bridge and Groom but we'll be heading to the pub right afterwards to meet up with anyone else who's keen for a greeting drink. "],
+                details: ["Starting with a family meal at the house. Due to space this is only for folk staying at the house with the Bridge and Groom, but we'll be heading to the pub right afterwards to meet up with anyone else who's keen for a greeting drink."],
                 location: "House at Bridge of Lochay",
                 time: ["7pm", "7pm"],
                 icon: house,
             },
             {
                 heading: ["Pub trip"],
-                details: ["A trip to a local pub to meet up with everyone, have a pint and say hi! The link to the pub in question should be below but give Ala or Eddie a text if you want confirmation. "],
+                details: ["A trip to a local pub to meet up with everyone, have a pint and say hi! The yellow text above should be a link to the pub, but give Ala or Eddie a text if you want confirmation."],
                 location: "The Pub - Falls of Dochart Inn",
                 time: ["~9pm", "~9pm"],
                 url: "https://www.fallsofdochartinn.co.uk/",
@@ -101,7 +103,7 @@ export const DAYS: Day[] = [
             },
             {
                 heading: ["Hangout"],
-                details: ["After this there's a chance to come back to the House and play some games and hang out. Because there is no bar at the House and we'll be saving most of the booze for Saturday, it'd be good to bring along a bottle or some cans for yourself if you're wanting a tipple. Ala and Eddie will try their best to get an earlyish night, but we know how these things go.."],
+                details: ["After this there's a chance to come back to the House and play some games and hang out. Because there is no bar at the House and we'll be saving most of the booze for Saturday, it'd be good to bring along a bottle or some cans for yourself if you're wanting a tipple. Ala and Eddie will try their best to get an earlyish night, but we know how these things go..."],
                 location: "House at Bridge of Lochay",
                 time: ["~11pm", "~11pm"],
                 icon: pingpong,
@@ -115,7 +117,7 @@ export const DAYS: Day[] = [
         activities: [
             {
                 heading: ["Breakfast at the house",],
-                details: ["For those staying in the House - a help yourself breakfast situation where we plan to have a bunch of different cereals, milk, bread, eggs and bacon available to get yourself fed. We'd ask if you'd kindly make sure you clear up after yourselves as there are no staff to do this, it's all on us. The caterers will be arriving arround midday to begin their preparation so ideally we'd like breakfast things packed up by 11:30. Let us know if you've any questions.",],
+                details: ["For those staying in the House - a help yourself breakfast situation where we plan to have a bunch of different cereals, milk, bread, eggs and bacon available to get yourself fed. % We'd ask if you'd kindly make sure you clear up after yourselves as there are no staff to do this, it's all on us. The caterers will be arriving arround midday to begin their preparation so ideally we'd like breakfast things packed up by 11:30. Let us know if you've any questions.",],
                 location: "House at Bridge of Lochay",
                 time: ["Morning", "Poranek"],
                 icon: coffee
@@ -129,11 +131,12 @@ export const DAYS: Day[] = [
             },
             {
                 heading: ["Wedding Ceremony",],
-                details: ["The ceremony itself! This will happen in the ruins of Finlarig Castle which is a 10-15 minute walk from the house. This setting is special to us as we love the outdoors and adventure. And castles are awesome. We'd ask everyone to kindly arrive at least 15 minutes early and to help with any set up if possible - the Best-Men Joe and Adam and and the Maid of Honour Jagoda will know what needs to be done. Remember that this is an outdoor ceremony so be prepared for a little bit of uneven terrain! The grounds are up a small hill and the paths can be a little unkempt. The ceremony will take about 30 minutes during which time most people will need to stand. We will provide seating for anyone that requests it though. This ceremony will involve a little bit of singing, if you're wanting to join in please find the lyrics and a link to the songs below! If the weather is looking really bad we will conduct the ceremony at the House, but you will be well informed if this is the case.", ""],
+                details: ["The ceremony itself! This will happen in the ruins of Finlarig Castle which is a 10-15 minute walk from the house. This setting is special to us as we love the outdoors and adventure. And castles are awesome. % We'd ask everyone to kindly arrive at least 15 minutes early and to help with any set up if possible - the Best-Men Joe and Adam and and the Maid of Honour Jagoda will know what needs to be done. % Remember that this is an outdoor ceremony so be prepared for a little bit of uneven terrain! The grounds are up a small hill and the paths can be a little unkempt. % The ceremony will take about 30 minutes during which time most people will need to stand. We will provide seating for anyone that requests it though. % This ceremony will involve a little bit of singing, if you're wanting to join in please find the lyrics and a link to the songs below! If the weather is looking really bad we will conduct the ceremony at the House, but you will be well informed if this is the case.", ""],
                 location: "Finlarig Castle Ruins",
                 time: ["1pm", "1pm"],
                 url: "https://www.undiscoveredscotland.co.uk/killin/finlarigcastle/index.html",
-                icon: rings
+                icon: rings,
+                extraJSX: Songs,
             },
             {
                 heading: ["Photographs",],

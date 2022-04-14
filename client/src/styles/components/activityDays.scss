@@ -25,7 +25,7 @@
 }
 
 .selector-wrapper {
-    padding-top: 5vh;
+    padding-bottom: 2em;
 }
 
 @media screen and (max-width: 540px) {
@@ -62,10 +62,16 @@
     }
 
     .link {
-        font-size: 2rem;
+        font-weight: bold;
+        color: goldenrod;
+    }
+    
+    .title {
+        font-weight: bold;
         color: white;
+        font-size: 2rem;
         font-family: initial;
-    }   
+    }
 }
 
 .activity-list {
