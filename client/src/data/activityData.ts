@@ -84,7 +84,7 @@ export const DAYS: Day[] = [
     {
         date: new Date(2022, 7, 15),
         title: days.friday,
-        summary: ["Friday will be a relaxed time for folk to turn up and get settled",],
+        summary: ["Friday will be a relaxed time for folk to turn up and get settled.",],
         activities: [
             {
                 heading: ["Family meal"],
@@ -94,7 +94,7 @@ export const DAYS: Day[] = [
                 icon: house,
             },
             {
-                heading: ["Pub trip"],
+                heading: ["Welcome drinks"],
                 details: ["A trip to a local pub to meet up with everyone, have a pint and say hi! The yellow text above should be a link to the pub, but give Ala or Eddie a text if you want confirmation."],
                 location: "The Pub - Falls of Dochart Inn",
                 time: ["~9pm", "~9pm"],
@@ -171,30 +171,37 @@ export const DAYS: Day[] = [
     {
         date: new Date(2022, 7, 17),
         title: days.sunday,
-        summary: ["Friday will be a relaxed time for folk to turn up and get settled",],
+        summary: ["Sunday will be the slow hangover day. Chill out, sit in the hot tub. Finish off the booze!",],
         activities: [
             {
-                heading: ["Breakfast",],
-                details: ["A big ol' breaky to beat the hangover",],
-                location: "House at Bridge of Lochay",
+                heading: ["Breakfast?",],
+                details: ["Sort yerselves out!",],
+                location: "Wherever",
                 time: times.morning,
                 icon: coffee,
             },
             {
-                heading: ["Wee Hike",],
-                details: ["A short outdoor adventure around Killin",],
+                heading: ["Group Walk",],
+                details: ["Check out the map tab to see a few potential walks we've found that might suit people. Walk A is a gentle stroll about a nearby lake. Walk B is a shorter but more strenous hike up the nearby hill - might not be for everyone. We will make sure to coordinate and let everyone know when these walks will happen, but we're not setting a concrete time just yet.",],
                 location: "Killin",
-                time: times.noon,
+                time: times.afternoon,
                 url: "https://www.walkhighlands.co.uk/perthshire/loch-tay.shtml",
                 icon: footsteps,
             },
             {
-                heading: ["Pub trip",],
-                details: ["A trip to the local pub",],
-                location: "House at Bridge of Lochay",
-                time: times.evening,
+                heading: ["Pub trip?",],
+                details: ["A post walk pint is always welcome. If we have a lot of alcohol left over then maybe we'll just hang out at the House! Again we'll make sure everyone is made aware of the plans",],
+                location: "A pub / the House",
+                time: times.afternoon,
                 url: "https://www.fallsofdochartinn.co.uk/",
                 icon: barrel
+            },
+            {
+                heading: ["Games Contest"],
+                details: ["We'll get those interested parties together to compete at pool, ping pong and whatever people can think of. The winner may get a prize...",],
+                location: "House at Bridge of Lochay",
+                time: times.evening,
+                icon: pingpong
             },
         ]
     },
@@ -205,7 +212,7 @@ export const DAYS: Day[] = [
         activities: [
             {
                 heading: ["Departure",],
-                details: ["Final goodbyes",],
+                details: ["Final goodbyes. We have be out by 10am and say our farewells. Ala and Eddie will likely have to leave fairly promptly to pack as they leave for their honeymoon in Malta the morning after!",],
                 location: "House at Bridge of Lochay",
                 time: ["10am" , "10am"],
                 icon: house
