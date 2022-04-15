@@ -140,28 +140,28 @@ export const DAYS: Day[] = [
             },
             {
                 heading: ["Photographs",],
-                details: ["Group photos then individual photos",],
+                details: ["After the ceremony we'll ask everyone to hang around in the Castle grounds to take some group photos - we'll start with one of everybody and then do seperate groups: % Families, Friends, Bridesmades, Groomsmen and finally the Newlyweds will get their couple photos taken, while this happens we'll ask everyone to head back to the House for some drinks and nibbles. % We may get some of you to help by taking back anything that needs clearing up after the ceremony.",],
                 location: "Finlarig Castle",
                 time: ["2pm", "2pm"],
                 icon: camera
             },
             {
                 heading: ["Drinks Reception",],
-                details: ["While the bride and groom get their couple photos taken, the rest of you can head back to the house for some afternoon drinks, nibbles and games.",],
+                details: ["While the bride and groom get their photos taken, the rest of you can head back to the house for some afternoon drinks, nibbles and games. This is a fairly lax time for everyone to take a break and kick back. % When the couple are back we toast with some bubbles and begin the festivities! We'll have kegs of Pale ale and IPA in the games room, as well as a DIY cocktail bar. Wine will be near the kitchen. Go wild but be concious that this is for everyone and is to last the whole evening! % We also plan to have a few live music performances in an open mic setting, so if you fancy playing something then bring an instrument or sing a song! There's plenty of musical folk so a jam is definitely on the cards.", ""],
                 location: "House at Bridge of Lochay",
                 time: ["2:30pm", "2:30pm"],
                 icon: drink
             },
             {
                 heading: ["Dinner",],
-                details: ["Food times",],
+                details: ["We'll move into the Dining Room at the back once everything is ready and begin with some speeches. See the seating plan to find out where you're sat. Starters are all the same, soup if you want it and sharing platters with both meat and vegan options. We plan for dinner to be enjoyed at a leisurely pace and will pop a toast or two in between courses. % The wonderful food is all prepared by our fantastic local caterers \"Peaches and Pickles\"!", ""],
                 location: "House at Bridge of Lochay",
                 time: ["6pm", "6pm"],
                 icon: knifeFork
             },
             {
                 heading: ["Dancing",],
-                details: ["Dance times",],
+                details: ["We'll kick things off with the couple's first dance and then let the evening party commence!",],
                 location: "House at Bridge of Lochay",
                 time: ["8pm", "8pm"],
                 icon: disco
