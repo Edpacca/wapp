@@ -7,7 +7,8 @@ import {
     castle, tree, heart, ringL, ringR1, ringR2,
     cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter, cameraFlash,
     drinks,
-    discoball
+    discoball,
+    dinnerChandelier, dinnerChairL, dinnerChairR, dinnerTable, dinnerWineC, dinnerWineL, dinnerWineR
 
 } from "./Sprites";
 import { BIG_DAY_SCHEDULE } from "../../../data/activityData";
@@ -96,7 +97,7 @@ export function BigDay(props: {languageIndex: 0 | 1}) {
             <TimelineInfo activity={BIG_DAY_SCHEDULE[3]} languageIndex={props.languageIndex}/>
 
             <AnimationPanel 
-                sprites={[]}
+                sprites={[dinnerChandelier, dinnerTable, dinnerChairL, dinnerChairR,  dinnerWineC, dinnerWineL, dinnerWineR]}
                 panel={panelProps}
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}

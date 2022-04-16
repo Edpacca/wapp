@@ -19,6 +19,13 @@ import cameraOuterSprite from '../../../assets/sprites/camera-outer-ring.svg';
 import cameraFlashSprite from '../../../assets/sprites/camera-flash.svg';
 import drinksSprite from '../../../assets/sprites/drinks.svg';
 import discoBlank from '../../../assets/sprites/discoball/disco-none.svg';
+import chandelier from '../../../assets/sprites/dinner-chandelier.svg';
+import table from '../../../assets/sprites/dinner-table.svg';
+import chairL from '../../../assets/sprites/dinner-chairL.svg';
+import chairR from '../../../assets/sprites/dinner-chairR.svg';
+import wineL from '../../../assets/sprites/dinner-wineL.svg';
+import wineR from '../../../assets/sprites/dinner-wineR.svg';
+import wineC from '../../../assets/sprites/dinner-wineC.svg';
 
 // Registy
 export const scroll: ScrollAnimationProps = {
@@ -244,5 +251,84 @@ export const discoball: ScrollAnimationProps = {
     initialPosition: { x: 0.5, y: -0.3},
     finalPosition: { x: 0.5, y: 0.3 },  
     fadeInBounds: [ 1, 50 ],
+    fadeOutBounds: [ 90, 100 ]
+}
+
+// Dinner
+
+export const dinnerChandelier: ScrollAnimationProps = {
+    id: "sa-chandelier", 
+    svg: chandelier, 
+    width: 0.7,
+    animationBounds: [ 65, 80 ],
+    initialPosition: { x: 0.5, y: -0.3},
+    finalPosition: { x: 0.5, y: 0.1 },  
+    fadeInBounds: [ 55, 60 ],
+    fadeOutBounds: [ 90, 100 ]
+}
+
+export const dinnerTable: ScrollAnimationProps = {
+    id: "sa-table", 
+    svg: table, 
+    width: 0.7,
+    animationBounds: [ 0, 30 ],
+    initialPosition: { x: 0.5, y: 0.5},
+    finalPosition: { x: 0.5, y: 0.1 },  
+    fadeInBounds: [ 0, 10 ],
+    fadeOutBounds: [ 90, 100 ]
+}
+
+export const dinnerChairL: ScrollAnimationProps = {
+    id: "sa-chairL", 
+    svg: chairL, 
+    width: 0.7,
+    animationBounds: [ 20, 50 ],
+    initialPosition: { x: 0.0, y: 0.1},
+    finalPosition: { x: 0.5, y: 0.1 },  
+    fadeInBounds: [ 30, 10 ],
+    fadeOutBounds: [ 90, 100 ]
+}
+
+export const dinnerChairR: ScrollAnimationProps = {
+    id: "sa-chairR", 
+    svg: chairR, 
+    width: 0.7,
+    animationBounds: [ 20, 50 ],
+    initialPosition: { x: 1.0, y: 0.1},
+    finalPosition: { x: 0.5, y: 0.1 },  
+    fadeInBounds: [ 30, 10 ],
+    fadeOutBounds: [ 90, 100 ]
+}
+
+export const dinnerWineL: ScrollAnimationProps = {
+    id: "sa-wineL", 
+    svg: wineL, 
+    width: 0.7,
+    animationBounds: [ 40, 55 ],
+    initialPosition: { x: 0.5, y: -0.5},
+    finalPosition: { x: 0.5, y: 0.1 },  
+    fadeInBounds: [ 50, 55 ],
+    fadeOutBounds: [ 90, 100 ]
+}
+
+export const dinnerWineR: ScrollAnimationProps = {
+    id: "sa-wineR", 
+    svg: wineR, 
+    width: 0.7,
+    animationBounds: [ 45, 60 ],
+    initialPosition: { x: 0.5, y: -0.5},
+    finalPosition: { x: 0.5, y: 0.1 },  
+    fadeInBounds: [ 55, 60 ],
+    fadeOutBounds: [ 90, 100 ]
+}
+
+export const dinnerWineC: ScrollAnimationProps = {
+    id: "sa-wineC", 
+    svg: wineC, 
+    width: 0.7,
+    animationBounds: [ 50, 70 ],
+    initialPosition: { x: 0.5, y: -0.5},
+    finalPosition: { x: 0.5, y: 0.1 },  
+    fadeInBounds: [ 60, 65 ],
     fadeOutBounds: [ 90, 100 ]
 }
