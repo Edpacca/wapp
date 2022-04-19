@@ -99,7 +99,7 @@ export async function getGuestObjectByFamily(family) {
     return guestResponse;
 }
 
-export async function batchUpdateGuests(request, result) {
+export async function updateGuests(request, result) {
     const { edits, deletes } = request.body;
 
     await edits.forEach(guest => {
@@ -168,7 +168,7 @@ export async function batchUpdateGuests(request, result) {
     return result.status(200).json("updated");
 }
 
-export async function putUpdateGuest(request, result) {
+export async function updateGuest(request, result) {
 
     const body = request.body
 
@@ -180,10 +180,10 @@ export async function putUpdateGuest(request, result) {
     }
 
     Guest.findByIdAndUpdate({_id: request.body.id}, {
-        "starter": body.starter,
-        "main": body.main,
-        "dessert": body.dessert,
-        "diet": body.diet,
+        "starter": body.starter ?? null,
+        "main": body.main ?? null,
+        "dessert": body.dessert ?? null,
+        "diet": body.diet ?? null,
         "seat": body.seat,
         "room": body.room }, (err, guest) => {
         

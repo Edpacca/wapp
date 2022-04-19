@@ -1,3 +1,5 @@
+@import '../common/colours.scss';
+
 .day-title {
     text-align: center;
     margin: auto;
@@ -23,7 +25,7 @@
 }
 
 .selector-wrapper {
-    padding-top: 5vh;
+    padding-bottom: 2em;
 }
 
 @media screen and (max-width: 540px) {
@@ -56,14 +58,20 @@
 
     .time {
         font-weight: bold;
-        color: yellowgreen;
+        color: $appgreen;
     }
 
     .link {
-        font-size: 2rem;
+        font-weight: bold;
+        color: goldenrod;
+    }
+    
+    .title {
+        font-weight: bold;
         color: white;
+        font-size: 2rem;
         font-family: initial;
-    }   
+    }
 }
 
 .activity-list {

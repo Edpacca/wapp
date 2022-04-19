@@ -13,10 +13,11 @@
     background-size: 100%;
     border-radius: 8px;
     color: $ink;
+    font-size: calc(13px + 0.7vmin);
     margin: 2rem auto;
     padding-bottom: 0.5em;
     overflow-wrap: wrap;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
     width: 100%;
     h2 {
         padding-top: 1em;
@@ -37,9 +38,24 @@
     background-image: url('/src/assets/backgrounds/menu-paper-dessert.webp');
 }
 
+.set-course-wrapper {
+    display: grid;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.set-course {
+    padding: 0.75em;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    justify-content: start;
+    column-gap: 1em;
+}
+
 .course-options-wrapper {
     display: grid;
-    font-size: calc(10px + 1vmin);
     align-content: center;
     align-items: center;
     justify-content: start;
@@ -96,4 +112,9 @@
 
 .course-option-selected {
     border: 2px solid $ink;
+}
+
+.vegan-option {
+    color: green;
+    font-style: italic;
 }

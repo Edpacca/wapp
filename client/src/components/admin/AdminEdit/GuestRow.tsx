@@ -6,7 +6,7 @@ import { stageDeletedGuest, stageGuest, unstageDeletedGuest, unstageGuest } from
 import { GuestRowActive } from "./GuestRowActive";
 import { GuestRowInactive } from "./GuestRowInactive";
 
-export function GuestRow(props: {guest: Guest, starters: foodItem[], mains: foodItem[], desserts: foodItem[]}) {
+export function GuestRow(props: {guest: Guest, mains: foodItem[], desserts: foodItem[]}) {
     const [canEdit, setCanEdit] = useState(false);
     const [canDelete, setCanDelete] = useState(false);
     const dispatch = useAppDispatch();
@@ -37,9 +37,9 @@ export function GuestRow(props: {guest: Guest, starters: foodItem[], mains: food
     return (
         canEdit && !canDelete
         ? <GuestRowActive 
-            guest={props.guest} starters={props.starters} mains={props.mains} desserts={props.desserts} 
+            guest={props.guest} mains={props.mains} desserts={props.desserts} 
             active={canEdit} setActive={setCanEditDispatch} canDelete={canDelete} setCanDelete={setCanDeleteDispatch} /> 
-        : <GuestRowInactive guest={props.guest} starters={props.starters} mains={props.mains} desserts={props.desserts} 
+        : <GuestRowInactive guest={props.guest} mains={props.mains} desserts={props.desserts} 
             active={canEdit} setActive={setCanEditDispatch} canDelete={canDelete} setCanDelete={setCanDeleteDispatch}/>
     )
 }

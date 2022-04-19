@@ -1,12 +1,26 @@
+@import '../common/colours.scss';
+
 .horizontal-bar {
     width: 80vw;
     border-top: 1px solid white;
     margin: 2em auto;
 }
 
-.large-info {
+.home-large-info-wrap {
     font-weight: lighter;
     font-size: calc(8px + 2vmax);
+    margin-bottom: 1em;
+    .home-large-info {
+        margin: 0.2em;
+    }
+}
+
+.home-info {
+    font-family: "system-ui";
+    font-size: 1.1em;
+    font-weight: lighter;
+    margin: 1em;
+    letter-spacing: 0.1em;
 }
 
 .med-info {
@@ -29,10 +43,27 @@
 }
 
 .info-edit:hover {
-    color: yellowgreen;
+    color: $appgreen;
 }
 
 .selected-arrival {
     padding: 0.5em;
     padding-bottom: 0.1em;
+}
+
+.seedling {
+    margin: 0.5em;
+    font-size: 3em;
+    color: $appgreen;
+    transition: 3s;
+}
+
+.seedling:hover {
+    font-size: 6em;
+    transition: 3s;
+}
+
+.seedling:active {
+    font-size: 6em;
+    transition: 3s;
 }

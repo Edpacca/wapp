@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="152.50838mm"
+   height="194.80701mm"
+   viewBox="0 0 152.50838 194.80701"
+   version="1.1"
+   id="svg3145"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="dinner-table.svg">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     id="namedview3147"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.94867184"
+     inkscape:cx="97.145934"
+     inkscape:cy="354.83906"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1072"
+     inkscape:window-y="394"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:snap-global="false"
+     showguides="false" />
+  <defs
+     id="defs3142" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-29.050399,-3.598509)">
+    <path
+       style="opacity:0.98999999;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.4000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 94.280524,131.75038 c -11.986185,-0.0195 -27.023819,0.34619 -44.271198,1.70791 l -2.830318,0.79168 c -2.83057,0.79207 11.295214,2.64953 14.642,2.78898 3.346783,0.13945 26.216546,1.6738 31.933967,1.6738 1.359566,0 4.47944,-0.0333 8.411375,-0.0832 l -0.46302,48.47197 c 0,0 -0.27863,2.09176 -1.39423,3.76515 -1.115594,1.67339 -0.697579,2.2311 -1.534276,2.64945 -0.07011,0.0351 -0.0202,0.0688 0.114721,0.1018 -3.838236,0.51176 -6.176564,1.46474 -6.109187,2.48977 0.110707,1.55026 5.601716,2.78991 12.301062,2.77709 6.69908,-0.0128 12.10071,-1.27319 12.10107,-2.8236 -0.10835,-0.20525 -0.0888,-0.007 -0.007,-0.0935 -0.11846,-0.79449 -1.67846,-1.54063 -4.2969,-2.05517 -0.15785,-0.2254 -0.27786,-0.39993 -0.57722,-0.81442 -1.81285,-2.51009 -2.37063,-2.51034 -2.78898,-4.18373 -0.4118,-1.6472 -1.47843,-48.87461 -1.51205,-50.36643 12.60643,-0.17589 28.98111,-0.44089 32.7489,-0.53278 15.46688,-0.43203 36.67061,-4.0552 12.04475,-4.88395 -16.19924,-0.0824 -22.92223,-0.69387 -29.20339,-0.69401 -3.53316,-8e-5 -13.89954,-0.66169 -29.310356,-0.68678 z"
+       id="path819"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccsscccccccccccccccscc" />
+  </g>
+</svg>

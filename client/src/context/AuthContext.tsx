@@ -35,12 +35,10 @@ function AuthContextProvider(props: any) {
         }
     }
 
-    // eslint-disable-next-line
     useEffect(() => {
             if (loginContext === undefined) {
                 authenticateSession();
             }
-    // eslint-disable-next-line
     }, []);
     
     return (

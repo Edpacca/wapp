@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPiggyBank } from "@fortawesome/free-solid-svg-icons"
-import { copyString } from "../../common/CopyString"
+import { copyString } from "../../common/copyString"
 
 export function Bank() {
     return (

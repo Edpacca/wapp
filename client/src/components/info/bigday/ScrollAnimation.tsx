@@ -24,7 +24,6 @@ export function ScrollAnimation(props: { animation: ScrollAnimationProps, panel:
 
     useEffect(() => {
         handleScrollAnimation();
-    // eslint-disable-next-line
     }, [props.yScrollPercent]);
 
     function handleScrollAnimation() {

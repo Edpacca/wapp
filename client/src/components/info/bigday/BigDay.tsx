@@ -7,7 +7,8 @@ import {
     castle, tree, heart, ringL, ringR1, ringR2,
     cameraTop1, cameraTop2, cameraBottom, cameraL, cameraR, cameraInner, cameraOuter, cameraFlash,
     drinks,
-    discoball
+    discoball,
+    dinnerChandelier, dinnerChairL, dinnerChairR, dinnerTable, dinnerWineC, dinnerWineL, dinnerWineR
 
 } from "./Sprites";
 import { BIG_DAY_SCHEDULE } from "../../../data/activityData";
@@ -43,8 +44,6 @@ export function BigDay(props: {languageIndex: 0 | 1}) {
         const yScroll = window.scrollY;
         const relativeYScroll = yScroll % (panelHeight + panelGap);
         const yScrollPercent = 100 * relativeYScroll / panelHeight
-        // const element = document.getElementById("debug");
-        // element!.style.marginTop = yScroll + "px";
         setYScroll(yScroll);
         setYScrollPercent(yScrollPercent);
     } 
@@ -56,7 +55,6 @@ export function BigDay(props: {languageIndex: 0 | 1}) {
                 window.removeEventListener("scroll", handleScroll);
     
             };
-    // eslint-disable-next-line
     }, []);
 
     return (
@@ -66,13 +64,6 @@ export function BigDay(props: {languageIndex: 0 | 1}) {
                 <div className="sub">{dateBigDay[props.languageIndex]}</div>
                 <div className="sub2">{subtextBigDay[props.languageIndex]}</div>
             </div>
-            {/* <div className="debug-scroll" id="debug">
-                <span>{yScrollPercent}</span>
-                <br/>
-                <span>{activePanel}</span>
-                <br/>
-                <span>{yScroll}</span>
-            </div> */}
             <AnimationPanel 
                 sprites={[scroll, quill, scrollA, scrollE]}
                 panel={panelProps}
@@ -106,7 +97,7 @@ export function BigDay(props: {languageIndex: 0 | 1}) {
             <TimelineInfo activity={BIG_DAY_SCHEDULE[3]} languageIndex={props.languageIndex}/>
 
             <AnimationPanel 
-                sprites={[]}
+                sprites={[dinnerChandelier, dinnerTable, dinnerChairL, dinnerChairR,  dinnerWineC, dinnerWineL, dinnerWineR]}
                 panel={panelProps}
                 yScrollPercent={yScrollPercent}
                 activePanel={activePanel}

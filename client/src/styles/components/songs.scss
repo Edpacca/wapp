@@ -1,0 +1,44 @@
+@import '../common/colours.scss';
+
+.song-wrapper {
+    font-family: initial;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .song-title {
+        font-size: 1.5em;
+        color: $appgreen;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    .song-title:hover {
+        text-decoration: underline;
+    }
+
+    .wee-flag {
+        width: 2em;
+        border-radius: 2px;
+        margin: 0.2em;
+    }
+
+    .lyric-link {
+        width: auto;
+        min-width: auto;
+    }
+
+    .song-sub {
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    .song-order {
+        font-size: 1.1em;
+        font-family: 'system-ui';
+        margin: 0.2em;
+    }
+}
+

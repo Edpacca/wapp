@@ -1,9 +1,8 @@
-
 @import '../common/colours.scss';
 
 .tableWrapper {
     width: 100%;
-    border: 1px solid greenyellow;
+    border: 1px solid $appgreen;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.438);
     padding: 0.5em 0;
@@ -16,7 +15,7 @@
     text-align: left;
     // font-size: 16px;
     display: grid;
-    grid-template-columns: 1fr 4fr 5fr 5fr 5fr 5fr 2fr 3fr 1fr;
+    grid-template-columns: 2fr 5fr 5fr 5fr 5fr 2fr 3fr 2fr;
     border-collapse: collapse;
     // vertical-align: top;
     // border-spacing: 0px;
@@ -77,13 +76,13 @@
 }
 
 .tableTextInput::placeholder {
-    color: greenyellow;
+    color: $appgreen;
     font-weight: bolder;
 }
 
 td.course {
     display: block;
-    color: greenyellow;
+    color: $appgreen;
     font-style: italic;
     text-overflow: ellipsis;
     max-width: 80%;
@@ -93,7 +92,7 @@ td.course {
 
 .outline {
     width: 100%;
-    border: 1px solid greenyellow;
+    border: 1px solid $appgreen;
     border-radius: 8px; 
 }
 
@@ -102,7 +101,7 @@ td.course {
     height: 100%;
     margin: auto;
     background-color: rgba(0, 0, 0, 0);
-    border: 1px solid yellowgreen;
+    border: 1px solid $appgreen;
     border-radius: 8px;
 }
 
@@ -133,7 +132,7 @@ td.course {
     text-align: left;
     font-size: 16px;
     display: grid;
-    grid-template-columns: 4fr 2fr 2fr 2fr 3fr 1fr 2fr;
+    grid-template-columns: 4fr 2fr 2fr 3fr 1fr 2fr;
     border-collapse: collapse;
     vertical-align: top;
     border-spacing: 0px;

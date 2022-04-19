@@ -10,6 +10,8 @@ import { Family } from "../../models/Family"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
 import { days, times } from '../../data/constantsEngPol';
+import { Seedling } from "./Seedling"
+import { HOME_DATA } from "../../data/homeData"
 
 export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (guest: Guest | undefined) => void, languageIndex: 0 | 1}) {
 
@@ -24,13 +26,13 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
 
     const arrivalStrings = {
         arrival: ["You're arriving", "Przyjeżdżasz w"],
-        departure: ["You're leaving", "Wyjeżdżasz w"]
+        departure: ["You're leaving", "Wyjeżdżasz w"],
+        notSet: ["Let us know when you plan to arrive  ", "Daj nam znać, kiedy planujesz przyjechać  "]
     }
 
     const redirectToMeal = (guestId: string) => {
         const guest = props.guests.find(guest => guest.id === guestId);
         props.setActiveGuest(guest);
-        // eslint-disable-next-line
         if (guest != undefined) dispatch(changePageUser('meal'));
     }
 
@@ -39,12 +41,15 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
             <div className="App-centered">
                 <img src={diamond} className="App-logo-homepage" alt="diamond"/>
             </div>
-            <GuestDropDown placeholder={props.family.name} guests={props.guests} selectOption={redirectToMeal}/>
-            <div className="large-info">
-                <p>16 - 07 - 22</p>
-                <p>House at the Bridge of Lochay</p>
-                <p>Killin, Scotland</p>
+            <div className="home-large-info-wrap">
+                <div className="home-large-info">16 - 07 - 22</div>
+                <div className="home-large-info">House at the Bridge of Lochay</div>
+                <div className="home-large-info">Killin, Scotland</div>
             </div>
+            <div className="home-info">
+                {HOME_DATA[props.languageIndex].map(info => <div>{info}</div>)}
+            </div>
+            <GuestDropDown placeholder={props.family.name} guests={props.guests} selectOption={redirectToMeal}/>
             <div className="sub-home">
                 <div className="horizontal-bar"/>
                 {
@@ -63,7 +68,7 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
                 {
                     !arrival?.arrivalDay &&
                     <div className="med-info">
-                        <span>Let us know when you plan to arrive</span>
+                        <span>{arrivalStrings.notSet[props.languageIndex]}&#8594;</span>
                         <span className="info-edit" onClick={() => setShowArrivalModal(true)}><FontAwesomeIcon icon={faEdit}/></span>
                     </div>
 
@@ -73,6 +78,7 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
                     <SubmitArrivalTimeModal setIsVisible={setShowArrivalModal} {...props}/>
                 }
             </div>
+            <Seedling/>
         </div>
     )
 }

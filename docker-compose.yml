@@ -1,6 +1,17 @@
 version: "3.7"
 
 services:
+  traefik:
+    container_name: traefik
+    image: traefik:alpine
+    ports:
+    - 80:80
+    - 443:443
+    - 8085:8085
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    - /traefik/traefik.yaml:/etc/traefik/traefik.yaml
+    - /traefik/acme.json:/acme.json
   wapp-client:
     build:
       context: ./client
@@ -9,17 +20,17 @@ services:
     container_name: wapp-client
     image: wapp-client
     restart: always
-    networks:
+    networks: 
     - wapp-net
     depends_on:
     - wapp-server
     stdin_open: true
     tty: true
     env_file: ./client/.env
-    environment:
-    - REACT_APP_EXPRESS_SERVER=${REACT_APP_EXPRESS_SERVER}
-    - REACT_APP_CLIENT_SERVER=${REACT_APP_CLIENT_SERVER}
-    - REACT_APP_CLIENT_TOKEN=${REACT_APP_CLIENT_TOKEN}
+    labels:
+    - "traefik.enable=true"
+    - "traefik.port=3000"
+    - "traefik.frontend.rule=Host:pandala.edpacca.co.uk"
   wapp-server:
     restart: always
     build:
@@ -33,14 +44,6 @@ services:
     depends_on:
     - mongo
     env_file: ./server/.env
-    environment:
-    - MONGO_URI=${MONGO_URI}
-    - TOKEN_KEY=${TOKEN_KEY}
-    - ADMIN_TOKEN_KEY=${ADMIN_TOKEN_KEY}
-    - API_PORT=${API_PORT}
-    - API_HOST=${API_HOST}
-    - CLIENT_SECRET=${CLIENT_SECRET}
-    - CLIENT_URL=${CLIENT_URL}
   mongo:
     container_name: mongo
     image: mongo

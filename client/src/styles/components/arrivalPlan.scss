@@ -1,20 +1,20 @@
 @import '../common/colours.scss';
 
 .arrival-bar {
-    color: yellowgreen;
+    color: $appgreen;
     font-weight: bold;
     background-color: $black50;
-    border: 1px solid yellowgreen;
+    border: 1px solid $appgreen;
     border-radius: 0 8px 8px 0;
     text-align: left;
     padding: 1em;
 }
 
 .arrival-bar-active {
-    color: yellowgreen;
+    color: $appgreen;
     font-weight: bold;
     background-color: $black50;
-    border: 1px solid yellowgreen;
+    border: 1px solid $appgreen;
     border-radius: 0 8px 8px 0;
     text-align: left;
     padding: 1em;

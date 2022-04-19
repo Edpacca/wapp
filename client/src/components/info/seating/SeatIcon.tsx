@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export const SeatIcon = (props: { seat: Seat }) => {
 
-    // eslint-disable-next-line
     const isBrideGroom = props.seat.seatNumber == 12 || props.seat.seatNumber == 14
     const seatStyle = isBrideGroom ? "seat bride-groom" : props.seat.isActive ? "seat active" : "seat"
     

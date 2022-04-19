@@ -7,7 +7,7 @@ import { getGuestObjectByFamily } from './guestController';
 import { InvalidCredentialsError, ServerError } from '../../constants/errors';
 import { getSeats } from './seatsController';
 import { LoginResponseSuccess, LoginResponseFailure } from '../../models/responses/loginResponse';
-import { getArrivals } from './arrivalController';
+import { getArrivalResponse } from './arrivalController';
 import { getRooms } from './roomController';
 
 export async function authenticate(request, result) {
@@ -28,10 +28,9 @@ export async function authenticate(request, result) {
                 const user = await User.findOne({family: name});
                 const guests = await getGuestObjectByFamily(name);
                 const seats = await getSeats();
-                // eslint-disable-next-line
                 const guestsWithRooms = guests.filter(guest => guest.room != null).length;
                 const rooms = guestsWithRooms > 0 ? await getRooms() : [];
-                const arrivals = await getArrivals();
+                const arrivals = await getArrivalResponse();
                 const userResponse: UserResponse = {
                     id: user._id,
                     family: {name: name, id: user.familyId},
@@ -54,7 +53,7 @@ export async function authenticate(request, result) {
     }
 }
 
-export async function loginUser(request, result) {
+export async function login(request, result) {
 
     try {
         const { family, password } = request.body;

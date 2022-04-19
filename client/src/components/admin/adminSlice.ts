@@ -25,7 +25,7 @@ const initialState: AdminState = {
 export const adminLogin = createAsyncThunk(
     'admin/adminLogin',
     async(request: AdminAuthenticationRequest) => {
-        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/admin/login`, {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/login/admin`, {
             credentials: 'include',
             method: 'POST',
             mode: 'cors',
@@ -86,11 +86,11 @@ export const getArrivals = createAsyncThunk(
     }
 );
 
-export const registerUser = createAsyncThunk(
-    'admin/registerUser',
+export const registerFamily = createAsyncThunk(
+    'admin/registerFamily',
     async(request: CreateFamily) => {
 
-        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/register/user`, {
+        const response = await fetch(`${process.env.REACT_APP_EXPRESS_SERVER}/register/family`, {
             credentials: 'include',
             method: 'POST',
             mode: 'cors',
@@ -177,13 +177,13 @@ export const adminSlice = createSlice({
         .addCase(adminLogin.fulfilled, (state, action) => {
                 state.status = 'idle';
         })
-        .addCase(registerUser.pending, (state) => {
+        .addCase(registerFamily.pending, (state) => {
             state.status = 'loading';
         })
-        .addCase(registerUser.rejected, (state) => {
+        .addCase(registerFamily.rejected, (state) => {
             state.status = 'failed';
         })
-        .addCase(registerUser.fulfilled, (state, action) => {
+        .addCase(registerFamily.fulfilled, (state, action) => {
                state.status = 'idle';
         })
         .addCase(addGuestToFamily.pending, (state) => {
