@@ -16,7 +16,13 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors({credentials: true, origin: [`${process.env.CLIENT_URL}`]}));
+app.use(cors({credentials: true, origin: 
+    [
+        `${process.env.CLIENT_URL}`,
+        `${process.env.CLIENT_URL_PORT}`,
+        `${process.env.CLIENT_DOCKER_URL}`,
+        `${process.env.CLIENT_LOCAL_URL}`,
+    ]}));
 app.use(morgan('dev'));
 app.use(morgan(':body \n'));
 
@@ -29,4 +35,5 @@ const server = app.listen(process.env.API_PORT, function () {
     const address = server?.address();
     const port = _.isString(address) ? address : address?.port;
     console.log(`wapp server running on ${port}\n`);
+    console.log(`wapp server (hopefully) connected to db: ${process.env.MONGO_URI}`);
 }); 
