@@ -1,1 +1,3 @@
 *.code-workspace
+**/docker-compose.yml
+traefik/
