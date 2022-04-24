@@ -2,11 +2,7 @@ version: "3.7"
 
 services:
   traefik:
-<<<<<<< Updated upstream
-    image: traefik:alpine
-=======
     image: traefik:v2.0
->>>>>>> Stashed changes
     container_name: traefik
     restart: unless-stopped
     security_opt:
@@ -19,18 +15,13 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-<<<<<<< Updated upstream
-      - ./traefik/traefik.yml:/traefik/traefik.yml:ro
-      - ./traefik/acme.json:/traefik/acme.json
-=======
       - ./traefik.yml:/traefik.yml:ro
       - ./acme.json:/acme.json
->>>>>>> Stashed changes
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
       - "traefik.http.routers.traefik.rule=Host(`monitor.pandala.edpacca.co.uk`)"
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$apr1$$b6OD3xxB$$TsDNYvTbWatb0/VDTB0rR1"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:******"
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
       - "traefik.http.routers.traefik-secure.entrypoints=https"
