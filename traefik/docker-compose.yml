@@ -2,7 +2,11 @@ version: "3.7"
 
 services:
   traefik:
+<<<<<<< Updated upstream
     image: traefik:alpine
+=======
+    image: traefik:v2.0
+>>>>>>> Stashed changes
     container_name: traefik
     restart: unless-stopped
     security_opt:
@@ -15,8 +19,13 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+<<<<<<< Updated upstream
       - ./traefik/traefik.yml:/traefik/traefik.yml:ro
       - ./traefik/acme.json:/traefik/acme.json
+=======
+      - ./traefik.yml:/traefik.yml:ro
+      - ./acme.json:/acme.json
+>>>>>>> Stashed changes
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"

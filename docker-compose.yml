@@ -17,9 +17,18 @@ services:
     tty: true
     env_file: ./client/.env
     labels:
-    - "traefik.enable=true"
-    - "traefik.port=3000"
-    - "traefik.frontend.rule=Host:pandala.edpacca.co.uk"
+      - "traefik.docker.network=wapp-net"
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.wapp-client-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.wapp-client-secure.entrypoints=https"
+      - "traefik.http.routers.wapp-client-secure.rule=Host(`pandala.edpacca.co.uk`)"
+      - "traefik.http.routers.wapp-client-secure.service=wapp-client"
+      - "traefik.http.routers.wapp-client-secure.tls=true"
+      - "traefik.http.routers.wapp-client-secure.tls.certresolver=http"
+      - "traefik.http.routers.wapp-client.entrypoints=http"
+      - "traefik.http.routers.wapp-client.middlewares=wapp-client-https-redirect"
+      - "traefik.http.routers.wapp-client.rule=Host(`pandala.edpacca.co.uk`)"
+      - "traefik.http.services.wapp-client.loadbalancer.server.port=3000"
   wapp-server:
     restart: always
     build:
@@ -40,15 +49,32 @@ services:
     ports:
     - 27017:27017
     volumes:
+<<<<<<< Updated upstream
     - ~/mongo/data:/data/mongo
     networks:
     - wapp-net
     command: [--auth]
     environment:
       
+=======
+    - /mongodata:/data/db
+    networks:
+    - wapp-net
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: corporaladmin
+      MONGO_INITDB_ROOT_PASSWORD: Br41dH*lls
+    command: [--auth]
+>>>>>>> Stashed changes
 
 networks:
   wapp-net:
     driver: bridge
     external: true
+<<<<<<< Updated upstream
+=======
+
+volumes:
+  mongodata:
+    driver: local    
+>>>>>>> Stashed changes
 
