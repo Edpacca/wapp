@@ -35,5 +35,4 @@ const server = app.listen(process.env.API_PORT, function () {
     const address = server?.address();
     const port = _.isString(address) ? address : address?.port;
     console.log(`wapp server running on ${port}\n`);
-    console.log(`wapp server (hopefully) connected to db: ${process.env.MONGO_URI}`);
 }); 
