@@ -49,32 +49,20 @@ services:
     ports:
     - 27017:27017
     volumes:
-<<<<<<< Updated upstream
-    - ~/mongo/data:/data/mongo
-    networks:
-    - wapp-net
-    command: [--auth]
-    environment:
-      
-=======
     - /mongodata:/data/db
     networks:
     - wapp-net
     environment:
-      MONGO_INITDB_ROOT_USERNAME: corporaladmin
-      MONGO_INITDB_ROOT_PASSWORD: Br41dH*lls
+      MONGO_INITDB_ROOT_USERNAME: *******
+      MONGO_INITDB_ROOT_PASSWORD: *******
     command: [--auth]
->>>>>>> Stashed changes
 
 networks:
   wapp-net:
     driver: bridge
     external: true
-<<<<<<< Updated upstream
-=======
 
 volumes:
   mongodata:
     driver: local    
->>>>>>> Stashed changes
 
