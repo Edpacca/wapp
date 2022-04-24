@@ -16,7 +16,13 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors({credentials: true, origin: [`${process.env.CLIENT_URL}`]}));
+app.use(cors({credentials: true, origin: 
+    [
+        `${process.env.CLIENT_URL}`,
+        `${process.env.CLIENT_URL_PORT}`,
+        `${process.env.CLIENT_DOCKER_URL}`,
+        `${process.env.CLIENT_LOCAL_URL}`,
+    ]}));
 app.use(morgan('dev'));
 app.use(morgan(':body \n'));
 
