@@ -7,6 +7,6 @@ export const HOME_DATA: String[][] = [
     ],
     [
         "polski",
-        "polski"
+        "polski sdfd"
     ]
 ]

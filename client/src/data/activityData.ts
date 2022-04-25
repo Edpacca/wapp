@@ -50,7 +50,10 @@ export const BIG_DAY_SCHEDULE: Activity[] = [
         heading: ["Ceremony",],
         location: "Finlarig Castle",
         time: ["13:00", "13:00"],
-        details: ["Finlarig Castle is a 10 minute walk from the House. We'll ask everyone to gather here 15 minutes early and we will meet you all there. Franny will conduct the ceremony, which will involve some singing and the symbolic planting of a seed."],
+        details: [
+            "Finlarig Castle is a 10 minute walk from the House. We'll ask everyone to gather here 15 minutes early and we will meet you all there. Franny will conduct the ceremony, which will involve some singing and the symbolic planting of a seed.", 
+            ""
+        ],
     },
     {
         heading: ["Group photographs",],
