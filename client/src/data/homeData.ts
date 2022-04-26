@@ -6,7 +6,9 @@ export const HOME_DATA: String[][] = [
         "Ala & Eddie x"
     ],
     [
-        "polski",
-        "polski sdfd"
+        "Witaj na naszej stronie ślubnej!",
+        "Mamy nadzieję, że znajdziesz tu wszystkie potrzebne informacje.",
+        "Kliknij „Info” aby zacząć przeglądać.",
+        "Ala i Eddie <3"
     ]
 ]

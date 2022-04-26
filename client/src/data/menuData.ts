@@ -23,12 +23,12 @@ export const starters: foodItem[] = [
         name: 
             [
                 "Locally cured charcuterie sharing platters",
-                "Zupa z pieczonej czerwonej papryki i pomidorów"
+                "Lokalne "
             ],
         description:
         [
             "with olives, sun blushed tomatoes and pickles.",
-            ""
+            "z oliwkami, suszonymi pomidorkami i okórkami konserwowymi"
         ],
         isVegan: false,
         value: 0
