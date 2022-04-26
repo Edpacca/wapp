@@ -2,6 +2,7 @@ import { Contact } from "../components/info/general/Contact"
 import { Bank } from "../components/info/general/Bank"
 import { ItineraryLinks } from "../components/info/general/ItineraryLinks"
 import { MealLink } from "../components/info/general/MealLink"
+import { ColourPallette } from "../components/info/general/ColourPallette"
 import guitar from '../assets/icons/guitar.svg';
 import pingpong from '../assets/icons/pingpong.svg';
 import cocktail from '../assets/icons/cocktail.svg';
@@ -100,6 +101,7 @@ export const GENERAL_INFO: InfoProps[] = [
         ],
         link: [["Finlarig Castle ruins", "Ruiny zamku Finlarig"], "https://www.undiscoveredscotland.co.uk/killin/finlarigcastle/index.html"],
         icon: dress,
+        extraJSX: ColourPallette
     },
     {
         title: [

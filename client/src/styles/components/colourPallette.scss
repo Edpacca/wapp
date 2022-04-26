@@ -1,0 +1,13 @@
+.pallette {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0;
+}
+
+.colour-block {
+    width: 13vmin;
+    height: 13vmin;
+    margin: 0 0.1em;
+    border-radius: 100%;
+}
