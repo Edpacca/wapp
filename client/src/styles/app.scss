@@ -9,6 +9,12 @@
   pointer-events: none;
   margin: 10vh;
   filter: drop-shadow(0 0 12px $white50);
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .App-logo-homepage {
@@ -16,6 +22,7 @@
   pointer-events: none;
   margin: 0 0 5vh;
   filter: drop-shadow(0 0 12px $white50);
+  animation: fadein 2s;
 }
 
 .App-centered {

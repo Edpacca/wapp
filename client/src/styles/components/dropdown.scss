@@ -31,11 +31,23 @@
     border: 1px solid $white50;
     border-top: 0px;
     border-radius: 0 0 10px 10px;
+    animation: slideDown 2s;
+  }
+
+  @keyframes slideDown {
+    from { max-height: 0em; }
+    to   { max-height: 10em; }
   }
 
   .dd-option {
     box-sizing: border-box;
     padding: 0.5em;
+    animation: optionSlideDown 2s;
+  }
+
+  @keyframes optionSlideDown {
+    from { max-height: 0em; opacity: 0; }
+    to { max-height: 4em; opacity: 1; }
   }
 
   .dd-select:hover {
