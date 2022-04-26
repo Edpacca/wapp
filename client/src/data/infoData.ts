@@ -238,7 +238,5 @@ export const GENERAL_INFO: InfoProps[] = [
         extraJSX: Contact,
         icon: letter,
     },
-
-
 ]
 

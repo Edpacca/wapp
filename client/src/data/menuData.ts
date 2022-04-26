@@ -66,10 +66,10 @@ export const mains: foodItem[] = [
     {
         course: 'main',
         name: 
-            [
-                "Canon of Lamb",
-                "Trio pieczonych kotletów jagnięcych"
-            ],
+        [
+            "Canon of Lamb",
+            "Trio pieczonych kotletów jagnięcych"
+        ],
         description:
         [
             "with a red wine and tomato reduction, pea and minted potatoes, local Kinnell Farm vegetables",
@@ -81,10 +81,10 @@ export const mains: foodItem[] = [
     {
         course: 'main',
         name: 
-            [
-                "Herb-crusted baked cod",
-                "Plamiak w skórce ziołowej"
-            ],
+        [
+            "Herb-crusted baked cod",
+            "Plamiak w skórce ziołowej"
+        ],
         description:
         [
             "with a red wine and tomato reduction, pea and minted potatoes, local Kinnell Farm vegetables",
@@ -96,10 +96,10 @@ export const mains: foodItem[] = [
     {
         course: 'main',
         name: 
-            [
-                "Sunflower seed and sage Risotto",
-                "Zapiekanka z cukinii i orzechów"
-            ],
+        [
+            "Sunflower seed and sage Risotto",
+            "Zapiekanka z cukinii i orzechów"
+        ],
         description:
         [
             "with butternut squash",
@@ -111,10 +111,10 @@ export const mains: foodItem[] = [
     {
         course: 'main',
         name: 
-            [
-                "Tuscan spaghetti",
-                "with tomatoes, olives, peppers, garlic and rocket"
-            ],
+        [
+            "Tuscan spaghetti",
+            "with tomatoes, olives, peppers, garlic and rocket"
+        ],
         description:
         [
             "",
@@ -129,10 +129,10 @@ export const desserts: foodItem[] = [
     {
         course: 'dessert',
         name: 
-            [
-                "Warm chocolate brownie",
-                "Ciasto czekoladowe"
-            ],
+        [
+            "Warm chocolate brownie",
+            "Ciasto czekoladowe"
+        ],
         description:
         [
             "served with Scottish rasberries, compote and chantilly cream",
@@ -144,10 +144,10 @@ export const desserts: foodItem[] = [
     {
         course: 'dessert',
         name: 
-            [
-                "Scottish Cranachan",
-                "Świeża sałatka owocowa"
-            ],
+        [
+            "Scottish Cranachan",
+            "Świeża sałatka owocowa"
+        ],
         description:
         [
             "with toasted oats, rasberries, whiskey, local honey and cream",
@@ -159,10 +159,10 @@ export const desserts: foodItem[] = [
     {
         course: 'dessert',
         name: 
-            [
-                "Cheese board",
-                "Półmisek Serów"
-            ],
+        [
+            "Cheese board",
+            "Półmisek Serów"
+        ],
         description:
         [
             "served with figs, fruit, homemade chutneys, oatcakes and crackers",
@@ -175,26 +175,29 @@ export const desserts: foodItem[] = [
 ]
 
 export const chosenTexts = {
-    starter: [
+    starter: 
+    [
         "Kicking things off with ",
         " to start.",
         "Zaczynając od ",
         "."
     ],
-    main: [
+    main: 
+    [
         "With a main course of ",
         ".",
         "Następnie główne danie z ",
         "."
-
     ],
-    dessert: [
+    dessert: 
+    [
         "Ending on a bang with ",
         " for dessert.",
         "Kończąc z ",
         "."
     ],
-    diet: [
+    diet: 
+    [
         "No dietary requirements.",
         "Dietary requirements: ",
         "Brak wymagań dietetycznych.",
