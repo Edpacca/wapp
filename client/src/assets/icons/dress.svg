@@ -1,66 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="31.990381mm"
-   height="36.900471mm"
-   viewBox="0 0 31.990381 36.900471"
-   version="1.1"
-   id="svg8"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="dress.svg">
-  <defs
-     id="defs2" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="55.726997"
-     inkscape:cy="-63.849546"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="1072"
-     inkscape:window-y="394"
-     inkscape:window-maximized="1" />
-  <metadata
-     id="metadata5">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-17.144797,-22.400303)">
-    <path
-       style="fill:#ffffff;stroke-width:1"
-       d="m 30.98389,59.265448 c -4.868764,-0.181158 -8.838425,-0.993695 -11.59833,-2.374026 -0.878894,-0.439568 -1.973807,-1.200166 -2.207041,-1.533154 -0.05782,-0.08254 -0.05294,-0.09954 0.107855,-0.376005 0.09262,-0.159256 2.721008,-4.642611 5.840856,-9.96301 l 5.672451,-9.673456 v -0.64584 -0.64584 l -0.92264,-3.452682 -0.922639,-3.452682 v -2.374225 -2.374225 h 0.922639 0.92264 l 1e-6,1.609913 2e-6,1.609913 0.6303,0.30127 c 1.40308,0.670644 2.971499,1.638095 3.555101,2.192902 l 0.137083,0.130321 0.295993,-0.250936 c 0.358723,-0.304118 1.292535,-0.932266 1.934148,-1.301045 0.258904,-0.14881 0.839038,-0.451002 1.289185,-0.671538 l 0.81845,-0.400974 5.69e-4,-1.609913 5.7e-4,-1.609913 h 0.92264 0.92264 v 2.40174 2.40174 l -0.92242,3.425956 -0.922419,3.425956 -2.85e-4,0.645144 -2.84e-4,0.645143 5.837111,9.954502 c 3.210411,5.474977 5.837112,9.968899 5.837112,9.986494 0,0.05722 -0.424914,0.444593 -0.772006,0.703796 -2.051247,1.531843 -5.598206,2.616404 -10.036065,3.068747 -2.096839,0.213728 -4.96911,0.294273 -7.343462,0.205927 z"
-       id="path826"
-       inkscape:connector-curvature="0" />
-  </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31.99mm" height="36.9mm" version="1.1" viewBox="0 0 31.99 36.9" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<metadata>
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<g transform="translate(-17.145 -22.4)">
+<path d="m30.984 59.265c-4.8688-0.18116-8.8384-0.9937-11.598-2.374-0.87889-0.43957-1.9738-1.2002-2.207-1.5332-0.05782-0.08254-0.05294-0.09954 0.10786-0.376 0.09262-0.15926 2.721-4.6426 5.8409-9.963l5.6725-9.6735v-1.2917l-1.8453-6.9054v-4.7484h1.8453l1e-6 1.6099 2e-6 1.6099 0.6303 0.30127c1.4031 0.67064 2.9715 1.6381 3.5551 2.1929l0.13708 0.13032 0.29599-0.25094c0.35872-0.30412 1.2925-0.93227 1.9341-1.301 0.2589-0.14881 0.83904-0.451 1.2892-0.67154l0.81845-0.40097 5.69e-4 -1.6099 5.7e-4 -1.6099h1.8453v4.8035l-1.8448 6.8519-2.85e-4 0.64514-2.84e-4 0.64514 5.8371 9.9545c3.2104 5.475 5.8371 9.9689 5.8371 9.9865 0 0.05722-0.42491 0.44459-0.77201 0.7038-2.0512 1.5318-5.5982 2.6164-10.036 3.0687-2.0968 0.21373-4.9691 0.29427-7.3435 0.20593z" fill="#fff"/>
+</g>
 </svg>

@@ -11,6 +11,7 @@ import gift from '../assets/icons/gift.svg';
 import letter from '../assets/icons/letter.svg';
 import QM from '../assets/icons/question-mark.svg';
 import meal from '../assets/icons/knife-fork.svg';
+import rings from '../assets/sprites/rings.svg';
 
 export interface InfoProps {
     title: string[],
@@ -118,7 +119,7 @@ export const GENERAL_INFO: InfoProps[] = [
 
             ]
         ],
-        icon: dress,
+        icon: rings,
     },
     {
         title: [
