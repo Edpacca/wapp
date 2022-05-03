@@ -33,6 +33,9 @@ function courseOptions(course: CourseType, foodItems: foodItem[], isVegan: boole
     return (
         foodItems.filter(option => isVegan ? option.isVegan : option)
         .map(option => {
+            if (option.isSetCourse) {
+                return renderSetCourse(option, index);
+            }
             if (choice == undefined) {
                 return renderOption(option, index, course, option.value === choice,
                     () => setChoice(option.value, course));
@@ -44,7 +47,7 @@ function courseOptions(course: CourseType, foodItems: foodItem[], isVegan: boole
     )
 }
 
-function renderOption(option: foodItem, index: number, course: CourseType,  isSelected: boolean, setChoice: (choice: number | undefined, param: CourseType) => void,) {
+function renderOption(option: foodItem, index: 1 | 0, course: CourseType,  isSelected: boolean, setChoice: (choice: number | undefined, param: CourseType) => void,) {
     
     return (
         <>
@@ -60,5 +63,19 @@ function renderOption(option: foodItem, index: number, course: CourseType,  isSe
                     </span>
             </div>
         </>
+    )
+}
+
+function renderSetCourse(option: foodItem, index: 1 | 0) {
+    return (
+            <div className="set-course">
+                <div className="horizontal-bar-brown"/>
+                <span>
+                    {option.name[index]} {option.isVegan ? <span className="vegan-option">(v)</span> : ""}
+                    <span className="food-description">
+                        <br/>{option.description[index]}
+                    </span>
+                </span>
+            </div>
     )
 }
