@@ -7,7 +7,7 @@ export function Songs() {
 
     const scotSongLink = "https://www.youtube.com/watch?v=--e5jWMtDrw";
     const polishSongLink = "https://www.youtube.com/watch?v=0GPoGf7Jmqw";
-    const lyricLink = process.env.PANDALA_SONGS;
+    const lyricLink = "http://songs.pandala.edpacca.co.uk:3000";
 
     return (
         <div>

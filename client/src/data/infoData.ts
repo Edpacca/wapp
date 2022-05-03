@@ -13,6 +13,7 @@ import letter from '../assets/icons/letter.svg';
 import QM from '../assets/icons/question-mark.svg';
 import meal from '../assets/icons/knife-fork.svg';
 import rings from '../assets/sprites/rings.svg';
+import { Songs } from "../components/info/itinerary/Songs"
 
 export interface InfoProps {
     title: string[],
@@ -119,9 +120,10 @@ export const GENERAL_INFO: InfoProps[] = [
             ],
             [
 
-            ]
+            ],
         ],
         icon: rings,
+        extraJSX: Songs
     },
     {
         title: [

@@ -88,7 +88,7 @@ export const DAYS: Day[] = [
         activities: [
             {
                 heading: ["Family meal"],
-                details: ["Starting with a family meal at the house. Due to space this is only for folk staying at the house with the Bridge and Groom, but we'll be heading to the pub right afterwards to meet up with anyone else who's keen for a greeting drink."],
+                details: ["Starting with a family meal at the house. Due to space this is only for folk staying at the house with the Bride and Groom, but we'll be heading to the pub right afterwards to meet up with anyone else who's keen for a greeting drink."],
                 location: "House at Bridge of Lochay",
                 time: ["7pm", "7pm"],
                 icon: house,
@@ -113,7 +113,7 @@ export const DAYS: Day[] = [
     {
         date: new Date(2022, 7, 16),
         title: days.saturday,
-        summary: ["Saturdy is the big day! Also check out our interactive scrolling timeline 😎",],
+        summary: ["Saturday is the big day! Also check out our interactive scrolling timeline 😎",],
         activities: [
             {
                 heading: ["Breakfast at the house",],
@@ -125,7 +125,7 @@ export const DAYS: Day[] = [
             {
                 heading: ["Signing Registry",],
                 details: ["Ala, Eddie and their witnesses will head off to officially get married in Killin. Because Franny isn't legally marrying us during the ceremony we must go and sort the boring bits out before hand. Time for everyone else to get themselves ready for the ceremony at 1pm!",],
-                location: "Killing Registry Office",
+                location: "Killin Registry Office",
                 time: ["12am", "12am"],
                 icon: pen
             },
@@ -147,7 +147,7 @@ export const DAYS: Day[] = [
             },
             {
                 heading: ["Drinks Reception",],
-                details: ["While the bride and groom get their photos taken, the rest of you can head back to the house for some afternoon drinks, nibbles and games. This is a fairly lax time for everyone to take a break and kick back. % When the couple are back we toast with some bubbles and begin the festivities! We'll have kegs of Pale ale and IPA in the games room, as well as a DIY cocktail bar. Wine will be near the kitchen. Go wild but be concious that this is for everyone and is to last the whole evening! % We also plan to have a few live music performances in an open mic setting, so if you fancy playing something then bring an instrument or sing a song! There's plenty of musical folk so a jam is definitely on the cards.", ""],
+                details: ["While the bride and groom get their photos taken, the rest of you can head back to the house for some afternoon drinks, nibbles and games. This is a fairly lax time for everyone to take a break and kick back. % When the couple are back we toast with some bubbles and begin the festivities! We'll have kegs of Pale ale and IPA in the games room, as well as a DIY cocktail bar. Wine will be near the kitchen. Go wild but be conscious that this is for everyone and is to last the whole evening! % We also plan to have a few live music performances in an open mic setting, so if you fancy playing something then bring an instrument or sing a song! There's plenty of musical folk so a jam is definitely on the cards.", ""],
                 location: "House at Bridge of Lochay",
                 time: ["2:30pm", "2:30pm"],
                 icon: drink
