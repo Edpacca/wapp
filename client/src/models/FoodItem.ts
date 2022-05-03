@@ -4,4 +4,5 @@ export interface foodItem {
     description: string[],
     isVegan: boolean,
     value: number,
+    isSetCourse?: boolean
 }

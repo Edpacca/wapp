@@ -8,11 +8,13 @@
     align-items: center;
     justify-content: center;
     width: 85vw;
+    height: 90vh;
     border: 2px solid $appgreen;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.9);
     padding: 2rem 1rem;
     margin: auto;
+    overflow-y: auto;
 }
 
 .modalButtonGreen {

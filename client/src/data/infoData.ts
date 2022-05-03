@@ -2,6 +2,7 @@ import { Contact } from "../components/info/general/Contact"
 import { Bank } from "../components/info/general/Bank"
 import { ItineraryLinks } from "../components/info/general/ItineraryLinks"
 import { MealLink } from "../components/info/general/MealLink"
+import { ColourPallette } from "../components/info/general/ColourPallette"
 import guitar from '../assets/icons/guitar.svg';
 import pingpong from '../assets/icons/pingpong.svg';
 import cocktail from '../assets/icons/cocktail.svg';
@@ -11,6 +12,8 @@ import gift from '../assets/icons/gift.svg';
 import letter from '../assets/icons/letter.svg';
 import QM from '../assets/icons/question-mark.svg';
 import meal from '../assets/icons/knife-fork.svg';
+import rings from '../assets/sprites/rings.svg';
+import { Songs } from "../components/info/itinerary/Songs"
 
 export interface InfoProps {
     title: string[],
@@ -99,6 +102,7 @@ export const GENERAL_INFO: InfoProps[] = [
         ],
         link: [["Finlarig Castle ruins", "Ruiny zamku Finlarig"], "https://www.undiscoveredscotland.co.uk/killin/finlarigcastle/index.html"],
         icon: dress,
+        extraJSX: ColourPallette
     },
     {
         title: [
@@ -116,9 +120,10 @@ export const GENERAL_INFO: InfoProps[] = [
             ],
             [
 
-            ]
+            ],
         ],
-        icon: dress,
+        icon: rings,
+        extraJSX: Songs
     },
     {
         title: [
