@@ -1,0 +1,25 @@
+.pallette {
+    display: grid;
+    grid-template-columns: 13vmin 13vmin 13vmin 13vmin 13vmin;
+    column-gap: 0.2em;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0;
+}
+
+.colour-block {
+    margin: auto;
+    width: 13vmin;
+    height: 13vmin;
+    border-radius: 100%;
+}
+
+.colour-block:hover, .colour-block:active {
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { width: 13vmin; }
+    50% { width: 0vmin; }
+    100% { width: 13vmin; }
+  }

@@ -18,10 +18,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors({credentials: true, origin: 
     [
-        `${process.env.CLIENT_URL}`,
-        `${process.env.CLIENT_URL_PORT}`,
-        `${process.env.CLIENT_DOCKER_URL}`,
-        `${process.env.CLIENT_LOCAL_URL}`,
+        `${process.env.CLIENT_URL_PROD}`,
+        `${process.env.CLIENT_URL_LOCAL}`,
     ]}));
 app.use(morgan('dev'));
 app.use(morgan(':body \n'));

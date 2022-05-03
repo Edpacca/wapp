@@ -9,7 +9,6 @@
 }
 
 .course-sheet {
-    background-repeat: no-repeat;
     background-size: 100%;
     border-radius: 8px;
     color: $ink;
@@ -117,4 +116,10 @@
 .vegan-option {
     color: green;
     font-style: italic;
+}
+
+.horizontal-bar-brown {
+    width: 80vw;
+    border-top: 1px solid $ink;
+    margin: 2em auto;
 }
