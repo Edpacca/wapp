@@ -27,7 +27,7 @@ export const GENERAL_INFO: InfoProps[] = [
     {
         title: [
             "What's the plan", 
-            "Jaki jest plan"
+            "Jaki jest plan?"
         ],
         details: [
             [
@@ -63,10 +63,10 @@ export const GENERAL_INFO: InfoProps[] = [
                 "",
             ],
             [
-                "Aby wybrać jedzenie, po prostu przejdź do zakładki 'Posiłek' i wybierz swoje imię z rozwijanego menu",
-                "Wybierz przystawkę, danie główne i deser i wpisz wszelkie specjalne wymagania dietetyczne, takie jak \"Bezglutenowe\" w polu poniżej",
+                "Aby wybrać danie główne, kliknij na zakładkę 'Posiłek' i wybierz z listy swoje imię.",
+                "Wybierz danie główne i deser i wpisz wszelkie specjalne wymagania dietetyczne, takie jak \"Bez glutenu\" w polu poniżej",
                 "",
-                "Kiedy będziesz gotowy, naciśnij Prześlij. Aby zmienić zdanie, naciśnij 'X' na dole kursu, a zobaczysz wszystkie opcje ponownie.",
+                "Kiedy będziesz gotowy, kliknij Prześlij. Aby zmienić zdanie, kliknij 'X' na dole ekranu, a zobaczysz wszystkie opcje ponownie.",
                 ""
             ]
         ],
@@ -76,7 +76,7 @@ export const GENERAL_INFO: InfoProps[] = [
     {
         title: [
             "Dress Code",
-            "Kodeks ubioru"
+            "Dresscode"
         ],
         details: [ 
             [
@@ -90,13 +90,13 @@ export const GENERAL_INFO: InfoProps[] = [
                 ""
             ],
             [
-                "Nie oczekujemy czarnego krawata, ale ubieramy się z klasą",
+                "Nie oczekujemy fraków, ale zachęcamy aby ubrać się odświętnie!",
                 "",
-                "Idziemy z motywem lasu i natury - osobiście będziemy luźno chodzić z ziemistymi kolorami, takimi jak ciemna zieleń, rdzawe i brązy. Ale co najważniejsze, chcemy, abyś czuła się fantastycznie bez względu na to, co wybierzesz. Jeśli masz ochotę na gorący róż, zrób to!",
+                "Naszym motywem przedownim są las i natura - sami wybieramy ciepłe naturalne kolory, jak zieleń, krzsztany, beże i brązy. Ale co najważniejsze, chcemy, abyście czuli się świetnie w swoim stroku bez względu na to, co wybierzecie. Jeśli masz ochotę na gorący róż, to super!",
                 "",
-                "Należy pamiętać, że (przy sprzyjającej pogodzie) planujemy zorganizować ceremonię plenerową w pobliskich ruinach zamku. To około 10 minut spacerem od domu lub krótka przejażdżka, ale na terenie nie ma odpowiednich ścieżek dla pieszych, więc może w tym czasie unikaj obcasów.",
+                "Należy pamiętać, że (przy sprzyjającej pogodzie) planujemy zorganizować ceremonię plenerową w pobliskich ruinach zamku. To około 10 minut spacerem od domu lub krótka przejażdżka samochodem, ale na terenie nie ma zbyt dobrze wyznaczonych ścieżek dla pieszych, więc może na ten czas unikaj obcasów.",
                 "",
-                "Zaplanuj wieczorne tańce!",
+                "Pamiętaj też, że wieczorem rozkręcamy parkiet!",
                 ""
             ]
         ],
@@ -107,7 +107,7 @@ export const GENERAL_INFO: InfoProps[] = [
     {
         title: [
             "The Ceremony",
-            ""
+            "Ceremonia ślubu"
         ],
         details: [ 
             [
@@ -119,6 +119,12 @@ export const GENERAL_INFO: InfoProps[] = [
                "One is traditional Polish and one is Celtic. Don't feel like you have to join in but we've linked them below if you want to listen",
             ],
             [
+                "Główna ceremonia ślubu będzie miała miejsce przy ruinach zamku Finlairg. Będzie trwać około pół godziny i nie planujemy rozstawiać krzeseł, więc większość osób będzie zapewnie stać. Jednak daj nam proszę znać z wyprzedzeniem, jeśli potrzebujesz na taki czas usiąć, a zorganizujemy dla Ciebie siedzonko",
+                "",
+                "Proszę pamiętać, że to jednak Szkocja i ziemia może być nieco błotnista - mamy też w planie zapasowe parasolki dla wszystkich w razie lekkiego deszczu. Jeśli pogoda jednak będzie naprawdę okropna, przeniesiemy całą ceremonię do Domu nad Mostem.",
+                "",
+                "Mamy dwie folkowe piosenki które będą grane podczas cerenomii. Jeśli chcesz możesz zaśpiewać je razem z nami!",
+                "Jedna z nich to polska pieśń ludowa, a druga to celtycka piosenka folkowa. Śpiew oczywiście nie jest obowiązkowy ale jeśli chcesz dołączyć, poniżej znajdziesz do nich linki.",
 
             ],
         ],
@@ -128,7 +134,7 @@ export const GENERAL_INFO: InfoProps[] = [
     {
         title: [
             "\"DIY Open Bar\"", 
-            "Jak wybrać posiłek"
+            "Barek \"Zrób to sam!\""
         ],
         details: [
             [
@@ -139,6 +145,11 @@ export const GENERAL_INFO: InfoProps[] = [
                 "Also remember this party is 50% Polish so..."
             ],
             [
+                "Poczas sobotniej imprezy alkoholu nie zabraknie dla nikogo!",
+                "Dom nad Mostem jest całkiem do naszej dyspozycji, jednak nie ma tam oficjalnego baru a więc i barmanów. Planujemy dostarczyć dosyć zróżnicowany barek do dyspozycji gości, będą beczki piwa, wino, a także mocniejsze alkohole i miksery do robienia sobie koktajli.",
+                "Nie krępuj się też przynieść alkoholu swojego wyboru, jeśli masz ochotę, ale oczywiście nie jest to absolutnie niezbędne!",
+                "",
+                "Poza tym pamiętajcie że to wesele jest w 50% polskie, więc..."
 
             ]
         ],
@@ -158,7 +169,11 @@ export const GENERAL_INFO: InfoProps[] = [
                 "Give us a shout if you have something planned, or just surprise us!"
             ],
             [
-
+                "Po ceremonii ślubu, gdy wszyscy zbierzemy się w Domu nad Mostem na drkinki i przekąski, będzie okazja by parę z nas zagrało/zaśpiewało parę kawałków w jednym z pokoi.",
+                "Każdy jest mile widziany, niezależnie od poziomu zaawansowania! Zupełnie bez presji, chcemy po prostu poświętować tak jak kochamy - grając muzykę. W pokoju jest stare pianino, które będzie do naszej dyspozycji, jednak nie liczymy na to żeby było świetnie nastrojone.",
+                "My sami rozpoczniemy, zagramy razem dla Was na gitarze i flecie.",
+                "",
+                "Daj znać jeśli masz coś zaplanowanego, albo po prostu zrób nam niespodziankę w ciągu dnia!"
             ]
         ],
         icon: guitar,
@@ -176,6 +191,10 @@ export const GENERAL_INFO: InfoProps[] = [
                 "Please be respectful of the other guests who are staying in the house while you're here."
             ],
             [
+                "W Domu nad Mostem będzie miała pokoje głównie rodzina, jednak wszyscy są mile widziani i chcemy, by było to miejsce gdzie razem spędzamy czas przez cały weekend.",
+                "Jest tam pokój gier, gdzie znajdziecie bilard, ping ponga, rzutki, a nawet Pac Mana! Oprócz tego jest pokój kinowy z wygodnymi siedzeniami i wielkim ekranem, a także jacuzzi i sauna, więc pamiętaj wziąć strój kąpielowy!",
+                "",
+                "Prosimy o traktowanie tych miejsc z szacunkiem, niepalenie w środku (nawet papierosów elektronicznych), i ogólne zachowanie porządku!"
 
             ]
         ],
@@ -191,7 +210,7 @@ export const GENERAL_INFO: InfoProps[] = [
                 "There is parking available at the House at the Bridge of Lochay where most of the guests are staying, and if it gets full there is more parking a short walk away. Let us know if you've any concerns.",
             ],
             [
-                "W Domu przy Moście Lochay jest dostępny parking, gdzie przebywa większość gości, ale pamiętaj, że może być całkiem pełny!"
+                "W Domu przy Moście Lochay jest dostępny parking, gdzie zmieści się większość gości, ale pamiętaj, że może się zrobić ciasno! Wkoło jest jendak parę alternatyw parkingowych jeśli zabraknie miejsca."
             ]
         ],
         icon: car
@@ -209,9 +228,9 @@ export const GENERAL_INFO: InfoProps[] = [
                 "",
             ],
             [
-                "Bycie tutaj z nami w nasz wyjątkowy dzień jest więcej niż wystarczające, i to mamy na myśli.",
+                "Bycie tutaj z nami w nasz wyjątkowy dzień będzie dla nas najwspanialszym prezentem, i naprawdę nie potrzebujemu niczego innego.",
                 "",
-                "Jeżeli naprawdę masz na to ochotę, najbardziej przyda się mały wkład w podróż poślubną lub opiekę nad naszym nowym szczeniakiem Korą!",
+                "Jeżeli jednak naprawdę chcielibyście sprawić nam coś ekstra, najbardziej przydałby się nam mały wkład w podróż poślubną lub koszty adopcji i opieki nad naszym nowym pieskiem Korą!",
                 "",
             ]
         ],

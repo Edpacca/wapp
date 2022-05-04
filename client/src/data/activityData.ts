@@ -178,7 +178,7 @@ export const DAYS: Day[] = [
                 details:
                 [ 
                     "Ala, Eddie and their witnesses will head off to officially get married in Killin. Because Franny isn't legally marrying us during the ceremony we must go and sort the boring bits out before hand. Time for everyone else to get themselves ready for the ceremony at 1pm!",
-                    "Wraz ze świadkami wymkniemy się aby podpisać oficjalny akt ślubu. Nasza celebrantka Franny nie może nas oficjalnie zaślubić w Szkocji, więc przed główną cermonią wymkniemy się wraz ze świadakmi do urzędu, aby odfakować urzędniczą część naszego ślubu"
+                    "Wraz ze świadkami wymkniemy się aby podpisać oficjalny akt ślubu. Nasza celebrantka Franny nie może nas oficjalnie zaślubić w Szkocji, więc przed główną cermonią wymkniemy się wraz ze świadakmi do urzędu, aby odfajkować urzędniczą porcję naszego ślubu"
                 ],
                 location: KILLIN_REGISTRY_OFFICE,
                 time: [ "12am", "12am" ],
@@ -214,30 +214,30 @@ export const DAYS: Day[] = [
                 heading: [ "Drinks Reception", "Popołudniowe Przyjęcie" ],
                 details: [ 
                     "While the bride and groom get their photos taken, the rest of you can head back to the house for some afternoon drinks, nibbles and games. This is a fairly lax time for everyone to take a break and kick back. % When the couple are back we toast with some bubbles and begin the festivities! We'll have kegs of Pale ale and IPA in the games room, as well as a DIY cocktail bar. Wine will be near the kitchen. Go wild but be concious that this is for everyone and is to last the whole evening! We will also make sure to provide non-alcoholic options for kiddos and non-drinkers. % We also plan to have a few live music performances in an open mic setting, so if you fancy playing something then bring an instrument or sing a song! There's plenty of musical folk so a jam is definitely on the cards.", 
-                    "Podczas sesji zdjęciowej Państwa Młodych, zapraszamy resztę towarzystwa do Domu nad Mostem na popołudniowe drinki, przekąski i gry w zrelaksowanej atmosferze, aby wszyscy mogli odetchnąć po pierwszym z głównych punktów dnia. Na niespełna godzinie na przybycie Pańtwa Młodych wzniesiemy toast szampanem i rozpoczniemy wspólne świętowanie! W domu będzie parę baryłek piwa Pale Ale i IPA, zamierzamy też wystawić barek do robienia koktajli DIY a także barek z winami. Obliczamy wszystko z zapasem tak, żeby alkoholu na pewno starczyło dla wszystkich na całą noc, jednak pamiętajcie, że to co zobaczycie w barku to zapewnie większość tego co mamy w zapasie, więc warto myśleć o innych nalewając dziesiątą pintę IPY. Oprócz dóbr procentowych będą też oczywiście opcje bezalkoholowe dla  " 
+                    "Podczas sesji zdjęciowej Państwa Młodych, zapraszamy resztę towarzystwa do Domu nad Mostem na popołudniowe drinki, przekąski i gry w zrelaksowanej atmosferze, aby wszyscy mogli odetchnąć po pierwszym z głównych punktów dnia. Na niespełna godzinie na przybycie Pańtwa Młodych wzniesiemy toast szampanem i rozpoczniemy wspólne świętowanie! W domu będzie parę baryłek piwa Pale Ale i IPA, zamierzamy też wystawić barek do robienia koktajli DIY a także barek z winami. Obliczamy wszystko z zapasem tak, żeby alkoholu na pewno starczyło dla wszystkich na całą noc, jednak pamiętajcie, że to co zobaczycie w barku to zapewnie większość tego co mamy w zapasie, więc warto myśleć o innych nalewając dziesiątą pintę IPY. Oprócz dóbr procentowych będą też oczywiście opcje bezalkoholowe dla niepijących i nieletnich. Oprócz tako w tym czasie planujemuy coś eksperymentalnego - otwarta scena! Każdy kto ma ochotę może coś zagrać lub zaśpiewać. Jeśli chcesz, możesz dać nam znać z wyprzedzeniem lub zaskoczyć nas w samym dniu. Może nawet zrobimy spontaniczny jam session." 
                 ],
                 location: HOUSE_AT_THE_BRIDGE_OF_LOCHAY,
                 time: [ "2:30pm", "2:30pm" ],
                 icon: drink
             },
             {
-                heading: [ "Dinner",],
+                heading: [ "Dinner", "Obiad"],
                 details: 
                 [ 
                     "We'll move into the Dining Room at the back once everything is ready and begin with some speeches. See the seating plan to find out where you're sat. Starters are all the same, soup if you want it and sharing platters with both meat and vegan options. We plan for dinner to be enjoyed at a leisurely pace and will pop a toast or two in between courses. % The wonderful food is all prepared by our fantastic local caterers \"Peaches and Pickles\"!", 
 
-                    "" 
+                    "Do posiłku przeniesiemy się do Jadalni z tyłu Domu gdzie rozpoczniemy wzniesieniem toastu. Tu bliscy będą mieli okazję powiedzieć parę słów o parze młodej jeśli chcą! Bliżej daty będzie dostępny plan stołów, więc możesz sprawdzić koło kogo siedzisz już wcześniej. Zupa i przystawki w formie desek mięs i desek wegańskich są takie same dla wszystkich, natomiast danie głównie i deser prosimy dla siebie wybrać w sekcji menu. Obiadokolacja odbędzie się w zrelaksowanej rodzinnej atmosferze, a dań będzie sporo, ale będą podawane powoli. Nasze cudowne lokalne panie od kateringu to \"Peaches and Pickles\", czyli \"Brzoskwinie i Pikle\"!  " 
                 ],
                 location: HOUSE_AT_THE_BRIDGE_OF_LOCHAY,
                 time: [ "6pm", "6pm" ],
                 icon: knifeFork
             },
             {
-                heading: [ "Dancing",],
+                heading: [ "Dancing", "Tańce"],
                 details: 
                 [ 
                     "We'll kick things off with the couple's first dance and then let the evening party commence!",
-                    ""
+                    "Oficjalne otworzymy parkiet naszym pierwszym tańcem i tym samym wieczorna impreza zostanie rozpoczęta!"
                 ],
                 location: HOUSE_AT_THE_BRIDGE_OF_LOCHAY,
                 time: [ "8pm", "8pm" ],
@@ -251,22 +251,22 @@ export const DAYS: Day[] = [
         summary: 
         [ 
             "Sunday will be the slow hangover day. Chill out, sit in the hot tub. Finish off the booze!",
-            ""
+            "Niedziela będzie prawdopodobnie powolnym, skacowanym dniem. Relaks, sauna, jacuzzi, może parę spacerów w pięknych okolicach. I trzeba wykończyć alkohol!"
         ],
         activities: [
             {
-                heading: [ "Breakfast?", ""],
-                details: [ "Sort yerselves out!", ""],
+                heading: [ "Breakfast?", "Śniadanie?"],
+                details: [ "Sort yerselves out!", "Samoobsługa :)"],
                 location: [ "Wherever" ],
                 time: times.morning,
                 icon: coffee,
             },
             {
-                heading: [ "Group Walk", ""],
+                heading: [ "Group Walk", "Wspólny spacer"],
                 details: 
                 [ 
                     "Check out the map tab to see a few potential walks we've found that might suit people. Walk A is a gentle stroll about a nearby lake. Walk B is a shorter but more strenous hike up the nearby hill - might not be for everyone. We will make sure to coordinate and let everyone know when these walks will happen, but we're not setting a concrete time just yet.",
-                    ""
+                    "Spójrz w zakładkę Mapa aby zobaczyć parę proponowanych spacerów. Spacer A jest spokojną traską na przechadzkę wkoło pobliskiego jeziora. Spacer B jest którszy, jednak troszkę bardziej męczący i idzie pod górkę - może nie być dla wszystkich. Postaramy się skoordynować osoby które będą miały ochotę na spacer tak żebyśmy mogli wyruszyć w tym samym czasie, jednak na razie nie ustalamy konkretnej godziny."
                 ],
                 location: [ "Killin" ],
                 time: times.afternoon,
@@ -274,11 +274,11 @@ export const DAYS: Day[] = [
                 icon: footsteps,
             },
             {
-                heading: [ "Pub trip?",],
+                heading: [ "Pub trip?", "Popołudniowe drinki?"],
                 details: 
                 [ 
                     "A post walk pint is always welcome. If we have a lot of alcohol left over then maybe we'll just hang out at the House! Again we'll make sure everyone is made aware of the plans",
-                    ""
+                    "Po spacerku jeśli będziemy mieć ochotę możemy wpaść do pubu na piwko, jednak jeśli będziemy mieli wciąż dużo alkoholu z wesela może być tak że łatwiej będzie pochillować razem w Domu nad Mostem. Będziemy informować na bieżąco w ciągu dnia."
                 ],
                 location: [ "A pub / the House", "" ],
                 time: times.afternoon,
@@ -286,11 +286,11 @@ export const DAYS: Day[] = [
                 icon: barrel
             },
             {
-                heading: [ "Games Contest", "" ],
+                heading: [ "Games Contest", "Gry!" ],
                 details: 
                 [ 
                     "We'll get those interested parties together to compete at pool, ping pong and whatever people can think of. The winner may get a prize...",
-                    ""
+                    "Dla zainteresowanych będziemy niedziela będzie też dniem gier, bilard, ping pong, Pac Man czy rzutki, czy na co jeszcze ma kto ochotę. Może będzie do wygrania nagroda..."
                 ],
                 location: HOUSE_AT_THE_BRIDGE_OF_LOCHAY,
                 time: times.evening,
@@ -304,15 +304,15 @@ export const DAYS: Day[] = [
         summary:
         [ 
             "We have the House and The Bridge of Lochay booked until 10am on Monday morning. We should all make an effort to be ready to go by this time.",
-            ""
+            "Dom na Mostem jest zabookowany do 10 rano więc, prosilibyśmy aby wszyscy zorganizowali się tak, aby zawinąć się do tego czasu."
         ],
         activities: [
             {
-                heading: [ "Departure",],
+                heading: [ "Departure", "Pożegananie"],
                 details: 
                 [ 
                     "Final goodbyes. We have be out by 10am and say our farewells. Ala and Eddie will likely have to leave fairly promptly to pack as they leave for their honeymoon in Malta the morning after!",
-                    ""
+                    "Ostatnie pożegnania! Mamy do 10 aby pożegnać się z każdym, a my sami będziemy zapewnie spieszyli się do domu aby spakować się na naszą podróż poślubną na Maltę."
                 ],
                 location: HOUSE_AT_THE_BRIDGE_OF_LOCHAY,
                 time: [ "10am" , "10am" ],
