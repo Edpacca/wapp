@@ -50,7 +50,7 @@ export const GENERAL_INFO: InfoProps[] = [
         ],
         details: [
             [
-                "To let us know what your choice is for the main meal, simply go to the 'Meal' tab and select your name from the family dropdown menu.",
+                "To let us know what your choice is for the main meal, simply go to the 'Menu' tab and select your name from the family dropdown menu.",
                 "",
                 "Click on the circle next your choices. To change your mind, hit the 'X' at the bottom of the course and you'll see all the options again.",
                 "You can filter to show only vegan options with the switch at the top of the menu.",
@@ -63,7 +63,7 @@ export const GENERAL_INFO: InfoProps[] = [
                 "",
             ],
             [
-                "Aby wybrać danie główne, kliknij na zakładkę 'Posiłek' i wybierz z listy swoje imię.",
+                "Aby wybrać danie główne, kliknij na zakładkę 'Menu' i wybierz z listy swoje imię.",
                 "Wybierz danie główne i deser i wpisz wszelkie specjalne wymagania dietetyczne, takie jak \"Bez glutenu\" w polu poniżej",
                 "",
                 "Kiedy będziesz gotowy, kliknij Prześlij. Aby zmienić zdanie, kliknij 'X' na dole ekranu, a zobaczysz wszystkie opcje ponownie.",

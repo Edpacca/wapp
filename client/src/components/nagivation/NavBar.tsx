@@ -7,7 +7,7 @@ export function NavBar(props: {page: UserPage, languageIndex: 1 | 0}) {
 
     const dispatch = useAppDispatch();
     const textHome = ["Home", "Dom"];
-    const textMeal = ["Meal", "Posiłek"];
+    const textMeal = ["Menu", "Menu"];
     const textMap = ["Map", "Mapa"];
 
     return(

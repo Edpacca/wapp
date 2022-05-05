@@ -9,7 +9,7 @@ const TimelineInfo = (props: {activity: Activity, languageIndex: 0 | 1}) => {
     return (
         <div className="timeline-text" onClick={() => setShowDetails(!showDetails)}>
             <div className="head" >{props.activity.heading[props.languageIndex]}</div>
-            <div className="sub">{props.activity.location}</div>
+            <div className="sub">{props.activity.location[props.languageIndex]}</div>
             <div className="sub">{props.activity.time[props.languageIndex]}</div>
             {
                 props.activity.subheading &&
