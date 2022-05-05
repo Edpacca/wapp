@@ -11,7 +11,7 @@ export const entree: foodItem =
     description:
     [
         "with a basil cream drizzle",
-        ""
+        "z dodatkiem śmietanki i bazylią"
     ],
     isVegan: true,
     value: 0
@@ -23,12 +23,12 @@ export const starters: foodItem[] = [
         name: 
             [
                 "Locally cured charcuterie sharing platters",
-                "Zupa z pieczonej czerwonej papryki i pomidorów"
+                "Lokalne deski mięsne"
             ],
         description:
         [
             "with olives, sun blushed tomatoes and pickles.",
-            ""
+            "z oliwkami, suszonymi pomidorkami i okórkami konserwowymi"
         ],
         isVegan: false,
         value: 0
@@ -38,12 +38,12 @@ export const starters: foodItem[] = [
         name: 
             [
                 "Vegan and vegetarian hors d'oeuvres",
-                "Zupa z pieczonej czerwonej papryki i pomidorów"
+                "Wegańskie i wegetariańskie deski przystawek "
             ],
         description:
         [
             "with flatbreads and dips",
-            ""
+            "z dipami i pitą"
         ],
         isVegan: true,
         value: 0
@@ -66,14 +66,14 @@ export const mains: foodItem[] = [
     {
         course: 'main',
         name: 
-            [
-                "Canon of Lamb",
-                "Trio pieczonych kotletów jagnięcych"
-            ],
+        [
+            "Canon of Lamb",
+            "Trio pieczonych kotletów jagnięcych"
+        ],
         description:
         [
             "with a red wine and tomato reduction, pea and minted potatoes, local Kinnell Farm vegetables",
-            "na torcie ziemniaczanym z miętą z sosem rekurencyjnym i czerwonym winem."
+            "z sosem z czerwonego wina i pomidorów, ziemniaczkami z groszkiem i miętą i lokalnymi warzywkami z Farmy Kinnell"
         ],
         isVegan: false,
         value: 0
@@ -81,14 +81,14 @@ export const mains: foodItem[] = [
     {
         course: 'main',
         name: 
-            [
-                "Herb-crusted baked cod",
-                "Plamiak w skórce ziołowej"
-            ],
+        [
+            "Herb-crusted baked cod",
+            "Dorsz w panierce ziołowej"
+        ],
         description:
         [
             "with a red wine and tomato reduction, pea and minted potatoes, local Kinnell Farm vegetables",
-            "zapiekane z pomidorkami koktajlowymi"
+            "z sosem z czerwonego wina i pomidorów, ziemniaczkami z groszkiem i miętą i lokalnymi warzywkami z Farmy Kinnell"
         ],
         isVegan: false,
         value: 1
@@ -96,14 +96,14 @@ export const mains: foodItem[] = [
     {
         course: 'main',
         name: 
-            [
-                "Sunflower seed and sage Risotto",
-                "Zapiekanka z cukinii i orzechów"
-            ],
+        [
+            "Sunflower seed and sage Risotto",
+            "Risotto z szałwią i ziarnami słonecznika"
+        ],
         description:
         [
             "with butternut squash",
-            "podawany z kompotem pomidorowym"
+            "podawane z dynią piżmową"
         ],
         isVegan: true,
         value: 2
@@ -111,14 +111,14 @@ export const mains: foodItem[] = [
     {
         course: 'main',
         name: 
-            [
-                "Tuscan spaghetti",
-                "with tomatoes, olives, peppers, garlic and rocket"
-            ],
+        [
+            "Tuscan spaghetti",
+            "Toskańskie spaghetti"
+        ],
         description:
         [
             "",
-            "podawany z kompotem pomidorowym"
+            ""
         ],
         isVegan: true,
         value: 3
@@ -129,14 +129,14 @@ export const desserts: foodItem[] = [
     {
         course: 'dessert',
         name: 
-            [
-                "Warm chocolate brownie",
-                "Ciasto czekoladowe"
-            ],
+        [
+            "Warm chocolate brownie",
+            "Ciepłe czekoladowe brownie"
+        ],
         description:
         [
             "served with Scottish rasberries, compote and chantilly cream",
-            "podawany z sosem czekoladowym i lodami waniliowymi"
+            "podawane ze Szkockimi malinami, konfiturą i bitą śmietaną"
         ],
         isVegan: true,
         value: 0
@@ -144,14 +144,14 @@ export const desserts: foodItem[] = [
     {
         course: 'dessert',
         name: 
-            [
-                "Scottish Cranachan",
-                "Świeża sałatka owocowa"
-            ],
+        [
+            "Scottish Cranachan",
+            "Szkocki Cranachan (deser bezowy)"
+        ],
         description:
         [
             "with toasted oats, rasberries, whiskey, local honey and cream",
-            ""
+            "z prażonym owsem, malinami, whiskey, lokalnym miodem i śmietanką"
         ],
         isVegan: true,
         value: 1
@@ -159,14 +159,14 @@ export const desserts: foodItem[] = [
     {
         course: 'dessert',
         name: 
-            [
-                "Cheese board",
-                "Półmisek Serów"
-            ],
+        [
+            "Cheese board",
+            "Deska Serów"
+        ],
         description:
         [
             "served with figs, fruit, homemade chutneys, oatcakes and crackers",
-            "podawane z plackami owsianymi i krakersami"
+            "podawana z figami, owocami, domowymi konfiturami, ciastkami owsianymi i krakersami"
         ],
         isVegan: false,
         value: 2,
@@ -175,26 +175,29 @@ export const desserts: foodItem[] = [
 ]
 
 export const chosenTexts = {
-    starter: [
+    starter: 
+    [
         "Kicking things off with ",
         " to start.",
         "Zaczynając od ",
         "."
     ],
-    main: [
+    main: 
+    [
         "With a main course of ",
         ".",
-        "Następnie główne danie z ",
+        "Następnie główne danie: ",
         "."
-
     ],
-    dessert: [
+    dessert: 
+    [
         "Ending on a bang with ",
         " for dessert.",
-        "Kończąc z ",
+        "Kończąc deserem:",
         "."
     ],
-    diet: [
+    diet: 
+    [
         "No dietary requirements.",
         "Dietary requirements: ",
         "Brak wymagań dietetycznych.",
