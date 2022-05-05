@@ -92,7 +92,7 @@ export const GENERAL_INFO: InfoProps[] = [
             [
                 "Nie oczekujemy fraków, ale zachęcamy aby ubrać się odświętnie!",
                 "",
-                "Naszym motywem przedownim są las i natura - sami wybieramy ciepłe naturalne kolory, jak zieleń, krzsztany, beże i brązy. Ale co najważniejsze, chcemy, abyście czuli się świetnie w swoim stroku bez względu na to, co wybierzecie. Jeśli masz ochotę na gorący róż, to super!",
+                "Naszym motywem przedownim są las i natura - sami wybieramy ciepłe naturalne kolory, jak zieleń, kasztany, beże i brązy. Ale co najważniejsze, chcemy, abyście czuli się świetnie w swoim stroju bez względu na to, co wybierzecie. Jeśli masz ochotę na gorący róż, to super!",
                 "",
                 "Należy pamiętać, że (przy sprzyjającej pogodzie) planujemy zorganizować ceremonię plenerową w pobliskich ruinach zamku. To około 10 minut spacerem od domu lub krótka przejażdżka samochodem, ale na terenie nie ma zbyt dobrze wyznaczonych ścieżek dla pieszych, więc może na ten czas unikaj obcasów.",
                 "",
@@ -119,7 +119,7 @@ export const GENERAL_INFO: InfoProps[] = [
                "One is traditional Polish and one is Celtic. Don't feel like you have to join in but we've linked them below if you want to listen",
             ],
             [
-                "Główna ceremonia ślubu będzie miała miejsce przy ruinach zamku Finlairg. Będzie trwać około pół godziny i nie planujemy rozstawiać krzeseł, więc większość osób będzie zapewnie stać. Jednak daj nam proszę znać z wyprzedzeniem, jeśli potrzebujesz na taki czas usiąć, a zorganizujemy dla Ciebie siedzonko",
+                "Główna ceremonia ślubu będzie miała miejsce przy ruinach zamku Finlairg. Będzie trwać około pół godziny i nie planujemy rozstawiać krzeseł, więc większość osób będzie zapewnie stać. Jednak daj nam proszę znać z wyprzedzeniem, jeśli potrzebujesz na taki czas usiąć, a zorganizujemy dla Ciebie siedzonko.",
                 "",
                 "Proszę pamiętać, że to jednak Szkocja i ziemia może być nieco błotnista - mamy też w planie zapasowe parasolki dla wszystkich w razie lekkiego deszczu. Jeśli pogoda jednak będzie naprawdę okropna, przeniesiemy całą ceremonię do Domu nad Mostem.",
                 "",
@@ -169,7 +169,7 @@ export const GENERAL_INFO: InfoProps[] = [
                 "Give us a shout if you have something planned, or just surprise us!"
             ],
             [
-                "Po ceremonii ślubu, gdy wszyscy zbierzemy się w Domu nad Mostem na drkinki i przekąski, będzie okazja by parę z nas zagrało/zaśpiewało parę kawałków w jednym z pokoi.",
+                "Po ceremonii ślubu, gdy wszyscy zbierzemy się w Domu nad Mostem na drinki i przekąski, będzie okazja by parę z nas zagrało/zaśpiewało parę kawałków w jednym z pokoi.",
                 "Każdy jest mile widziany, niezależnie od poziomu zaawansowania! Zupełnie bez presji, chcemy po prostu poświętować tak jak kochamy - grając muzykę. W pokoju jest stare pianino, które będzie do naszej dyspozycji, jednak nie liczymy na to żeby było świetnie nastrojone.",
                 "My sami rozpoczniemy, zagramy razem dla Was na gitarze i flecie.",
                 "",
@@ -188,14 +188,14 @@ export const GENERAL_INFO: InfoProps[] = [
                 "The House at the Bridge of Lochay is where the family are staying, but everyone is welcome to come and hang out at any time",
                 "There is a games room with a large pool table, ping pong and a darts board (and even a Ms. PacMan machine!?). There is also a cinema, a hottub and a sauna for everyone to enjoy, so bring your swimming gear.",
                 "",
-                "Please be respectful of the other guests who are staying in the house while you're here."
+                "Please be respectful of the other guests who are staying in the house while you're here.",
+                "No smoking inside whatsoever."
             ],
             [
                 "W Domu nad Mostem będzie miała pokoje głównie rodzina, jednak wszyscy są mile widziani i chcemy, by było to miejsce gdzie razem spędzamy czas przez cały weekend.",
                 "Jest tam pokój gier, gdzie znajdziecie bilard, ping ponga, rzutki, a nawet Pac Mana! Oprócz tego jest pokój kinowy z wygodnymi siedzeniami i wielkim ekranem, a także jacuzzi i sauna, więc pamiętaj wziąć strój kąpielowy!",
                 "",
                 "Prosimy o traktowanie tych miejsc z szacunkiem, niepalenie w środku (nawet papierosów elektronicznych), i ogólne zachowanie porządku!"
-
             ]
         ],
         icon: pingpong,

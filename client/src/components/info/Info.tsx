@@ -31,17 +31,11 @@ export function Info(props: {languageIndex: 0 | 1}) {
     }
 
     const textGeneralInfo = ["General Info", "Ogólne Info"];
-    const subtextGeneralInfo = ["Frequently asked questions", "Często zadawane pytania"];
-
-    const textBigDay = ["The Big Day", "Wielki dzień"];
-    const subtextBigDay = ["An Interactive plan", "Interaktywny plan"];
-
-    const textArrivals = ["Arrivals", "Przyloty"];
-    const subtextArrivals = ["Find out when other people are arriving", "Dowiedz się, kiedy przyjeżdżają inne osoby"];
-
-    const textFullItinerary = ["Full Itinerary", "Pełny plan podróży"];
+    const textBigDay = ["The Big Day", "Nasz wielki dzień"];
+    const textArrivals = ["Arrivals", "Przyjazdy"];
+    const textFullItinerary = ["Full Itinerary", "Pełny plan weekendu"];
     const textSeatingPlan = ["Seating Plan", "Plan Miejsc"];
-    const textRoomInfo = ["Room Info", "Info o Pokoju"];
+    const textRoomInfo = ["Room Info", "Info o Pokojach"];
 
     return(
         <div>
@@ -50,11 +44,9 @@ export function Info(props: {languageIndex: 0 | 1}) {
                 <>
                 <div className="info-header general-header" onClick={() => setActiveInfo('general')}>
                     <div className="info-h1">{textGeneralInfo[props.languageIndex]}</div>
-                    {/* <div className="info-sub">{subtextGeneralInfo[props.languageIndex]}</div> */}
                 </div>
                 <div className="info-header bigday-header" onClick={() => setActiveInfo('bigday')}>
                     <div className="info-h1">{textBigDay[props.languageIndex]}</div>
-                    {/* <div className="info-sub">{subtextBigDay[props.languageIndex]}</div> */}
                 </div>
                 <div className="info-header itinerary-header" onClick={() => setActiveInfo('itinerary')}>
                         <div className="info-h1">{textFullItinerary[props.languageIndex]}</div>
@@ -74,7 +66,6 @@ export function Info(props: {languageIndex: 0 | 1}) {
                 {
                     <div className="info-header arrivals-header" onClick={() => setActiveInfo('arrivals')}>
                         <div className="info-h1">{textArrivals[props.languageIndex]}</div>
-                        {/* <div className="info-sub">{subtextArrivals[props.languageIndex]}</div> */}
                     </div>
                 }
                 </>
