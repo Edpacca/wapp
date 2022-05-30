@@ -13,13 +13,33 @@ export const SeatIcon = (props: { seat: Seat }) => {
             {
                 isBrideGroom 
                     ? <FontAwesomeIcon icon={faSeedling}/>
-                    : props.seat.guestName?.charAt(0)
+                    : props.seat.guestName ? initials(props.seat.guestName)
+                    : ""
             }
             </div> 
             {
                 props.seat.guestName &&
-                <div className="occupant">{props.seat.guestName}</div>
+                <div className="occupant">{nameWithLineBreak(props.seat.guestName)}</div>
             }
         </div>
     )
+}
+
+function nameWithLineBreak(name: string) {
+    return (
+        name.split(" ").map(line => {
+            return <>{line}<br/></>
+        })
+    )
+}
+
+function initials(name: string) {
+    const names = name.split(" ");
+
+    if (names.length > 1) {
+        return names[0].charAt(0) + names[1].charAt(0)
+    } else {
+        return names[0].charAt(0)
+    }
+
 }
