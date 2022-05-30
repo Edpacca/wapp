@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export const SeatIcon = (props: { seat: Seat }) => {
 
-    const isBrideGroom = props.seat.seatNumber == 12 || props.seat.seatNumber == 14
+    const isBrideGroom = props.seat.seatNumber == 2 || props.seat.seatNumber == 3
     const seatStyle = isBrideGroom ? "seat bride-groom" : props.seat.isActive ? "seat active" : "seat"
     
     return(

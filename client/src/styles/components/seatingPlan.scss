@@ -9,6 +9,12 @@
     align-items: center;
 }
 
+.seating-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(14, 1fr);
+}
+
 .left-table {
     margin: 5vw 8vw;
     display: grid;
@@ -28,6 +34,16 @@
     justify-content: center;
     align-items: center;
     border-radius: 6px;
+    margin: 1em;
+}
+
+.table {
+    border: 1px solid rgb(32, 97, 218);
+    background-color: $black50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px;
 }
 
 .bride-groom {
@@ -50,6 +66,7 @@
     background-color: rgba(255, 255, 255, 0.2);
     .occupant {
         display: initial;
+        position: absolute;
     }
 
     .seat-title {
@@ -69,22 +86,22 @@
     }
 }
 
-@mixin styling($seatSize, $gap) {
-    .left-table, .right-table {
-        grid-template-columns: $seatSize $seatSize;
-        column-gap: $gap;
-    }
+// @mixin styling($seatSize, $gap) {
+//     .left-table, .right-table {
+//         grid-template-columns: $seatSize $seatSize;
+//         column-gap: $gap;
+//     }
 
-    .seat {
-        height: $seatSize;
-        width: $seatSize;
-    }
-}
+//     .seat {
+//         height: $seatSize;
+//         width: $seatSize;
+//     }
+// }
 
-@media only screen and (min-width: 740px) {
-    @include styling($seatSize: 9vw, $gap: 3vw);
-}
+// @media only screen and (min-width: 740px) {
+//     @include styling($seatSize: 9vw, $gap: 3vw);
+// }
 
-@media only screen and (max-width: 790px) {
-    @include styling($seatSize: 15vw, $gap: 3vw);
-}
+// @media only screen and (max-width: 790px) {
+//     @include styling($seatSize: 15vw, $gap: 3vw);
+// }
