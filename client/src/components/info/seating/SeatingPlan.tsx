@@ -12,7 +12,10 @@ export const SeatingPlan = (props: {guestSeats: Seat[], activeGuestSeatNumbers: 
             {
                 grid.map(index => {
                     if (SEAT_NUMBERS.includes(index)) {
-                        const seat = props.guestSeats.find(s => s.seatNumber == index) ?? {seatNumber: index}
+                        let seat = props.guestSeats.find(s => s.seatNumber == index) ?? {seatNumber: index}
+                        if (props.activeGuestSeatNumbers.includes(index)) {
+                            seat = { isActive: true, ...seat}
+                        }
                         return <SeatIcon seat={seat as Seat}/>
                     } else if (TABLE_NUMBERS.includes(index)) {
                         return <div className="table"/>
