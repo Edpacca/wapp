@@ -248,6 +248,7 @@ export function mapGuests(payload: any[]) {
             family: guest.family,
             familyId: guest.familyId,
             name: guest.name,
+            surname: guest.surname,
             starter: guest.starter,
             main: guest.main,
             dessert: guest.dessert,

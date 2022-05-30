@@ -10,6 +10,7 @@ export function FamilyMembersTable(props: {guests: Guest[]}) {
                     <th></th>
                     {/* <th>Id</th> */}
                     <th>Name</th>
+                    <th>Surname</th>
                     <th>Main</th>
                     <th>Dessert</th>
                     <th>Diet</th>

@@ -9,12 +9,13 @@ export const SeatIcon = (props: { seat: Seat }) => {
     
     return(
         <div className={seatStyle}>
+            <div className="seat-title">
             {
                 isBrideGroom 
-                    ? <div className="seat-title"><FontAwesomeIcon icon={faSeedling}/></div> 
-                    : props.seat.isActive ? <div className="seat-title"><FontAwesomeIcon icon={faUser}/></div> 
-                    : <div> {props.seat.guestName} </div> 
+                    ? <FontAwesomeIcon icon={faSeedling}/>
+                    : props.seat.guestName?.charAt(0)
             }
+            </div> 
             {
                 props.seat.guestName &&
                 <div className="occupant">{props.seat.guestName}</div>

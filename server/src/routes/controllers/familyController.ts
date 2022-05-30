@@ -47,7 +47,8 @@ export async function registerFamily(request, result) {
             {
                 family: user.family,
                 familyId: user.familyId,
-                name: guests[i]
+                name: guests[i][0],
+                surname: guests[i][1]
             });
             
             guestsResponse.push({
@@ -55,6 +56,7 @@ export async function registerFamily(request, result) {
                 family: newGuest.family,
                 familyId: newGuest.familyId,
                 name: newGuest.name,
+                surname: newGuest.surname,
                 starter: newGuest.starter,
                 main: newGuest.main,
                 dessert: newGuest.dessert,
@@ -80,7 +82,7 @@ export async function registerFamily(request, result) {
 export async function addGuestToFamily(request, result) {
     try {
 
-        const { family, name} = request.body;
+        const { family, name, surname} = request.body;
 
         if (!(family && name)) {
             return result.status(400).send("All input is required");
@@ -92,7 +94,8 @@ export async function addGuestToFamily(request, result) {
             {
                 family: family,
                 familyId: existingUser._id,
-                name: name
+                name: name,
+                surname: surname
             }
         );
         
@@ -101,6 +104,7 @@ export async function addGuestToFamily(request, result) {
                 family: guest.family,
                 familyId: guest.familyId,
                 name: guest.name,
+                surname: guest.surname,
                 starter: guest.starter,
                 main: guest.main,
                 dessert: guest.dessert,
