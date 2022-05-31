@@ -14,12 +14,14 @@ export function CreateUser() {
 
     function CreateFamily(): CreateFamily {
 
-        const guests: string[] = [];
+        const guests: [string, string][] = [];
 
         for (let i = 0; i < memberCount; i++) {
-            var text = (document
+            var name = (document
                 .getElementById(`name${i}`) as HTMLInputElement).value;
-            guests.push(text);
+            var surname = (document
+                .getElementById(`surname${i}`) as HTMLInputElement).value;
+            guests.push([name, surname]);
         }
 
         const newFamily: CreateFamily = {
@@ -89,13 +91,22 @@ export function CreateUser() {
 function renderMembers(count: number) {
     return ([...Array(count)].map((value: undefined, index: number) => {
         return (
-            <input 
-                type="text" 
-                className="textbox login" 
-                placeholder={`Name ${index}`} 
-                id={`name${index}`} 
-                key={`name${index}`}>
-            </input>)
+            <div className="input-row">
+                <input 
+                    type="text" 
+                    className="textbox login" 
+                    placeholder={`Name ${index}`} 
+                    id={`name${index}`} 
+                    key={`name${index}`}>
+                </input>
+                <input 
+                    type="text" 
+                    className="textbox login" 
+                    placeholder={`Surname ${index}`} 
+                    id={`surname${index}`} 
+                    key={`surname${index}`}>
+                </input>
+            </div>)
         })
     )
 }

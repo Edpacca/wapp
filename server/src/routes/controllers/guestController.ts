@@ -12,6 +12,7 @@ export async function createGuest(request, result) {
     try {
         const guest = new Guest({
             name: request.body.name,
+            surname: request.body.surname,
             family: request.body.family,
             familyId: familyId,
             starter: null,
@@ -87,6 +88,7 @@ export async function getGuestObjectByFamily(family) {
             family: guest.family,
             familyId: guest.familyId,
             name: guest.name,
+            surname: guest.surname,
             starter: guest.starter,
             main: guest.main,
             dessert: guest.dessert,
@@ -105,6 +107,7 @@ export async function updateGuests(request, result) {
     await edits.forEach(guest => {
         Guest.findByIdAndUpdate({_id: guest.id}, {
             "name": guest.name,
+            "surname": guest.surname,
             "starter": guest.starter,
             "main": guest.main,
             "dessert": guest.dessert,
@@ -122,7 +125,7 @@ export async function updateGuests(request, result) {
     await edits.forEach(guest => {
         Seat.findOneAndUpdate({'guestId': guest.id}, {
             "guestId": guest.id,
-            "guestName": guest.name,
+            "guestName": guest.name + " " + guest.surname,
             "seatNumber": guest.seat
         }, options, (err, seat) => {
             if (err) {
@@ -180,6 +183,8 @@ export async function updateGuest(request, result) {
     }
 
     Guest.findByIdAndUpdate({_id: request.body.id}, {
+        "name": body.name ?? null,
+        "surname": body.surname ?? null,
         "starter": body.starter ?? null,
         "main": body.main ?? null,
         "dessert": body.dessert ?? null,

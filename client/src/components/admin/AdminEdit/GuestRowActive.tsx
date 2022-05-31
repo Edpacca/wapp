@@ -8,7 +8,7 @@ export function GuestRowActive(props: {guest: Guest, active: boolean, setActive:
      mains: foodItem[], desserts: foodItem[]}) {
 
     const [guest, setGuest] = useState<Guest>(props.guest);
-    type GuestParam = 'name' | 'starter' | 'main' | 'dessert' | 'diet' | 'seat' | 'room';
+    type GuestParam = 'name' | 'surname' | 'starter' | 'main' | 'dessert' | 'diet' | 'seat' | 'room';
     const dispatch = useAppDispatch();
 
     function updateGuest(newValue: string | number, param: GuestParam) {
@@ -18,6 +18,9 @@ export function GuestRowActive(props: {guest: Guest, active: boolean, setActive:
         switch (param) {
             case 'name':
                 buffer.name = newValue as string;
+                break;
+            case 'surname':
+                buffer.surname = newValue as string;
                 break;
             case 'main':
                 buffer.main = newValue as number;
@@ -60,6 +63,7 @@ export function GuestRowActive(props: {guest: Guest, active: boolean, setActive:
         <td className="tableCheckbox"><input type="checkbox" checked={props.active} onChange={() => props.setActive()} className="checkbox"/></td>
         {/* <td><p className="link" onClick={(e) => {e.preventDefault(); copyId(props.guest.id);}}>{props.guest.id}</p></td> */}
         <td className="tableText"><input className="tableTextInput" placeholder={props.guest.name} onChange={(e) => updateGuest(e.target.value, 'name')}></input></td>
+        <td className="tableText"><input className="tableTextInput" placeholder={props.guest.surname} onChange={(e) => updateGuest(e.target.value, 'surname')}></input></td>
         <td className="tableText">{renderDropDown(props.mains, props.guest.main, `${props.guest.id}-main`, 'main')}</td>
         <td className="tableText">{renderDropDown(props.desserts, props.guest.dessert, `${props.guest.id}-dessert`, 'dessert')}</td>
         <td className="tableText"><input className="tableTextInput" placeholder={props.guest.diet} onChange={(e) => updateGuest(e.target.value, 'diet')}></input></td>

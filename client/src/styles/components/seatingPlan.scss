@@ -4,30 +4,38 @@
     width: 90vw;
     margin: auto;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2em;
 }
 
-.left-table {
-    margin: 5vw 8vw;
+.seating-grid {
     display: grid;
-    row-gap: 1vw;
-}
-
-.right-table {
-    margin: 5vw 8vw;
-    display: grid;
-    row-gap: 1vw;
+    grid-template-columns: repeat(6, 6vw);
+    grid-template-rows: repeat(14, 6vw);
 }
 
 .seat {
-    border: 1px solid goldenrod;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     background-color: $black50;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 6px;
+    margin: 0.5em;
+}
+
+.active {
+    border: 2px solid goldenrod;
+    color: goldenrod;
+}
+
+.table {
+    background-color: rgba(0, 0, 0, 0.808);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px;
 }
 
 .bride-groom {
@@ -36,7 +44,7 @@
 }
 
 .seat-title {
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .occupant {
@@ -46,10 +54,13 @@
 }
 
 .seat:hover {
-    border: 1px solid goldenrod;
-    background-color: rgba(255, 255, 255, 0.2);
+    border: 0px solid goldenrod;
+    background-color: rgba(255, 255, 255, 0.1);
+    
     .occupant {
         display: initial;
+        position: absolute;
+        color: white;
     }
 
     .seat-title {
@@ -62,29 +73,23 @@
 
     .occupant {
         display: initial;
+        position: absolute;
+        color: white;
     }
 
     .seat-title {
         display: none;
     }
+
 }
 
-@mixin styling($seatSize, $gap) {
-    .left-table, .right-table {
-        grid-template-columns: $seatSize $seatSize;
-        column-gap: $gap;
+@mixin styling($seatSize) {
+    .seating-grid {
+        grid-template-columns: repeat(6, $seatSize);
+        grid-template-rows: repeat(14, $seatSize);
     }
-
-    .seat {
-        height: $seatSize;
-        width: $seatSize;
-    }
-}
-
-@media only screen and (min-width: 740px) {
-    @include styling($seatSize: 9vw, $gap: 3vw);
 }
 
 @media only screen and (max-width: 790px) {
-    @include styling($seatSize: 15vw, $gap: 3vw);
+    @include styling($seatSize: 15vw);
 }

@@ -3,6 +3,7 @@ export interface GuestResponse {
     family: string,
     familyId: string,
     name: string,
+    surname: string,
     starter: number | undefined,
     main: number | undefined,
     dessert: number | undefined,

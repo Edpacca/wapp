@@ -7,7 +7,6 @@ export function StagedGuests(props: {guests: Guest[], css?: string}) {
             <table className="tightTable">
                 <thead>
                     <th>Name</th>
-                    <th>Starter</th>
                     <th>Main</th>
                     <th>Dessert</th>
                     <th>Diet</th>

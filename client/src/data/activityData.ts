@@ -132,19 +132,19 @@ export const DAYS: Day[] = [
                 heading: [ "Welcome drinks", "Piwko powitalne" ],
                 details: 
                 [
-                    "A trip to a local pub to meet up with everyone, have a pint and say hi! The yellow text above should be a link to the pub, but give Ala or Eddie a text if you want confirmation.",
+                    "A trip to the pub to meet up with everyone, have a pint and say hi! Several guests are staying at the Killin Hotel so we thought we'd join them there, but give Ala or Eddie a text if you want confirmation.",
                     "Wspólny wypad do lokalnego pubu, aby przywitać się przy piwku lub szklaneczce whisky! Żółty link powyżej zabierze Was do strony pubu, ale daj nam znać jeśli masz jakieś pytania."
                 ],
-                location: [ "The Pub - Falls of Dochart Inn", "The Pub - Falls of Dochart Inn" ],
+                location: [ "Killin Hotel Bar", "Killin Hotel Bar" ],
                 time: [ "~9pm", "~9pm" ],
-                url: "https://www.fallsofdochartinn.co.uk/",
+                url: "https://www.killinhotel.com/",
                 icon: barrel,
             },
             {
                 heading: [ "Hangout", "Wspólny wieczór" ],
                 details: 
                 [  
-                    "After this there's a chance to come back to the House and play some games and hang out. Because there is no bar at the House and we'll be saving most of the booze for Saturday, it'd be good to bring along a bottle or some cans for yourself if you're wanting a tipple. Ala and Eddie will try their best to get an earlyish night, but we know how these things go...",
+                    "After this there's a chance to come back to the House and play some games, hang out and maybe go in the jacuzzi. Because there is no bar at the House and we'll be saving most of the booze for Saturday, it'd be good to bring along a bottle or some cans for yourself if you're wanting a tipple. Ala and Eddie will try their best to get an earlyish night, but we know how these things go...",
                     "Po wizycie w pubie każdy jest zaproszony (nieobowiązkowo) do ogólnego rozgoszczenia się w Domu nad Mostem, gdzie można razem posiedzieć, porozmawiać i pograć w gry przed pójściem spać. W Domu nie ma baru, lecz jeśli masz ochotę przynieść dla siebie coś do picia, bądź naszym gościem! My sami będziemy starali się udać spać dosyć wcześnie, ale nigdy nie wiadomo :)" 
                 ],
                 location: HOUSE_AT_THE_BRIDGE_OF_LOCHAY,
@@ -237,7 +237,7 @@ export const DAYS: Day[] = [
                 heading: [ "Dancing", "Tańce"],
                 details: 
                 [ 
-                    "We'll kick things off with the couple's first dance and then let the evening party commence!",
+                    "We'll kick things off with the couple's first dance and then let the evening party commence! There is also a beautiful lounge for those wanting to take a break from the music.",
                     "Oficjalne otworzymy parkiet naszym pierwszym tańcem i tym samym wieczorna impreza zostanie rozpoczęta!"
                 ],
                 location: HOUSE_AT_THE_BRIDGE_OF_LOCHAY,

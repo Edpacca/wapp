@@ -11,6 +11,7 @@ export function AddGuest() {
     const dispatch = useAppDispatch();
 
     const [name, setName] = useState<string>("");
+    const [surname, setSurname] = useState<string>("");
     const [family, setFamily] = useState<string>("");
 
     function addGuest() {
@@ -20,6 +21,7 @@ export function AddGuest() {
         const newGuest: AddGuestRequest = {
             family: family,
             name: name,
+            surname: surname
         }
 
         dispatch(addGuestToFamily(newGuest));
@@ -38,17 +40,25 @@ export function AddGuest() {
     }
 
     return(
-       
         <div className="adminInputs">
             <p>Add Guest</p>
             {renderDropDown(familyNames)}
-            <input 
-                type="text" 
-                className="textbox login" 
-                placeholder={`Name`}
-                onChange={(e) => setName(e.target.value)}
-                >
-            </input>
+            <div>
+                <input 
+                    type="text" 
+                    className="textbox login" 
+                    placeholder={`Name`}
+                    onChange={(e) => setName(e.target.value)}
+                    >
+                </input>
+                <input 
+                    type="text" 
+                    className="textbox login" 
+                    placeholder={`Surname`}
+                    onChange={(e) => setSurname(e.target.value)}
+                    >
+                </input>
+            </div>
                 <button 
                     onClick={() => addGuest()}
                     className="button login">

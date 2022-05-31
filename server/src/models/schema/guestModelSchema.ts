@@ -7,6 +7,7 @@ const Guest = new Schema(
         family: { type: String, required: true },
         familyId: { type: String, required: true },
         name: { type: String, required: true },
+        surname: { type: String, default: null },
         starter: { type: Number, default: null },
         main: { type: Number, default: null },
         dessert: { type: Number, default: null },
