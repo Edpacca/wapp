@@ -6,6 +6,7 @@ import registry from '../../assets/map-icons/registry.svg';
 import footstepsA from '../../assets/map-icons/footstepsA.svg';
 import footstepsB from '../../assets/map-icons/footstepsB.svg';
 import mountain from '../../assets/map-icons/mountain.svg';
+import barrel from '../../assets/icons/barrel.svg';
 import { ACHARN_WOODS } from '../../data/acharnWoods';
 import { SRON_A_CHLACHAIN } from '../../data/sron-a-chlachain';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,6 +25,7 @@ const registryCoords = { lat: 56.46795190718324, lng: -4.318373729857583 };
 const acharnStartCoords = { lat: 56.45960546129408, lng: -4.320894272525618 };
 const chlachainStartCoords = { lat: 56.4692126040287, lng: -4.31767475314589 };
 const chlachainTopCoords = 	{ lat: 56.465562613516, lng: -4.34184484168226 };
+const hotelCoords = { lat: 56.47051690250095, lng: -4.317008453968207 };
 const center = { lat: 56.46995190718324, lng: -4.322373729857583 };
 
 const libraries: ["places"] = ["places"];
@@ -81,57 +83,68 @@ export function WappMap() {
   
     const lochayIcon: google.maps.Icon = {
       url: lochay,
-      scaledSize: new google.maps.Size(120, 120),
+      scaledSize: new google.maps.Size(100, 100),
     }
 
     const lochayLabel: google.maps.MarkerLabel = {
       text: "Reception",
       className: "map-label",
-      color: "white"
+      color: "orange"
     }
 
     const finlarigIcon: google.maps.Icon = {
       url: finlarig,
-      scaledSize: new google.maps.Size(100, 100),
+      scaledSize: new google.maps.Size(70, 70),
     }
 
     const finlarigLabel: google.maps.MarkerLabel = {
       text: "Ceremony",
       className: "map-label",
-      color: "white"
+      color: "orange"
+    }
+
+    const hotelIcon: google.maps.Icon = {
+      url: barrel,
+      scaledSize: new google.maps.Size(40, 40),
+    }
+
+    const hotelLabel: google.maps.MarkerLabel = {
+      text: "Killin Hotel",
+      className: "map-label",
+      color: "orange"
     }
 
     const registryIcon: google.maps.Icon = {
       url: registry,
-      scaledSize: new google.maps.Size(70, 70),
+      scaledSize: new google.maps.Size(50, 50),
     }
 
     const registryLabel: google.maps.MarkerLabel = {
       text: "Registry Office",
       className: "map-label",
-      color: "white"
+      color: "orange"
     }
 
     const walkAIcon: google.maps.Icon = {
       url: footstepsA,
-      scaledSize: new google.maps.Size(100, 100),
+      scaledSize: new google.maps.Size(70, 70),
     }
 
     const walkBIcon: google.maps.Icon = {
       url: footstepsB,
-      scaledSize: new google.maps.Size(100, 100),
+      scaledSize: new google.maps.Size(70, 70),
     }
 
     const acharnWalkLabel: google.maps.MarkerLabel = {
       text: "Sunday walk A",
       className: "map-label",
-      color: "white"
+      color: "orange"
     }
 
     const chlachainWalkLabel: google.maps.MarkerLabel = {
       text: "Sunday walk B",
       className: "map-label",
-      color: "white"
+      color: "orange"
     }
 
     const summitIcon: google.maps.Icon = {
@@ -154,6 +167,7 @@ export function WappMap() {
         <>
           <Marker label={lochayLabel} icon={lochayIcon} key={"house"} position={lochayCoords}/>
           <Marker label={finlarigLabel} icon={finlarigIcon} key={"castle"} position={finlarigCoords}/>
+          <Marker label={hotelLabel} icon={hotelIcon} key={"hotel"} position={hotelCoords}/>
           <Marker label={registryLabel} icon={registryIcon} key={"registry"} position={registryCoords}/>
           <Marker label={acharnWalkLabel} icon={walkAIcon} key={"walkA"} position={acharnStartCoords}/>
           <Marker label={chlachainWalkLabel} icon={walkBIcon} key={"walkB"} position={chlachainStartCoords}/>

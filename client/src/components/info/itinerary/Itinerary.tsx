@@ -58,7 +58,7 @@ export function Itinerary(props: {setActive: (value: InfoPage) => void, language
 function renderActivity(activity: Activity, languageIndex: 1 | 0) {
 
     const location = activity.url 
-    ? <a href={activity.url} className="link">{activity.location[languageIndex]}</a> 
+    ? <a href={activity.url} className="link" target="_blank">{activity.location[languageIndex]}</a> 
     : activity.location[languageIndex];
 
     return(
