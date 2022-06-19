@@ -75,13 +75,14 @@ export const GENERAL_INFO: InfoProps[] = [
     },
     {
         title: [
-            "Dress Code",
+            "\"Dress Code\"",
             "Dresscode"
         ],
         details: [ 
             [
                 "We don't expect black tie but dress classy folks!",
                 "",
+                "(The colour theme is meant to be a bit of fun, we assure you most people are wearing whatever colours they like!)",
                 "We're going with the theme of woodlands and nature - loosely colours like dark green, and autumny browns and oranges. But most importantly we want you to feel fabulous in whatever you choose to wear. If you fancy hot pink, go for it!",
                 "",
                 "Bear in mind that (weather permitting) we plan to have the ceremony outdoors in a nearby castle ruin. It's about a 10 minute walk from the house, or a short drive. The paths may be muddy so you might want to avoid stilettos for that bit.",
@@ -207,10 +208,10 @@ export const GENERAL_INFO: InfoProps[] = [
         ],
         details: [
             [
-                "There is parking available at the House at the Bridge of Lochay where most of the guests are staying, and if it gets full there is more parking a short walk away. Let us know if you've any concerns.",
+                "There is plenty of parking available at the House at the Bridge of Lochay where most of the guests are staying.",
             ],
             [
-                "W Domu przy Moście Lochay jest dostępny parking, gdzie zmieści się większość gości, ale pamiętaj, że może się zrobić ciasno! Wkoło jest jendak parę alternatyw parkingowych jeśli zabraknie miejsca."
+                "W Domu przy Moście Lochay jest dostępny parking."
             ]
         ],
         icon: car

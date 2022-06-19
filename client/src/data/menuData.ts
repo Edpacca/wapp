@@ -67,13 +67,13 @@ export const mains: foodItem[] = [
         course: 'main',
         name: 
         [
-            "Canon of Lamb",
-            "Trio pieczonych kotletów jagnięcych"
+            "Venison fillet",
+            "Filet z dziczyzny"
         ],
         description:
         [
-            "with a red wine and tomato reduction, pea and minted potatoes, local Kinnell Farm vegetables",
-            "z sosem z czerwonego wina i pomidorów, ziemniaczkami z groszkiem i miętą i lokalnymi warzywkami z Farmy Kinnell"
+            "with jus of blackcurrent and port, and local Kinnell Farm vegetables",
+            "z sosem czarnej porzeczki i porto i lokalnymi warzywkami z Farmy Kinnell"
         ],
         isVegan: false,
         value: 0
