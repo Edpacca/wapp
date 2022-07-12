@@ -9,6 +9,9 @@ import camera from '../assets/icons/camera.svg';
 import disco from '../assets/icons/disco.svg';
 import footsteps from '../assets/icons/footsteps.svg';
 import pingpong from '../assets/icons/pingpong.svg';
+import guitar from '../assets/icons/guitar.svg';
+import questionmark from '../assets/icons/question-mark.svg';
+import television from '../assets/icons/television.svg';
 import { days, times } from './constantsEngPol';
 import { Songs } from '../components/info/itinerary/Songs';
 
@@ -213,13 +216,34 @@ export const DAYS: Day[] = [
             {
                 heading: [ "Drinks Reception", "Popołudniowe Przyjęcie" ],
                 details: [ 
-                    "While the bride and groom get their photos taken, the rest of you can head back to the house for some afternoon drinks, nibbles and games. This is a fairly lax time for everyone to take a break and kick back. % When the couple are back we toast with some bubbles and begin the festivities! We'll have kegs of Pale ale and IPA in the games room, as well as a DIY cocktail bar. Wine will be near the kitchen. Go wild but be concious that this is for everyone and is to last the whole evening! We will also make sure to provide non-alcoholic options for kiddos and non-drinkers. % We also plan to have a few live music performances in an open mic setting, so if you fancy playing something then bring an instrument or sing a song! There's plenty of musical folk so a jam is definitely on the cards.",
+                    "While the bride and groom get their photos taken, the rest of you can head back to the house for some afternoon drinks, nibbles and games. This is a fairly lax time for everyone to take a break and kick back. % When the couple are back we toast with some bubbles and begin the festivities! We'll have kegs of Pale ale and IPA in the games room, as well as a DIY cocktail bar. Wine will be near the kitchen. Go wild but be concious that this is for everyone and is to last the whole evening! We will also make sure to provide non-alcoholic options for kiddos and non-drinkers",
 
                     "Podczas sesji zdjęciowej Państwa Młodych, zapraszamy resztę towarzystwa do Domu nad Mostem na popołudniowe drinki, przekąski i gry w zrelaksowanej atmosferze, aby wszyscy mogli odetchnąć po pierwszym z głównych punktów dnia. Po niespełna godzinie wzniesiemy toast szampanem na przybycie Pańtwa Młodych i rozpoczniemy wspólne świętowanie! % W domu będzie parę baryłek piwa Pale Ale i IPA, zamierzamy też wystawić barek do robienia koktajli DIY a także barek z winami. Obliczamy wszystko z zapasem tak, żeby alkoholu na pewno starczyło dla wszystkich na całą noc, jednak pamiętajcie, że to co zobaczycie w barku to zapewnie większość tego co mamy w zapasie, więc warto myśleć o innych nalewając dziesiątą pintę IPY. % Oprócz dóbr procentowych będą też oczywiście opcje bezalkoholowe dla niepijących i nieletnich. Oprócz tako w tym czasie planujemuy coś eksperymentalnego - otwarta scena! Każdy kto ma ochotę może coś zagrać lub zaśpiewać. Jeśli chcesz, możesz dać nam znać z wyprzedzeniem lub zaskoczyć nas w samym dniu. Może nawet zrobimy spontaniczny jam session." 
                 ],
                 location: HOUSE_AT_THE_BRIDGE_OF_LOCHAY,
                 time: [ "2:30pm", "2:30pm" ],
                 icon: drink
+            },
+            {
+                heading: [ "Surprise?", "" ],
+                details: [
+                    "Right after the first toast we'll ask everyone to huddle into the cinema room for a surprise prepared by Zosia, the Bride's mother. We're not sure what this is ourselves, but we've been assured that you won't want to miss it!",
+                    "Zaraz po pierwszych toastach zaprosimy wszystkich do pokoju kinowego na niespodziankę przygotowaną przez Zosię, mamę Panny Młodej. Sami nie wiemy, co to będzię, ale jesteśmy pewni że nie chcecie tego przegapić!"
+
+                ],
+                location: HOUSE_AT_THE_BRIDGE_OF_LOCHAY,
+                time: [ "2:45pm", "2:45pm" ],
+                icon: television
+            },
+            {
+                heading: [ "Open mic", "Otwarta scena" ],
+                details: [
+                    "The bride and groom, and some other guests have prepared some easy going musical performances for later in the afternoon. We'll let everyone know when this is going to be. Anyone is welcome to perform so feel free to bring an instrument or let us know if you want to sing and we can figure something out for you. % This will be a very informal thing and is meant to be a bit of fun and to spice up the afternoon.",
+                    "Państwo młodzi i niektórzy gości przygotowali parę muzycznych kawałków na popołudnie. Damy wszystkim znać kiedy mniej więcej będziemy rozpoczynać występy w samym dniu. Każdy jest mile widziany na tej scenie, więc jeśli masz ochotę przynieść swój instrument lub dać nam znać, że chcesz coś zaśpiewać, pomożemy Ci się zorganizować. Ta część dnia będzie dość zrelaksowana i nieformalna, chcemy po prostu razem coś zagrać na rozluźnienie atmosfery." 
+                ],
+                location: HOUSE_AT_THE_BRIDGE_OF_LOCHAY,
+                time: times.afternoon,
+                icon: guitar
             },
             {
                 heading: [ "Dinner", "Obiad"],

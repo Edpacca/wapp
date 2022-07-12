@@ -2,7 +2,7 @@ import diamond from "../../assets/logos/diamond-white-AE.svg"
 import { Guest } from "../../models/Guest"
 import { GuestDropDown } from "../common/GuestDropDown"
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
-import { changePageUser } from "../nagivation/NavigationSlice"
+import { changePageInfo, changePageUser } from "../nagivation/NavigationSlice"
 import { selectUserFamilyArrival } from "../user/userSlice"
 import { useState } from "react"
 import { SubmitArrivalTimeModal } from "./arrivals/SubmitArrivalTimeModal"
@@ -23,6 +23,7 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
     const arrivalTime = mapToLanguagePair(arrival?.arrivalTime);
     const departureDay = mapToLanguagePair(arrival?.departureDay);
     const departureTime = mapToLanguagePair(arrival?.departureTime);
+    const textFullItinerary = ["Full Itinerary", "Pełny plan weekendu"];
 
     const arrivalStrings = {
         arrival: ["You're arriving", "Przyjeżdżasz w"],
@@ -34,6 +35,11 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
         const guest = props.guests.find(guest => guest.id === guestId);
         props.setActiveGuest(guest);
         if (guest != undefined) dispatch(changePageUser('meal'));
+    }
+
+    const redirectToItinerary = () => {
+        dispatch(changePageUser('info'));
+        dispatch(changePageInfo('itinerary'));
     }
 
     return(
@@ -52,6 +58,9 @@ export function Home(props: {family: Family, guests: Guest[], setActiveGuest: (g
             <GuestDropDown placeholder={props.family.name} guests={props.guests} selectOption={redirectToMeal}/>
             <div className="sub-home">
                 <div className="horizontal-bar"/>
+                <div className="info-header itinerary-header" onClick={() => redirectToItinerary()}>
+                        <div className="info-h1">{textFullItinerary[props.languageIndex]}</div>
+                </div>
                 {
                     arrival?.arrivalDay &&
                         <div className="med-info col-info">

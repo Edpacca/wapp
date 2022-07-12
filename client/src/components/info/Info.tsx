@@ -42,21 +42,20 @@ export function Info(props: {languageIndex: 0 | 1}) {
             {
                 activeInfo === 'none' &&
                 <>
-                <div className="info-header general-header" onClick={() => setActiveInfo('general')}>
-                    <div className="info-h1">{textGeneralInfo[props.languageIndex]}</div>
+                <div className="info-header itinerary-header" onClick={() => setActiveInfo('itinerary')}>
+                        <div className="info-h1">{textFullItinerary[props.languageIndex]}</div>
                 </div>
                 <div className="info-header bigday-header" onClick={() => setActiveInfo('bigday')}>
                     <div className="info-h1">{textBigDay[props.languageIndex]}</div>
                 </div>
-                <div className="info-header itinerary-header" onClick={() => setActiveInfo('itinerary')}>
-                        <div className="info-h1">{textFullItinerary[props.languageIndex]}</div>
+                <div className="info-header general-header" onClick={() => setActiveInfo('general')}>
+                    <div className="info-h1">{textGeneralInfo[props.languageIndex]}</div>
                 </div>
                 {
                     <div className="info-header seating-header" onClick={() => setActiveInfo('seating')}>
                         <div className="info-h1">{textSeatingPlan[props.languageIndex]}</div>
                     </div>
                 }
-
                 {
                     rooms.length > 0 &&
                     <div className="info-header room-header" onClick={() => setActiveInfo('room')}>
